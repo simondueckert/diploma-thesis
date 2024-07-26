@@ -1,0 +1,41 @@
+site_name: Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens.
+site_url: https://ai.lernos.org/de
+docs_dir: src
+site_dir: ../docs/de
+edit_uri: ''
+
+nav:
+    - Willkommen: index.md
+    - Links:
+      - Webseite Simon: https://blog.dueckert.eu
+
+theme:
+    name: 'material'
+    language: de
+    palette:
+      primary: yellow
+    icon:
+      logo: material/home
+      repo: fontawesome/brands/github
+    features:
+      - toc.integrate
+      - search.share
+
+extra_css:
+  - stylesheets/extra.css
+
+repo_name: 'simondueckert/diploma-thesis'
+repo_url: 'https://github.com/simondueckert/diploma-thesis'
+
+extra:
+    social:
+        - icon: fontawesome/brands/mastodon
+          link: 'https://colearn.social/@simondueckert'
+        - icon: fontawesome/brands/linkedin
+          link: 'https://www.linkedin.com/in/simondueckert/'
+        - icon: fontawesome/brands/github
+          link: 'https://github.com/simondueckert'
+    generator: false
+
+plugins:
+  - search
