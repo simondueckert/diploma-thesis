@@ -879,7 +879,7 @@ Dieser Abschnitt soll einen zusammenfassenden Überblick über alle verwendete S
 1. [Apache](https://apache.org/) dient als HTTP-Server
 2. [JServ](https://de.wikipedia.org/wiki/Apache_JServ_Protocol) ermöglicht den Einsatz von Java Servlets unter Apache
 3. [Cocoon](https://cocoon.apache.org) ein Java Servlet, das die Verwendung von XML, XSL, SQL, JDBC und LDAP mit dem Apacheserver ermöglicht
-4. [MySQL](https://www.mysql.com/m) ein Datenbankserver, der sehr große Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren (zum Beispiel [ODBC-Treiber](https://dev.mysql.com/downloads/connector/odbc/), Webinterface)
+4. [MySQL](https://www.mysql.com) ein Datenbankserver, der sehr große Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren (zum Beispiel [ODBC-Treiber](https://dev.mysql.com/downloads/connector/odbc/), Webinterface)
 5. [phpMyAdmin](https://www.phpmyadmin.net/) als Weboberfläche für den Datenbankserver MySQL
 6. [UDMsearch](https://web.archive.org/web/20000105124849/http://mysearch.udm.net) ein Indizierer für Webseiten, der seine Metadaten in einer Datenbank ablegt
 7. [OpenLDAP](https://www.openldap.org/) ein frei verfügbarer LDAP Directory Server

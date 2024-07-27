@@ -26,9 +26,6 @@ theme:
       - toc.integrate
       - search.share
 
-extra_css:
-  - stylesheets/extra.css
-
 repo_name: 'simondueckert/diploma-thesis'
 repo_url: 'https://github.com/simondueckert/diploma-thesis'
 
