@@ -1,0 +1,3033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Simon Dückert" />
+  <meta name="dcterms.date" content="2000-01-01" />
+  <title>Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens.</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Entwurf und prototypische Realisierung eines mit der
+Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung
+informationstechnischen Wissens.</h1>
+<p class="subtitle">Diplomarbeit</p>
+<p class="author">Simon Dückert</p>
+<p class="date">2000</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#executive-summary-kurzfassung"
+id="toc-executive-summary-kurzfassung">Executive Summary
+(Kurzfassung)</a></li>
+<li><a href="#kurzfassung" id="toc-kurzfassung">Kurzfassung</a></li>
+<li><a href="#vorwort" id="toc-vorwort">Vorwort</a>
+<ul>
+<li><a href="#danksagungen" id="toc-danksagungen">Danksagungen</a></li>
+<li><a href="#das-fraunhofer-institut-für-integrierte-schaltungen"
+id="toc-das-fraunhofer-institut-für-integrierte-schaltungen">Das
+Fraunhofer Institut für Integrierte Schaltungen</a></li>
+<li><a href="#über-dieses-dokument" id="toc-über-dieses-dokument">Über
+dieses Dokument</a></li>
+<li><a href="#konventionen" id="toc-konventionen">Konventionen</a></li>
+</ul></li>
+<li><a href="#einleitung" id="toc-einleitung"><span
+class="toc-section-number">1</span> Einleitung</a>
+<ul>
+<li><a href="#themenstellung" id="toc-themenstellung"><span
+class="toc-section-number">1.1</span> Themenstellung</a></li>
+<li><a href="#was-ist-wissensmanagement"
+id="toc-was-ist-wissensmanagement"><span
+class="toc-section-number">1.2</span> Was ist Wissensmanagement?</a>
+<ul>
+<li><a href="#wissen" id="toc-wissen"><span
+class="toc-section-number">1.2.1</span> Wissen</a></li>
+<li><a href="#wissensmanagement" id="toc-wissensmanagement"><span
+class="toc-section-number">1.2.2</span> Wissensmanagement</a></li>
+<li><a href="#wissensmanagementsystem"
+id="toc-wissensmanagementsystem"><span
+class="toc-section-number">1.2.3</span> Wissensmanagementsystem</a></li>
+</ul></li>
+<li><a
+href="#einordnung-dieser-diplomarbeit-in-einen-gesamtzusammenhang"
+id="toc-einordnung-dieser-diplomarbeit-in-einen-gesamtzusammenhang"><span
+class="toc-section-number">1.3</span> Einordnung dieser Diplomarbeit in
+einen Gesamtzusammenhang</a></li>
+</ul></li>
+<li><a href="#vorüberlegungen" id="toc-vorüberlegungen"><span
+class="toc-section-number">2</span> Vorüberlegungen</a>
+<ul>
+<li><a href="#rahmenbedingungen-am-iis"
+id="toc-rahmenbedingungen-am-iis"><span
+class="toc-section-number">2.1</span> Rahmenbedingungen am IIS</a>
+<ul>
+<li><a href="#heterogenes-itumfeld" id="toc-heterogenes-itumfeld"><span
+class="toc-section-number">2.1.1</span> Heterogenes (IT)Umfeld</a></li>
+<li><a href="#vorhandene-plattformen"
+id="toc-vorhandene-plattformen"><span
+class="toc-section-number">2.1.2</span> Vorhandene Plattformen</a></li>
+</ul></li>
+<li><a href="#wissensformen" id="toc-wissensformen"><span
+class="toc-section-number">2.2</span> Wissensformen</a>
+<ul>
+<li><a href="#explizit" id="toc-explizit"><span
+class="toc-section-number">2.2.1</span> Explizit</a></li>
+<li><a href="#implizit" id="toc-implizit"><span
+class="toc-section-number">2.2.2</span> Implizit</a></li>
+</ul></li>
+<li><a href="#wissenstransportkanäle"
+id="toc-wissenstransportkanäle"><span
+class="toc-section-number">2.3</span> Wissenstransportkanäle</a>
+<ul>
+<li><a href="#gespräche" id="toc-gespräche"><span
+class="toc-section-number">2.3.1</span> Gespräche</a></li>
+<li><a href="#besprechungen" id="toc-besprechungen"><span
+class="toc-section-number">2.3.2</span> Besprechungen</a></li>
+<li><a href="#seminare" id="toc-seminare"><span
+class="toc-section-number">2.3.3</span> Seminare</a></li>
+<li><a href="#vorträge" id="toc-vorträge"><span
+class="toc-section-number">2.3.4</span> Vorträge</a></li>
+<li><a href="#interne-workshops" id="toc-interne-workshops"><span
+class="toc-section-number">2.3.5</span> (Interne) Workshops</a></li>
+<li><a href="#email" id="toc-email"><span
+class="toc-section-number">2.3.6</span> Email</a></li>
+<li><a href="#dokumente-1" id="toc-dokumente-1"><span
+class="toc-section-number">2.3.7</span> Dokumente</a></li>
+<li><a href="#intranet-1" id="toc-intranet-1"><span
+class="toc-section-number">2.3.8</span> Intranet</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#konzeption" id="toc-konzeption"><span
+class="toc-section-number">3</span> Konzeption</a>
+<ul>
+<li><a href="#anforderungen-an-ein-wissensmanagementsystem"
+id="toc-anforderungen-an-ein-wissensmanagementsystem"><span
+class="toc-section-number">3.1</span> Anforderungen an ein
+Wissensmanagementsystem</a>
+<ul>
+<li><a href="#sicherheit" id="toc-sicherheit"><span
+class="toc-section-number">3.1.1</span> Sicherheit</a></li>
+<li><a href="#plattformunabhängigkeit"
+id="toc-plattformunabhängigkeit"><span
+class="toc-section-number">3.1.2</span> Plattformunabhängigkeit</a></li>
+<li><a href="#plattformunabhängigkeit-1"
+id="toc-plattformunabhängigkeit-1"><span
+class="toc-section-number">3.1.3</span> Plattformunabhängigkeit</a></li>
+<li><a href="#einfache-intuitive-bedienbarkeit"
+id="toc-einfache-intuitive-bedienbarkeit"><span
+class="toc-section-number">3.1.4</span> Einfache, intuitive
+Bedienbarkeit</a></li>
+<li><a href="#erweiterbarkeit-flexibilität"
+id="toc-erweiterbarkeit-flexibilität"><span
+class="toc-section-number">3.1.5</span> Erweiterbarkeit,
+Flexibilität</a></li>
+<li><a href="#logisch-strukturiert" id="toc-logisch-strukturiert"><span
+class="toc-section-number">3.1.6</span> Logisch strukturiert</a></li>
+<li><a href="#verwendung-von-standards"
+id="toc-verwendung-von-standards"><span
+class="toc-section-number">3.1.7</span> Verwendung von
+Standards</a></li>
+<li><a href="#mit-standardsoftware-bedienbar"
+id="toc-mit-standardsoftware-bedienbar"><span
+class="toc-section-number">3.1.8</span> Mit Standardsoftware
+bedienbar</a></li>
+</ul></li>
+<li><a href="#methoden" id="toc-methoden"><span
+class="toc-section-number">3.2</span> Methoden</a>
+<ul>
+<li><a href="#white-page-dienst" id="toc-white-page-dienst"><span
+class="toc-section-number">3.2.1</span> White Page Dienst</a></li>
+<li><a href="#diskussionsforum" id="toc-diskussionsforum"><span
+class="toc-section-number">3.2.2</span> Diskussionsforum</a></li>
+<li><a href="#verwaltung-von-teilbereichen-dezentralisierbar"
+id="toc-verwaltung-von-teilbereichen-dezentralisierbar"><span
+class="toc-section-number">3.2.3</span> Verwaltung von Teilbereichen
+dezentralisierbar</a></li>
+<li><a href="#newssektion" id="toc-newssektion"><span
+class="toc-section-number">3.2.4</span> Newssektion</a></li>
+<li><a href="#newssektion-1" id="toc-newssektion-1"><span
+class="toc-section-number">3.2.5</span> Newssektion</a></li>
+<li><a href="#privater-bereich" id="toc-privater-bereich"><span
+class="toc-section-number">3.2.6</span> Privater Bereich</a></li>
+<li><a href="#privater-bereich-1" id="toc-privater-bereich-1"><span
+class="toc-section-number">3.2.7</span> Privater Bereich</a></li>
+<li><a href="#möglichkeit-datenbankgestützter-anwendungen"
+id="toc-möglichkeit-datenbankgestützter-anwendungen"><span
+class="toc-section-number">3.2.8</span> Möglichkeit datenbankgestützter
+Anwendungen</a></li>
+<li><a href="#suchfunktionen" id="toc-suchfunktionen"><span
+class="toc-section-number">3.2.9</span> Suchfunktionen</a></li>
+</ul></li>
+<li><a href="#systemauswahl" id="toc-systemauswahl"><span
+class="toc-section-number">3.3</span> Systemauswahl</a>
+<ul>
+<li><a href="#kommerzielle-systeme" id="toc-kommerzielle-systeme"><span
+class="toc-section-number">3.3.1</span> Kommerzielle Systeme</a></li>
+<li><a href="#open-sourcefreie-systeme"
+id="toc-open-sourcefreie-systeme"><span
+class="toc-section-number">3.3.2</span> Open Source/Freie
+Systeme</a></li>
+<li><a href="#eigene-programmierung"
+id="toc-eigene-programmierung"><span
+class="toc-section-number">3.3.3</span> Eigene Programmierung</a></li>
+</ul></li>
+<li><a href="#entscheidung" id="toc-entscheidung"><span
+class="toc-section-number">3.4</span> Entscheidung</a></li>
+<li><a href="#systemx-i" id="toc-systemx-i"><span
+class="toc-section-number">3.5</span> systemX I</a>
+<ul>
+<li><a href="#überblick" id="toc-überblick"><span
+class="toc-section-number">3.5.1</span> Überblick</a></li>
+<li><a href="#implementierung-der-definierten-methoden"
+id="toc-implementierung-der-definierten-methoden"><span
+class="toc-section-number">3.5.2</span> Implementierung der definierten
+Methoden</a></li>
+<li><a href="#verwendete-softwarepakete"
+id="toc-verwendete-softwarepakete"><span
+class="toc-section-number">3.5.3</span> Verwendete
+Softwarepakete</a></li>
+</ul></li>
+<li><a href="#systemx-ii" id="toc-systemx-ii"><span
+class="toc-section-number">3.6</span> systemX II</a>
+<ul>
+<li><a href="#überblick-1" id="toc-überblick-1"><span
+class="toc-section-number">3.6.1</span> Überblick</a></li>
+<li><a href="#implementierung-der-definierten-methoden-1"
+id="toc-implementierung-der-definierten-methoden-1"><span
+class="toc-section-number">3.6.2</span> Implementierung der definierten
+Methoden</a></li>
+<li><a href="#verwendete-produkte" id="toc-verwendete-produkte"><span
+class="toc-section-number">3.6.3</span> Verwendete Produkte</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#durchgeführte-projekteverifikation"
+id="toc-durchgeführte-projekteverifikation"><span
+class="toc-section-number">4</span> Durchgeführte
+Projekte/Verifikation</a>
+<ul>
+<li><a href="#wissensmanagement-diskussionsforum"
+id="toc-wissensmanagement-diskussionsforum"><span
+class="toc-section-number">4.1</span> Wissensmanagement
+Diskussionsforum</a></li>
+<li><a href="#wissensmanagement-workshops"
+id="toc-wissensmanagement-workshops"><span
+class="toc-section-number">4.2</span>
+Wissensmanagement-Workshops</a></li>
+<li><a href="#mitarbeiterbefragung" id="toc-mitarbeiterbefragung"><span
+class="toc-section-number">4.3</span> Mitarbeiterbefragung</a></li>
+<li><a
+href="#konzept-für-eine-datenbankgestützte-studien-diplomarbeits-praktikums--hiwibörse"
+id="toc-konzept-für-eine-datenbankgestützte-studien-diplomarbeits-praktikums--hiwibörse"><span
+class="toc-section-number">4.4</span> Konzept für eine
+datenbankgestützte Studien-/Diplomarbeits-/Praktikums-
+/Hiwibörse</a></li>
+</ul></li>
+<li><a href="#ausblick" id="toc-ausblick"><span
+class="toc-section-number">5</span> Ausblick</a></li>
+<li><a href="#bibliographie" id="toc-bibliographie">Bibliographie</a>
+<ul>
+<li><a href="#wissensmanagement-1"
+id="toc-wissensmanagement-1">Wissensmanagement</a></li>
+<li><a href="#standards" id="toc-standards">Standards</a></li>
+<li><a href="#technik" id="toc-technik">Technik</a></li>
+</ul></li>
+<li><a href="#glossar" id="toc-glossar">Glossar</a></li>
+</ul>
+</nav>
+<h1 class="unnumbered" id="executive-summary-kurzfassung">Executive
+Summary (Kurzfassung)</h1>
+<p>This document is written in german. It deals with the topic of
+knowledge management mainly from a technical and very pragmatic point of
+view.</p>
+<p>For the scope of this document knowledge management describes every
+kind of effort which provides the employees with the knowledge they need
+to do their work with a maximum of efficiency.</p>
+<p>The aim was to develop a platform capable of supporting knowledge
+management methods. The work was done in the Fraunhofer Institut for
+Integrated Circuits (https://www.iis.fhg.de) in Tennenlohe/Germany which
+is called IIS in the following.</p>
+<p>After analysing the current situation and the available knowledge
+sources at the IIS several possibilities for the system were taken into
+consideration. Apart from the possibilities of using a commercial or an
+open-source system the strategy was focussed to build a new system from
+scratch to perfectly suit the needs of the IIS.</p>
+<p>A system was setup with the following components: webserver (apache),
+java servlet engine (jserv), XML-rendering engine (cocoon) and
+relational database management system (mysql). The framework was
+programmed in PHP3. The problem with this approach was that too much
+time had to be used for developping the platform. This amount of time
+cannot be spent anymore to implement knowledge management methods.</p>
+<p>For this reason the decision was taken to stop the development of the
+platform and choose an available product to implement the methods. The
+open source application server ZOPE was chosen because of its object
+oriented features and its support for a vast amount of standards
+(e.g. SQL, LDAP, FTP, HTTP, WebDAV, SOAP, XML, XML-RPC, RSS).</p>
+<p>The open architecture and availability of lots of third party
+extensions for ZOPE was identified as a major advantage in comparison to
+commercial products like Lotus Notes or Microsoft Exchange. The learning
+curve to implement applications in ZOPE is for an experienced
+HTML-programmer not as steep as that one of commercial systems.</p>
+<p>At the end of the work a fully operative prototype was available
+which can be used to introduce knowledge management methods. It is very
+important to mention that this project should not be thought of as
+finished but as work in progress. With the existing platform one can
+start to develop further methods and strategies.</p>
+<p>All the applications used in this concept are open source or freely
+available. Therefore the system described in this document can also be
+implemented by smaller companies not willing to spend large amounts of
+money for a commercial system.</p>
+<h1 class="unnumbered" id="kurzfassung">Kurzfassung</h1>
+<p>Die vorliegende Arbeit beschäftigt sich mit dem Thema
+Wissensmanagement aus technischer und sehr pragmatischer Sicht. Im
+Rahmen dieser Arbeit umfasst Wissensmanagement alle Anstrengungen, die
+unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie
+benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu
+sein.</p>
+<p>Das Ziel war, eine Plattform zu entwickeln, die im Fraunhofer
+Institut für Integrierte Schaltungen, im Folgenden IIS genannt, die
+Funktion eines Wissensmanagementsystems übernehmen kann. Nach Analyse
+der Ausgangssituation und der vorhandenen Wissensquellen musste zwischen
+der Implementierung auf einem kommerziellen System, auf einem
+Open-Source-System oder der Entwicklung einer neuen Plattform
+entschieden werden.</p>
+<p>Zunächst wurde die Eigenentwicklung fokussiert. Basierend auf dem
+Webserver Apache, der Skriptsprache PHP3, der Servletengine Jserv, der
+XML-Render-Engine Cocoon und der relationalen Datenbank mySQL wurde ein
+Prototyp erstellt. Es wurde erkannt, dass zu viel Zeit in die
+Entwicklung der Plattform investiert werden musste, die dann bei der
+Konzeption der Wissensmanagement-Methoden fehlte.</p>
+<p>Aus diesem Grund wurde die Eigenentwicklung eingestellt und der
+Open-Source Application Server ZOPE als Plattform herangezogen. Dieser
+eignet sich insbesondere durch seine offene Architektur, seine einfache
+Erweiterbarkeit und die umfassende Unterstützung von Standards (SQL,
+LDAP, FTP, HTTP, WebDAV, SOAP, XML, XML-RPC, RSS).</p>
+<p>Am Ende der Arbeit lag ein voll funktionsfähiger Prototyp vor, der
+zur Einführung von Wissensmanagement verwendet werden kann. Wichtig ist
+festzuhalten, dass diese Arbeit nicht als abgeschlossen gelten kann.
+Vielmehr müssen die Ansätze und Methoden in einem kontinuierlichen
+Verbesserungsprozess den Bedürfnissen angepasst werden.</p>
+<p>Nachdem alle benutzten Applikationen entweder Open-Source oder frei
+verfügbar sind, eignet sich dieses Konzept auch für kleiner Firmen oder
+Lehreinrichtungen.</p>
+<h1 class="unnumbered" id="vorwort">Vorwort</h1>
+<h2 class="unnumbered" id="danksagungen">Danksagungen</h2>
+<p>Neben meinen Betreuern, <strong>Prof. Dr. Heinz Gerhäuser</strong>,
+<strong>Dr. Hartmut Hess</strong>, <strong>Dr. Heinrich Dietsch</strong>
+und <strong>Dipl. Ing. Wolfram Straus</strong>, gehört mein Dank der
+gesamten <strong>Open-Source-Gemeinde</strong>, die mich in Newsgroups,
+Mailinglisten und Mailkontakten tatkräftig unterstützt hat. Drei
+Personen möchte ich gesondert erwähnen.</p>
+<p><strong>Norman Walsh</strong> hat mir die Einarbeitung in das Thema
+XML/XSL durch das Beantworten meiner Fragen sehr einfach gemacht.</p>
+<p><strong>James Clark</strong> hat mich auf der XML-Werkzeugseite
+beraten und mir einen Überblick über die verfügbaren Software-Pakete
+ermöglicht.</p>
+<p>Des weiteren gilt mein Dank <strong>Christian Forster</strong>, der
+mir in Sicherheits- und LDAP-Fragen immer hilfreich zur Seite stand.</p>
+<h2 class="unnumbered"
+id="das-fraunhofer-institut-für-integrierte-schaltungen">Das Fraunhofer
+Institut für Integrierte Schaltungen</h2>
+<p>Diese Arbeit wurde im Fraunhofer Institut für Integrierte Schaltungen
+(http://www.iis.fhg.de) (IIS) in Erlangen/Tennenlohe durchgeführt. Das
+IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und
+befasst sich mit mikroelektronischen Schaltungen und Systemen.</p>
+<p>Viele der hier angesprochenen Details (z.B. Netzwerktopologie)
+beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren
+verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS
+und sind für den externen Leser nicht erreichbar. Es sind dies alle
+Links, die mit “http://www-local”beginnen.</p>
+<h2 class="unnumbered" id="über-dieses-dokument">Über dieses
+Dokument</h2>
+<p>Bei der Evaluierung verschiedener Softwareprodukte für die Erstellung
+dieses Dokuments zog ich drei verschiedene Lösungen in Betracht. Meine
+Entscheidung werde ich im Folgenden erläutern.</p>
+<p>Den Gedanken, Microsoft Word als Textprozessor zu verwenden habe ich
+relativ schnell wieder verworfen, da das Verwalten von großen Dokumenten
+schwierig ist und auch die Dateigröße stark in das Verhalten von Word
+einfließt (Dateien mit vielen Grafiken sind sehr schwer zu
+handhaben).</p>
+<p>Ein weiterer Punkt, der gegen die Verwendung von Microsoft Word
+sprach war das proprietäre Dateiformat, das für die Speicherung
+verwendet wird. Zugriff auf das Format mit anderen Werkzeugen (zum
+Beispiel durch das Versionskontrollsystem CVS (http://www.wincvs.org))
+ist somit nur bedingt möglich.</p>
+<p>Das frei verfügbare Produkt LaTeX kannte ich bereits aus meiner
+Studienarbeit. Obwohl die Einarbeitung etwas mühselig ist, da es sich
+hierbei nicht um einen WYSIWYG-Prozessor (“What You See Is What You
+Get”) handelt, steht mit LaTeX ein sehr robustes und zuverlässiges
+Werkzeug zur Verfügung. Besonders komfortabel lassen sich mit LaTeX
+wissenschaftliche Dokumente verfassen, weil es hervorragende
+Formelfunktionen bietet.</p>
+<p>Da XML in meiner Diplomarbeit eine große Rolle spielen sollte, lag
+die Entscheidung nahe, auch ein XML-basiertes Dokumentationssystem zu
+verwenden, um damit erste Erfahrungen zu sammeln. Weil es sich bei XML
+(im Gegensatz zu LaTeX) um eine relativ neue Technologie handelt, ist
+die Einstiegsschwelle noch größer, da es auf dem Markt nur wenige, frei
+verfügbare Werkzeuge gibt.</p>
+<p>Die Energie, die ich in die Konfiguration eines solchen
+Dokumentationssystems gesteckt habe (siehe Abbildung 1), möchte ich in
+einer kurzen Zusammenfassung bündeln.</p>
+<p>Um in XML Dokumente erstellen zu können, wird eine Vorlage benötigt,
+die festlegt, welche Elemente (Tags) in dem Dokument erlaubt sind. Eine
+solche DTD ist Docbook (http://www.docbook.org). Sie eignet sich sehr
+gut zum Verfassen von technischen Dokumentationen. Formeln werden bis
+jetzt nicht unterstützt, sind aber mit MathML in der Vorbereitung.</p>
+<p>In meiner Arbeit kam die Version 3.1 der Docbook DTD (in der
+SGML-Version) zum Einsatz. Norman Walsh (mailto:ndw@nwalsh.com) hat aus
+der SGML-Version eine XML-Version
+(http://www.nwalsh.com/docbook/xml/index.html) abgeleitet.</p>
+<p>Um aus einem gültigen XML Dokument ein anderes Format zu erzeugen,
+werden sogenannte Stylesheets benötigt. Diese können XML beispielsweise
+in HTML, PDF, TeX, etc. umwandeln. Allerdings gibt es verschiedene
+Stylesheetformate, die sich in unterschiedlichen
+Standardisierungszuständen befinden.</p>
+<p>Bei diesem Dokument habe ich mich für DSSSL und gegen XSL Stylesheets
+entschieden, da diese in der Standardisierung fortgeschrittener waren.
+Für die Docbook DTD gibt es sowohl DSSSL-
+(http://www.nwalsh.com/docbook/dsssl/index.html) als auch
+XSL-Stylesheets (http://www.nwalsh.com/docbook/xsl/index.html).</p>
+<p>Der Prozessor hat die Aufgabe, aus einem XML Dokument unter
+Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum
+BeispielHTML) zu erzeugen. Der zu verwendende Prozessor hängt von der
+Wahl des Stylesheets ab.</p>
+<p>Kommt DSSSL zum Einsatz, so kann Jade (http://www.jclark.com/jade/)
+von James Clark (mailto:jjc@jclark.com) als Prozessor verwendet werden,
+bei XSL stellt die Kombination aus XT/XP (http://www.jclark.com/xml/)
+(ebenfalls von James Clark (mailto:jjc@jclark.com)) eine Alternative
+dar.</p>
+<p>Da es sich bei XML um reines ASCII Format handelt, kann als Editor
+jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe
+ich mich für den Editor Emacs entschieden, den es auch in einer Version
+für Windows (http://www.cs.washington.edu/homes/voelker/ntemacs.html)
+gibt.</p>
+<p><strong>TIPP:</strong> Eine sehr gute Beschreibung, wie unter Windows
+NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier
+erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial
+how to set up a free SGML editing and publishing system for Windows NT
+(http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).</p>
+<figure>
+<img src="./img/dokumentationssystem-ueberblick.png"
+alt="Dokumentationssystem - Überblick" />
+<figcaption aria-hidden="true">Dokumentationssystem -
+Überblick</figcaption>
+</figure>
+<h2 class="unnumbered" id="konventionen">Konventionen</h2>
+<p>Diese Sektion gibt einen Überblick über die in diesem Dokument
+verwendeten Konventionen.</p>
+<p>Da es im Bereich der Internettechnologien sehr viele Abkürzungen
+gibt, ist es sehr unübersichtlich, jede Abkürzung direkt im Text zu
+erklären. Aus diesem Grund befinden sich die Erläuterungen im
+Glossar.</p>
+<p>Um die Übersichtlichkeit der Textpassagen zu steigern, wird die
+Technik des Information Mapping angewandt (siehe [hol00]). Zu jedem
+logisch zusammengehörigen Absatz wird ein treffendes Schlagwort an den
+Seitenrand gesetzt, das die Navigation und das Nachschlagen im Text
+erleichtert und zur Reflexion anregt.</p>
+<p>In vielen Fällen ist die Angabe von Internetlinks (URLs) nötig. Da
+aus dem Quelldokument (XML) der Diplomarbeit sowohl die Druck- als auch
+die Onlineversion (HTML) erzeugt wird, musste eine Entscheidung für die
+Präsentationsform getroffen werden. In der Onlineversion erscheint ein
+Link in gewohnter Form als Teil eines Satzes, auf dem per Mausklick die
+entsprechende Webseite göffnet wird.</p>
+<p>In der Druckversion erscheint dieser Teil des Satzes als normaler
+Text, im Anschluss daran die URL in Klammern. Diese Konvention
+ermöglicht das Verwenden von Internetlinks in beiden Versionen.</p>
+<h1 data-number="1" id="einleitung"><span
+class="header-section-number">1</span> Einleitung</h1>
+<h2 data-number="1.1" id="themenstellung"><span
+class="header-section-number">1.1</span> Themenstellung</h2>
+<p>Rechnergestütztes Knowledge Management erweist sich als
+Herausforderung für alle gesellschaftlichen Organisationsformen, die bei
+der Verfolgung großer, komplexer Aufgaben räumlich und zeitlich flexibel
+operieren. Mit vorhandenen Werkzeugen sind Einschränkungen vorhanden,
+die Akzeptanz und Effizienz beschneiden.</p>
+<p>In kritischer Distanz zum Stand der Technik soll ein Konzept für das
+Wissensmanagement in einer im Informationstechnologie-Sektor
+angesiedelten Hochtechnologie-Einrichtung erarbeitet werden.</p>
+<p>Neben der Gestaltung der Funktionalität (Berücksichtigung heterogener
+Plattformen, Nutzung vorhandener Component Ware) ist der Entwurf einer
+geeigneten, vorzugsweise individuell gestaltbaren
+Mensch-Maschine-Schnittstelle, die alle Anwender zur Nutzung motiviert,
+wichtiger Bestandteil der Aufgabenstellung.</p>
+<p>Schnittstellen zu anderen Disziplinen (zum Beispiel Psychologie,
+Künstliche Intelligenz) sind zu identifizieren. Am Ende der Arbeit soll
+ein in der Praxis einsetzbarer Prototyp stehen, der alle Eigenschaften
+des Konzepts in sich trägt und erweiterbar ist.</p>
+<h2 data-number="1.2" id="was-ist-wissensmanagement"><span
+class="header-section-number">1.2</span> Was ist Wissensmanagement?</h2>
+<p>Der Begriff Wissensmanagement ist sehr verbreitet. Es gibt beinahe
+keine Zeitschrift aus den Bereichen Informatik, Informationstechnologie
+oder Wirtschaft, die noch keinen Beitrag zu diesem Thema veröffentlicht
+hat. Die Auffassungen des Begriffs selbst sind allerdings sehr
+unterschiedlich. Das Spektrum reicht von der Anschaffung einer
+Kaffeemaschine, um die interne Kommunikation zu fördern, über reine
+Softwarelösungen bis hin zur kompletten Restrukturierung der
+Unternehmenskultur.</p>
+<p>Dieser Umstand ist Grund genug, den Begriff Wissensmanagement
+zumindest für den Rahmen dieser Arbeit zu definieren. Die Grundlage
+hierfür ist eine Begriffsdefinition des Terminus Wissen selbst, denn wie
+könnte eine Ressource gehandhabt werden (engl. to manage: handhaben),
+wenn diese nicht genau zu fassen ist?</p>
+<h3 data-number="1.2.1" id="wissen"><span
+class="header-section-number">1.2.1</span> Wissen</h3>
+<p>Die Begriffe Zeichen, Daten, Informationen und Wissen stehen
+miteinander in Verbindung ([pro99]). Zeichen aus einem
+<strong>definierten Zeichenvorrat</strong> werden zu Daten, wenn sie
+nach festgelegten <strong>Syntaxregeln</strong> kombiniert werden. Wenn
+diese Daten in einen <strong>Kontext</strong> gestellt werden, so wird
+aus den Daten <strong>Information</strong>. Durch die
+<strong>Vernetzung</strong> einzelner Informationen können diese nutzbar
+gemacht werden. Ein solches Informationsnetz kann als
+<strong>Wissen</strong> bezeichnet werden.</p>
+<p>Die Wissensbasis in einem Unternehmen besteht immer aus
+<strong>individuellen und kollektiven Fähigkeiten</strong> (siehe
+[pro99]). Um Individuum und Kollektiv in effizienter Weise
+zusammenzuführen, bedarf es der beiden Faktoren
+<strong>Kommunikation</strong> und <strong>Transparenz</strong>.</p>
+<p>Kommunikation lässt aus Individuen ein Kollektiv entstehen (nach
+[rom], Kapitel 4). Die entstehende, vernetzte, kollektive Wissensbasis
+ist dabei größer als die Summe des Individualwissens.</p>
+<p>Mit Transparenz ist nicht die völlige Transparenz aller in einer
+Organisation vorhandenen Wissenselemente gemeint. Die <strong>totale
+Transparenz</strong> führt zu einer Informationsflut, die eher
+<strong>verwirrt</strong> als weiterhilft.</p>
+<p>Vielmehr geht es darum, Wissenselemente genau an die Stelle zu
+bringen, an denen sie benötigt werden. Die Wissensbasis muss also so
+transparent wie nötig und gleichzeitig so übersichtlich wie möglich
+sein.</p>
+<p>Die Wissensdefinition, die im Rahmen dieser Arbeit gelten soll, ist
+ein Kompromiss aus verschiedenen Ansätzen (siehe [pro99] und
+[dav98]):</p>
+<p><strong>Wissen bezeichnet die Gesamtheit der Kenntnisse und
+Fähigkeiten, die Individuen und Teams zur Lösung von Problemen einsetzen
+können.</strong></p>
+<p><strong>Dieses Wissen ist eine Mischung aus Erfahrungen,
+Wertvorstellungen, Kontextinformationen und Fachkenntnissen, die in
+ihrer Gesamtheit einen Strukturrahmen zur Beurteilung und Eingliederung
+neuer Erfahrungen und Informationen bietet.</strong></p>
+<h3 data-number="1.2.2" id="wissensmanagement"><span
+class="header-section-number">1.2.2</span> Wissensmanagement</h3>
+<p>Losgelöst von allen philosophischen Ansätzen zum Thema
+Wissensmanagement soll hier ein eher pragmatischer Ansatz gelten.</p>
+<p><strong>Wissensmanagement umfasst alle Anstrengungen, die unternommen
+werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen,
+um für das Unternehmen mit optimaler Effizienz tätig zu
+sein.</strong></p>
+<p>Thematisiert wird sowohl die Frage nach der <strong>technischen
+Plattform</strong>, auf der dieser Informations-/Wissensaustausch
+stattfinden kann, als auch <strong>Methoden</strong> und Werkzeuge,
+<strong>um den Austausch</strong> selbst <strong>zu
+erleichtern</strong>.</p>
+<h3 data-number="1.2.3" id="wissensmanagementsystem"><span
+class="header-section-number">1.2.3</span> Wissensmanagementsystem</h3>
+<p>Viele Anbieter vertreiben Produkte unter dem Schlagwort
+Wissensmanagement, die es auch schon vor der
+“Wissensmanagementwelle”gab. Dazu gehören insbesondere
+Dokumentenmanagementsysteme, Groupware/Kollaborationssysteme,
+Suchmaschinen, Workflow- und Intranetsysteme.</p>
+<p>Den Grund hierfür liefert eine Studie des Marktforschungsinstituts
+IDC (https://www.idc.com) vom September 1999. Dieser Studie zufolge wird
+der <strong>Markt für Wissensmanagementsoftware</strong> jährlich um
+<strong>40-50% wachsen</strong> und im Jahr <strong>2003</strong> ein
+Volumen von <strong>2 Milliarden US$</strong> erreichen. Aus diesem
+Grund ist es wichtig, dass die am Markt befindlichen Systeme einer
+kritischen Evaluierung unterzogen werden.</p>
+<p>Um ein Wissensmanagementsystem zu implementieren, muss ermittelt
+werden, welche Werkzeuge das Unternehmen benötigt. Diese Werkzeuge
+werden dann durch eine geeignete Kombination von Produkten zur Verfügung
+gestellt. Die Interoperation der Einzelprodukte durch ein
+standardisiertes Austauschformat (zum Beispiel XML) muss gewährleistet
+sein. Einen ähnlichen Ansatz beschreibt [ver99].</p>
+<p>Im Folgenden ist unter dem Begriff Wissensmanagementsystem ein
+Verbund von Werkzeugen zu verstehen, mit denen Wissensmanagement, nach
+der bereits formulierten Definition, betrieben werden kann. Anders
+formuliert stellt ein Wissensmanagementsystem die technische Plattform
+des Wissensmanagements dar (neben der nicht-technischen, wie
+Fortbildungen, Seminaren, etc.).</p>
+<p><strong>Wissensmanagement kann nur zu einem Teil durch die
+Einrichtung eines IT Systems etabliert werden</strong> ([dav98]spricht
+von einem Drittel), <strong>die restlichen Bestandteile sind
+Unternehmenskultur, Anreizsystem, Inhalt, Mitarbeitermotivation und
+weitere Faktoren</strong> (siehe Abbildung 1-1).</p>
+<figure>
+<img src="./img/komponenten-des-wissensmanagements.png"
+alt="Komponenten des Wissensmanagement" />
+<figcaption aria-hidden="true">Komponenten des
+Wissensmanagement</figcaption>
+</figure>
+<h2 data-number="1.3"
+id="einordnung-dieser-diplomarbeit-in-einen-gesamtzusammenhang"><span
+class="header-section-number">1.3</span> Einordnung dieser Diplomarbeit
+in einen Gesamtzusammenhang</h2>
+<p>Um den Beitrag dieser Diplomarbeit zum Thema Wissensmanagement am
+Fraunhofer-Institut für Integrierte Schaltungen (IIS) richtig
+einschätzen zu können, ist es wichtig, den Gesamtzusammenhang, in dem
+sie steht, zu kennen.</p>
+<p>Das Thema Wissensmanagement wurde am IIS zum ersten Mal in einem
+Projekt mit dem <strong>Institut für Arbeitsorganisation</strong> (IAO
+(https://www.iao.fraunhofer.de), Stuttgart) aufgebracht. Das IAO hatte
+von der Fraunhofer-Zentralverwaltung (ZV) in München den Auftrag,
+herauszufinden, wie man Wissensmanagement an den Instituten der
+Fraunhofer-Gesellschaft implementieren kann. Zu diesem Zweck sollte in
+Zusammenarbeit <strong>mit drei Pilotinstituten</strong> aus dem
+Fraunhofer-Verbund-Mikroelektronik ein <strong>generischer
+Leitfaden</strong> erstellt werden, der anderen Instituten bei der
+Einführung von Wissensmanagement eine Anleitung geben sollte.</p>
+<p>Bei der Realisierung dieses Projekts wurden an den Pilotinstituten
+durch das IAO <strong>Sensibilisierungsworkshops</strong> durchgeführt,
+die die Institutsleitungen und die Mitarbeiter in die Thematik einführen
+und den Bedarf an den einzelnen Instituten erfassen sollten. Parallel
+dazu wurde ein <strong>Prototyp auf Basis von Lotus Notes</strong> R5
+entwickelt, der die erarbeiteten Methoden unterstützen sollte. Aufbauend
+auf diesem Prototypen, zusammen mit dem generischen Leitfaden, sollten
+die Institute in der Lage sein, Wissensmanagement zu implementieren.</p>
+<p>Nach Evaluierung des Prototypen am IIS wurde das Urteil gefällt, dass
+die gesamte Arbeit, bestehend aus Leitfaden und Prototyp, für das IIS
+nur von sehr geringem Nutzen ist und deswegen nicht weiter verfolgt
+werden sollte.</p>
+<p>Eine wichtige Erkenntnis, die aus diesem Projekt gezogen werden
+konnte, ist, dass es sehr schwierig oder gar unmöglich ist,
+Wissensmanagement von außen, ohne genaue Kenntnisse der Struktur eines
+Unternehmens zu implementieren.</p>
+<p>Da die Einführung von Wissensmanagement immer auch mit einem Eingriff
+in die Unternehmenskultur verbunden ist, ist eine Unterstützung durch
+die Unternehmensleitung unbedingt notwendig.</p>
+<p>Im Rahmen dieser Diplomarbeit soll ein <strong>Konzept</strong>
+entwickelt werden, mit dem begonnen werden kann, Wissensmanagement am
+IIS zu implementieren. Dieses Konzept soll, im Gegensatz zum Ansatz des
+IAO, auf die speziellen Bedingungen am IIS eingehen. Des weiteren soll
+ein Prototyp entwickelt werden, der die Funktion eines
+Wissensmanagementsystems übernehmen kann und die Elemente des Konzepts
+in sich trägt.</p>
+<p>Nach Beendigung der Diplomarbeit kann durch die Institutsleitung die
+Entscheidung getroffen werden, ob dieser Prototyp am IIS eingesetzt
+werden soll.</p>
+<h1 data-number="2" id="vorüberlegungen"><span
+class="header-section-number">2</span> Vorüberlegungen</h1>
+<h2 data-number="2.1" id="rahmenbedingungen-am-iis"><span
+class="header-section-number">2.1</span> Rahmenbedingungen am IIS</h2>
+<h3 data-number="2.1.1" id="heterogenes-itumfeld"><span
+class="header-section-number">2.1.1</span> Heterogenes (IT)Umfeld</h3>
+<p>Am IIS sind eine <strong>Vielzahl</strong> der verfügbaren
+<strong>Betriebssysteme</strong> (WindowsNT, Windows95/98, Windows3.11,
+HP/UX, Solaris, SunOS, OS/2, MacOS, Novell, Linux) sowie eine Vielzahl
+von <strong>Hardwareplattformen</strong> (Sun, HP, PC, Macintosh, etc.)
+im Einsatz. Es ergeben sich Probleme, die im Folgenden beschrieben
+werden.</p>
+<p>Da auf den einzelnen Plattformen die <strong>Benutzerverwaltungen
+unterschiedlich</strong> sind, müssen Daten, wie Login und Passwort, auf
+mehreren Systemen synchron verwaltet werden, was einen hohen
+Administrationsaufwand bedeutet.</p>
+<p>Auf den Plattformen NT, UNIX und Mac sind die
+<strong>Rechteverwaltungen</strong> grundsätzlich
+<strong>verschieden</strong>. Nutzer, die auf mehr als einem System
+Daten verwalten, müssen Kenntnisse über mehrere Systeme haben.</p>
+<p>Die <strong>Supportressourcen</strong> sind auf viele Plattformen
+<strong>verteilt</strong> und können nicht fokussiert werden. In der
+Praxis bedeutet das, dass zwar alle genannten Plattformen angeboten,
+diese aber nicht in ausreichendem Maß unterstützt werden können.</p>
+<p>Die Bereitstellung von Speicherplatz für die einzelnen Plattformen
+ist schwierig (zum Beispiel Konvertierung von Rechten UNIX/NT), da die
+<strong>Standards</strong>, die bei den einzelnen Betriebssystemen zum
+Einsatz kommen, <strong>nicht kompatibel</strong> sind (zum Beispiel
+NFS, SMB, FAT, NTFS).</p>
+<p>Das gleiche Bild wie bei Betriebssystemen und Hardwareplattformen
+bietet sich bei der im Einsatz befindlichen
+<strong>Anwendersoftware</strong>. Es gibt keine Reglementierung, die
+den Anwender auf bestimmte Produkte beschränkt. Da die Formate der
+einzelnen Applikationen in der Regel nicht austauschbar sind, ergeben
+sich Probleme bei der Weiterverwendung der Dateien mit anderen
+Softwarepaketen.</p>
+<p>Die Wahrscheinlichkeit, dass es eine solche Reglementierung in naher
+Zukunft geben wird, ist gering. Deswegen muss das zu konzipierende
+System die bestehende Vielfalt unterstützen.</p>
+<h3 data-number="2.1.2" id="vorhandene-plattformen"><span
+class="header-section-number">2.1.2</span> Vorhandene Plattformen</h3>
+<p>Wie sich zeigen wird, muss eine Plattform, auf der Wissensmanagement
+implementiert werden soll, bestimmte Anforderungen erfüllen. Dazu
+gehören neben <strong>Offenheit</strong>, <strong>Flexibilität</strong>
+und <strong>Sicherheit</strong> vor allem die Eigenschaften
+<strong>Plattformunabhängigkeit</strong> (gerade im Bezug auf die
+vorhandene Heterogenität), <strong>einfache Bedienbarkeit</strong> und
+die <strong>Zugriffsmöglichkeit mit Standardsoftware</strong>.</p>
+<p>Am IIS existieren bereits zwei Ansätze, die für eine solche Plattform
+in Betracht gezogen werden können, <strong>Lotus Notes</strong> und das
+Intranet (https://www-local/private) des IIS.</p>
+<h4 data-number="2.1.2.1" id="lotus-notes"><span
+class="header-section-number">2.1.2.1</span> Lotus Notes</h4>
+<p>Zum Zeitpunkt der Arbeit waren über die Basisfunktionalität des
+Notessystems hinaus, abgesehen von einer
+<strong>Adressdatenbank</strong> und einem
+<strong>Helpdesksystem</strong>, keine Applikationen verfügbar, die
+allen Mitarbeitern am Institut einen Nutzen bringen konnten.</p>
+<p>In den einzelnen Abteilungen sind teilweise in Eigeninitiative kleine
+Applikationen entstanden, die dort auch erfolgreich eingesetzt werden.
+Ein Beispiel hierfür ist ein
+<strong>Software-Fehlerverfolgungssystem</strong>, das nur mit
+Notes-Standardfunktionen erstellt wurde.</p>
+<p>Ein Mitarbeiter, der einen Client installiert, muss sich zunächst
+einmal in die relativ komplizierte Bedienung von Lotus Notes
+einarbeiten.</p>
+<p>Da Lotus Notes in der Version 4.6 eingesetzt wird, ist das Bedienen
+über einen Browser nur bedingt möglich. Eine sinnvolle Nutzung setzt den
+Notes-Client voraus.</p>
+<p>Die Administration des Notesservers erfolgt zentral durch die
+Rechnerbetreibergruppe. Eigene Inhalte müssen mit ihrer Hilfe und
+Zustimmung auf den Server gebracht werden.</p>
+<p>Wie bereits erwähnt, wird für die sinnvolle Nutzung von Lotus Notes
+ein spezieller Client benötigt. Die Installation dieses Clients
+erfordert die Präsenz eines Systemadministrators und cirka 20 Minuten
+pro Installation.</p>
+<p>Probleme ergeben sich mit der Kompatibilität von Windows- und
+Mac-Clients. Die Unterstützung des Clients für die Sun-Workstation ist
+ab Version R5 eingestellt worden. Das <strong>Benutzerkonzept</strong>
+von Lotus Notes ist ganz anders aufgebaut, als das von Windows oder Mac.
+Bei der Einarbeitung muss eine sehr steile Lernkurve durchlaufen
+werden.</p>
+<p>Die vom IIS auf Lotus Notes implementierten Funktionen sind
+<strong>zumeist nicht dokumentiert</strong>, was den Einstieg erschwert.
+Für neue Notes Nutzer gibt es keine Möglichkeit, sich schnell in das
+System einzuarbeiten, weil der Notes-Client nicht intuitiv bedienbar
+ist. Es existiert kein Einführungskonzept, mit dem die Mitarbeiter an
+die Nutzung von Notes herangeführt werden.</p>
+<p><strong>Fazit:</strong> Lotus Notes ist zwar sehr gut geeignet, um
+die Funktion eines Wissensmanagementsystems zu übernehmen. Allerdings
+existiert am IIS keine klare Einführungsstrategie, was die Frage
+aufwirft, ob Notes in einem sinnvollen Zeitraum am Institut für alle
+Mitarbeiter verfügbar sein wird. Wegen der steilen Lernkurve bei
+Administration, Entwicklung und Nutzung ist die Einführung von Lotus
+Notes sehr ressourcenintensiv.</p>
+<h4 data-number="2.1.2.2" id="intranet"><span
+class="header-section-number">2.1.2.2</span> Intranet</h4>
+<p>Das Intranet wird bereits als <strong>Präsentationsplattform</strong>
+von verschiedenen Gruppierungen am IIS genutzt (zum Beispiel PR-Runde).
+Allerdings fehlen Präsentationen wichtiger anderer Gruppierungen wie
+beispielsweise die des Leitungskreises. Es gibt somit keinen
+Informationskanal, der von den Mitarbeitern zum Leitungskreis geht,
+außer persönlichen Emails und den Infotreffs, die in regelmäßigen
+Abständen statt finden.</p>
+<p>Die Möglichkeit für Mitarbeiter oder Gruppierungen, <strong>eigene
+Inhalte</strong> einzustellen, ist <strong>schwierig</strong>. Zwar gibt
+es einen Bereich (https://www-local/private/user), in dem jeder
+Mitarbeiter Webseiten ablegen kann, diese werden aber nicht auf die
+Intranetseiten verlinkt und sind somit nur schwer zu finden.</p>
+<p>Im bestehenden Intranet existierte bis zum Zeitpunkt dieser Arbeit
+<strong>keine</strong> Möglichkeit, auf den Inhalten eine
+<strong>Volltextsuche</strong> durchzuführen. Aus diesem Grund wurde
+eine Suchmaschine für das Intranet implementiert, die im oben genannten
+Bereich 17.000 Dokumente (davon über 3000 HTML Dokumente) festgestellt
+hat.</p>
+<p>Große Teile der Informationen im Intranet sind veraltet. Im
+Softwarebereich sind beispielsweise Softwarepakete zu finden, für die
+Mitarbeiter verantwortlich sind, die schon seit Jahren nicht mehr am
+Institut arbeiten. Ein Grund für diesen Zustand ist darin zu sehen, dass
+die Verwalter des Softwarebereichs nicht mit den einzelnen
+Softwarepaketen arbeiten.</p>
+<p>Die Administration des Intranets ist <strong>zentral</strong>
+organisiert. Inhalte können nur in Absprache mit den Administratoren
+eingestellt werden, was die Einstiegsschwelle, eigene Inhalte
+einzubringen, erhöht.</p>
+<p>Der große Vorteil des Intranets ist die einfache Bedienbarkeit mit
+einem <strong>Standardbrowser</strong>. Derartige Browser sind auf
+beinahe allen Rechnern installiert. Die Verbreitung von speziellen
+Clients ist nicht nötig, was eine enorme
+<strong>Ressourcenersparnis</strong> darstellt.</p>
+<p><strong>Fazit:</strong> Das Intranet bietet den Vorteil, dass die
+dort verfügbaren Inhalte für alle Mitarbeiter zugänglich sind. Leider
+ist die Interaktion mit dem Nutzer und das Einstellen eigener Inhalte
+bisher nur bedingt möglich und macht so den bisherigen Ansatz des
+Intranets für ein Wissensmanagementsystem unbrauchbar.</p>
+<h2 data-number="2.2" id="wissensformen"><span
+class="header-section-number">2.2</span> Wissensformen</h2>
+<p>Bei Wissensformen kann man grundsätzlich zwischen explizitem und
+implizitem Wissen unterscheiden (Polanyi, Michael. The Tacit Dimension.
+London: Routledge &amp; Kegan Paul).</p>
+<p>Explizites Wissen (explicit knowledge) kann in Sprache ausgedrückt
+und zwischen Individuen transferiert werden. Als Vereinfachung ist unter
+explizitem Wissen das Wissen zu verstehen, das in Form von Dokumenten,
+Anleitungen, etc. erfasst werden kann.</p>
+<p>Im Gegensatz dazu ist implizites Wissen (tacit knowledge) immer an
+Personen gebunden und ergibt sich aus deren persönlicher Erfahrung,
+Perspektive und Wertvorstellungen.</p>
+<p>Implizites Wissen ist immer an Menschen oder Gruppen von Menschen
+gebunden. Der Übergang von implizitem zu explizitem Wissen kann zum
+Beispiel durch Dokumentation vollzogen werden.</p>
+<h3 data-number="2.2.1" id="explizit"><span
+class="header-section-number">2.2.1</span> Explizit</h3>
+<h4 data-number="2.2.1.1" id="bücher"><span
+class="header-section-number">2.2.1.1</span> Bücher</h4>
+<p>Bücher sind nach wie vor eine der wichtigsten Quellen für Wissen. Zu
+beinahe allen Themengebieten gibt es <strong>Standardwerke</strong>, die
+in dieser Ausführlichkeit und fachlichen Tiefe nicht im Internet zu
+finden sind.</p>
+<p>Am IIS gibt es eine hauseigene Bibliothek
+(https://www-local/private/iisinfo/bib), die sowohl einen
+<strong>Präsenzbestand</strong> pflegt als auch für die
+<strong>Beschaffung</strong> von neuen Büchern verantwortlich ist. In
+den Intranetseiten der Bibliothek besteht die Möglichkeit, den Bestand
+abzufragen.</p>
+<p>Das Suchinterface (http://www-local/private/cgi-bin/buchneu.pl) lässt
+detaillierte Abfragen nicht zu und schließt Zeitschriften nicht mit ein.
+Sinnvoll wäre die Einbindung der Datenbank in ein globales
+Suchinterface, das gleichzeitig auch in Diskussionsgruppen, FAQs, etc.
+suchen kann.</p>
+<p>Eine weitere Verbesserung wäre die Erfassung von
+<strong>weiterführenden Informationen</strong> zu Büchern und
+Zeitschriften. So könnte jeder Mitarbeiter, der ein Buch benutzt,
+Beurteilungen, Hinweise auf Links, Artikel und weitere Bücher
+empfehlen.</p>
+<p>Des weiteren verfügt das Institut über einen CD-Server
+(http://cdserv03), auf dem die Jahrgangs-CDs einiger Zeitschriften
+verfügbar sind (zum Beispiel Microsoft Developper Network). Dieses
+Angebot sollte im Bereich der Fachliteratur und der Jahrgangs-CDs
+verschiedener Zeitschriften ausgebaut werden und um ein Suchinterface
+erweitert werden.</p>
+<p><strong>Fazit:</strong> Das existierende Angebot der IIS Bibliothek
+ist gut aber ausbaufähig. Insbesondere sollte die Verbesserung des
+Suchinterface und die Einbindung von Zeitschriften angedacht werden. Zu
+den Ressourcen wäre eine Erfassung von Metadaten und die Möglichkeit,
+Kommentare bzw. weiterführende Informationen abzulegen, sinnvoll.</p>
+<h4 data-number="2.2.1.2" id="dokumente"><span
+class="header-section-number">2.2.1.2</span> Dokumente</h4>
+<p>Einen großen Anteil an der Wissensspeicherung haben Dokumente in
+elektronischer und in Papierform.</p>
+<p>Ein Dokumentenmanagementsystem, das den Mitarbeitern viel Arbeit bei
+der Verwaltung und dem Auffinden von Dokumenten abnehmen könnte, ist am
+IIS nicht im Einsatz. Ein solches ist in der Lage, <strong>elektronische
+Dokumente</strong> und <strong>Papierdokumente</strong> zu verwalten. Im
+Bereich der Dokumentenverwaltung ergeben sich aus der vorhandenen
+Heterogenität einige Schwierigkeiten, die im Folgenden genannt werden
+(siehe Abbildungen 2-1 und 2-2).</p>
+<p>Es ist sehr schwer, Speicherplatz zur Verfügung zu stellen, der von
+allen Plattformen aus mit den gleichen Rechten benutzt werden kann. Das
+führt dazu, dass Transferverzeichnisse im Einsatz sind, auf die alle
+Mitarbeiter Lese- und Schreibrecht haben. Sowohl aus Sicherheits- als
+auch aus Administrationssicht ist diese Lösung ungeeignet.</p>
+<p>Durch die Vielzahl der im Einsatz befindlichen Softwarepakete können
+Standardvorlagen nicht ausreichend unterstützt werden. Folglich wird
+durch die Mitarbeiter viel Energie in die Entwicklung von brauchbaren
+Vorlagen gesteckt, die dann allerdings nicht öffentlich zur Verfügung
+stehen, sondern auf den Rechnern der einzelnen Mitarbeitern
+verbleiben.</p>
+<p>Den Mitarbeitern wird für das Erstellen Ihrer Dokumente kein
+Softwarepaket nahegelegt. Daraus ergibt sich das Problem, dass
+beispielsweise ein Bericht mit den unterschiedlichsten Programmen
+verfasst werden kann und dann in einem Format vorliegt, das von anderen
+nicht gelesen werden kann. Die <strong>Wiederverwendbarkeit</strong> von
+Dokumenten wird dadurch <strong>stark eingeschränkt</strong>. Im Einsatz
+sind Microsoft Office, Staroffice, Framemaker, Lotus Notes, Pagemaker
+und LaTeX.</p>
+<p>Die <strong>Dokumentenablage</strong> ist <strong>nicht
+genormt</strong> oder vorgeschrieben. Das führt dazu, dass jeder
+Mitarbeiter seine Dokumente nach eigenen Schema benennen und ablegen
+kann. Zusatzinformationen (Metadaten) zu den Dokumenten (Autor, Datum,
+Version, Abstract) werden nicht erfasst.</p>
+<figure>
+<img src="./img/dokumentenverwaltung-ist-struktur.png"
+alt="Dokumentenverwaltung Ist-Struktur am IIS" />
+<figcaption aria-hidden="true">Dokumentenverwaltung Ist-Struktur am
+IIS</figcaption>
+</figure>
+<figure>
+<img src="./img/dokumentenverwaltung-soll-struktur.png"
+alt="Mögliche Dokumentenverwaltung Soll-Struktur am IIS" />
+<figcaption aria-hidden="true">Mögliche Dokumentenverwaltung
+Soll-Struktur am IIS</figcaption>
+</figure>
+<p><strong>Fazit:</strong> Ein Dokumentenmanagementsystem kann die
+Grenzen von Plattformen durchbrechen und den Dokumentenbestand
+transparent und nutzbar machen. Parallel zu einem solchen System müssen
+Regeln eingeführt werden, wie Dokumente einzustellen und welche
+Metainformationen (zum Beispiel Abstract) anzugeben sind.</p>
+<p><strong>Notiz:</strong> Dokumentenmanagement ist sehr umfassend und
+deswegen bei dem hier konzipierten System nicht berücksichtigt worden.
+Aus der Vielzahl der verfügbaren Produkte sollte eines ausgewählt
+werden, das sich problemlos in andere Anwendungen integrieren lässt.
+Weitere Informationen zur Vorgehensweise finden sich im Internet
+(http://idm.inter net.com/features/docmgmt9b-1.shtml).</p>
+<h4 data-number="2.2.1.3"
+id="newsgruppen-maillisten-und-diskussionsforen"><span
+class="header-section-number">2.2.1.3</span> Newsgruppen, Maillisten und
+Diskussionsforen</h4>
+<p>Von diesen drei Werkzeugen sind am IIS hauptsächlich Maillisten im
+Einsatz. Da aber alle genannten Werkzeuge sehr mächtig sind, werden sie
+hier im Einzelnen betrachtet.</p>
+<h5 data-number="2.2.1.3.1" id="newsgruppen-usenet"><span
+class="header-section-number">2.2.1.3.1</span> Newsgruppen (Usenet)</h5>
+<p>Das Usenet ist relativ unbekannt, obwohl aus diesem großer Nutzen
+gezogen werden kann. Deswegen zunächst ein Überblick über die
+Eigenschaften des Usenet.</p>
+<ul>
+<li>Mehr als <strong>35000</strong> themenbezogene
+<strong>Diskussionsgruppen</strong></li>
+<li><strong>Weltweite Vernetzung</strong> aller Newsserver, dadurch
+Zugriff auf große menschliche Ressource</li>
+<li><strong>Zugriff</strong> ähnlich <strong>einfach</strong> wie das
+Verwenden von Email</li>
+<li>Durch die weltweite Vernetzung und die <strong>große
+Nutzerzahl</strong> (cirka 100 Millionen) sehr kurze Antwortzeiten</li>
+<li>Durchsuchen aller bisher gestellten Fragen möglich, über
+<strong>Archiv-Dienste</strong> wie beispielsweise Dejanews
+(http://www.deja.com/usenet)</li>
+</ul>
+<p>Die Hierarchie der Newsgruppen ist für den Einsteiger
+unübersichtlich, da es eine <strong>themenorientierte
+Hierarchie</strong> gibt (zum Beispiel comp.<em>für Computer-Themen),
+aber auch eine <strong>geographische</strong> (zum Beispiel “de.</em>für
+deutsche Newsgruppen).</p>
+<p><strong>Tipp:</strong> Nahezu jeder Mitarbeiter am IIS ist mit allem
+ausgestattet um das Usenet zu nutzen. Sowohl der Netscape Navigator als
+auch Outlook Express können mit Newsservern kommunizieren. Der
+IIS-Newsserver heisst news.iis (bereits voreingestellt in Netscape) und
+antwortet auf dem Port 119. Wer die Hierarchie der Newsgruppen
+unübersichtlich findet, kann bei W3C
+(http://www.w3.org/History/19921103-hypertext/DataSources/News/Groups/Overview.html)
+eine Übersicht finden.</p>
+<p><strong>Tipp:</strong> Zu den meisten Softwarepaketen gibt es eigene
+Newsgruppen, so auch für das CAD-Paket Cadence
+(news://comp.cad.cadence).</p>
+<h5 data-number="2.2.1.3.2" id="maillisten"><span
+class="header-section-number">2.2.1.3.2</span> Maillisten</h5>
+<p>Wie erwähnt, werden Maillisten am IIS seit einiger Zeit verwendet
+(Eine Übersicht der existierenden Gruppen findet sich im Intranet
+(http://www-local/private/sysadmin/mail/listen.html)). Als
+<strong>Listserver</strong> ist das Paket <strong>Majordomo</strong>
+(htp://www.greatcircle.com/majordomo) im Einsatz.</p>
+<p>Die Funktion eines solchen Listservers ist einfach. Jede existierende
+Liste hat eine Mailadresse (zum Beispiel iis-all@iis
+(mailto:iis-all@iis.fhg.de)) und eine Anzahl an Mitgliedern. Jede an die
+Adresse einer Liste geschrieben Mail wird an alle Mitglieder der Liste
+per Mail weitergeleitet. Daraus ergeben sich gegenüber
+Onlinediskussionsforen signifikante Nachteile.</p>
+<p>Die <strong>Darstellungsmöglichkeiten sind eingeschränkt</strong>, da
+nicht jeder Mailclient HTML-Mails darstellen kann. Infolgedessen ist die
+<strong>Darstellungsform auf</strong> reinen <strong>Text
+beschränkt</strong>. Grafiken, Tabellen, etc. sind nicht möglich.</p>
+<p>Ein <strong>Archiv</strong> der Liste ist <strong>nicht
+verfügbar</strong> (siehe Abbildung 2-3). Jedes Listenmitglied
+entscheidet selbst, ob es die Mails der Liste aufhebt oder nicht. Neue
+Listenmitglieder haben keine Möglichkeit, auf frühere Mails
+zuzugreifen.</p>
+<p>Die <strong>Weiterverwendung</strong> der Inhalte (zum Beispiel um
+eine FAQ zu erstellen) ist <strong>nur bedingt möglich</strong>.</p>
+<figure>
+<img src="./img/vergleich-maillisten-diskussionsforen.png"
+alt="Vergleich von Maillisten und Diskussionsforen" />
+<figcaption aria-hidden="true">Vergleich von Maillisten und
+Diskussionsforen</figcaption>
+</figure>
+<h5 data-number="2.2.1.3.3" id="diskussionsforen"><span
+class="header-section-number">2.2.1.3.3</span> Diskussionsforen</h5>
+<p>Ein Diskussionsforum bietet die Möglichkeit, Diskussionen zu
+bestimmten Themen online zu führen. Es ist möglich, die
+Diskussionsinhalte per Email zu verschicken.</p>
+<p>Alle Beiträge werden in einer Datenbank abgelegt und stehen somit für
+eine Weiterbearbeitung zur Verfügung.</p>
+<p><strong>Fazit:</strong> Das Usenet kann als eine externe, kostenlose
+Ressource betrachtet werden. Durch die Einrichtung von
+Onlinediskussionsforen können signifikante Verbesserungen im Bereich
+Kommunikation und Sicherung der Diskussionsinhalte erreicht werden.</p>
+<h4 data-number="2.2.1.4" id="zeitschriften-zeitungen"><span
+class="header-section-number">2.2.1.4</span> Zeitschriften,
+Zeitungen</h4>
+<p>Einige Bemerkungen zu Zeitschriften wurden bereits im Abschnitt über
+Bücher gemacht. Weiterhin ist festzustellen, dass der sogenannte
+Zeitschriftenumlauf, bei dem einer Zeitschrift eine Verteilerliste
+angehängt und diese dann auf die Reise durch das Institut geschickt
+wird, ineffizient sein kann.</p>
+<p><strong>Zeitschriften erreichen</strong> den
+<strong>Mitarbeiter</strong>, der weit hinten auf der Verteilerliste
+steht, oftmals sehr <strong>spät</strong>. Eine Größenordnung von
+einigen Monaten ist keine Seltenheit. Dies liegt daran, dass
+Zeitschriften oftmals für lange Zeit bei einzelnen Mitarbeitern
+verweilen. Andere können nicht mitverfolgen, wo sich die Zeitschriften
+momentan befinden.</p>
+<p>Wissen, das ein einzelner Mitarbeiter aus Artikeln gewinnt (zum
+Beispiel über die Relevanz des Artikels), wird nicht erfasst. Außerdem
+können weitere Informationen zu den Artikeln, die ein Mitarbeiter zum
+Beispiel durch eine Recherche im Internet zu einem Artikel macht, nicht
+aufgenommen werden.</p>
+<p>Der Inhalt der Zeitschrift ist erst in dem Moment bekannt, in dem die
+Zeitschrift bei dem Mitarbeiter eintrifft. Es besteht keine Möglichkeit,
+über Titel und Zusammenfassung den persönlichen Wert der Zeitschrift
+abzuschätzen.</p>
+<p><strong>Fazit:</strong> Folgendes Modell könnte bei den
+Zeitschriftenumläufen eine Verbesserung ergeben: Jeder Umlauf bekommt
+einen <strong>“Manager”</strong>, der die Zeitschrift zuerst erhält. Er
+macht zum Beispiel alle <strong>Artikeltitel Online</strong> verfügbar.
+Damit kann jeder Umlaufteilnehmer die Relevanz der Zeitschrift
+abschätzen. Über dieses Onlineangebot können dann auch Kommentare zu den
+einzelnen Artikeln abgegeben oder weiterführende Informationen erfasst
+werden. Nur wer wirklich an einem der Artikel interessiert ist, erhält
+die Zeitschrift. Der Umlauf wird von einer Bring- zu einer
+Holschuld.</p>
+<h4 data-number="2.2.1.5" id="cdrom"><span
+class="header-section-number">2.2.1.5</span> CDROM</h4>
+<p>Viele Informationen liegen mittlerweile multimedial auf CDROM vor.
+Eine gute Möglichkeit, diese zu veröffentlichen, stellen sogenannte
+CD-Server dar (siehe Abbildung 2-4), welche unterschiedliche Mengen von
+CD’s aufnehmen und diese im Netzwerk zur Verfügung stellen können.</p>
+<p>Am IIS sind einige CD Server im Einsatz. Es besteht allerdings bisher
+keine Möglichkeit strukturiert auf den Inhalt der Server zuzugreifen.
+Der <strong>Inhalt</strong> der Server ist <strong>nicht
+dokumentiert</strong>.</p>
+<figure>
+<img src="./img/einsatz-von-cd-servern.png"
+alt="Einsatz von CD-Servern" />
+<figcaption aria-hidden="true">Einsatz von CD-Servern</figcaption>
+</figure>
+<p><strong>Fazit:</strong> CD-Server sind gut geeignet, um Software oder
+Archiv-CDs aufzunehmen. Der Inhalt dieser Server sollte transparenter
+gemacht werden.</p>
+<h4 data-number="2.2.1.6" id="software-code"><span
+class="header-section-number">2.2.1.6</span> Software-Code</h4>
+<p>Softwarecode enthält, wenn er richtig dokumentiert ist, sehr viel
+<strong>Wissen über Programmiertechniken und Problemlösungen</strong>
+und kann gegebenenfalls auch gut wiederverwendet werden.</p>
+<p>In vielen Fällen ist es sinnvoll, für bestimmte Funktionen
+Bibliotheken mit <strong>getesteten Modulen</strong> institutsweit zur
+Verfügung zu stellen. Dadurch muss zum Beispiel nicht jeder Mitarbeiter
+oder Diplomand sich seine eigenen Frequenzanalysatoren unter Matlab
+programmieren, sondern kann seine Energie darauf verwenden, bestehende
+Lösungen zu verwenden und zu verbessern.</p>
+<p>Sehr wichtig, um den Verlauf eines Softwareprojekts verfolgen zu
+können, ist die Versionskontrolle. Diese stellt sicher, dass zu jedem
+Zeitpunkt des Projekts Zugriff auf ältere Versionen gewährleistet ist
+und deren Funktionalität mit den neuen Versionen verglichen werden
+kann.</p>
+<p><strong>Tipp:</strong> Ein sehr bewährtes Versionskontrollsystem ist
+CVS. Für dieses System stehen auch auf der Windowsplattform komfortable
+Werkzeuge wie WinCVS (http://www.wincvs.org) zur Verfügung. Um
+CVS-Funktionalität auch über das Web bereitzustellen, kann CVSWeb
+(http://www.freebsd.org/~fenner/cvsweb) verwendet werden.</p>
+<p><strong>Tipp:</strong> Mit CVS können nicht nur Softwarecodes
+verwaltet werden, sondern alle Arten von Projekten, die mit
+ASCII-Dateien arbeiten. Diese in XML verfasste Diplomarbeit wurde mit
+CVS verwaltet.</p>
+<h4 data-number="2.2.1.7" id="briefe-email"><span
+class="header-section-number">2.2.1.7</span> Briefe, Email</h4>
+<p>Briefe und Emails haben einen ganz beachtlichen Anteil am
+Kommunikationsaufkommen und sind damit wichtige Wissensträger.</p>
+<p>In diesem Zusammenhang ist es sehr wichtig, Briefe und Emails, die
+einen bestimmten Personenkreis betreffen, für diesen zugänglich zu
+machen. Am IIS ist mit der Kundenkontaktdatenbank auf Lotus Notes Basis
+ein erster Anfang gemacht. Dieses Werkzeug steht allerdings nur einem
+kleinen Teil der Mitarbeiter zur Verfügung.</p>
+<p>Mit Microsoft Outlook als Mailclient ist es beispielsweise sehr
+einfach möglich, den gesamten Mail und Briefverkehr automatisch mit zu
+protokollieren. Im Adressbuch besteht dann Zugriff auf die gesamte
+Kommunikation, die mit einer Person geführt wurde.</p>
+<h3 data-number="2.2.2" id="implizit"><span
+class="header-section-number">2.2.2</span> Implizit</h3>
+<h4 data-number="2.2.2.1" id="erfahrung-negativwissen"><span
+class="header-section-number">2.2.2.1</span> Erfahrung,
+Negativwissen</h4>
+<p>Erfahrungen sind deswegen im Bereich implizit angeordnet, da jeder
+Mensch seine eigene Vorgeschichte besitzt und damit auf ganz
+individuelle Erfahrungen zurückgreifen kann. Erfahrungen sind weiche
+Daten, die nicht ohne weiteres in Datenbanken oder Dokumenten abgelegt
+werden können.</p>
+<p>Negativwissen im eigentlichen Sinn gibt es nicht, denn Negativwissen
+ist Wissen, wie man Dinge nicht macht. Dieses Wissen ist für zukünftige
+Entscheidungen sehr wichtig, da ungeeignete Ansätze von vornherein
+ausgeschlossen werden können und so ein Ziel direkt erreicht wird.</p>
+<p>Auf der anderen Seite birgt Negativwissen aber auch eine große
+Problematik in sich, denn um es zu erfassen, müssen die einzelnen
+Mitarbeiter dazu gebracht werden, ihre <strong>Fehler</strong> zu
+<strong>dokumentieren</strong>. Das ist nur in einer Umgebung möglich,
+in der großes Vertrauen unter den Beteiligten herrscht.</p>
+<p>Der einfachste Weg, Erfahrungen und Negativwissen nutzbar zu machen,
+ist, die Erfassung in den Projektablauf zu integrieren und damit als
+völlig selbstverständlich zu institutionalisieren (siehe Abbildung 2-5).
+Die meisten Projekthandbücher beinhalten die Elemente
+<strong>Projektvorbereitung</strong> (oder Kick Off) und
+<strong>Projektnachbereitung</strong> (erkennbar an Phrasen wie “…die
+Erkenntnisse aus dem Projekt sind zu dokumentieren und zu sichern…”).
+Die Sicherung der Erkenntnisse bei Abschluss eines Projekts wird oftmals
+aus Zeitgründen vernachlässigt.</p>
+<p>Wenn am Ende eines jeden Projektes eine Projektnachbereitung
+eingeführt wird, können in dem darin enthaltenen Projektabschlussbericht
+Sektionen wie Was wir besonders gut gemacht haben, aber auch Welche
+Ansätze haben wir verworfen etabliert werden. Die Erfassung von Fehlern
+wird standardisiert und verliert an Brisanz.</p>
+<figure>
+<img src="./img/projektstart-und-ende-aus-wm-sicht.png"
+alt="Projektstart und Projektende aus Wissensmanagementsicht" />
+<figcaption aria-hidden="true">Projektstart und Projektende aus
+Wissensmanagementsicht</figcaption>
+</figure>
+<p><strong>Fazit:</strong> Negativwissen ist ein sehr wichtiger
+Bestandteil des Wissensmanagements. Die Probleme, die sich mit der
+Erfassung ergeben, können durch eine Integration der Erfassung in den
+Arbeitsablauf überwunden werden.</p>
+<h4 data-number="2.2.2.2" id="handlungsmuster"><span
+class="header-section-number">2.2.2.2</span> Handlungsmuster</h4>
+<p>Unter Handlungsmustern sind Prozesse zu verstehen, die in einem
+Menschen automatisch ablaufen, da er sie oft durchlaufen hat. Ein
+Beispiel für ein solches Handlungsmuster ist die Vorgehensweise bei der
+Recherche im Internet.</p>
+<p>In den meisten Fällen verwenden Personen die Suchmaschine, die sie
+seit Beginn ihrer Internetaktivitäten verwendet haben. Die Tatsache,
+dass andere Suchstrategien, wie sie beispielsweise in der Suchfibel
+(http://www.suchfibel.de) beschrieben werden, wesentlich effizienter
+sind, ist ihnen nicht bekannt. Der Punkt, an dem im Internet gesucht
+werden muss, hängt stark von der Art des Gesuchten ab. So gibt es neben
+den Suchmaschinen auch Kataloge, Mailarchive, Datenbanken, etc.</p>
+<p>Weitere Handlungsmuster sind zum Beispiel die Dokumentenablage und
+die Organisation des Alltags (Zeitmanagement).</p>
+<p>Wissensmanagement hat damit zu tun, bestehende Prozesse zu
+analysieren, Wissen über diese Prozesse zu gewinnen und den ganzen
+Prozess dann effizienter zu machen.</p>
+<p>Eine wichtige Voraussetzung hierfür ist, den betroffenen Personen
+ihre Handlungsmuster bewusst zu machen und sie durch
+Verbesserungsvorschläge für einen <strong>ständigen
+Verbesserungsprozess</strong> zu sensibilisieren.</p>
+<p><strong>Tipp:</strong> Eine wichtige Methode in diesem Zusammenhang
+ist Kaizen. Unter Kaizen ist die kontinuierliche Verbesserung aller
+Prozesse zu verstehen, die in einer Firma oder im privaten Leben
+durchlaufen werden. Kaizen kommt ursprünglich von einem Japaner, der die
+Verbesserungsprozesse in der japanischen Wirtschaft beschreibt. Er
+definiert Kaizen wie folgt: “KAIZEN means improvement. Moreover, KAIZEN
+means continuing improvement in personal life, home life, social life,
+and working life. When applied to the workplace KAIZEN means continuing
+improvement involving everyone - managers and workers alike.” Nähere
+Informationen zu Kaizen können beim Kaizen Institut
+(http://www.kaizen-institute.com/kzn.htm) abgefragt werden.</p>
+<h4 data-number="2.2.2.3" id="kontexte"><span
+class="header-section-number">2.2.2.3</span> Kontexte</h4>
+<p>Wie bereits erwähnt, sind Kontexte außerordentlich wichtig, um
+einzelne Wissenselemente in einen leicht erfassbaren Zusammenhang zu
+bringen. Die Frage ist, wie die Fülle an Einzelelementen zu einer
+Wissenslandkarte zusammengestellt werden können. In einer solchen
+Landkarte müssen alle Arten von Elementen zu beliebig vielen anderen in
+unterschiedliche Beziehungen gebracht werden.</p>
+<p>Die größte Problematik ist die Heterogenität der Elemente. Es geht an
+dieser Stelle um Dokumente, Menschen, Vorgänge, Projekte, etc.
+<strong>Um diese Elemente in einen Zusammenhang zu bringen, gibt es die
+Möglichkeit der Metadatenerfassung</strong>.</p>
+<p>Metadaten erfassen beispielsweise, dass ein Dokument von einem
+bestimmten Autor stammt und zu einem bestimmten Projekt gehört. Es kann
+dann nach weiteren Dokumenten des gleichen Autors oder nach ähnlichen
+Projekten gesucht werden. Die Schwierigkeit, die sich ergibt, ist die
+Definition der zu erfassenden Metadaten. Drei technische Ansätze sind
+besonders erfolgsversprechend.</p>
+<p>Das <strong>Ressource Description Framework RDF</strong> ist ein vom
+W3C empfohlener Standard, um oben genannte Elemente zu beschreiben. Es
+<strong>basiert auf</strong> dem Standard <strong>XML</strong> und
+stellt eine Metasprache dar, mit der Ressourcen beschrieben werden
+können. Weitere Informationen gibt es bei der Standardisierungsinstanz
+W3.org (http://www.w3.org/RDF/).</p>
+<p><strong>Topic Maps</strong> stellt einen Standard zum Definieren von
+Wissenslandkarten dar, der mittlerweile ISO-genormt ([iso13250]) ist. Er
+bietet die Möglichkeit, alle genannten Elemente zueinander in Beziehung
+zu stellen und damit navigierbar zu machen. Wie auch RDF
+<strong>basiert</strong> Topic Maps auf <strong>XML</strong>.</p>
+<p><strong>Notiz:</strong> Leider bestand im Verlauf der Diplomarbeit
+aus zeitlichen Gründen keine Möglichkeit, sich mit dem Standard zu
+befassen. Es soll aber ausdrücklich darauf hingewiesen werden, dass es
+sich hierbei um eine Technik mit sehr viel Potential für das
+Wissensmanagement handelt. Ein möglicher und sehr vielversprechender
+Ansatz ist, die Ressourcen mit RDF oder Dublin Core (s.u.) zu
+beschreiben und deren Verknüpfung durch Topic Maps zu realisieren.</p>
+<p>Der <strong>Dublin Core</strong> (DC) ist ein Set von Metadaten (15
+Elemente), die es ermöglichen, eine Ressource zu beschreiben. Mit dem DC
+ist sowohl die Erfassung von elektronischen als auch die von klassischen
+Dokumenten möglich.</p>
+<ul>
+<li>TITLE: Der vom Autor gewählte <strong>Titel</strong></li>
+<li>AUTHOR or CREATOR: <strong>Person</strong> oder
+<strong>Organisation</strong>, die für den intellektuellen Inhalt der
+Ressource verantwortlich ist.</li>
+<li>SUBJECT or KEYWORDS: <strong>Schlüsselwörter</strong> oder andere
+Arten der Klassifizierung. An dieser Stelle kann zum Beispiel die duale
+Dezimalklassifikation (DDC) zum Einsatz kommen.</li>
+<li>DESCRIPTION: Bei Textressourcen erscheint hier die
+<strong>Zusammenfassung</strong>, bei anderen (zum Beispiel Bildern)
+eine <strong>Beschreibung des Inhalts</strong>.</li>
+<li>PUBLISHER: <strong>Organisation</strong> oder
+<strong>Person</strong>, die die Ressource veröffentlicht hat.</li>
+<li>OTHER CONTRIBUTORS: Koautoren, etc.</li>
+<li>DATE: <strong>Erscheindatum</strong></li>
+<li>RESOURCE TYPE: Die <strong>Art der Ressource</strong>. An dieser
+Stelle stehen vordefinierte Ressourcen.</li>
+<li>FORMAT: Das <strong>Format der Ressource</strong>. Ein Standard, der
+mögliche Formate beschreibt heisst <strong>Mime Types</strong>. Diese
+sind im RFC2046 definiert.</li>
+<li>RESOURCE IDENTIFIER: <strong>String</strong> oder
+<strong>Nummer</strong>, die die Ressource eindeutig beschreibt. Im Fall
+von Onlinedokumenten steht hier die URL, bei Büchern die
+ISBN-Nummer.</li>
+<li>SOURCE: <strong>Bezugsquelle</strong></li>
+<li>LANGUAGE: Verwendete <strong>Sprache</strong></li>
+<li>RELATION: Beziehungen zu anderen Elementen. Die Art der Beziehungen
+sind im DC Standard noch nicht definiert. In diesem Konzept ist
+vorgesehen, Topic Maps als Standard einzusetzen, um Beziehungen zu
+definieren.</li>
+<li>COVERAGE: Dieser Parameter befindet sich momentan noch in der
+Spezifikation. Er soll temporäre Zugehörigkeiten, wie beispielsweise zu
+Projekten, beschreiben.</li>
+<li>RIGHTS MANAGEMENT: Angedacht ist einen kurzen Text oder eine URL zu
+erfassen, die Auskunft über die Rechte an der Ressource gibt.</li>
+</ul>
+<h2 data-number="2.3" id="wissenstransportkanäle"><span
+class="header-section-number">2.3</span> Wissenstransportkanäle</h2>
+<p>Um den Wissensfluss in einer Firma durch ein elektronisches System
+unterstützen zu können, müssen zunächst einmal einige Eckdaten über
+diesen Fluss bekannt sein. Im vorangegangenen Abschnitt wurde die Form
+des vorliegenden Wissens untersucht. Dieser Abschnitt widmet sich den
+Kanälen, auf denen das Wissen verteilt werden kann.</p>
+<h3 data-number="2.3.1" id="gespräche"><span
+class="header-section-number">2.3.1</span> Gespräche</h3>
+<p>Das persönliche Gespräch grenzt sich gegenüber eine Besprechung durch
+seinen informellen Charakter ab. Während bei Besprechungen meist
+Protokolle geführt werden und vorab eine Agenda verteilt wird, ist mit
+dem Begriff Gespräch das <strong>zufällige Aufeinandertreffen</strong>
+der Gesprächspartner gemeint (zum Beispiel der gemeinsame Kaffee am
+Morgen).</p>
+<p>Durch das ungezwungene Zusammentreffen entsteht eine
+<strong>offene</strong> und <strong>ungezwungene Atmosphäre</strong>,
+die oft zu kreativen Ergebnissen führt.</p>
+<p>Die Tatsache, dass zur Gesprächsteilnahme keine Verpflichtung
+besteht, deutet darauf hin, dass alle Teilnehmer
+<strong>Eigenmotivation</strong> zu dem entsprechenden Thema
+mitbringen.</p>
+<p>In einem Gespräch kann durch den intensiven Kontakt eine
+<strong>Vertrauensatmosphäre</strong> aufgebaut werden, die wichtig ist,
+um eine offene Diskussion in einem kontaktlosen Medium (zum Beispiel dem
+Web) zu ermöglichen.</p>
+<p><strong>Fazit:</strong> Ein wichtiges Ziel des entstehenden
+Wissensmanagementsystems ist es, die Kommunikation zwischen den
+Mitarbeitern zu fördern. Die Kontaktaufnahme mit Wissensträgern soll
+erleichtert werden.</p>
+<h3 data-number="2.3.2" id="besprechungen"><span
+class="header-section-number">2.3.2</span> Besprechungen</h3>
+<p>Einige Eigenschaften der Besprechung wurden bereits in der Sektion
+Gespräche erwähnt. Um Besprechungen aus Wissenssicht effizient zu
+gestalten, sollten einige Punkte beachtet werden.</p>
+<p>Der <strong>Versand einer Agenda</strong> (Vorankündigung der
+Besprechung) <strong>an alle Teilnehmer</strong> bietet den Vorteil,
+dass sich alle Teilnehmer bereits auf die Themen einstellen können und
+grundlegende Fragen nicht erst in der Besprechung geklärt werden
+müssen.</p>
+<p>Das protokollarische Festhalten der Besprechungsergebnisse in
+schriftlicher Form hat den <strong>Vorteil</strong>, dass Personen, die
+nicht an der Besprechung teilgenommen haben, <strong>schnell
+Einblick</strong> in die Ergebnisse bekommen können. Außerdem kann das
+Protokoll als <strong>schriftliche Zieldefinition</strong> aufgefasst
+werden, die zur Kontrolle der Zielerreichung herangezogen werden
+kann.</p>
+<p><strong>Fazit:</strong> In einem Wissensmanagementsystem sollte der
+Besprechungsprozess unterstützt werden. Das kann dadurch geschehen, dass
+im System eine Agenda erstellt werden kann, die dann per Email
+verschickt wird. Diese Agenda bietet auch das Grundgerüst für das zu
+erstellende Protokoll.</p>
+<h3 data-number="2.3.3" id="seminare"><span
+class="header-section-number">2.3.3</span> Seminare</h3>
+<p>Seminare sind ein vielgenutztes Werkzeug der Weiterbildung am
+Institut. Es existieren Seminare zu fachlichen und nicht fachlichen
+Themen. Seminare sind meist nach dem Prinzip des Frontalunterrichts
+aufgebaut und regen damit nur bedingt zur Interaktion an.</p>
+<p>Seminare werden meist durch externe Seminarveranstalter durchgeführt.
+Es besteht momentan keine Möglichkeit, im Intranet eine komplette
+Seminarliste einzusehen und Seminare zu kommentieren. Eine solche
+Möglichkeit kann durch die Etablierung einer Metadatenerfassung
+eingerichtet werden.</p>
+<p><strong>Fazit:</strong> Der Wert von Seminaren kann dadurch
+gesteigert werden, dass jeder einzelne Seminarteilnehmer die Möglichkeit
+bekommt, Seminare zu kommentieren (und dadurch zu bewerten) und es somit
+zukünftigen Teilnehmern erleichtert wird, den Wert eines Seminars
+abzuschätzen.</p>
+<h3 data-number="2.3.4" id="vorträge"><span
+class="header-section-number">2.3.4</span> Vorträge</h3>
+<p>Bei den meisten regelmäßigen Besprechungsterminen werden in einem
+bestimmten Turnus auch Vorträge gehalten. Bei einer
+Abteilungsbesprechung wird beispielsweise ein Vortrag von einem
+Mitarbeiter vorbereitet und während der Besprechung gehalten.</p>
+<p>Dadurch können alle Mitarbeiter der Abteilung auch über Projekte oder
+Techniken informiert werden, an denen sie selbst nicht arbeiten. Die
+Gruppen- und Abteilungsgrenzen werden mit den Vorträgen selten
+durchbrochen. Begleitmaterialien zu den Vorträgen (Handout, Folie, etc.)
+sind normalerweise nicht institutsweit verfügbar.</p>
+<p><strong>Fazit:</strong> Vorträge sind wichtig, um Wissen über
+Projektgrenzen hinweg zu vermitteln. Wenn die gehaltenen Vorträge
+zusätzlich in elektronischer Form ablegt und damit institutsweit
+verfügbar gemacht werden, können damit auch Abteilungsgrenzen überwunden
+werden.</p>
+<h3 data-number="2.3.5" id="interne-workshops"><span
+class="header-section-number">2.3.5</span> (Interne) Workshops</h3>
+<p>Ein Workshop grenzt sich von Seminaren und Vorträgen dadurch ab, dass
+sich die Teilnehmer den Inhalt teilweise selbst erarbeiten müssen
+(engl.: to work, arbeiten). Ein Vorteil von Workshops ist, dass sich
+durch sie interne Expertennetzwerke bilden, die in ihren Interessen
+übereinstimmen und somit Fachwissen austauschen können.</p>
+<p><strong>Fazit:</strong> Die Durchführung von internen Seminaren und
+Workshops sollte so einfach wie möglich gestaltet werden, um den
+Wissensaustausch auf Basis dieses Mediums zu fördern.</p>
+<h3 data-number="2.3.6" id="email"><span
+class="header-section-number">2.3.6</span> Email</h3>
+<p>Die elektronische Post ist ein wichtiger Kanal für den Transport von
+Wissen. Neben der <strong>Kommunikation</strong> zwischen Personen oder
+Gruppen von Personen, die normalerweise bidirektional abläuft, wird über
+dieses Medium auch unidirektionale Kommunikation
+(=<strong>Broadcast</strong>) betrieben. Das ist hauptsächlich für die
+<strong>Verteilung von Protokollen</strong> (zum Beispiel vom Infotreff,
+den EIL-Sitzungen, etc.) der Fall, wird aber auch für
+<strong>Ankündigungen</strong> aller Art genutzt.</p>
+<p>Nachteil ist, wie bai Maillisten auch, die fehlende, für alle
+Betroffene zugängliche Archivierung der Nachrichten. Des weiteren stehen
+neuen Mitarbeitern die alten Mails nicht zur Verfügung.</p>
+<p><strong>Fazit:</strong> Verbunden mit dem Broadcast von Informationen
+per Email sind die bereits aufgeführten Nachteile. Das zu konzipierende
+System sollte eine alternative Möglichkeit bieten, Protokolle u.ä.
+publik zu machen.</p>
+<h3 data-number="2.3.7" id="dokumente-1"><span
+class="header-section-number">2.3.7</span> Dokumente</h3>
+<p>Die wichtigsten Eigenschaften von Dokumenten als Wissensträgern
+wurden bereits genannt. Es bleibt anzumerken, dass die beiden
+<strong>Hauptkanäle</strong> für die Verbreitung von Dokumenten die
+Email (als <strong>Attachment</strong>) und das
+<strong>Filesystem</strong> sind.</p>
+<h3 data-number="2.3.8" id="intranet-1"><span
+class="header-section-number">2.3.8</span> Intranet</h3>
+<p>Das Intranet als Wissensträger ist am IIS <strong>bisher weitgehend
+ungenutzt</strong> und bietet großes Potential. Es gibt keinen Bereich,
+der die Verwaltung von Wissen in einer der angesprochenen Formen
+ausreichend unterstützt.</p>
+<p>Die Intranettechnik bietet sich aufgrund ihrer <strong>großen
+Verbreitung</strong> und <strong>Akzeptanz</strong> an, um mit ihr ein
+Wissensmanagementsystem zu implementieren, das allerdings nicht nur auf
+statischen Inhalt zurückgreift, sondern viel Dynamik und Interaktion
+bietet.</p>
+<p><strong>Fazit:</strong> Das Wissensmanagementsystem soll das aktuell
+am IIS vorhandene Intranet ersetzen.</p>
+<h1 data-number="3" id="konzeption"><span
+class="header-section-number">3</span> Konzeption</h1>
+<h2 data-number="3.1"
+id="anforderungen-an-ein-wissensmanagementsystem"><span
+class="header-section-number">3.1</span> Anforderungen an ein
+Wissensmanagementsystem</h2>
+<p>Die folgenden Kriterien wurden für das Konzept eines
+Wissensmanagementsystems für wichtig erachtet.</p>
+<h3 data-number="3.1.1" id="sicherheit"><span
+class="header-section-number">3.1.1</span> Sicherheit</h3>
+<p>Eine wichtige <strong>Voraussetzung</strong> für die
+Wissensweitergabe ist <strong>Vertrauen</strong>. Wissensaustausch ist
+eine Art Marktplatz, auf dem es
+(<strong>Wissens-</strong>)<strong>Verkäufer</strong>,
+(<strong>Wissens-</strong>)<strong>Käufer</strong> und
+(<strong>Wissens-</strong>)<strong>Vermittler</strong> gibt (siehe
+[dav98]). Die Währung auf diesem Marktplatz ist in den seltensten Fällen
+Geld. Vielmehr geht es um <strong>Annerkennung</strong>,
+<strong>Status</strong> oder die <strong>Hoffnung auf
+Gegenleistung</strong>. Damit einzelne Wissensgeber nicht durch Nutzer
+des Systems übervorteilt werden, müssen bestimmte Sicherheitsmaßnahmen
+getroffen werden.</p>
+<p>Um zu gewährleisten, dass das System nicht missbraucht werden kann,
+ist es erforderlich, dass sich die Nutzer gegenüber dem System
+autorisieren müssen (im Gegensatz zum bestehenden Intranet), um
+bestimmte Aktionen durchführen zu können (zum Beispiel das Einstellen
+von Dokumenten).</p>
+<p>Um redundante Datenhaltung zu vermeiden, ist es sinnvoll, an die
+bereits bestehende Nutzerverwaltung anzuknüpfen. Dafür muss sich das
+System an die Userverwaltung von NT (zum Beispiel über SMB), UNIX (zum
+Beispiel passwd, NIS), Lotus Notes oder neuere Standards (zum Beispiel
+LDAP) anbinden lassen.</p>
+<p>In dem System muss immer klar erkennbar sein, wer Urheber eines
+Elements ist und wer Zugriff auf einzelne Elemente hat. Während es in
+einem Wissensmanagementsystem die Regel sein sollte, dass die meisten
+Elemente frei zugänglich sind, gibt es Einzelfälle, in denen die
+Möglichkeit bestehen muss, einen bestimmten Bereich für einen
+autorisierten Personenkreis zugänglich zu machen.</p>
+<p><strong>Fazit:</strong> Vertrauen durch Sicherheit aufzubauen ist
+eine wichtige Aufgabe des Wissensmanagementsystems. Zugriffsrechte und
+Systemnutzer müssen zu jedem Zeitpunkt transparent sein.</p>
+<h3 data-number="3.1.2" id="plattformunabhängigkeit"><span
+class="header-section-number">3.1.2</span> Plattformunabhängigkeit</h3>
+<p>Plattformunabhängigkeit ist ein sehr wichtiger Aspekt für ein
+Wissensmanagementsystem am IIS. Wie bereits beschrieben, ist das Umfeld
+sowohl aus Software- als auch aus Hardwaresicht sehr heterogen, was die
+Beschränkung auf eine Plattform unmöglich macht.</p>
+<p>Die effizienteste Lösung ist in diesem Fall die Webtechnologie.
+<strong>Webbrowser</strong> sind <strong>auf jeder Plattform</strong>
+standardmäßig <strong>verfügbar</strong>. Zusammen mit Techniken wie
+Javascript und Cascading Stylesheets (CSS) bietet sich die Möglichkeit
+ein umfangreiches und zugleich mächtiges Werkzeug anbieten zu
+können.</p>
+<p><strong>Hinweis:</strong> Die Verwendung von Java in Form von
+Java-Applets wurde ausgeschlossen. Es entsteht bei der Übertragung des
+Javacodes vom Server an den Client eine lange Ladezeit. Außerdem sind
+die virtuellen Javamaschinen, die im Client verwendet werden, um den
+Code auszuführen, auf den einzelnen Plattformen nicht identisch
+implementiert, so dass die Anforderung der Plattformunabhängigikeit nur
+bedingt erfüllt ist.</p>
+<h3 data-number="3.1.3" id="plattformunabhängigkeit-1"><span
+class="header-section-number">3.1.3</span> Plattformunabhängigkeit</h3>
+<p>Plattformunabhängigkeit ist ein sehr wichtiger Aspekt für ein
+Wissensmanagementsystem am IIS. Wie bereits beschrieben, ist das Umfeld
+sowohl aus Software- als auch aus Hardwaresicht sehr heterogen, was die
+Beschränkung auf eine Plattform unmöglich macht.</p>
+<p>Die effizienteste Lösung ist in diesem Fall die Webtechnologie.
+Webbrowser sind auf jeder Plattform standardmäßig verfügbar. Zusammen
+mit Techniken wie Javascript und Cascading Stylesheets (CSS) bietet sich
+die Möglichkeit ein umfangreiches und zugleich mächtiges Werkzeug
+anbieten zu können.</p>
+<p><strong>Hinweis:</strong> Die Verwendung von Java in Form von
+Java-Applets wurde ausgeschlossen. Es entsteht bei der Übertragung des
+Javacodes vom Server an den Client eine lange Ladezeit. Außerdem sind
+die virtuellen Javamaschinen, die im Client verwendet werden, um den
+Code auszuführen, auf den einzelnen Plattformen nicht identisch
+implementiert, so dass die Anforderung der Plattformunabhängigikeit nur
+bedingt erfüllt ist.</p>
+<h3 data-number="3.1.4" id="einfache-intuitive-bedienbarkeit"><span
+class="header-section-number">3.1.4</span> Einfache, intuitive
+Bedienbarkeit</h3>
+<p>Bei vielen modernen Systemen fällt die Einarbeitung schwer, da sich
+der Nutzer an ein neues Interface, neue Funktionen, etc. gewöhnen muss.
+Lotus Notes am IIS ist dafür ein gutes Beispiel. Da es für das Institut
+keine angepasste Lösung gibt, steht ein neuer Nutzer einer Vielzahl von
+Funktionen in Form von Buttons, Menüs, etc. gegenüber, deren Nutzen für
+ihn nicht sofort erkennbar ist.</p>
+<p>Es fällt schwer, den persönlichen Nutzen durch das System
+abzuschätzen und die Gefahr, dass das <strong>Interesse
+nachlässt</strong>, ist groß.</p>
+<p>Das Benutzerinterface in diesem Konzept soll so gestaltet werden,
+dass sich jeder Nutzer schnell zurechtfindet und seinen Nutzen
+einschätzen kann. Diese Eigenschaft soll dadurch erreicht werden, dass
+der Nutzer in allen Bereichen des Systems eine ähnliche Umgebung
+vorfindet und verschiedene <strong>Elemente</strong>, wie zum Beispiel
+das kontextsensitive Menü, <strong>immer an der gleichen Stelle</strong>
+zu finden sind.</p>
+<p><strong>Sparsame Verwendung von Farbe</strong> und <strong>Zuordnung
+von Symbolen</strong> zu bestimmten Bereichen erhöht den Komfort beim
+Navigieren. Bestimmte Elemente, wie globales Menü und Suchfunktion, sind
+in jeder Ansicht vorhanden.</p>
+<h3 data-number="3.1.5" id="erweiterbarkeit-flexibilität"><span
+class="header-section-number">3.1.5</span> Erweiterbarkeit,
+Flexibilität</h3>
+<p>Ebenso, wie sich das zu verwaltende Wissen verändert, muss auch das
+System in der Lage sein, sich anzupassen. Dies betrifft sowohl die
+verwalteten Inhalte als auch die Struktur und die Darstellung, in der
+diese präsentiert werden. Es muss die Möglichkeit bestehen, das System
+sehr einfach um benötigte Funktionen zu erweitern.</p>
+<p>Weiterhin muss sich das System durch den Anwender an dessen
+Bedürfnisse anpassen lassen. Diese Anforderung bedingt, dass eine
+Technik zum Einsatz kommt, die eine <strong>Trennung von Inhalt, Logik
+und Layout</strong> zulässt. Somit kann der Benutzer beispielsweise das
+Aussehen seines Bereichs völlig neu gestalten, wobei die Inhalte
+identisch bleiben.</p>
+<h3 data-number="3.1.6" id="logisch-strukturiert"><span
+class="header-section-number">3.1.6</span> Logisch strukturiert</h3>
+<p>Für die Navigation in den Wissenselementen ist eine unterliegende
+logische Struktur (Wissenslandkarten) unbedingt nötig. So lange nur
+geringe Datenmengen zu handhaben sind, erweist sich die Volltextsuche
+als ausreichend. Vergrößert sich aber der Datenbestand, so muss auch
+eine strukturierte Navigation oder eine Kombination aus beidem möglich
+sein.</p>
+<p>Das Fehlen einer solchen Struktur führt im IIS beispielsweise dazu,
+dass vielen Mitarbeitern die Onlinesammlung von Studien- und
+Diplomarbeiten nicht bekannt ist. Auch über ein Suchinterface sind diese
+Arbeiten nicht auffindbar.</p>
+<p>Die Frage nach einem geeigneten Weg, jedes einzelne Wissenselement in
+einen Gesamtkontext einzubetten, wird im Rahmen dieser Diplomarbeit
+nicht geklärt. Eine solche Vorgehensweise muss für das gesamte IIS
+festgelegt werden.</p>
+<p>Auf der einen Seite kann die Vergabe von <strong>Kategorien</strong>
+und <strong>Schlagwörtern</strong> vorgeschrieben werden. Dies bedingt
+ein <strong>hierarchisches Glossar</strong>, das jedes beliebige Thema
+erfassen kann. Ein solches Glossar stellt beispielsweise die
+<strong>Dezimalklassifikation</strong> Dewey
+(http://www.oclc.org/oclc/fp/) dar. Gerade bei fachspezifischen Themen
+geht allerdings auch diese Klassifikation nicht ausreichend in die
+Tiefe.</p>
+<p>Die zweite Möglichkeit besteht darin, die <strong>Verschlagwortung
+dem Nutzer</strong> zu <strong>überlassen</strong>, was zur Folge haben
+kann, dass einzelne Dokumente nicht an allen Stellen auftauchen, an
+denen sie relevant sind.</p>
+<p>Sinnvoller ist, die Kategorisierung bis zu einer gewissen Stufe
+vorzuschreiben und ab dieser Stufe freie Verschlagwortung ergänzend
+zuzulassen. Eine Möglichkeit für ein solches Vorgehen ist, die
+Verantwortlichen für die einzelnen <strong>Kernkompetenzen</strong> zu
+identifizieren (=Kernkompetenz als erste Hierarchiestufe) und diese zu
+beauftragen, eine <strong>zweite Schlagworthierarchie</strong> mit cirka
+10-20 Kategorien zu definieren.</p>
+<p>Beide Schlagworthierarchien müssen in regelmäßigen Abständen
+überprüft und ergänzt werden.</p>
+<h3 data-number="3.1.7" id="verwendung-von-standards"><span
+class="header-section-number">3.1.7</span> Verwendung von Standards</h3>
+<p>Proprietäre Formate besitzen im Vergleich zu Standards den Nachteil,
+dass die Daten nur in der Applikation verwendet werden können, für die
+sie angelegt worden sind. Das zu konzipierende System soll konsequent
+auf bestehende Standards aufbauen, um diesen Nachteil zu umgehen.</p>
+<p>Austauschformate zwischen einzelnen Applikationen wie beispielsweise
+XML werden sich immer mehr durchsetzen. Die Integration der bisher
+bestehenden Insellösungen zu einem Gesamtsystem, das auf einen
+einheitlichen Datenbestand zurückgreift, wird eine der entscheidenden
+Herausforderungen sein.</p>
+<h3 data-number="3.1.8" id="mit-standardsoftware-bedienbar"><span
+class="header-section-number">3.1.8</span> Mit Standardsoftware
+bedienbar</h3>
+<p>Diese Anforderung ist eine Erweiterung der Forderungen nach
+Plattformunabhängigkeit und der Verwendung von Standards. Für die
+Bedienung des Systems müssen gängige, und damit auf jeder Plattform
+verfügbare, Werkzeuge ausreichend sein. Zu dem Oberbegriff
+<strong>Bedienung</strong> zählen die <strong>Administratio</strong>,
+das <strong>Abfragen von Inhalt</strong> als auch das <strong>Einstellen
+von neuen Inhalten</strong> (Publishing).</p>
+<p>Für die Bedienung des zu konzipierenden Systems sollen die Produkte
+Netscape Communicator, Internet Explorer/Frontpage Express und das
+Microsoft Office ausreichend sein. Die Browser müssen mindestens in der
+<strong>Version 4.x</strong> verwendet werden, um die Präsenz bestimmter
+Funktionen sicherzustellen.</p>
+<h2 data-number="3.2" id="methoden"><span
+class="header-section-number">3.2</span> Methoden</h2>
+<p>Die Methoden, die in der Konzeptionsphase in dem
+Wissensmanagementsystem implementiert werden, sind nur ein kleiner Teil
+der benötigten Methoden. Sie ermöglichen es, die Mächtigkeit des Systems
+zu demonstrieren, müssen aber noch um weitere ergänzt werden.</p>
+<h3 data-number="3.2.1" id="white-page-dienst"><span
+class="header-section-number">3.2.1</span> White Page Dienst</h3>
+<p>Was für öffentliche Telefonnetze das <strong>Telefonbuch</strong>
+oder die gelben Seiten darstellen, sind im <strong>Internet</strong> die
+White Page Dienste. Ein solcher Dienst zeichnet sich dadurch aus, dass
+Personen nach bestimmten Kriterien gesucht werden können. So ist es
+beispielsweise möglich, zu einer Emailadresse auch Telefonnummer oder
+Adresse zu recherchieren.</p>
+<p>In einem Wissensmanagementsystem ist es nützlich, die Informationen,
+die vom White Page Dienst geliefert werden, über die rein
+administrativen Angaben (Email, Telefon, Adresse, etc., siehe [rfc2218])
+noch um wissensrelevante Informationen ,wie <strong>Fachgebiete eines
+Mitarbeiters</strong>, <strong>Teilnahme an Projekten</strong> oder
+<strong>Fortbildungen</strong>, zu erweitern.</p>
+<p>Der White Page Dienst kann außerdem dazu genutzt werden, alle neuen
+Mitarbeiter automatisch vorzustellen. Dieser Vorgang
+<strong>erleichtert</strong> dem neuen Mitarbeiter die
+<strong>Integration</strong> und macht gleichzeitig dessen
+<strong>Kenntnisse</strong> im Institut <strong>bekannt</strong>.</p>
+<p>Zu beachten ist bei einem solchen Dienst der Datenschutz. Alle
+Maßnahmen sind in jedem Fall mit dem Datenschutzbeauftragten abzuklären.
+Die beste Möglichkeit, Probleme zu umgehen, ist, dem Mitarbeiter die
+Entscheidung zu überlassen, ob seine Daten öffentlich verfügbar
+sind.</p>
+<h3 data-number="3.2.2" id="diskussionsforum"><span
+class="header-section-number">3.2.2</span> Diskussionsforum</h3>
+<p>Für jede Gruppierung im Institut soll es möglich sein,
+Diskussionsforen zu bestimmten Themen einzurichten. Diese Foren sollen
+an bestehende Maillisten angeknüpft werden können und müssen ihre Daten
+in einer Datenbank abspeichern, um Weiterverwendung zu ermöglichen.</p>
+<h3 data-number="3.2.3"
+id="verwaltung-von-teilbereichen-dezentralisierbar"><span
+class="header-section-number">3.2.3</span> Verwaltung von Teilbereichen
+dezentralisierbar</h3>
+<p>Neben der zentralen Benutzerverwaltung muss es möglich sein, in
+einzelnen Bereichen <strong>lokale Rechte</strong> zu vergeben. Der
+Nutzen einer solchen Möglichkeit soll an einem Beispiel verdeutlicht
+werden.</p>
+<p>Der Bereich Personalentwicklung wird am IIS von einer Person betreut,
+die im Folgenden Person X genannt wird. Es wird also einen Bereich
+Personalentwicklung in dem System geben, dessen Administrator Person X
+ist (siehe Abbildung 3-1). Im restlichen System ist Person X ganz
+normaler Mitarbeiter und mit keinen Zusatzrechten ausgestattet. Person X
+kann ihrerseits die Verwaltung bestimmter Unterbereiche an andere
+Personen übertragen.</p>
+<figure>
+<img src="./img/dezentrale-verwaltung-von-teilbereichen.png"
+alt="Dezentrale Verwaltung von Teilbereichen" />
+<figcaption aria-hidden="true">Dezentrale Verwaltung von
+Teilbereichen</figcaption>
+</figure>
+<h3 data-number="3.2.4" id="newssektion"><span
+class="header-section-number">3.2.4</span> Newssektion</h3>
+<p>Eine Newssektion soll die Möglichkeit bieten, zu bestimmten Themen
+Neuigkeiten zu veröffentlichen. Es muss die Möglichkeit bestehen, dass
+bestimmte Mitarbeiter ihre Mitteilungen <strong>direkt
+veröffentlichen</strong> können (zum Beispiel Leitungskreisprotokolle),
+während andere Beiträge <strong>zuerst geprüft</strong> werden müssen,
+um Missbrauch zu vermeiden. Alle Mitteilungen sollen in einem
+übersichtlichen Format auf der Einstiegsseite präsentiert werden.</p>
+<p><strong>Pro Tag</strong> sollten maximal <strong>5-10 neue
+Beiträge</strong> erscheinen. Beiträge, die älter als ein zu
+definierender Zeitraum sind, werden aus der Newssektion gelöscht, stehen
+aber weiterhin über eine Suchmaske zur Verfügung.</p>
+<h3 data-number="3.2.5" id="newssektion-1"><span
+class="header-section-number">3.2.5</span> Newssektion</h3>
+<p>Eine Newssektion soll die Möglichkeit bieten, zu bestimmten Themen
+Neuigkeiten zu veröffentlichen. Es muss die Möglichkeit bestehen, dass
+bestimmte Mitarbeiter ihre Mitteilungen direkt veröffentlichen können
+(zum Beispiel Leitungskreisprotokolle), während andere Beiträge zuerst
+geprüft werden müssen, um Missbrauch zu vermeiden. Alle Mitteilungen
+sollen in einem übersichtlichen Format auf der Einstiegsseite
+präsentiert werden.</p>
+<p>Pro Tag sollten maximal 5-10 neue Beiträge erscheinen. Beiträge, die
+älter als ein zu definierender Zeitraum sind, werden aus der Newssektion
+gelöscht, stehen aber weiterhin über eine Suchmaske zur Verfügung.</p>
+<h3 data-number="3.2.6" id="privater-bereich"><span
+class="header-section-number">3.2.6</span> Privater Bereich</h3>
+<p>Jeder Mitarbeiter hat einen <strong>eigenen Bereich</strong>, in dem
+er eigene Inhalte ablegen und zusätzliche Einstellungen für sein Profil
+vornehmen kann.</p>
+<p>Dieser private Bereich dient zum Einen als
+<strong>Visitenkarte</strong> des Mitarbeiters im Institut, stellt auf
+der anderen Seite aber auch eine <strong>Arbeitsumgebung</strong> für
+den Mitarbeiter dar, die er sich nach seinen Wünschen einrichten
+kann.</p>
+<h3 data-number="3.2.7" id="privater-bereich-1"><span
+class="header-section-number">3.2.7</span> Privater Bereich</h3>
+<p>Jeder Mitarbeiter hat einen eigenen Bereich, in dem er eigene Inhalte
+ablegen und zusätzliche Einstellungen für sein Profil vornehmen
+kann.</p>
+<p>Dieser private Bereich dient zum Einen als Visitenkarte des
+Mitarbeiters im Institut, stellt auf der anderen Seite aber auch eine
+Arbeitsumgebung für den Mitarbeiter dar, die er sich nach seinen
+Wünschen einrichten kann.</p>
+<h3 data-number="3.2.8"
+id="möglichkeit-datenbankgestützter-anwendungen"><span
+class="header-section-number">3.2.8</span> Möglichkeit
+datenbankgestützter Anwendungen</h3>
+<p>Die Erstellung neuer datenbankgestützter Applikationen und das
+Einrichten von Schnittstellen muss für den Endanwender so einfach wie
+möglich sein. Prinzipiell sollten zwei unterschiedliche Anwendungsfälle
+unterstützt werden.</p>
+<p><strong>Daten</strong>, die <strong>lokal in Datenbanken</strong>
+gespeichert werden (MS Access, Oracle, Filemaker, etc.), werden über
+einen <strong>Synchronisationsmechanismus</strong> in eine zentrale
+Datenbank übertragen. Dort stehen sie dann dem Wissensmanagementsystem
+zur Verfügung.</p>
+<p>Ein Beispiel hierfür ist eine Microsoft Access Datenbank, in der
+Daten von Personen geführt werden, die sich für ein Praktikum am IIS
+interessieren. Der Verwalter dieser Liste soll in der Lage sein, nur
+informelle Daten zu veröffentlichen (zum Beispiel Studiengang,
+Vorkenntnisse,…), und persönliche Daten wie Adresse, Telefonnummer, etc.
+nur in seiner lokalen Datenbank zu führen.</p>
+<p>Das Szenario <strong>zentrale Datenbank</strong> zielt auf
+Anwendungenab,bei denen man aus einem zentralen Datenbestand eine
+Auswahl selektieren möchte. Der Vorteil dieser Methode besteht darin,
+dass viele Einzelapplikationen auf einen zentralen Datenbestand
+zurückgreifen könne und die Notwendigkeit für mehrfache (=redundante)
+Datenhaltung entfällt.</p>
+<figure>
+<img src="./img/applikationsuebergreifende-datenbank.png"
+alt="Applikationsübergreifende Datenbank" />
+<figcaption aria-hidden="true">Applikationsübergreifende
+Datenbank</figcaption>
+</figure>
+<p>Beispiel hierfür ist eine Datenbank, die Fachartikel oder
+Datenblätter verwaltet. Während die aufzunehmenden Daten immer gleich
+sind (Titel, Autor, Zusammenfassung,…), hat jeder Anwender sehr
+spezielle Anforderungen an seine Sicht auf die Daten. So könnte ein
+Mitarbeiter an allen Artikeln interessiert sein, die sich mit dem Thema
+UMTS befassen, während ein anderer nach Artikeln von bestimmten Autoren
+sucht und diese in ein Worddokument einbinden möchte.</p>
+<p>Um derartige Anwendungen zu ermöglichen, muss für das gesamte
+Institut ein <strong>Datenbankserver</strong> eingerichtet werden, auf
+dem Personen oder Gruppierungen Bereiche anfordern können. Diese
+Datenbereiche müssen über die standardisierte
+<strong>Datenbankschnittstelle ODBC</strong> zugänglich sein (siehe
+Abbildung 3-2). Im Einzelfall bedeutet das, dass Daten von allen
+ODBC-fähigen Softwarepaketen (zum Beispiel Microsoft Word, Microsoft
+Excel, Microsoft Access,…) geschrieben und gelesen werden können, sofern
+die entsprechenden Berechtigungen vorhanden sind.</p>
+<p>Die Notwendigkeit, neue Datenbanktechniken erlernen zu müssen,
+entfällt. Der Endanwender kann weiterhin in der gewohnten Umgebung
+arbeiten. Die Problematiken <strong>Backup</strong> und
+<strong>Sicherheit</strong> müssen nur einmal für den zentralen Server
+gelöst werden. Bei den Nutzern der Datenbank fällt kein zusätzlicher,
+administrativer Aufwand an.</p>
+<p>Im System müssen <strong>komfortable Werkzeuge</strong> vorhanden
+sein, <strong>um Daten</strong> aus Datenbanken <strong>abzufragen
+un</strong> neue Daten <strong>einzugeben</strong>.</p>
+<h3 data-number="3.2.9" id="suchfunktionen"><span
+class="header-section-number">3.2.9</span> Suchfunktionen</h3>
+<p>Das System muss die Möglichkeit bieten, auf dem kompletten Inhalt
+(Dokumente, HowTos, Diskussionsgruppen, etc.)
+<strong>Volltextsuchen</strong> durchzuführen. Die Verantwortlichen für
+die einzelnen Inhalte sollen dafür keine zusätzlichen Anstrengungen
+unternehmen müssen. Die <strong>Volltextindizierung</strong> muss
+automatisch verlaufen.</p>
+<p>Die Bereiche, die indiziert werden, sollen zusätzlich durch
+<strong>externe Bereiche</strong>, wie zum Beispiel Webseiten, ergänzbar
+sein. Diese Eigenschaft ermöglicht es, wichtige Internetangebote in die
+Suche einzubeziehen.</p>
+<h2 data-number="3.3" id="systemauswahl"><span
+class="header-section-number">3.3</span> Systemauswahl</h2>
+<h3 data-number="3.3.1" id="kommerzielle-systeme"><span
+class="header-section-number">3.3.1</span> Kommerzielle Systeme</h3>
+<h4 data-number="3.3.1.1" id="lotus-notesdomino"><span
+class="header-section-number">3.3.1.1</span> Lotus Notes/Domino</h4>
+<p>Ein <strong>Lotus Notes System besteht aus</strong> einem oder
+mehreren <strong>Servern</strong> (Domino) und entsprechenden
+<strong>Clients</strong> (Notes), die auf den Server zugreifen. Die
+Zielsetzung dieses Systems ist die Bereitstellung einer Plattform, auf
+der bestimmte Dienste, unabhängig vom jeweiligen Betriebssystem der
+Clients, angeboten werden können.</p>
+<p><strong>Im Lieferumfang</strong> des Lotus Notes Paketes sind
+deswegen nur sehr <strong>wenig Funktionen enthalten</strong>. Zu nennen
+sind Mailclient, ein Kalender und Diskussionsforen. Das <strong>System
+muss</strong>, je nach Anforderungen, um die gewünschte Funktionalität
+<strong>erweitert werden</strong>.</p>
+<p>Diese Erweiterung kann prinzipiell auf zwei Wegen erfolgen: Entweder
+werden <strong>Anwendungen</strong> auf der Notes Plattform
+<strong>programmiert</strong>, wozu die Notes Entwicklungstechniken
+erlernt werden müssen, <strong>oder</strong> es werden
+<strong>Produkte</strong> von Firmen <strong>gekauft</strong>, die für
+die Notesplattform entwickeln. Diese Produkte gibt es mittlerweile für
+alle in einer Firma benötigten Funktionen, wie Dokumentenmanagement,
+Kontaktverfolgung, Customer Care, etc.</p>
+<p>Eigene Applikationen wurden am IIS bereits programmiert. Es entstand,
+in relativ langer Programmierzeit, eine
+<strong>Adressdatenbank</strong>, mit der
+<strong>Kundenkontakte</strong> verfolgt werden können. Diese Datenbank
+ist mittlerweile in vielen Abteilungen im Einsatz. Eine Erweiterung ist
+für den Endanwender kaum möglich, da hierzu Programmierkenntnisse und
+entsprechende Rechte notwendig sind.</p>
+<p>Eine weitere, bereits realisierte Applikation ist das
+<strong>Helpdesksystem</strong> der Systemadministratoren. Dieses bietet
+die Möglichkeit, Anfragen an die Administratoren durch ein Webinterface
+zu erstellen.</p>
+<p>Die Einführung und der Betrieb von Notes ist sehr
+<strong>supportaufwendig</strong>. Allein die Installation der Clients
+(Rollout) nimmt einige Monate in Anspruch. Die Installation der Clients
+ist allerdings nur ein kleiner Teil der Arbeit. Der größere Teil liegt
+darin, zu definieren, welche Applikationen auf der Notes-Plattform
+überhaupt implementiert werden sollen. Dazu muss eine ganz klare
+Notes-Strategie definiert sein, die mit Zielen, Ressourcen und
+Zeitplänen versehen ist.</p>
+<p>Fazit: Das System Lotus Notes/Domino ist prinzipiell gut für die
+Funktion eines Wissensmanagementsystems geeignet. Es gibt allerdings
+einige Nachteile, die gegen eine Verwendung am IIS sprechen.</p>
+<ul>
+<li>Mangelnde Verbreitung von Clients: Die Zahl der Clients ist sehr
+gering. Das bedeutet, dass mit einem Notes-System nur ein kleiner Teil
+der Mitarbeiter abgedeckt wird.</li>
+<li>Mangelnder Support: Support für die Plattform Notes ist kaum
+vorhanden. Zwar besteht die Möglichkeit, einen Client installiert zu
+bekommen, darüber hinaus gibt es aber keine Einführung o.ä. in die
+Nutzung/Weiterentwicklung von Notes.</li>
+<li>Aufwendige Einarbeitung für Endnutzer: Ein Mitarbeiter, der
+bestimmte Funktionalität in Notes implementieren möchte, hat eine
+relativ steile Lernkurve zu durchlaufen, da es sehr zeitaufwendig ist,
+sich in die Notes-Technik einzuarbeiten. Auch die tägliche Benutzung des
+Notesclients ist nicht intuitiv möglich.</li>
+<li>Fehlende Strategie für die Einführung: Da es für das Produkt keine
+klare Einführungsstrategie gibt, ist unsicher, ob Notes überhaupt
+irgendwann als Plattform für alle Mitarbeiter zur erfügung stehen wird.
+Die Einführung zieht sich mittlerweile über mehrere Jahre, weswegen
+viele Mitarbeiter verunsichert sind.</li>
+<li>Aspekt der Plattformunabhängigkeit geht verloren: Ein wichtiger
+Grund für die Entscheidung für den Kauf von Notes war die Tatsache, dass
+Notes Clients für die meisten am IIS vorhandenen Plattformen
+(Windows/Mac/UNIX) bereitstellt. Ab der Version 5 (die sich im IIS
+bereits im Teststadium befindet) wird kein Client mehr für UNIX Systeme
+angeboten, was den angesprochenen Vorteil neutralisiert.</li>
+</ul>
+<h4 data-number="3.3.1.2" id="microsoft-outlookexchange"><span
+class="header-section-number">3.3.1.2</span> Microsoft
+Outlook/Exchange</h4>
+<p>Die Kombination aus Outlook und Exchange ist prinzipiell als
+<strong>Microsoft Pendant zu Notes/Domino</strong> zu verstehen. Als
+Mitglied der Microsoft Office Produktpalette ist der Outlook Client am
+IIS bereits für jeden Mitarbeiter lizenziert.</p>
+<p>Der <strong>Exchange Server</strong> ist zwar im Microsoft Select
+Vertrag enthalten, aber <strong>für</strong> das <strong>IIS nicht
+lizenziert</strong>. Wie auch für den Betrieb eines Lotus Domino Servers
+ist für Exchange eine Lizenz erforderlich.</p>
+<p>Die Kombination aus Outlook und Exchange bietet einige
+<strong>Vorteile gegenüber der Notesplattform</strong>, die im Folgenden
+näher erläutert werden sollen.</p>
+<p>Durch die Zugehörigkeit zum Microsoft Office kann der <strong>Outlook
+Client</strong> wesentlich <strong>intuitiver bedient</strong> werden
+als der Notes Client. Oberflächen und Benutzerführung sind dem Office
+gegenüber ähnlich aufgebaut.</p>
+<p>Die Applikationen des <strong>MS Office</strong> sind in
+Outlook/Exchange <strong>gut integrierbar</strong>. So ist es
+beispielsweise möglich, das Erstellen von Dokumenten und deren Versand
+oder Ablage automatisch in einem Journal zu protokollieren. Dieses
+Journal dient dann als Kontakthistorie für einzelne Personen. Das
+Verteilen von Aufgaben per Mail ist ebenso möglich wie bei Notes.
+Allerdings können in Outlook diese Aufgaben beispielsweise in Microsoft
+Project integriert werden.</p>
+<p>Um das Outlook/Exchange System zu erweitern sind <strong>weniger
+Programmierkenntnisse erforderlich</strong> als bei Notes. So genannte
+Outlook Formulare können mit den Funktionen des Microsoft Office leicht
+erstellt und veröffentlicht werden. Das Erlernen neuer
+Programmiersprachen ist für einfache Erweiterungen nicht nötig.</p>
+<p><strong>Fazit:</strong> Die Kombination aus Outlook und Exchange ist
+sehr gut geeignet, um den Kommunikationsteil eines
+Wissensmanagementsystems am IIS zu realisieren. Die intuitive Benutzung,
+die Verfügbarkeit auf Windows und Mac und die gute Integration des
+Microsoft Office machen es der Notes Lösung überlegen. Zu beachten ist
+aber auch der psychologische Aspekt. Lotus Notes ist bereits gekauft
+worden und wird an einigen Stellen auch verwendet. Eine mögliche
+Umstellung auf Outlook/Exchange wird deswegen sicherlich Reibungspunkte
+mit sich bringen. Die Entscheidung muss auf alle Fälle basierend auf
+fundierten Erkenntnissen getroffen werden.</p>
+<h3 data-number="3.3.2" id="open-sourcefreie-systeme"><span
+class="header-section-number">3.3.2</span> Open Source/Freie
+Systeme</h3>
+<h4 data-number="3.3.2.1"
+id="twig-httptwig.screwdriver.net---the-web-integration-gateway"><span
+class="header-section-number">3.3.2.1</span> TWIG
+(http://twig.screwdriver.net) - The Web Integration Gateway</h4>
+<p>Die beste Umschreibung für die Funktionen von Twig ist
+Mini-Groupware. Die Funktionen von Twig sind hauptsächlich im
+Kommunikationsbereich angesiedelt. Mit den im Folgenden beschriebenen
+Funktionen eignet es sich eher als <strong>kleines
+Internetportal</strong> als für ein Wissensmanagementsystem.</p>
+<ul>
+<li>Email (über IMAP)</li>
+<li>Kontakte (in Form eines Adressbuchs)</li>
+<li>Termine</li>
+<li>Usenet Newsgruppen (NNTP)</li>
+<li>ToDo Listen</li>
+<li>Bookmarks</li>
+</ul>
+<p>Als Wissensmanagementplattform für das IIS eignet sich TWIG nicht, da
+es über seine Funktionen hinaus nur <strong>schwer erweiterbar</strong>
+ist. Es fehlen beispielsweise wichtige Funktionen wie die
+Datenbankunterstützung. Da Twig komplett <strong>in PHP3
+geschrieben</strong> ist, könnten diese Funktionen nachgerüstet werden,
+was allerdings sehr arbeitsintensiv ist.</p>
+<h4 data-number="3.3.2.2"
+id="zope-httpwww.zope.org---z-object-publishing-environment"><span
+class="header-section-number">3.3.2.2</span> ZOPE (http://www.zope.org)
+- Z Object Publishing Environment</h4>
+<p>ZOPE eignet sich mit seinem offenen, <strong>objektorientierten
+Ansatz</strong> und seiner <strong>einfachen Bedienbarkeit</strong>
+hervorragend als Plattform für das IIS. Die Eigenschaften dieses
+<strong>Application Server</strong> sollen im Folgenden näher beleuchtet
+werden.</p>
+<p>Ein auf ZOPE basierendes System ist <strong>vollständig
+webbasiert</strong>. Das bedeutet, dass sowohl der Benutzer, der
+Administrator, als auch der Entwickler mit einem normalen Webbrowser
+auskommen. Die Installation von speziellen Clients ist (im Gegensatz zu
+Lotus Notes) nicht nötig und erspart viel Zeit.</p>
+<p>Das System ZOPE kann sehr komfortabel durch sogenannte
+<strong>Produkte</strong> über den Standardumfang hinaus erweitert
+werden. Im Standardumfang sind oft benötigte Elemente wie Folder,
+Dateien, DTML-Methoden, Bilder und Indizierfunktionen enthalten.</p>
+<p>Es gibt Produkte, mit denen man <strong>Verbindungen zu
+Datenbanken</strong> herstellen, <strong>Umfragen</strong> erstellen und
+<strong>lokale Filesysteme einbinden</strong> kann. Zum Zeitpunkt dieser
+Arbeit waren bei ZOPE (http://www.zope.org/download) <strong>über
+110</strong> verschiedene <strong>Produkte verfügbar</strong>.</p>
+<p>ZOPE unterstützt alle im Konzept geforderten Standards und darüber
+hinaus noch einige mehr (<strong>HTML 4, CSS, HTTP 1.1, FastCGI, FTP,
+WebDAV, DOM, XML, XML-RPC, SQL, RSS, LDAP</strong>). Besonders durch die
+Verwendung der Standards HTTP/WebDAV ist eine Integration in die
+Microsoft Office Produktpalette sehr einfach möglich.</p>
+<p>In ZOPE können logische Funktionen durch das, von XML abgeleitete,
+Derivat <strong>DTML</strong> (Document Type Markup Language) realisiert
+werden. Bevor ZOPE eine Seite an einen Client überträgt, prüft es diese
+auf vorhandene DTML-Tags, wertet diese aus und sendet das Ergebnis an
+den Client. Diese Vorgehensweise ist ähnlich wie bei PHP.</p>
+<p>In DTML existieren Befehle für die meisten benötigten Funktionen.
+Dazu gehören unter anderem Datenbankabfragen, der Versand von Emails und
+die Deklaration von Variablen. Obwohl das System ZOPE in Python
+(http://www.python.org) programmiert ist, wird der normale Entwickler im
+Normalfall nicht mit dieser Programmiersprache konfrontiert und kann
+seine Applikation vollständig in DTML implementieren.</p>
+<p>Mit <strong>XML Document</strong> steht ein Produkt zur Verfügung,
+mit dem XML-Inhalte in das System integriert werden können. XML Document
+repräsentiert ein Dokument in der standardisierten <strong>DOM
+API</strong>. Über diese API können Elemente des Dokuments abgefragt,
+eingefügt oder verändert werden. Produkte, die ein XML Dokument in eine
+darstellbare Form (zum Beispiel HTML) umwandeln, stehen ebenfalls
+bereit.</p>
+<p>Um beispielsweise in Lotus Notes eine Applikation zu entwickeln, muss
+man die Notes-eigene Programmiersprache erlernen, was mit einer steilen
+Lernkurve verbunden ist. Bei ZOPE ist der <strong>Einstieg</strong> viel
+einfacher möglich. Falls kein fertiges Produkt existiert, können kleine
+Applikationen bereits mit einfachen HTML/CGI Kenntnissen erstellt
+werden. Einfache Funktionen können somit maßgeschneidert durch
+Mitarbeiter selbst erstellt werden. Spezielle Lizenzen, wie die
+Notes-Entwicklerlizenz, sind nicht nötig.</p>
+<p>Obwohl ZOPE mit einer Datenbank zusammen ausgeliefert wird, kann man
+prinzipiell jede <strong>SQL Datenbank</strong> (zum Beispiel Oracle,
+MySQL, Microsoft SQL) als <strong>Datenspeicher</strong> verwenden. Die
+integrierte <strong>ZODB</strong> (ZOPE Objectoriented Database)
+<strong>bietet</strong> allerdings einige sehr <strong>komfortable
+Funktionen</strong>, die bei Verwendung einer relationalen Datenbank
+fehlen.</p>
+<p>Durch die Objektorientierung kann jeder Vorgang, wie zum Beispiel das
+Löschen eines Elements, rückgängig gemacht werden (<strong>UNDO
+Funktion</strong>).</p>
+<p>Bei der Verwendung der ZODB besteht weiterhin die Möglichkeit der
+<strong>Versionsverwaltung</strong>. Hierbei kann der Entwickler eine
+neue Version eines Bereiches erstellen, ohne dass diese von den Nutzern
+des Systems abgefragt werden können. Die Nutzer sehen noch die alte
+Version. Erst wenn der Entwickler die neue Version freigibt, können
+andere darauf zugreifen.</p>
+<p>Die Objekte in der Datenbank (ZODB) werden über ein sogenanntes
+<strong>URL-Objekt-Mapping</strong> adressiert. Dadurch kann jedes
+Objekt durch eine URL eindeutig angesprochen werden. Auf die Objekte
+können dann verschiedene Methoden angewendet werden.</p>
+<p>Die <strong>Vererbung</strong> ist ein sehr mächtiges Hilfsmittel in
+ZOPE und ist sehr vielseitig einsetzbar. Jedes Unterverzeichnis erbt
+Rechte und Eigenschaften des übergeordneten Verzeichnisses. Das
+bedeutet, dass beispielsweise eine Person, die in oberster Ebene eine
+bestimmte Rolle zugewiesen bekommen hat, diese Rolle durch Vererbung
+auch in allen Unterverzeichnissen besitzt.</p>
+<p>Eine weitere Anwendungsmöglichkeit der Vererbung ist, auf Toplevel
+allgemeingültige Objekte (zum Beispiel das Institutslogo) abzulegen.
+Dieses steht dann jedem Benutzer in den unteren Leveln zur
+Verfügung.</p>
+<p>Prinzipiell kann die Benutzerverwaltung von ZOPE auf
+unterschiedlichen Wegen realisiert werden. Am einfachsten ist die in
+ZOPE integrierte Benutzerverwaltung, der sogenannte
+<strong>UserFolder</strong>. Dieser hat allerdings den
+<strong>Nachteil</strong>, dass jeder <strong>Nutzer manuell
+eingetragen</strong> werden muss und diese Daten außerhalb von ZOPE
+nicht zur Verfügung stehen.</p>
+<p>Eine weitere Möglichkeit besteht darin, ZOPE über <strong>bestehende
+Benutzerverwaltungen</strong> wie zum Beispiel die von Microsoft Windows
+NT autentifizieren zu lassen. Hierzu wird ein bestimmtes Produkt (zum
+Beispiel NTUserFolder) benötigt. Der große Vorteil dieser Lösung besteht
+darin, dass mit NT bereits eine gepflegte Benutzerverwaltung am IIS
+vorliegt und diese unmodifiziert verwendet werden kann.</p>
+<p>Langfristig ist allerdings empfehlenswert, alle Dienste, die
+Autentifizierung benötigen, aus einer <strong>gemeinsamen
+Quelle</strong> zu speisen. An dieser Stelle bietet sich
+<strong>LDAP</strong> als Standard an. Über LDAP kann nicht nur ZOPE,
+sondern auch Windows NT, UNIX, Dokumentenmanagementsysteme u.v.m.
+autentifizieren.</p>
+<p>Besitzt eine Person auf einer Ebene Managerrecht, so kann diese
+Person die Benutzerverwaltung in ihrem Bereich selbst übernehmen. Ein
+Abteilungsleiter (als Manager seines Abteilungsbereichs) kann
+beispielsweise den Gruppen einen Unterbereich einrichten und festlegen,
+wer in seinem Bereich lesen, schreiben, bearbeiten, etc. kann.</p>
+<p>Diese Funktion bietet sich an, wenn Personen, wie zum Beispiel
+Studienarbeiter, in der globalen Nutzerverwaltung noch nicht enthalten
+sind, aber dennoch Zugang zu einem Bereich des Systems bekommen
+sollen.</p>
+<h4 data-number="3.3.2.3"
+id="jetspeed-httpjava.apache.orgjetspeed"><span
+class="header-section-number">3.3.2.3</span> Jetspeed
+(http://java.apache.org/jetspeed)</h4>
+<p>Das Projekt Jetspeed beschreibt sich selbst als Enterprise
+Information Portal und Webbased Groupware. Die Projektwebseite lässt
+darauf schließen, dass es sich um einen sehr vielversprechenden Ansatz
+handelt. Leider wurde eine sinnvoll nutzbare Version erst am 21.03.2000
+veröffentlicht, was eine Verifizierung leider nicht mehr möglich gemacht
+hat.</p>
+<p>Interessant an Jetspeed ist, dass es sich um ein Projekt der sehr
+engagierten Apache Group, die auch den Webserver Apache entwickelt,
+handelt. Da auch Projekte wie JServ (Java Servlet Engine für Apache)
+oder Cocoon von dieser Gruppe durchgeführt werden, kann mit sehr großen
+Synergieeffekten in den Bereichen Java und XML gerechnet werde. Die
+einzelnen Projekte der Apache Group sind so ausgerichtet, dass die
+einzelnen Komponenten projektübergreifend eingesetzt werden können.
+Jetspeed unterstützt nach Aussage der Entwickler bereits viele Standards
+und Funktionen:</p>
+<ul>
+<li>XML</li>
+<li>Datenbank Benutzerautentifizierung (leider nicht über LDAP oder NT
+Domäne)</li>
+<li>Rich Site Summary (RSS)</li>
+<li>XML/XSL Inhalt durch Integration von Cocoon</li>
+<li>XML basierte Konfiguration</li>
+<li>Plattformunabhängig (einzige Bedingung JDK 1.1 und Servlet 2.0)</li>
+<li>Synchronisation mit Avantgo (http://www.avantgo.com)</li>
+</ul>
+<h4 data-number="3.3.2.4" id="midgard-httpwww.midgard-project.org"><span
+class="header-section-number">3.3.2.4</span> Midgard
+(http://www.midgard-project.org)</h4>
+<p>Von der Beschreibung her ist Midgard ähnlich einzustufen wie ZOPE. Im
+Gegensatz zu ZOPE ist Midgard allerdings ein <strong>abgeschlossenes
+System</strong>. Die Unterstützung für weitere externe Pakete fehlt.
+Außerdem ist die Unterstützung von Datenbanken sehr eingeschränkt, da
+<strong>nur MySQL unterstützt</strong> wird und auch die
+<strong>Anbindung an LDAP</strong> zum Autentifizieren <strong>nicht
+möglich</strong> ist.</p>
+<p>Vom Funktionsumfang ist Midgard, trotz seines Untertitels Application
+Server Suite, eher in die Kategorie <strong>Publishing-System</strong>
+einzuordnen. Als Wissensmanagementsystem am IIS kommt Midgard aus den
+genannten Gründen nicht in Frage.</p>
+<h4 data-number="3.3.2.5" id="enhydra-httpwww.enhydra.org"><span
+class="header-section-number">3.3.2.5</span> Enhydra
+(http://www.enhydra.org)</h4>
+<p>Enhydra ist ein <strong>Application Server</strong> mit <strong>Java
+und XML</strong> Unterstützung. Weil die Unterstützung von Enterprise
+Java Beans und CORBA angestrebt ist, kann sich Enhydra zu einer sehr
+attraktiven Lösung entwickeln.</p>
+<p>Als Wissensmanagementsystem kommt Enhydra für das IIS nicht in Frage,
+da es keine Möglichkeit bietet, vorgefertigte Elemente, wie
+Diskussionsforen, etc. in das System einzubinden und miteinander zu
+verknüpfen.</p>
+<h4 data-number="3.3.2.6" id="opencms-httpwww.opencms.com"><span
+class="header-section-number">3.3.2.6</span> OpenCMS
+(http://www.opencms.com)</h4>
+<p>OpenCMS ist wie der Name schon andeutet ein <strong>Content
+Management System</strong>. Als solches ist es nicht auf Interaktion
+ausgelegt und deswegen nicht als Wissensmanagementsystem geeignet. In
+der Sektion “geplante Projekte”befinden sich aber dennoch einige
+interessante Dinge, wie beispielsweise die Unterstützung von
+<strong>WML</strong>, <strong>LDAP</strong> und einer
+<strong>Volltextsuchmaschine</strong>.</p>
+<p>OpenCMS kommt als Plattform für das IIS-Wissensmanagementsystem nicht
+in Frage.</p>
+<h4 data-number="3.3.2.7"
+id="intalio-httpwww.exoffice.comintalio.xml"><span
+class="header-section-number">3.3.2.7</span> Intalio
+(http://www.exoffice.com/intalio.xml)</h4>
+<p>Trotz Ankündigung für März 2000 war Intalio am 10.04.2000 noch nicht
+verfügbar. Bei Intalio handelt es sich um einen Applicationserver, der
+einen sehr <strong>offenen Ansatz</strong> verfolgt.</p>
+<ul>
+<li>XML</li>
+<li>CORBA, DCOM</li>
+<li>Enterprise Java Beans</li>
+<li>Datenbank Backends (RDBMS, OODBMS, Directory Server)</li>
+<li>Sicherheit (OpenSSL, OpenCA, S/WAN)</li>
+<li>Standard APIs (JDBC, ODMG, JNDI)</li>
+<li>LDAP</li>
+</ul>
+<p>Die beschriebene Funktionalität ist sehr umfassend. Deswegen sollte
+die Plattform Intalio nach der Freigabe einer Evaluation unterzogen
+werden.</p>
+<p>Intalio kommt als Plattform für das IIS-Wissensmanagementsystem nicht
+in Frage.</p>
+<h4 data-number="3.3.2.8" id="locomotive-httpwww.locomotive.org"><span
+class="header-section-number">3.3.2.8</span> Locomotive
+(http://www.locomotive.org)</h4>
+<p>Bei Locomotive handelt es sich um einen <strong>Application
+Server</strong>, der von GNU Entwicklern ins Leben gerufen wurde. Wie
+auch schon bei Midgard zuvor ist Locomotive nicht darauf ausgelegt,
+durch externe Module ergänzt zu werden, was bedeutet, dass alle Module
+selbst programmiert werden müssen.</p>
+<p>Locomotive kommt als Plattform für das IIS-Wissensmanagementsystem
+nicht in Frage.</p>
+<h4 data-number="3.3.2.9" id="star-officestar-portal"><span
+class="header-section-number">3.3.2.9</span> Star Office/Star
+Portal</h4>
+<p>Der Funktionsumfang des <strong>Star Portal</strong> konnte erst bei
+der CeBIT 2000 in Hannover abgeschätzt werden. Es handelt sich bei Star
+Office um ein vollwertiges Officepaket, das zusammen mit Star Portal
+alle wichtigen Funktionen eines <strong>Groupwaresystems</strong>
+abdeckt.</p>
+<p>Bis zum Abschluss dieser Diplomarbeit lag von der Firma Star Division
+leider nur das sogenannte <strong>Early-Access-Program</strong> vor, das
+nur ausgewählten Firmen die Nutzung des Portals ermöglicht. Der
+Funktionsumfang dieses Produkts konnte aus diesem Grund nicht evaluiert
+werden.</p>
+<h3 data-number="3.3.3" id="eigene-programmierung"><span
+class="header-section-number">3.3.3</span> Eigene Programmierung</h3>
+<p>Neben bereits bestehenden Lösungen, kommerziell oder frei verfügbar,
+existiert die Möglichkeit, ein <strong>System</strong> von Grund auf
+<strong>aus Einzelkomponenten</strong> zu konzipieren. Bei dieser
+Vorgehensweise kann die Funktionsweise des Systems
+<strong>optimal</strong> an die Bedürfnisse der Firma
+<strong>angepasst</strong> werden.</p>
+<h2 data-number="3.4" id="entscheidung"><span
+class="header-section-number">3.4</span> Entscheidung</h2>
+<p>Weil es am IIS zu Beginn dieser Arbeit keine Plattform gab, auf der
+man ein Wissensmanagementsystem hätte implementieren können, musste die
+Einführung eines neuen Systems in Betracht gezogen werden.</p>
+<p>Da mit dem damaligen Kenntnisstand keines der verfügbaren Produkte
+die definierten Anforderungen erfüllte, wurde die Entscheidung
+getroffen, ein System zu konzipieren und von Grund auf zu programmieren.
+Nur für Komponenten wie beispielsweise das Diskussionsforum wurden
+fertige Produkte gewählt werden.</p>
+<p>Da für das Wissensmanagementsystem noch kein Namen gewählt wurde,
+wird dieser erste Ansatz im Folgenden <strong>systemX I</strong>
+genannt. Bis zur Einführung sollte die Entscheidung für einen Namen
+getroffen werden, um das System auch im sprachlichen Gebrauch zu
+etablieren.</p>
+<p>Mit dem Fortschritt der Arbeit haben sich drei entscheidende
+Erkenntnisse ergeben.</p>
+<ol type="1">
+<li>Die Bewertung der bestehenden Systeme wurde in sinnvollem Umfang
+durch das eigene Design erst möglich. Viele Vorteile des Systems ZOPE
+haben sich durch die Konzeption eines neuen Systems erst als solche
+herausgestellt.</li>
+<li>Einige der in Erwägung gezogenen Produkte haben sich erst im Verlauf
+der Arbeit in eine Richtung entwickelt, die ihren Einsatz
+rechtfertigen.</li>
+<li>Mit der eigenen Entwicklung der Plattform werden zu viele Ressourcen
+gebunden. Dies hat zur Folge, dass man sich den Inhalten und Methoden
+nicht mehr in aussreichendem Maße widmen kann.</li>
+</ol>
+<p>Aufgrund dieser Entwicklung wurde die Entscheidung getroffen, sich
+von der Eigenentwicklung abzuwenden und die gewünschten Inhalte und
+Methoden auf einer bestehenden Plattform-Lösung (ZOPE) zu
+implementieren. Die bis dahin unternommenen Anstrengungen sind aber
+keineswegs nutzlos gewesen, da sie eine sinnvolle Beurteilung der
+bestehenden Lösungen überhaupt erst ermöglicht haben.</p>
+<p>Dieser auf ZOPE basierende Ansatz soll im Folgenden <strong>systemX
+II</strong> genannt werden.</p>
+<p>Viele der im ersten Ansatz definierten Methoden, wie der White Page
+Dienst oder die externen Suchfunktionen, konnten ohne Mehraufwand in
+systemX II integriert werden.</p>
+<h2 data-number="3.5" id="systemx-i"><span
+class="header-section-number">3.5</span> systemX I</h2>
+<h3 data-number="3.5.1" id="überblick"><span
+class="header-section-number">3.5.1</span> Überblick</h3>
+<p>Da, wie angesprochen, die Idee, das gesamte System selbst zu
+programmieren, verworfen wurde, sind einige der im Konzept erwähnten
+Funktionen nicht realisiert worden. Diese sind mit einem Stern (*)
+gekennzeichnet.</p>
+<p>Die wichtigsten Elemente des Konzepts sind der frei verfügbare
+<strong>Webserver Apache</strong> und dessen Erweiterungen (siehe
+Abbildung 3-3). Die Aufgabe eines Webservers ist es, Dokumente
+(normalerweise im HTML Format), die auf dem Server in einem bestimmten
+Verzeichnis liegen, über das sogenannte <strong>HTTP-Protokoll</strong>
+an einen Client (normalerweise ein HTML Browser) zu übertragen.</p>
+<figure>
+<img src="./img/systemx-i-ueberblick.png" alt="systemX I - Überblick" />
+<figcaption aria-hidden="true">systemX I - Überblick</figcaption>
+</figure>
+<p>Die Möglichkeiten, die mit der <strong>HTML</strong> Sprache zur
+Verfügung stehen, sind <strong>eingeschränkt</strong>. HTML ist darauf
+ausgelegt, <strong>statischen Inhalt</strong> bereitzustellen, womit
+Inhalt aus Datenbanken nicht verfügbar gemacht werden kann.</p>
+<p>Außerdem liegt mit dem <strong>HTTP</strong>-Protokoll ein
+<strong>zustandsloses</strong> Protokoll vor, d.h. in dem Moment, in dem
+der Server dem Client eine Seite geliefert hat, ist die Verbindung
+beendet. Es besteht keine Möglichkeit, mehrere Seitenaufrufe, die von
+dem selben Browser durchgeführt werden, zueinander in Verbindung zu
+stellen (<strong>Session Management</strong>).</p>
+<p>Session Management ist wichtig, wenn beispielsweise das Verhalten der
+Benutzer beobachtet oder Variablen von einem Seitenaufruf zum nächsten
+gespeichert werden sollen.</p>
+<p>Ein weiterer Nachteil ist die Tatsache, dass in <strong>HTML</strong>
+Seiten <strong>keine logischen Funktionen</strong> eingebaut werden
+können. Es ist nicht möglich, bestimmte Elemente der Seite in
+Abhängigkeit von Parametern oder Variablen anzuzeigen oder Berechnungen
+mit diesen durchzuführen.</p>
+<p>Aufgrund dieser Nachteile existiert bei den meisten HTTP-Servern die
+Möglichkeit, die Funktionalität des Servers zu erweitern. An dieser
+Stelle sollen mit dem <strong>Common Gateway Interface</strong> (CGI),
+der Sprache <strong>PHP3</strong> und <strong>Java Servlets</strong>
+drei Möglichkeiten näher betrachtet werden.</p>
+<p>Das <strong>CGI</strong> stellt eine <strong>definierte
+Schnittstelle</strong> zwischen dem HTTP-Server und Anwendungen, die ein
+CGI-Interface besitzen, dar. Das bedeutet, dass Applikationen, die
+bestimmte Funktionen bereitstellen, in beliebigen Programmiersprachen
+verfasst sein können. Oft verwendet werden Perl, C und
+<strong>Shell-Skripte</strong>.</p>
+<p>Die Kommunikation zwischen HTTP Server und CGI Applikation ist
+einfach. Der HTTP-Server wird so konfiguriert, dass er bei der
+Anforderung nach bestimmten Dateitypen (zum Beispiel mit der Endung
+.cgi), diese nicht direkt an den Client weitergibt, sondern sie erst
+durch eine Applikation bearbeiten lässt (siehe Abbildung 3-4). Die CGI
+Applikation arbeitet die Anweisungen ab und erzeugt gültiges HTML, das
+dann über den Server an den Client zur Darstellung weitergereicht
+wird.</p>
+<figure>
+<img src="./img/cgi-funktionsweise.png" alt="CGI Funktionsweise" />
+<figcaption aria-hidden="true">CGI Funktionsweise</figcaption>
+</figure>
+<p>CGI Applikationen stellen ein mächtiges Werkzeug dar, um interaktive
+Webapplikationen erstellen zu können. Bei Einsatz von Perl als
+Interpreter besteht die Möglichkeit, Protokolle, wie XML, SQL, LDAP,
+IMAP, etc. einzubinden. CGIs wurden für dieses Konzept nicht ausgewählt,
+da es trotz der Vielzahl der verfügbaren CGI-Applikationen keine
+Möglichkeit gibt, einzelne Funktionen, wie Diskussionsforen oder
+Datenbanken, einfach zu integrieren.</p>
+<p>Eine andere Erweiterungsmöglichkeit bietet die Sprache
+<strong>PHP3</strong>. Sie kann als <strong>Modul</strong> an den
+<strong>Apache</strong>-Server angebunden werden und stellt eine sehr
+große Auswahl an Funktionen bereit. Um einen Eindruck über den Umfang
+von PHP3 zu vermitteln, folgt eine Aufstellung der für dieses Konzept
+verwendeten Funktionen.</p>
+<ul>
+<li>Zugriff auf die meisten verfügbaren Datenbanken</li>
+<li>LDAP</li>
+<li>SMTP</li>
+<li>NNTP</li>
+<li>Session Management</li>
+<li>Zugriff auf Filesystem und lokale Applikationen</li>
+</ul>
+<p>Mit PHP3 stehen alle Funktionen, die für die Implementierung der
+Webplattform benötigt werden, zur Verfügung. Aus diesem Grund wurde die
+Entscheidung getroffen, <strong>PHP3</strong> als <strong>Basis
+für</strong> das <strong>systemX I</strong> zu wählen.</p>
+<p>Die <strong>objektorientierte Programmiersprache Java</strong> kann
+im System an unterschiedlichen Stellen zum Einsatz kommen. An dieser
+Stelle sollen die Möglichkeiten von <strong>Java Servlets</strong> im
+Gegensatz zu sogenannten <strong>Java Applets</strong> betrachtet
+werden.</p>
+<p>Bei Einsatz von Java Applets schickt der Server dem Client ein
+lauffähiges Javaprogramm. Auf dem Client muss eine sogenannte
+<strong>virtuelle Java Maschine</strong> vorhanden sein, die den
+Javacode ausführen kann. Dieses Vorgehen ist mit Nachteilen
+verknüpft.</p>
+<p>Der Javacode muss zu jedem Client geschickt werden, der eine
+bestimmte Seite anfordert, wodurch sich eine erhöhte Netzbelastung
+ergibt. Außerdem muss sichergestellt werden, dass jede mögliche
+virtuelle Maschine den Code in gleicher Weise interpretiert, was nicht
+selbstverständlich ist.</p>
+<p>In dem vorliegenden Fall wurden verschiedene Applets, die verwendet
+werden können, um Baumstrukturen darzustellen, mit verschiedenen
+Browsern und Plattformen getestet. <strong>Keines der Applets hat auf
+allen Plattformen funktioniert</strong>.</p>
+<p><strong>Java Servlets</strong> umgehen dieses Problem. Bei einem
+Servlet wird der Javacode schon <strong>auf dem Server</strong>
+ausgeführt und an den Client nur noch die HTML Ausgabe übertragen. Das
+<strong>verringert</strong> den <strong>Netzbandbreitenbedarf</strong>
+und <strong>reduziert Inkompatibilitätsprobleme</strong>. Allerdings
+wird auf dem Server <strong>mehr Rechenleistung</strong> benötigt, da
+dieser den Javacode interpretieren muss, was im vorliegenden Fall mit
+maximal 400 Nutzern unkritisch ist.</p>
+<p>Die Servlettechnologie wurde in das System integriert, um den
+Standard XML unterstützen zu können. Der folgende Abschnitt soll klären,
+warum dieser Anspruch in einem Wissensmanagement sinnvoll ist.</p>
+<p>Der größte Unterschied zwischen XML und HTML besteht darin, dass bei
+XML die verwendeten Tags definiert werden können, wohingegen bei
+<strong>HTML</strong> auf fest <strong>definierte Tags</strong> (H1, P,
+IMG, etc.) zurückgegriffen werden muss. Mit XML können den einzelnen
+Elementen in einem Dokument sinnvolle menschen- und maschinenlesbare
+Namen zugewiesen werden.</p>
+<p>Die <strong>Verarbeitung</strong> von <strong>XML</strong> ist aus
+diesem Grund auch etwas <strong>komplizierter</strong> als bei HTML,
+denn es besteht die Notwendigkeit, in einer sogenannten Document Type
+Definition (DTD) die möglichen Elemente, die in einem Dokument vorkommen
+dürfen, zu definieren.</p>
+<p>Außerdem sind zur <strong>Darstellung</strong> sogenannte
+<strong>Stylesheets</strong> zu erstellen, die ein XML Dokument in eine
+darstellbare Form umwandeln (zum Beispiel HTML, PDF, etc.). Eine gute
+Einführung in XML gibt [see99]</p>
+<p>Mit dem <strong>Servlet Cocoon</strong> steht ein Werkzeug zur
+Verfügung, mit dem man XML Dokumente auf Serverseite in andere Formate
+umwandeln kann. Neben der reinen Stylesheet Transformation bietet Cocoon
+auch die Möglichkeit Datenbanken oder LDAP Server abzufragen. Typisch
+für Cocoon ist der modulare Aufbau. Unterschieden werden
+<strong>Producer, Processor und Formatter</strong>.</p>
+<p>Der <strong>Producer</strong> hat die Aufgabe ein XML Document
+bereitzustellen. Im einfachsten Fall wird ein XML-Dokument aus dem
+Filesystem gelesen. Es ist auch möglich, Daten aus Datenbank- oder
+LDAP-Abfragen in XML darzustellen. Cocoon liegen in der Basisversion
+einige Producer bei, die erweitert oder durch neue ergänzt werden
+können.</p>
+<p>Über sogenannte <strong>Formatting Instructions</strong> (FI) wird
+Cocoon im Dokument mitgeteilt, welcher Processor verwendet werden soll.
+Ein Beispiel ist der XSLT Processor, der ein XML DOkument unter
+Verwendung eines XSL Stylesheets transformieren kann.</p>
+<p>Der <strong>Formatter</strong> sorgt am Ende der Kette für die
+eigentliche Formatierung des Inhalts. Mit unterschiedlichen Formattern
+können Formate wie HTML und PDF erzeugt werden.</p>
+<h3 data-number="3.5.2"
+id="implementierung-der-definierten-methoden"><span
+class="header-section-number">3.5.2</span> Implementierung der
+definierten Methoden</h3>
+<h4 data-number="3.5.2.1" id="whitepage-dienst"><span
+class="header-section-number">3.5.2.1</span> Whitepage Dienst</h4>
+<p>Der Whitepage Dienst soll nicht ausschließlich als Whitepage Dienst,
+sondern darüber hinaus auch in weiteren Anwendungen verwendbar sein.
+Hiermit kann das Problem der redundanten Datenhaltung gelöst werden.
+Jeder Bereich, der personenbasierte Daten verwaltet, greift im IIS auf
+eigene Datenbestände zurück, die nicht synchronisiert werden. Dies
+trifft sowohl auf Verwaltungsstellen, wie die Personalstelle, als auch
+auf Systemadministratoren, Abteilungssekretariate, etc. zu (siehe
+Abbildung 3-5).</p>
+<figure>
+<img src="./img/vermeidung-reduntanter-datenhaltung.png"
+alt="Vermeidung redundanter Datenhaltung" />
+<figcaption aria-hidden="true">Vermeidung redundanter
+Datenhaltung</figcaption>
+</figure>
+<p>Der hier konzipierte Whitepage Dienst stellt eine
+<strong>Datenbasis</strong> zur Verfügung, die die Möglichkeit bietet,
+<strong>personenbezogene Daten</strong> aufzunehmen. Die hier
+definierten Attribute können bei Bedarf beliebig erweitert werden. Der
+Dienst beruht auf dem Standard <strong>LDAP</strong> und macht ihn
+deshalb zu einem plattform- und anwendungsübergreifenden Werkzeug.</p>
+<p>LDAP wurde ursprünglich als Frontend zu den im Internet sehr
+verbreiteten X.500 Directory Servern konzipiert. Im Gegensatz zu diesen
+konnte LDAP über TCP/IP betrieben werden. Mittlerweile besteht bei den
+meisten LDAP-Servern auch die Möglichkeit, im sogenannten
+standalone-Mode, also ohne X.500-Backend, betrieben zu werden. Mit einem
+LDAP-Server sind verschiedene Anwendungen denkbar.</p>
+<ul>
+<li>Einheitliche und aktuelle Basis für viele der am IIS benötigten
+Erfassungen von <strong>personenbezogenen</strong> Daten. Dabei sind
+insbesondere datenschutztechnische Aspekte zu berücksichtigen.</li>
+<li>Bereitstellung eines <strong>institutsweiten Adressbuchs</strong>,
+das wesentlich aktueller als die im Moment verfügbaren ist, und auch
+Praktikanten, Studienarbeiter, etc. beinhaltet.</li>
+<li>Personen können nach <strong>Fähigkeitsprofilen</strong> gesucht
+werden. In das Profil können Ausbildung, durchgeführte Projekte,
+Fortbildungen und nichtfachliche Qualifikationen, wie zum Beispiel
+Sprachkenntnisse einfließen. Auch an dieser Stelle ist der Datenschutz
+zu beachten.</li>
+<li>Vorhalten der <strong>Kontakte von abgegangenen
+Mitarbeitern</strong> in einer <strong>Alumni-Sektion</strong>.</li>
+</ul>
+<p>Prototypisch ist der Whitepage Dienst auf dem LDAP-Server
+<strong>OpenLDAP</strong> realisiert worden. Aufgrund des Standards
+LDAP, und besonders des <strong>LDAP Interchange Format LDIF</strong>,
+können die Daten jederzeit in einen anderen Server transferiert
+werden.</p>
+<p>Jedem Mitarbeiter sind drei sogenannte <strong>Objektklassen</strong>
+zugeordnet. Eine Objektklasse ist eine Beschreibung der Parameter, die
+für eine Person möglich sind. Verwendet werden die standardisierten
+Objektklassen <strong>person</strong> (Stammdaten einer Person: Name,
+Vorname, etc.), <strong>organizationalPerson</strong> (Erweiterung von
+person um Daten, die in einer Organisation relevant sind: Raumnummer,
+Telefon, Email) und die selbstdefinierte Objektklasse
+<strong>iisPerson</strong>, die IIS spezifische Details festlegt.</p>
+<p>Bereits mit diesem Prototypen ist es möglich, ein
+<strong>Adressbuch</strong> für den Netscape Navigator, Outlook Express
+und andere LDAP fähige Clients (zum Beispiel Eudora, pine) zur Verfügung
+zu stellen. Mit dem bestehenden Server war es außerdem sehr leicht
+möglich, die sogenannten <strong>Netscape Roaming Profiles</strong>
+anzubieten, einen Dienst, bei dem Einstellungen, Adressbuch und
+Bookmarks des Netscape Navigators mit dem Server synchronisiert werden
+können. Damit könne Nutzer beispielsweise auf Desktop-PC und Notebook
+auf die gleichen Ressourcen zurückgreifen.</p>
+<p>Das Produkt <strong>Enlist</strong> bietet die Möglichkeit, den
+<strong>LDAP-Server als ODBC Datenquelle</strong> für anderen
+Applikationen, wie zum Beispiel das Microsoft Office, zur Verfügung zu
+stellen. Hiermit eröffnet sich für einzelne Bereiche die Möglichkeit,
+basierend auf SQL-Abfragen, personenbezogene Datenbestände lokal zu
+führen.</p>
+<h4 data-number="3.5.2.2" id="diskussionsforum-1"><span
+class="header-section-number">3.5.2.2</span> Diskussionsforum</h4>
+<p>Als Diskussionsforum kommt das Produkt <strong>Phorum</strong>
+(http://www.phorum.org) zum Einsatz. Es erlaubt die Verwaltung von
+mehreren Diskussionsforen durch unterschiedliche Administratoren.
+Außerdem besteht die Möglichkeit, Phorum über die Erweiterung
+<strong>phorummail</strong> an existierende Maillisten anzubinden.</p>
+<p>Alle <strong>Diskussionsbeiträge</strong> werden in einer
+<strong>SQL-Datenbank</strong> abgelegt(MySQL oder PostgreSQL). Es
+besteht die Möglichkeit, sich von Antworten auf eingestellte Beiträge
+per Mail informieren zu lassen.</p>
+<h4 data-number="3.5.2.3" id="newssektion-2"><span
+class="header-section-number">3.5.2.3</span> Newssektion</h4>
+<p>(*) Die Newssektion wurde im systemX I nicht realisiert. Es war
+geplant, das Produkt <strong>PHP3 News Skript</strong>
+(http://mana.landofhaze.com/downloads/news/) einzusetzen, das auf PHP3
+basiert und alle Beiträge in einer MySQL-Datenbank ablegt.</p>
+<h4 data-number="3.5.2.4" id="privater-bereich-2"><span
+class="header-section-number">3.5.2.4</span> Privater Bereich</h4>
+<p>(*) Der private Bereich unterscheidet sich vom öffentlichen nur
+dadurch, dass der Besitzer als Administrator fungiert und somit über die
+Rechtevergabe entscheiden kann.</p>
+<h4 data-number="3.5.2.5" id="zugang-über-standardsoftware"><span
+class="header-section-number">3.5.2.5</span> Zugang über
+Standardsoftware</h4>
+<p>Der komplette Funktionsumfang kann wie gefordert über einen
+<strong>Standard-Webbrowser</strong> bedient werden. Die Funktionalität
+wurde mit den Browsern Netscape Navigator und Internet Explorer auf den
+verfügbaren Plattformen getestet.</p>
+<p>Auf alle datenbankgestützten Anwendungen kann über ODBC zugegriffen
+ODBC werden. Hierfür wird ein <strong>MySQL-ODBC-Treiber</strong> und
+eine ODBC fähige Datenbank (zum Beispiel Microsoft Access)
+notwendig.</p>
+<h4 data-number="3.5.2.6"
+id="möglichkeit-datenbankgestützter-anwendungen-1"><span
+class="header-section-number">3.5.2.6</span> Möglichkeit
+datenbankgestützter Anwendungen</h4>
+<p>Um datenbankgestützte Anwendungen zu ermöglichen, benötigt man einen
+<strong>Datenbankserver</strong> (<strong>DBMS, Database Management
+System</strong>). Oftmals kommen <strong>relationale
+Datenbanken</strong> zum Einsatz, die sich durch die Verwendung der
+standardisierten Abfragesprache <strong>SQL</strong> auszeichnen. Diese
+ermöglicht Relationen zwischen den einzelnen Tabellen einer Datenbank.
+In diesem Konzept wird das DBMS MySQL verwendet, da es frei verfügbar
+und bereits in vielen Anwendungen im Einsatz und somit getestet ist.</p>
+<p>Um auf den Datenbestand eines DBMS zugreifen zu können, werden keine
+ODBC speziellen Clients benötigt. ODBC bietet die Möglichkeit, durch
+sogenannte ODBC-Treiber, auf DBMS zuzugreifen. ODBC wurde ursprünglich
+für die Plattform Windows konzipiert, steht mittlerweile aber auch auf
+anderen Betriebssystemen zur Verfügung (unixODBC, iODBC). Für MySQL
+existieren derartige ODBC-Treiber.</p>
+<p>Zur Konfiguration und Administration der MySQL-Datenbank ist kein
+dedizierter Client notwendig, da mit phpMyAdmin ein Webinterface zur
+Datenbank verfügbar ist.</p>
+<h4 data-number="3.5.2.7" id="suchfunktionen-1"><span
+class="header-section-number">3.5.2.7</span> Suchfunktionen</h4>
+<p>Die Suche auf den Datenbeständen des Systems wird durch
+Datenbankabfragen auf der Datenbank realisiert.</p>
+<p>Zu jedem Element werden <strong>Metadaten</strong> erfasst, die
+entsprechende Informationen über das Element liefern. Unter Metadaten
+versteht man Daten, die das zu erfassende Element beschreiben.</p>
+<p>Die Erfassung der Metadaten erfolgt teilweise automatisch und
+teilweise manuell. Die persönlichen Daten des Autors sind beispielsweise
+dadurch bekannt, dass dieser sich zuvor am System angemeldet hat.</p>
+<p>Die Art des Elements kann dadurch bestimmt werden, dass dem Autor
+verschiedene Vorlagen, zum Beispiel für Berichte, URLs etc., angeboten
+werden. Weitere Daten, wie beispielsweise Schlagworte, müssen vom Autor
+gewählt werden.</p>
+<p>Die Abfragemöglichkeit der Metadaten wird durch eine
+<strong>Suchmaschine für externe Daten</strong> ergänzt. Für das System
+wurde das Produkt <strong>Udmsearch</strong> (http://mysearch.udm.net)
+ausgewählt. Zur Auswahl stand außerdem das Produkt Harvest der
+University of Colorado. Im Vergleich ist Udmsearch komfortabler zu
+bedienen und bietet die Möglichkeit, seine <strong>Daten in</strong>
+einer <strong>SQL-Datenbank</strong> und nicht in proprietärem Format zu
+speichern. Udmsearch besteht aus drei Teilen:</p>
+<p>Der <strong>Gatherer</strong> (Sammler) <strong>fragt Daten</strong>
+über das HTTP-, FTP- oder NNTP- Protokoll von anderen Rechnern
+<strong>ab</strong>. Mit einem Gatherer kann theoretisch das gesamte
+Internet indiziert und ein Suchdienst, ähnlich wie Google
+(http://www.google.com), aufgebaut werden.</p>
+<p>Für die Ergänzung des Metadatenbestands ist es sinnvoll, den Gatherer
+nur auf bestimmte Bereiche anzusetzen. In dieser Arbeit wurde
+beispielsweise das IIS-Intranet untersucht, wobei der Gatherer auf ca
+16.000 Dokumente gestossen ist, davon cirka 3000 HTML-Dokumente.</p>
+<p>Der zweite Bestandteil ist der <strong>Indexer</strong> (Indizierer),
+der Daten, die durch den Gatherer gesammelt wurden, indiziert. Der hier
+verwendete Index ist ein sogenannter <strong>Volltextindex</strong>, das
+bedeutet, der Indexer untersucht, wie oft bestimmte Wörter in dem zu
+indizierenden Dokument vorkommen. Dazu verwendet er eine
+<strong>Stoppwortliste</strong>, mit der Begriffe wie ich, du, ist, etc.
+aus dem Indiziervorgang ausgeschlossen werden. Die erzeugten Daten legt
+der Indexer in einer Datenbank ab. Von Udmsearch werden MySQL,
+Interbase, Oracle, PostgreSQL, miniSQL, Solid, Virtuosu und ODBC
+unterstützt.</p>
+<p>Der dritte Bestandteil von Udmsearch ist die <strong>Schnittstelle
+zum Benutzer</strong>. Da das Backend, das die Metadaten aufnimmt, aus
+einer Datenbank besteht, werden die Ergebnisse auf eine Suchabfrage aus
+Datenbankabfragen gewonnen. Die Daten aus der Datenbank stehen auch
+anderen Applikationen zur Verfügung. Als Schnittstellen werden
+<strong>PHP3, C und Perl</strong> Module mitgeliefert, wodurch Udmsearch
+auf beinahe jedem Webserver einsetzbar ist.</p>
+<p><strong>Hinweis:</strong> Von der Möglichkeit, mit Udmsearch auch
+Dokumente mit anderem Format als HTML zu indizieren wurde bisher noch
+kein Gebrauch gemacht. Es bietet sich aber beispielsweise an, die
+Sektion mit den Online- Studien- und Diplomarbeiten auch zu indizieren.
+Dafür stehen Module für die Formate PDF, Postscript und Doc (MS Word)
+zur Verfügung.</p>
+<h3 data-number="3.5.3" id="verwendete-softwarepakete"><span
+class="header-section-number">3.5.3</span> Verwendete
+Softwarepakete</h3>
+<p>Dieser Abschnitt soll einen zusammenfassenden Überblick über alle
+verwendete Softwarepakete und deren Bezugsquellen bieten. Alle hier
+aufgeführten Pakete sind Open Source oder in der Binärversion frei
+verfügbar.</p>
+<ol type="1">
+<li>Apache (http://www.apache.org) dient als HTTP-Server</li>
+<li>JServ (http://java.apache.org) ermöglicht den Einsatz von Java
+Servlets unter Apache</li>
+<li>Cocoon (http://java.apache.org) ein Java Servlet, das die Verwendung
+von XML, XSL, SQL, JDBC und LDAP mit dem Apacheserver ermöglicht</li>
+<li>MySQL (http://www.mysql.com) ein Datenbankserver, der sehr große
+Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren
+(zum Beispiel ODBC-Treiber (http://www.mysql.com/download_myodbc.html),
+Webinterface)</li>
+<li>phpMyAdmin Weboberfläche für den Datenbankserver MySQL</li>
+<li>UDMsearch (http://mysearch.udm.net) ein Indizierer für Webseiten,
+der seine Metadaten in einer Datenbank ablegt</li>
+<li>OpenLDAP (http://www.openldap.org) ein frei verfügbarer LDAP
+Directory Server</li>
+<li>PHP3 (www.php3.net) Sprache zum Erstellen von interaktiven
+Webseiten. PHP wird als Modul des Apache Webserver eingesetzt und bietet
+Unterstützung für viele gängige Protokolle (zum Beispiel SQL für alle
+gängigen Datenbanken, NNTP, POP, IMAP, LDAP, etc.)</li>
+<li>Phorum (http://www.phorum.org) Diskussionsforum auf PHP-Basis, das
+alle Beiträge in einer MySQL Datenbank ablegt</li>
+</ol>
+<h2 data-number="3.6" id="systemx-ii"><span
+class="header-section-number">3.6</span> systemX II</h2>
+<h3 data-number="3.6.1" id="überblick-1"><span
+class="header-section-number">3.6.1</span> Überblick</h3>
+<p>Wie bereits erwähnt, wurde der Ansatz, die technische Plattform für
+das Wissensmanagementsystem selbst zu entwickeln, nach Evaluierung und
+prototypischer Realisierung aus zwei Gründen wieder verworfen:</p>
+<p>Es wurde erkannt, dass man mit den vorhandenen <strong>personellen
+Ressourcen</strong> zu viel Zeit in die Entwicklung und den Test der
+Plattform investieren muss und sich aus diesem Grund nicht in
+ausreichendem Maß um die Methoden des Wissensmanagements kümmern kann,
+die auf der Plattform realisiert werden sollen.</p>
+<p>Außerdem hat sich das Open-Source-Projekt <strong>ZOPE</strong> in
+der Zwischenzeit zu einem System entwickelt, das für die Anwendung als
+Wissensmanagementsystem im IIS sehr gut geeignet ist. Es erfüllt alle
+gestellten Anforderungen und bietet die Möglichkeit, die Entwicklung des
+Systems an die Open-Source-Entwickler zu übertragen. Durch die große
+Verbreitung des Systems und die offenliegenden Quellen können Fehler
+sehr viel schneller gefunden und beseitigt werden.</p>
+<p>Die konzipierten Methoden des systemX II unterscheiden sich von denen
+des systemX I nicht maßgeblich, obwohl der technische Ansatz ein ganz
+anderer ist. Der Hauptunterschied ist, dass die Arbeitsplattform aus
+Apache Webserver, JServ, Cocoon und der MySQL Datenbank durch ZOPE
+ersetzt wurde (siehe Abbildung 3-6).</p>
+<figure>
+<img src="./img/systemx-ii-ueberblick.png"
+alt="systemX II - Überblick" />
+<figcaption aria-hidden="true">systemX II - Überblick</figcaption>
+</figure>
+<h3 data-number="3.6.2"
+id="implementierung-der-definierten-methoden-1"><span
+class="header-section-number">3.6.2</span> Implementierung der
+definierten Methoden</h3>
+<h4 data-number="3.6.2.1" id="diskussionsforum-2"><span
+class="header-section-number">3.6.2.1</span> Diskussionsforum</h4>
+<p>Das Diskussionsforum kann in ZOPE mit zwei unterschiedlichen
+Produkten, <strong>Confera</strong> und <strong>ZDiscussions</strong>
+realisiert werden. Beide bieten die Möglichkeit von threadbasierten
+Diskussionen und den Versand von Emails. Im System werden beide Produkte
+vorhanden sein. <strong>Empfohlen wird ZDiscussions</strong>, da es eine
+Weiterentwicklung von Confera darstellt und für die in ZOPE integrierte
+Suchmaschine ZCatalog besseren Zugriff bietet.</p>
+<h4 data-number="3.6.2.2" id="newssektion-3"><span
+class="header-section-number">3.6.2.2</span> Newssektion</h4>
+<p>Der Bereich für News wird mit dem Produkt <strong>Squishdot</strong>
+(http://www.squishdot.org) realisiert. Squishdot bietet ähnliche
+Funktionen wie Slashdot (http://www.slashdot.org) und ist dieser
+Webseite nachgebildet.</p>
+<p>Für den Einsatz am IIS sind an Squishdot einige Anpassungen
+vorgenommen worden. So gibt es bestimmte <strong>Kategorien</strong>,
+die alle durch ein <strong>charakteristisches Symbol</strong>
+gekennzeichnet sind (zum Beispiel Leitungskreis, Personalentwicklung,
+etc.). Die Verantwortlichen der entsprechenden Bereiche können in die
+Newssektion direkt Beiträge einstellen. So ist es dem Sekretariat des
+Institutsleiters beispielsweise möglich, alle Protokolle der
+Leitungssitzungen schnell und effizient zu verbreiten.</p>
+<p>Mitarbeiter, die für keinen Bereich verantwortlich sind, können zwar
+auch Beiträge einstellen, diese müssen aber vor der
+<strong>Veröffentlichung</strong> durch den Administrator des
+Newsbereichs <strong>bestätigt</strong> werden (Review). Auf diese Weise
+wird eine schnelle und effiziente Weitergabe von Informationen
+ermöglicht und gleichzeitig dem Missbrauch vorgebeugt.</p>
+<h4 data-number="3.6.2.3" id="privater-bereich-3"><span
+class="header-section-number">3.6.2.3</span> Privater Bereich</h4>
+<p>Wie auch schon im Konzept von systemX I unterscheidet sich der
+private Bereich eines Mitarbeiters von den anderen Bereichen nur
+dadurch, dass der <strong>Mitarbeiter</strong> dort
+<strong>Administrator</strong> ist. Der private Bereich ist so
+konzipiert, dass er eine Umgebung für die tägliche Arbeit der
+Mitarbeiter darstellt.</p>
+<p>Standardmäßig ist der private Bereich für alle geöffnet und kann
+dadurch mit der globalen Suchmaschine erfasst werden. Ein Mitarbeiter
+kann aber auch bestimmte Sektionen in seinem Bereich für die Außenwelt
+verschließen.</p>
+<h4 data-number="3.6.2.4" id="zugang-über-standardsoftware-1"><span
+class="header-section-number">3.6.2.4</span> Zugang über
+Standardsoftware</h4>
+<p>Genau wie im Konzept von systemX I kann das systemX II vollständig
+mit Webbrowser und <strong>Standardsoftware</strong> bedient werden.
+Zusätzlich zu der Möglichkeit, Inhalte über HTTP und FTP einzustellen,
+kann bei ZOPE das <strong>WebDAV</strong>-Protokoll verwendet
+werden.</p>
+<p>WebDAV (http://www.webdav.org) ist eine Erweiterung des Standards
+HTTP 1.1 und ergänzt diesen um Funktionen für die verteilte Bearbeitung
+von Dokumenten. Da es sich um einen sehr neuen Standard handelt, gibt es
+bisher wenig Werkzeuge, die WebDAV bereits unterstützen. Bisher sind das
+<strong>MS Office 2000</strong>, der <strong>Internet Explorer
+5.0/WebFolders</strong> und mehrere kleine Werkzeuge verfügbar.</p>
+<p>Notwendig für die Nutzung der Webfolders ist der Internet Explorer in
+der Version 5.x. Die Option Webfolders ist in der Standardinstallation
+nicht enthalten und muss im sogennanten <strong>custom install</strong>
+ausgewählt werden. Mit WebFolders ist es möglich, den Inhalt des
+Webservers wie ein normales Dateisystem zu behandeln. So arbeitet der
+Mitarbeiter mit seinen gewohnten Hilfsmitteln und ist ohne weitere
+Kenntnisse in der Lage, Inhalte auf dem Server zu administrieren.</p>
+<h4 data-number="3.6.2.5"
+id="möglichkeit-datenbankgestützter-anwendungen-2"><span
+class="header-section-number">3.6.2.5</span> Möglichkeit
+datenbankgestützter Anwendungen</h4>
+<p>Das Backend für die Datenbankverwaltung und die Anbindung der User
+über lokale Datenbanken sind aus dem Konzept von sytemX I entnommen. Da
+die Anforderungen genau die gleichen sind, waren keine Änderungen
+notwendig. Aus diesem Grund sollen im folgenden nur die Unterschiede in
+der Kommunikationsschicht zwischen ZOPE und dem DBMS behandelt
+werden.</p>
+<p>ZOPE verwendet sogenannte <strong>Database Adapter</strong> (DA) um
+auf Datenbanken zuzugreifen. Derartige Adapter existieren für viele
+DBMS, wie zum Beispiel Oracle, Microsoft Access, Sybase und DB2. Der DA
+stellt eine Datenbankverbindung zur Verfügung, auf die andere
+Applikationen zugreifen können.</p>
+<p>Um Datenbestände aus einer Datenbank abzufragen, können unter ZOPE
+vorhandene <strong>SQL-Methoden</strong> verwendet werden. Diese greifen
+auf einen DA zurück und führen SQL-Abfragen auf der Datenbank aus. Die
+Repräsentation der Daten kann durch den Anwender frei gewählt werden.
+Auf diese Weise lassen sich die Abfrageergebnisse in HTML-Tabellen, aber
+auch in XML oder anderen Formaten ausgeben.</p>
+<p>Mit dem <strong>SQL-Input-Wizard</strong> können Schnittstellen zu
+bestehenden Datenbanken einfach eingerichtet werden. Basierend auf einem
+DA fragt der Wizard die Felder der Tabellen ab und erzeugt eine
+Eingabemaske. Diese kann dann an die individuellen Wünsche, wie zum
+Beispiel das Layout, angepasst werden. Der Anwender muss sich nicht mehr
+um den technischen Teil der Datenerfassung kümmern.</p>
+<h4 data-number="3.6.2.6" id="suchfunktionen-2"><span
+class="header-section-number">3.6.2.6</span> Suchfunktionen</h4>
+<p>Das Problem der Indizierung kann mit ZOPE sehr geschickt gelöst
+werden, denn es existiert ein eigenes Produkt, der
+<strong>ZCatalog</strong>, der die Aufgabe hat, Bereiche in ZOPE suchbar
+zu machen. ZCatalog ist sehr detailliert konfigurierbar und wird in dem
+Konzept verwendet, um alle Elemente des Systems zu indizieren.</p>
+<p>Für externe Bereiche, wie zum Beispiel das IIS Intranet, wird wie in
+systemX I <strong>Udmsearch</strong> eingesetzt, um Inhalte zu
+indizieren. Die Inhalte werden von ZOPE über eine Datenbankverbindung zu
+einer MySQL Datenbank abgefragt.</p>
+<p>In jeder Ansicht im System befindet sich die Möglichkeit eine Suche
+zu starten.</p>
+<h3 data-number="3.6.3" id="verwendete-produkte"><span
+class="header-section-number">3.6.3</span> Verwendete Produkte</h3>
+<p>Unter einem <strong>Produkt</strong> ist bei ZOPE zusätzliche
+Software zu verstehen, die das Gesamtsystem um bestimmte Funktionlität
+erweitert. Produkte können entweder von der <strong>ZOPE
+Homepage</strong> (http://www.zope.org/Products) bezogen , oder selber
+programmiert werden. Die folgende Auflistung gibt eine Übersicht über
+die in systemX II eingesetzten Produkte (in alphabetischer
+Reihenfolge).</p>
+<ul>
+<li>Knowledge Kit</li>
+<li>LocalFS</li>
+<li>PSQInput Wizard/ZMySQLDA</li>
+<li>SiteSummary</li>
+<li>Squishdot</li>
+<li>TinyTable</li>
+<li>ZDConfera</li>
+</ul>
+<h1 data-number="4" id="durchgeführte-projekteverifikation"><span
+class="header-section-number">4</span> Durchgeführte
+Projekte/Verifikation</h1>
+<h2 data-number="4.1" id="wissensmanagement-diskussionsforum"><span
+class="header-section-number">4.1</span> Wissensmanagement
+Diskussionsforum</h2>
+<p>Um allen Mitarbeitern möglichst schnell Gelegenheit zu geben, sich
+zum Thema Wissensmanagement aus ihrer Sicht äußern zu können, wurde
+schon zu Beginn der Arbeit ein <strong>Onlinediskussionsforum</strong>
+zum Thema eingerichtet. Die <strong>Resonanz</strong> auf dieses Forum
+war <strong>nicht groß</strong>. Es gab ca. 5 Beiträge pro Woche von
+ungefähr 10 verschiedenen Mitarbeitern.</p>
+<p>Ursache hierfür ist einerseits, dass davon ausgegangen wurde, dass
+das Thema Wissensmanagement an sich bereits bekannt sei (zum Beispiel
+aus dem Projekt mit dem IAO). Es hat sich aber gezeigt, dass die meisten
+Mitarbeiter von Beteiligung diesem Projekt noch keine Kenntnis hatten
+und deswegen mit den dargebotenen Informationen wenig anfangen
+konnten.</p>
+<p><strong>Notiz:</strong> Eine Projektbörse, in der alle durchgeführten
+Projekte mit einer Kurzbeschreibung aufgeführt werden, kann helfen, die
+Transparenz im Projektbereich zu vergrößern. Über eine Liste der
+teilnehmenden Mitarbeiter kann die Kommunikation angeregt werden.</p>
+<p>Ein weiterer wichtiger Grund für die geringe Teilnahme ist darin zu
+sehen, dass sich die Mitarbeiter erst daran gewöhnen müssen, ihre
+Meinung und Kritik in dem öffentlichen Forum zu vertreten. Ein solcher
+Gewöhnungsprozess kann durch <strong>Workshops</strong> unterstützt
+werden, die dazu dienen, eine <strong>Vertrauensbasis</strong>
+herzustellen.</p>
+<p>Es folgten beispielsweise auf das Webangebot wesentlich mehr
+Reaktionen per Email als im Forum selber. Rückfragen, ob diese Emails im
+Forum veröffentlicht werden können, wurden entweder nicht beantwortet
+oder verneint.</p>
+<h2 data-number="4.2" id="wissensmanagement-workshops"><span
+class="header-section-number">4.2</span>
+Wissensmanagement-Workshops</h2>
+<p>Ein zweites Element für die Sensibilisierung der Mitarbeiter für das
+Thema Wissensmanagement waren die durchgeführten
+<strong>Wissensmanagement-Workshops</strong>. Die Workshops wurden in
+einem Turnus von <strong>zwei Wochen</strong> durchgeführt und hatten
+immer ein bestimmtes Thema aus dem Bereich Wissensmanagement.</p>
+<p>An den Workshops haben Mitarbeiter aus verschiedenen Abteilungen
+teilgenommen. Die Teilnehmerzahl lag im Durchschnitt bei cirka 7
+Personen.</p>
+<p>In den ersten Workshops war deutlich zu erkennen, dass viele
+Mitarbeiter dem Thema Wissensmanagement gegenüber sehr skeptisch waren,
+da sie einen destruktiven Eingriff in ihre Arbeitsweise
+befürchteten.</p>
+<p>Wichtige Aufgabe des Workshops bestand deswegen darin, den
+Mitarbeitern die Ziele des Wissensmanagement darzulegen und die Vorteile
+aufzuzeigen, die sie persönlich daraus ziehen können. Durch diese
+Workshops hat sich, ähnlich wie bei internen Seminaren, ein
+<strong>Netzwerk von Personen</strong> gebildet, die Interesse an dem
+Thema zeigen und Wissensmanagement am IIS fördern wollen.</p>
+<h2 data-number="4.3" id="mitarbeiterbefragung"><span
+class="header-section-number">4.3</span> Mitarbeiterbefragung</h2>
+<p>Seit einiger Zeit wurde am IIS versucht, die Voraussetzungen für den
+Betrieb einer <strong>Kindertagesstätte</strong> zu schaffen. Zu diesem
+Zweck wurde von der Gruppe Personalentwicklung ein
+<strong>Papierfragebogen</strong> erstellt, mit dem der Bedarf am IIS
+erfasst werden sollte. Der Nachteil, dass bei Papierfragebogen
+<strong>viel Zeit</strong> für die <strong>Auswertung</strong> verwendet
+werden muss, wurde in Kauf genommen.</p>
+<p>Da das systemX II sich mittlerweile in einem verwendbaren Zustand
+befand, wurde der Personalentwicklung angeboten, die Umfrage auf der
+Wissensmanagement-Plattform durchzuführen. Die
+<strong>Realisierung</strong> dauerte, ab dem Zeitpunkt der Zusage und
+Dank der Flexibilität von ZOPE, <strong>zwei Stunden</strong>.</p>
+<p>Die Umfrage wurde mit dem Produkt Poll durchgeführt. Poll bietet die
+Möglichkeit, Umfragen beliebigen Umfangs durchzuführen und im Anschluss
+automatisch auszuwerten. Gewählt werden kann zwischen prozentualer oder
+grafischer Auswertung. Außerdem ist es möglich, Umfragen anonym oder
+personenbezogen durchzuführen.</p>
+<p>Die Umfrage ist aus Sicht der Wissensmanagement-Plattform als Erfolg
+zu werten. Durch den Zugriff über Webbrowser konnte die gesamte Umfrage
+inklusive Auswertung innerhalb von sieben Arbeitstagen durchgeführt
+werden. In diesem Zeitraum haben sich über 130 Mitarbeiter an der
+Umfrage beteiligt</p>
+<h2 data-number="4.4"
+id="konzept-für-eine-datenbankgestützte-studien-diplomarbeits-praktikums--hiwibörse"><span
+class="header-section-number">4.4</span> Konzept für eine
+datenbankgestützte Studien-/Diplomarbeits-/Praktikums- /Hiwibörse</h2>
+<p>Die Personalgewinnung ist, gerade in einer Zeit, in der die
+Arbeitsmarktlage für das Akquirieren von Ingenieuren sehr schlecht ist,
+ein sehr wichtiges Thema. Ein wichtiger Aspekt für die Personalgewinnung
+am IIS ist die Einstellung von Studienabgängern, die über Praktika,
+Hiwi-Stellen, Studien- oder Diplomarbeiten an das Institut gebunden
+werden.</p>
+<p>Sowohl die <strong>Verwaltung</strong> von ausgegebenen Studien- und
+Diplomarbeitsthemen, als auch die Verwaltung von Anfragen an das
+Institut sind sehr <strong>unstrukturiert</strong>. <strong>Studien- und
+Diplomarbeitsthemen</strong> werden <strong>von</strong> der
+<strong>Personalstelle verwaltet</strong> und erscheinen im Abstand von
+einigen Monaten im Internet.</p>
+<p>Anfragen für <strong>Praktika</strong> werden in einer
+<strong>Access-Datenbank</strong> in der Personalentwicklung erfasst und
+in Papierform an die Abteilungen verschickt. Eine aktuelle Liste ist im
+Intranet nicht verfügbar.</p>
+<p>Außerdem werden <strong>internationale Anfragen</strong> nach Stellen
+aller Art <strong>in</strong> der <strong>Seneca-Datenbank</strong>
+erfasst. Diese Datenbank wird vom Fraunhofer Koordinierungsbüro für
+Ausbildungspartnerschaften (http://www.iis.fhg.de/kfa/seneca/index.html)
+betrieben und basiert auf dem DBMS Oracle. Studenten können die
+Datenbank nutzen, um sich für Praktika zu bewerben.</p>
+<p>Um die zur Verfügung stehenden Daten in einer einheitlichen Form
+präsentierbar zu machen, wurde in Zusammenarbeit mit den einzelnen
+Stellen ein Konzept entwickelt, das die Veröffentlichung der Daten
+ermöglicht (siehe Abbildung 4-1). Mit der Umsetzung dieses Konzepts wird
+die Möglichkeit geschaffen, die bestehenden Daten in eine
+<strong>zentrale Datenbank</strong> zu übertragen und dort für das
+systemX II verfügbar zu machen.</p>
+<p>Ein Mitarbeiter, der eine Studienarbeit vergeben möchte, kann sich so
+zum Beispiel nach einem geeigneten Kandidaten erkundigen. Es wurde aus
+Datenschutzgründen die Übereinkunft getroffen, keine persönlichen Daten,
+wie Telefonnummer oder Adresse, bereitzustellen. Bei Interesse können
+diese Informationen bei der entsprechenden Stelle erfragt werden.</p>
+<figure>
+<img src="./img/konzept-abschlussarbeiten-boerse.png"
+alt="Konzept der Studien-/Diplomarbeits-/Praktikums-/Hiwibörse" />
+<figcaption aria-hidden="true">Konzept der
+Studien-/Diplomarbeits-/Praktikums-/Hiwibörse</figcaption>
+</figure>
+<h1 data-number="5" id="ausblick"><span
+class="header-section-number">5</span> Ausblick</h1>
+<p>Im Rahmen dieser Diplomarbeit wurde das Thema Wissensmanagement am
+Fraunhofer-Institut für Integrierte Schaltungen (http://www.iis.fhg.de)
+behandelt. Die Arbeit hatte das Ziel, ein Konzept für ein entsprechendes
+System zu erstellen und dieses in Form eines Prototypen zu
+realisieren.</p>
+<p>Nach Durchführung einer Bestandsaufnahme wurde festgestellt, dass
+weder das bestehende Intranet noch die bis dahin kaum verbreitete
+Software Lotus Notes als Basis für ein Wissensmanagementsystem am IIS in
+Frage kamen. Gegen das Intranet sprach hauptsächlich der wenig
+interaktive Charakter und die stark veralteten und unübersichtlichen
+Inhalte.</p>
+<p>Hauptgründe für die Entscheidung gegen Lotus Notes war die, aufgrund
+fehlender Akzeptanz und mangelnder Verbreitung der Clients, ungewisse
+Zukunft von Lotus Notes am IIS. Dieser Umstand führte zu der
+Entscheidung, eine neue Plattform zu konzipieren.</p>
+<p>Nach Gewinnung eines Überblicks über vorhandene Systeme, wobei der
+Scherpunkt hauptsächlich auf freie und Open-Source-Systeme gelegt war,
+wurde zunächst die Entscheidung getroffen, ein System bestehend aus
+einzelnen Komponenten zu entwickeln (systemX I). Die Kernbestandteile
+dieses Systems waren eine SQL Datenbank (MySQL), ein Webserver (Apache)
+und eine XML-Processing Engine (Cocoon). Basierend auf diesen Elementen
+wurde begonnen, ein System zu entwickeln, in das sich über den Standard
+HTML andere Applikationen einbinden lassen.</p>
+<p>Zwei Faktoren haben die Abkehr von dieser Lösung herbeigeführt. Mit
+den in der Entwicklung gemachten Erfahrungen konnte der
+Open-Source-Applicationserver ZOPE als geeignete Plattform identifiziert
+werden. Außerdem wurde erkannt, dass mit der vollständigen Entwicklung
+einer Plattform zu viel Zeit in die Entwicklung investiert werden
+musste, die dann bei den eigentlichen Wissensmanagementmethoden fehlte.
+Aus diesem Grund wurde entschieden, die definierten Methoden auf der
+Plattform ZOPE zu implementieren (systemX II).</p>
+<p>Im Rahmen der Diplomarbeit wurden bereits einige Methoden ausgewählt,
+die auf der Plattform implementiert wurden. Ziel der Methoden war
+hauptsächlich, die für das Wissensmanagement sehr wichtigen Faktoren
+Kommunikation und Transparenz zu fördern. Der Funktionsumfang des
+Systems ist nicht als vollständig zu betrachten. Das System bietet
+vielmehr eine Plattform, auf deren Basis weitere Methoden implementiert
+werden können.</p>
+<p>Um aufbauend auf den Erkenntnissen dieser Diplomarbeit
+Wissensmanagement am IIS zu etablieren, ist es wichtig, eine
+IT-Strategie für das Institut zu definieren. Hierfür wird eine Gruppe
+von Personen benötigt, die sich um die Definition einer solchen
+Strategie kümmert, und die mit finanziellen Ressourcen und Kompetenzen
+ausgestattet ist, um die Strategie zu realisieren.</p>
+<p>Idealerweise sollte dieser Personengruppe ein Vertreter auf
+Leitungsebene angehören, der dort IT-Know-How einbringen kann und der
+außerdem die IT-Strategie der Institutsstrategie anpassen kann (zum
+Beispiel bei Expansion oder externen Standorten).</p>
+<p>Erst wenn diese Strategie vorliegt, ist es sinnvoll, die Werkzeugwahl
+(systemX II, Lotus Notes, etc.) und deren Einführung anzugehen.</p>
+<p>Der Verfasser dieser Arbeit ist überzeugt davon, dass die
+Werkzeugentscheidung nicht notwendigerweise Lotus Notes heißen muss. Das
+systemX II bietet im Vergleich zu Lotus Notes den großen Vorteil, dass
+es auch ohne Kenntnis von speziellen Programmiersprachen erweiterbar
+ist. Das bedeutet für das IIS, dass Notes Know-How nicht unbedingt teuer
+eingekauft werden muss, sondern die Mitarbeiter kleine Erweiterungen mit
+nur geringen Kenntnissen selbst implementieren können.</p>
+<h1 class="unnumbered" id="bibliographie">Bibliographie</h1>
+<p>Um das Literaturverzeichnis übersichtlich zu gestalten, ist es in die
+drei Sektionen Wissensmanagement, Standards und Technik aufgeteilt. In
+den einzelnen Sektionen finden sich nur Quellen zum jeweiligen
+Thema.</p>
+<p>Augrund der Aktualität des Themas sind viele Quellen nur im Internet
+verfügbar. Bei diesen Quellen ist die entsprechende URL in Klammern
+angegeben. Da die Erfahrung gemacht wurde, dass einige Anbieter ihre
+Artikel von Zeit zu Zeit verschieben, ist der Link auf die Basis URL des
+Anbieters gerichtet.</p>
+<h2 class="unnumbered" id="wissensmanagement-1">Wissensmanagement</h2>
+<ul>
+<li>[ger00] Topic Maps: Der neue Standard für intelligentes Knowledge
+Retrieval, Thomas Gerick, wissensmanagement 2/2000, 8-12.</li>
+<li>[hol00] Information Mapping: Vorteile durch effizientes
+Strukturieren, Martin Holzmann, wissensmanagement 1/2000, 20-23.</li>
+<li>[dav98] Wenn Ihr Unternehmen wüsste, was es weiss…: Das Praxisbuch
+zum Wissensmanagement, Thomas H. Davenport und Laurence Prusak,
+1998.</li>
+<li>[ver99] Idealvorstellungen: Architektur für das Firmenwissen,
+Gerhard Versteegen, ix 3/1999, 113-119.</li>
+<li>[pro99] Wissen Managen: Wie Unternehmen ihre wertvollste Ressource
+optimal nutzen, Gilbert Probst, Steffen Raub, und Kai Romhardt, 3.
+Auflage, Betriebswirtschaftlicher Verlag Dr. Th. Gabler GmbH, Wiesbaden,
+1999.</li>
+<li>[rom] Interventionen in die organisatorische Wissensbasis zwischen
+Theorie und Praxis: Welchen Beitrag kann die Systemtheorie leisten?, Kai
+Romhardt, Universite de Geneve
+(http://www.cck.uni-kl.de/wmk/papers/public/Wissensidentifikation/).</li>
+<li>[wil99] Knowledge Management and IT: How are they related?, Larry
+Todd Wilson und Charles A. Snyder, IT Pro, April 1999, 73-77.</li>
+<li>[mor98] Knowledge Management Architecture, Daryl Morey, CRC Press
+LLC (http://www.brint.com (bei Brint)).</li>
+<li>[kpmg98] Knowledge Management: Research Report 1998, KPMG
+(http://www.kpmg.com).</li>
+<li>[dat] Knowledge Management: Linking People To Knowledge For Bottom
+Line Results, Dataware Technologies.</li>
+<li>[sch98] Die semantische Ebene von Daten beim Knowledge Warehouse,
+Manfred Schumacher, ntz, 8/1998, 18-20.</li>
+</ul>
+<h2 class="unnumbered" id="standards">Standards</h2>
+<ul>
+<li>[rfc2218] rfc2218 - A common schema for the Internet White Pages
+Service, (http://www.faqs.org/rfcs/rfc2218.html).</li>
+<li>[iso13250] Topic Navigation Maps, ISO/IEC
+(http://www.ornl.gov/sgml/sc34/document/8/draft27.htm).</li>
+<li>[xml] XML, W3C (http://www.w3.org/XML/).</li>
+<li>[see99] XML - Das Einsteigerseminar, Michael
+Seeboerger-Weichselbaum, bhv Verlag, Kaarst, ISBN 3-8287-1018-2.</li>
+<li>[rfc2518] HTTP Extensions for Distributed Authoring - WEBDAV, IETF
+(www.ietf.org).</li>
+</ul>
+<h2 class="unnumbered" id="technik">Technik</h2>
+<ul>
+<li>Harvest: Effective Use Of Internet Information, Darren R. Hardy,
+University of Colorado at Boulder.</li>
+<li>Lighting up LDAP: A Programmer’s Guide To Directory Development Part
+1,2,3, Cameron Laird und Kathryn Soraiz, Linuxworld
+(http://www.linuxworld.com).</li>
+<li>[lea99] The Directory Enabled Enterprise, Anne C. Lear, IT pro,
+August 1999, 14-17.</li>
+<li>XPath: XML Path Language, Norman Walsh, Arbortext
+(http://www.arbortext.com).</li>
+<li>Introduction to XML, Jay Greenspan, Webmonkey
+(http://www.hotwired.com/webmonkey).</li>
+<li>Understanding XSL, Jay Greenspan, Webmonkey
+(http://www.hotwired.com/webmonkey).</li>
+<li>Practical XML with Linux, Uche Ogbuji, Linuxworld
+(http://www.linuxworld.com).</li>
+<li>Linux, Java and XML, Eoin Lane, Linux Gazette
+(http://www.linuxgazette.com).</li>
+</ul>
+<h1 class="unnumbered" id="glossar">Glossar</h1>
+<ul>
+<li>ASCII (American Standard Code for Information Interchange): ASCII
+beschreibt die Darstellung von Zeichen innerhalb eines
+Betriebssystems.</li>
+<li>DSSSL (Document Style Semantics and Specification Language): Sprache
+um XML für Druck- oder Onlineversionen zu rendern. Standardisiert in
+ISO/IEC 10179:1996. Mehr Informationen unter
+http://www.jclark.com/dsssl.</li>
+<li>DTD (Document Type Definition): Definition der Tags und Attribute
+für eine XML Datei.</li>
+<li>HTML (Hypertext Markup Language): Hypertextformat zum Austausch von
+Dokumenten über das World Wide Web. Wird vom W3C standardisiert.</li>
+<li>JDBC (Java Database Connectivity): Eine plattformunabhängige
+Schnittstelle (API) für den Zugriff von Java-Programmen auf eine
+Datenbank.</li>
+<li>LDAP (Leightweight Directory Access Protocoll): Protokoll, mit dem
+über TCP/IP auf Directory Server zugegriffen werden kann.</li>
+<li>ODBC (Open Database Connectivity): Eine von der Firma Microsoft
+geschaffene, plattformabhängige Schnittstelle (API) für den Zugriff auf
+Datenbanken.</li>
+<li>OLE (Object Linking and Embedding): Eine Methode, um Daten von
+anderen Anwendungen einzubinden (zum Beispiel Excel Tabellen in Word
+Dokumenten).</li>
+<li>SGML (Standard Generalised Markup Language): Ein sehr komplexer
+Standard für die Beschreibung von Textformaten und den elektronischen
+Dokumentenaustausch.</li>
+<li>SQL (Structured Query Language): Abfragesprache für relationale
+Datenbanken.</li>
+<li>WebDAV (Web Distributed Authoring and Versioning): Die
+Weiterentwicklung des HTTP 1.1. Protokoll, das benutzt wird, um
+Webseiten abzufragen. WebDAV erweitert HTTP 1.1. um Funktionen der
+Dokument- und Versionsverwaltung.</li>
+<li>WAP (Wireless Application Protocol): Ein Protokoll um die
+Übertragung von WML-Inhalten an mobile Endgeräte zu ermöglichen. WAP ist
+vergleichbar mit HTTP, aber binär.</li>
+<li>WML (Wireless Markup Language): Eine Untermenge von XML, die das
+Erstellen von Inhalt für mobile Endgeräte ermöglicht.</li>
+<li>XML (Extensible Markup Language): Meta-Beschreibungssprache, über
+die eigene Tags definiert werden können. XML wurde 1998 durch das W3C
+standardisiert.</li>
+<li>XSL (Extensible Stylesheet Language): Hierüber werden XML Dokumente
+ausgegeben und angezeigt.</li>
+</ul>
+</body>
+</html>

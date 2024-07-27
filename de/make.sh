@@ -7,8 +7,8 @@ chapters="./src/index.md"
 
 # Delete Old Versions
 #echo Deleting old versions ...
-#rm -rf $filename.*
-#rm -rf ../docs/de/*
+rm -rf $filename.*
+rm -rf ../docs/de/*
 #rm -ff ../docs/de-slides/index.html
 
 # Create Web Version (mkdocs)
@@ -16,12 +16,12 @@ echo Creating Web Version ...
 mkdocs build
 
 # Create Microsoft Word Version (docx)
-# echo Creating Word version ...
-# pandoc metadata.yaml -s --resource-path="./src" -F mermaid-filter -N --toc -V lang=de-de -o $filename.docx $chapters
+echo Creating Word version ...
+pandoc metadata.yaml -s --resource-path="./src" -N --toc -V lang=de-de -o $filename.docx $chapters
 
 # Create HTML Version (html)
-# echo Creating HTML version ...
-# pandoc metadata.yaml -s --resource-path="./src" -F mermaid-filter -N --toc -V lang=de-de -o $filename.html $chapters
+echo Creating HTML version ...
+pandoc metadata.yaml -s --resource-path="./src" -N --toc -V lang=de-de -o $filename.html $chapters
 
 # Create PDF Version (pdf)
 echo Creating PDF version ...
