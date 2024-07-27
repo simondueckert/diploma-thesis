@@ -1,26 +1,7 @@
-# Executive Summary (Kurzfassung) {-}
-This document is written in german. It deals with the topic of knowledge management mainly from a technical and very pragmatic point of view.
-
-For the scope of this document knowledge management describes every kind of effort which provides the employees with the knowledge they need to do their work with a maximum of efficiency.
-
-The aim was to develop a platform capable of supporting knowledge management methods. The work was done in the Fraunhofer Institut for Integrated Circuits (https://www.iis.fhg.de) in Tennenlohe/Germany which is called IIS in the following.
-
-After analysing the current situation and the available knowledge sources at the IIS several possibilities for the system were taken into consideration. Apart from the possibilities of using a commercial or an open-source system the strategy was focussed to build a new system from scratch to perfectly suit the needs of the IIS.
-
-A system was setup with the following components: webserver (apache), java servlet engine (jserv), XML-rendering engine (cocoon) and relational database management system (mysql). The framework was programmed in PHP3. The problem with this approach was that too much time had to be used for developping the platform. This amount of time cannot be spent anymore to implement knowledge management methods.
-
-For this reason the decision was taken to stop the development of the platform and choose an available product to implement the methods. The open source application server ZOPE was chosen because of its object oriented features and its support for a vast amount of standards (e.g. SQL, LDAP, FTP, HTTP, WebDAV, SOAP, XML, XML-RPC, RSS).
-
-The open architecture and availability of lots of third party extensions for ZOPE was identified as a major advantage in comparison to commercial products like Lotus Notes or Microsoft Exchange. The learning curve to implement applications in ZOPE is for an experienced HTML-programmer not as steep as that one of commercial systems.
-
-At the end of the work a fully operative prototype was available which can be used to introduce knowledge management methods. It is very important to mention that this project should not be thought of as finished but as work in progress. With the existing platform one can start to develop further methods and strategies.
-
-All the applications used in this concept are open source or freely available. Therefore the system described in this document can also be implemented by smaller companies not willing to spend large amounts of money for a commercial system.
-
 # Kurzfassung {-}
 Die vorliegende Arbeit beschäftigt sich mit dem Thema Wissensmanagement aus technischer und sehr pragmatischer Sicht. Im Rahmen dieser Arbeit umfasst Wissensmanagement alle Anstrengungen, die unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu sein.
 
-Das Ziel war, eine Plattform zu entwickeln, die im Fraunhofer Institut für Integrierte Schaltungen, im Folgenden IIS genannt, die Funktion eines Wissensmanagementsystems übernehmen kann. Nach Analyse der Ausgangssituation und der vorhandenen Wissensquellen musste zwischen der Implementierung auf einem kommerziellen System, auf einem Open-Source-System oder der Entwicklung einer neuen Plattform entschieden werden.
+Das Ziel war, eine Plattform zu entwickeln, die im [Fraunhofer Institut für Integrierte Schaltungen](https://www.iis.fraunhofer.de), im Folgenden IIS genannt, die Funktion eines Wissensmanagementsystems übernehmen kann. Nach Analyse der Ausgangssituation und der vorhandenen Wissensquellen musste zwischen der Implementierung auf einem kommerziellen System, auf einem Open-Source-System oder der Entwicklung einer neuen Plattform entschieden werden.
 
 Zunächst wurde die Eigenentwicklung fokussiert. Basierend auf dem Webserver Apache, der Skriptsprache PHP3, der Servletengine Jserv, der XML-Render-Engine Cocoon und der relationalen Datenbank mySQL wurde ein Prototyp erstellt. Es wurde erkannt, dass zu viel Zeit in die Entwicklung der Plattform investiert werden musste, die dann bei der Konzeption der Wissensmanagement-Methoden fehlte.
 
@@ -41,7 +22,7 @@ Neben meinen Betreuern, **Prof. Dr. Heinz Gerhäuser**, **Dr. Hartmut Hess**, **
 Des weiteren gilt mein Dank **Christian Forster**, der mir in Sicherheits- und LDAP-Fragen immer hilfreich zur Seite stand.
 
 ## Das Fraunhofer Institut für Integrierte Schaltungen {-}
-Diese Arbeit wurde im Fraunhofer Institut für Integrierte Schaltungen (http://www.iis.fhg.de) (IIS) in Erlangen/Tennenlohe durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
+Diese Arbeit wurde im Fraunhofer Institut für Integrierte Schaltungen (IIS) in Erlangen/Tennenlohe durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
 
 Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "http://www-local"beginnen.
 
@@ -50,7 +31,7 @@ Bei der Evaluierung verschiedener Softwareprodukte für die Erstellung dieses Do
 
 Den Gedanken, Microsoft Word als Textprozessor zu verwenden habe ich relativ schnell wieder verworfen, da das Verwalten von großen Dokumenten schwierig ist und auch die Dateigröße stark in das Verhalten von Word einfließt (Dateien mit vielen Grafiken sind sehr schwer zu handhaben).
 
-Ein weiterer Punkt, der gegen die Verwendung von Microsoft Word sprach war das proprietäre Dateiformat, das für die Speicherung verwendet wird. Zugriff auf das Format mit anderen Werkzeugen (zum Beispiel durch das Versionskontrollsystem CVS (http://www.wincvs.org)) ist somit nur bedingt möglich.
+Ein weiterer Punkt, der gegen die Verwendung von Microsoft Word sprach war das proprietäre Dateiformat, das für die Speicherung verwendet wird. Zugriff auf das Format mit anderen Werkzeugen (zum Beispiel durch das Versionskontrollsystem [CVS](https://de.wikipedia.org/wiki/Concurrent_Versions_System) ist somit nur bedingt möglich.
 
 Das frei verfügbare Produkt LaTeX kannte ich bereits aus meiner Studienarbeit. Obwohl die Einarbeitung etwas mühselig ist, da es sich hierbei nicht um einen WYSIWYG-Prozessor ("What You See Is What You Get") handelt, steht mit LaTeX ein sehr robustes und zuverlässiges Werkzeug zur Verfügung. Besonders komfortabel lassen sich mit LaTeX wissenschaftliche Dokumente verfassen, weil es hervorragende Formelfunktionen bietet.
 
@@ -58,21 +39,21 @@ Da XML in meiner Diplomarbeit eine große Rolle spielen sollte, lag die Entschei
 
 Die Energie, die ich in die Konfiguration eines solchen Dokumentationssystems gesteckt habe (siehe Abbildung 1), möchte ich in einer kurzen Zusammenfassung bündeln.
 
-Um in XML Dokumente erstellen zu können, wird eine Vorlage benötigt, die festlegt, welche Elemente (Tags) in dem Dokument erlaubt sind. Eine solche DTD ist Docbook (http://www.docbook.org). Sie eignet sich sehr gut zum Verfassen von technischen Dokumentationen. Formeln werden bis jetzt nicht unterstützt, sind aber mit MathML in der Vorbereitung.
+Um in XML Dokumente erstellen zu können, wird eine Vorlage benötigt, die festlegt, welche Elemente (Tags) in dem Dokument erlaubt sind. Eine solche DTD ist [Docbook](https://docbook.org/). Sie eignet sich sehr gut zum Verfassen von technischen Dokumentationen. Formeln werden bis jetzt nicht unterstützt, sind aber mit MathML in der Vorbereitung.
 
-In meiner Arbeit kam die Version 3.1 der Docbook DTD (in der SGML-Version) zum Einsatz. Norman Walsh (mailto:ndw@nwalsh.com) hat aus der SGML-Version eine XML-Version (http://www.nwalsh.com/docbook/xml/index.html) abgeleitet.
+In meiner Arbeit kam die Version 3.1 der Docbook DTD (in der SGML-Version) zum Einsatz. [Norman Walsh](https://nwalsh.com/people/ndw/) hat aus der SGML-Version eine XML-Version abgeleitet.
 
 Um aus einem gültigen XML Dokument ein anderes Format zu erzeugen, werden sogenannte Stylesheets benötigt. Diese können XML beispielsweise in HTML, PDF, TeX, etc. umwandeln. Allerdings gibt es verschiedene Stylesheetformate, die sich in unterschiedlichen Standardisierungszuständen befinden.
 
-Bei diesem Dokument habe ich mich für DSSSL und gegen XSL Stylesheets entschieden, da diese in der Standardisierung fortgeschrittener waren. Für die Docbook DTD gibt es sowohl DSSSL- (http://www.nwalsh.com/docbook/dsssl/index.html) als auch XSL-Stylesheets (http://www.nwalsh.com/docbook/xsl/index.html).
+Bei diesem Dokument habe ich mich für DSSSL und gegen XSL Stylesheets entschieden, da diese in der Standardisierung fortgeschrittener waren. Für die Docbook DTD gibt es sowohl [DSSSL-Stylesheets](https://github.com/docbook/dsssl) als auch [XSL-Stylesheets](https://nwalsh.com/docs/articles/dbdesign).
 
 Der Prozessor hat die Aufgabe, aus einem XML Dokument unter Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum BeispielHTML) zu erzeugen. Der zu verwendende Prozessor hängt von der Wahl des Stylesheets ab.
 
-Kommt DSSSL zum Einsatz, so kann Jade (http://www.jclark.com/jade/) von James Clark (mailto:jjc@jclark.com) als Prozessor verwendet werden, bei XSL stellt die Kombination aus XT/XP (http://www.jclark.com/xml/) (ebenfalls von James Clark (mailto:jjc@jclark.com)) eine Alternative dar.
+Kommt DSSSL zum Einsatz, so kann [Jade](http://www.jclark.com/jade/) von James Clark (mailto:jjc@jclark.com) als Prozessor verwendet werden, bei XSL stellt die Kombination aus [XT/XP](http://www.jclark.com/xml) (ebenfalls von James Clark) eine Alternative dar.
 
-Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe ich mich für den Editor Emacs entschieden, den es auch in einer Version für Windows (http://www.cs.washington.edu/homes/voelker/ntemacs.html) gibt.
+Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe ich mich für den Editor [Emacs](https://de.wikipedia.org/wiki/Emacs) entschieden, den es auch in einer Version für Windows gibt.
 
-**TIPP:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial how to set up a free SGML editing and publishing system for Windows NT (http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
+**TIPP:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial [how to set up a free SGML editing and publishing system for Windows NT](https://web.archive.org/web/20040202052857/http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
 
 ![Dokumentationssystem - Überblick](./img/dokumentationssystem-ueberblick.png)
 
@@ -129,7 +110,7 @@ Thematisiert wird sowohl die Frage nach der **technischen Plattform**, auf der d
 ### Wissensmanagementsystem
 Viele Anbieter vertreiben Produkte unter dem Schlagwort Wissensmanagement, die es auch schon vor der "Wissensmanagementwelle"gab. Dazu gehören insbesondere Dokumentenmanagementsysteme, Groupware/Kollaborationssysteme, Suchmaschinen, Workflow- und Intranetsysteme.
 
-Den Grund hierfür liefert eine Studie des Marktforschungsinstituts IDC (https://www.idc.com) vom September 1999. Dieser Studie zufolge wird der **Markt für Wissensmanagementsoftware** jährlich um **40-50% wachsen** und im Jahr **2003** ein Volumen von **2 Milliarden US$** erreichen. Aus diesem Grund ist es wichtig, dass die am Markt befindlichen Systeme einer kritischen Evaluierung unterzogen werden.
+Den Grund hierfür liefert eine Studie des Marktforschungsinstituts [IDC](https://www.idc.com) vom September 1999. Dieser Studie zufolge wird der **Markt für Wissensmanagementsoftware** jährlich um **40-50% wachsen** und im Jahr **2003** ein Volumen von **2 Milliarden US$** erreichen. Aus diesem Grund ist es wichtig, dass die am Markt befindlichen Systeme einer kritischen Evaluierung unterzogen werden.
 
 Um ein Wissensmanagementsystem zu implementieren, muss ermittelt werden, welche Werkzeuge das Unternehmen benötigt. Diese Werkzeuge werden dann durch eine geeignete Kombination von Produkten zur Verfügung gestellt. Die Interoperation der Einzelprodukte durch ein standardisiertes Austauschformat (zum Beispiel XML) muss gewährleistet sein. Einen ähnlichen Ansatz beschreibt [ver99].
 
@@ -142,7 +123,7 @@ Im Folgenden ist unter dem Begriff Wissensmanagementsystem ein Verbund von Werkz
 ## Einordnung dieser Diplomarbeit in einen Gesamtzusammenhang
 Um den Beitrag dieser Diplomarbeit zum Thema Wissensmanagement am Fraunhofer-Institut für Integrierte Schaltungen (IIS) richtig einschätzen zu können, ist es wichtig, den Gesamtzusammenhang, in dem sie steht, zu kennen.
 
-Das Thema Wissensmanagement wurde am IIS zum ersten Mal in einem Projekt mit dem **Institut für Arbeitsorganisation** (IAO (https://www.iao.fraunhofer.de), Stuttgart) aufgebracht. Das IAO hatte von der Fraunhofer-Zentralverwaltung (ZV) in München den Auftrag, herauszufinden, wie man Wissensmanagement an den Instituten der Fraunhofer-Gesellschaft implementieren kann. Zu diesem Zweck sollte in Zusammenarbeit **mit drei Pilotinstituten** aus dem Fraunhofer-Verbund-Mikroelektronik ein **generischer Leitfaden** erstellt werden, der anderen Instituten bei der Einführung von Wissensmanagement eine Anleitung geben sollte.
+Das Thema Wissensmanagement wurde am IIS zum ersten Mal in einem Projekt mit dem [Fraunhofer Institut für Arbeitsorganisation](https://www.iao.fraunhofer.de) (IAO, Stuttgart) aufgebracht. Das IAO hatte von der Fraunhofer-Zentralverwaltung (ZV) in München den Auftrag, herauszufinden, wie man Wissensmanagement an den Instituten der Fraunhofer-Gesellschaft implementieren kann. Zu diesem Zweck sollte in Zusammenarbeit **mit drei Pilotinstituten** aus dem Fraunhofer-Verbund-Mikroelektronik ein **generischer Leitfaden** erstellt werden, der anderen Instituten bei der Einführung von Wissensmanagement eine Anleitung geben sollte.
 
 Bei der Realisierung dieses Projekts wurden an den Pilotinstituten durch das IAO **Sensibilisierungsworkshops** durchgeführt, die die Institutsleitungen und die Mitarbeiter in die Thematik einführen und den Bedarf an den einzelnen Instituten erfassen sollten. Parallel dazu wurde ein **Prototyp auf Basis von Lotus Notes** R5 entwickelt, der die erarbeiteten Methoden unterstützen sollte. Aufbauend auf diesem Prototypen, zusammen mit dem generischen Leitfaden, sollten die Institute in der Lage sein, Wissensmanagement zu implementieren.
 
@@ -255,7 +236,7 @@ Die **Dokumentenablage** ist **nicht genormt** oder vorgeschrieben. Das führt d
 
 **Fazit:** Ein Dokumentenmanagementsystem kann die Grenzen von Plattformen durchbrechen und den Dokumentenbestand transparent und nutzbar machen. Parallel zu einem solchen System müssen Regeln eingeführt werden, wie Dokumente einzustellen und welche Metainformationen (zum Beispiel Abstract) anzugeben sind.
 
-**Notiz:** Dokumentenmanagement ist sehr umfassend und deswegen bei dem hier konzipierten System nicht berücksichtigt worden. Aus der Vielzahl der verfügbaren Produkte sollte eines ausgewählt werden, das sich problemlos in andere Anwendungen integrieren lässt. Weitere Informationen zur Vorgehensweise finden sich im Internet (http://idm.inter net.com/features/docmgmt9b-1.shtml).
+**Notiz:** Dokumentenmanagement ist sehr umfassend und deswegen bei dem hier konzipierten System nicht berücksichtigt worden. Aus der Vielzahl der verfügbaren Produkte sollte eines ausgewählt werden, das sich problemlos in andere Anwendungen integrieren lässt. Weitere Informationen zur Vorgehensweise finden sich [im Intranet Design Magazine](https://web.archive.org/web/20001205030600/http://idm.internet.com/features/docmgmt9b-1.shtml).
 
 #### Newsgruppen, Maillisten und Diskussionsforen
 Von diesen drei Werkzeugen sind am IIS hauptsächlich Maillisten im Einsatz. Da aber alle genannten Werkzeuge sehr mächtig sind, werden sie hier im Einzelnen betrachtet.
@@ -267,16 +248,16 @@ Das Usenet ist relativ unbekannt, obwohl aus diesem großer Nutzen gezogen werde
 - **Weltweite Vernetzung** aller Newsserver, dadurch Zugriff auf große menschliche Ressource
 - **Zugriff** ähnlich **einfach** wie das Verwenden von Email
 - Durch die weltweite Vernetzung und die **große Nutzerzahl** (cirka 100 Millionen) sehr kurze Antwortzeiten
-- Durchsuchen aller bisher gestellten Fragen möglich, über **Archiv-Dienste** wie beispielsweise Dejanews (http://www.deja.com/usenet)
+- Durchsuchen aller bisher gestellten Fragen möglich, über **Archiv-Dienste** wie beispielsweise [Dejanews](https://de.wikipedia.org/wiki/Deja_News)
 
 Die Hierarchie der Newsgruppen ist für den Einsteiger unübersichtlich, da es eine **themenorientierte Hierarchie** gibt (zum Beispiel comp.*für Computer-Themen), aber auch eine **geographische** (zum Beispiel "de.*für deutsche Newsgruppen).
 
-**Tipp:** Nahezu jeder Mitarbeiter am IIS ist mit allem ausgestattet um das Usenet zu nutzen. Sowohl der Netscape Navigator als auch Outlook Express können mit Newsservern kommunizieren. Der IIS-Newsserver heisst news.iis (bereits voreingestellt in Netscape) und antwortet auf dem Port 119. Wer die Hierarchie der Newsgruppen unübersichtlich findet, kann bei W3C (http://www.w3.org/History/19921103-hypertext/DataSources/News/Groups/Overview.html) eine Übersicht finden.
+**Tipp:** Nahezu jeder Mitarbeiter am IIS ist mit allem ausgestattet um das Usenet zu nutzen. Sowohl der Netscape Navigator als auch Outlook Express können mit Newsservern kommunizieren. Der IIS-Newsserver heisst news.iis (bereits voreingestellt in Netscape) und antwortet auf dem Port 119. Wer die Hierarchie der Newsgruppen unübersichtlich findet, kann bei W3C (URL nicht mehr funktionsfähig) eine Übersicht finden.
 
 **Tipp:** Zu den meisten Softwarepaketen gibt es eigene Newsgruppen, so auch für das CAD-Paket Cadence (news://comp.cad.cadence).
 
 ##### Maillisten
-Wie erwähnt, werden Maillisten am IIS seit einiger Zeit verwendet (Eine Übersicht der existierenden Gruppen findet sich im Intranet (http://www-local/private/sysadmin/mail/listen.html)). Als **Listserver** ist das Paket **Majordomo** (htp://www.greatcircle.com/majordomo) im Einsatz.
+Wie erwähnt, werden Maillisten am IIS seit einiger Zeit verwendet (Eine Übersicht der existierenden Gruppen findet sich im Intranet (http://www-local/private/sysadmin/mail/listen.html)). Als **Listserver** ist das Paket [Majordomo](https://de.wikipedia.org/wiki/Majordomo) im Einsatz.
 
 Die Funktion eines solchen Listservers ist einfach. Jede existierende Liste hat eine Mailadresse (zum Beispiel iis-all@iis (mailto:iis-all@iis.fhg.de)) und eine Anzahl an Mitgliedern. Jede an die Adresse einer Liste geschrieben Mail wird an alle Mitglieder der Liste per Mail weitergeleitet. Daraus ergeben sich gegenüber Onlinediskussionsforen signifikante Nachteile.
 
@@ -322,7 +303,7 @@ In vielen Fällen ist es sinnvoll, für bestimmte Funktionen Bibliotheken mit **
 
 Sehr wichtig, um den Verlauf eines Softwareprojekts verfolgen zu können, ist die Versionskontrolle. Diese stellt sicher, dass zu jedem Zeitpunkt des Projekts Zugriff auf ältere Versionen gewährleistet ist und deren Funktionalität mit den neuen Versionen verglichen werden kann.
 
-**Tipp:** Ein sehr bewährtes Versionskontrollsystem ist CVS. Für dieses System stehen auch auf der Windowsplattform komfortable Werkzeuge wie WinCVS (http://www.wincvs.org) zur Verfügung. Um CVS-Funktionalität auch über das Web bereitzustellen, kann CVSWeb (http://www.freebsd.org/~fenner/cvsweb) verwendet werden.
+**Tipp:** Ein sehr bewährtes Versionskontrollsystem ist CVS. Für dieses System stehen auch auf der Windowsplattform komfortable Werkzeuge wie WinCVS zur Verfügung. Um CVS-Funktionalität auch über das Web bereitzustellen, kann [CVSWeb](https://people.freebsd.org/~fenner/cvsweb/) verwendet werden.
 
 **Tipp:** Mit CVS können nicht nur Softwarecodes verwaltet werden, sondern alle Arten von Projekten, die mit ASCII-Dateien arbeiten. Diese in XML verfasste Diplomarbeit wurde mit CVS verwaltet.
 
@@ -352,7 +333,7 @@ Wenn am Ende eines jeden Projektes eine Projektnachbereitung eingeführt wird, k
 #### Handlungsmuster
 Unter Handlungsmustern sind Prozesse zu verstehen, die in einem Menschen automatisch ablaufen, da er sie oft durchlaufen hat. Ein Beispiel für ein solches Handlungsmuster ist die Vorgehensweise bei der Recherche im Internet.
 
-In den meisten Fällen verwenden Personen die Suchmaschine, die sie seit Beginn ihrer Internetaktivitäten verwendet haben. Die Tatsache, dass andere Suchstrategien, wie sie beispielsweise in der Suchfibel (http://www.suchfibel.de) beschrieben werden, wesentlich effizienter sind, ist ihnen nicht bekannt. Der Punkt, an dem im Internet gesucht werden muss, hängt stark von der Art des Gesuchten ab. So gibt es neben den Suchmaschinen auch Kataloge, Mailarchive, Datenbanken, etc.
+In den meisten Fällen verwenden Personen die Suchmaschine, die sie seit Beginn ihrer Internetaktivitäten verwendet haben. Die Tatsache, dass andere Suchstrategien, wie sie beispielsweise in der [Suchfibel](http://www.suchfibel.de) beschrieben werden, wesentlich effizienter sind, ist ihnen nicht bekannt. Der Punkt, an dem im Internet gesucht werden muss, hängt stark von der Art des Gesuchten ab. So gibt es neben den Suchmaschinen auch Kataloge, Mailarchive, Datenbanken, etc.
 
 Weitere Handlungsmuster sind zum Beispiel die Dokumentenablage und die Organisation des Alltags (Zeitmanagement).
 
@@ -360,7 +341,7 @@ Wissensmanagement hat damit zu tun, bestehende Prozesse zu analysieren, Wissen �
 
 Eine wichtige Voraussetzung hierfür ist, den betroffenen Personen ihre Handlungsmuster bewusst zu machen und sie durch Verbesserungsvorschläge für einen **ständigen Verbesserungsprozess** zu sensibilisieren.
 
-**Tipp:** Eine wichtige Methode in diesem Zusammenhang ist Kaizen. Unter Kaizen ist die kontinuierliche Verbesserung aller Prozesse zu verstehen, die in einer Firma oder im privaten Leben durchlaufen werden. Kaizen kommt ursprünglich von einem Japaner, der die Verbesserungsprozesse in der japanischen Wirtschaft beschreibt. Er definiert Kaizen wie folgt: "KAIZEN means improvement. Moreover, KAIZEN means continuing improvement in personal life, home life, social life, and working life. When applied to the workplace KAIZEN means continuing improvement involving everyone - managers and workers alike." Nähere Informationen zu Kaizen können beim Kaizen Institut (http://www.kaizen-institute.com/kzn.htm) abgefragt werden.
+**Tipp:** Eine wichtige Methode in diesem Zusammenhang ist Kaizen. Unter Kaizen ist die kontinuierliche Verbesserung aller Prozesse zu verstehen, die in einer Firma oder im privaten Leben durchlaufen werden. Kaizen kommt ursprünglich von einem Japaner, der die Verbesserungsprozesse in der japanischen Wirtschaft beschreibt. Er definiert Kaizen wie folgt: "KAIZEN means improvement. Moreover, KAIZEN means continuing improvement in personal life, home life, social life, and working life. When applied to the workplace KAIZEN means continuing improvement involving everyone - managers and workers alike." Nähere Informationen zu Kaizen können beim [Kaizen Institut](https://kaizen.com) abgefragt werden.
 
 #### Kontexte
 Wie bereits erwähnt, sind Kontexte außerordentlich wichtig, um einzelne Wissenselemente in einen leicht erfassbaren Zusammenhang zu bringen. Die Frage ist, wie die Fülle an Einzelelementen zu einer Wissenslandkarte zusammengestellt werden können. In einer solchen Landkarte müssen alle Arten von Elementen zu beliebig vielen anderen in unterschiedliche Beziehungen gebracht werden.
@@ -369,7 +350,7 @@ Die größte Problematik ist die Heterogenität der Elemente. Es geht an dieser 
 
 Metadaten erfassen beispielsweise, dass ein Dokument von einem bestimmten Autor stammt und zu einem bestimmten Projekt gehört. Es kann dann nach weiteren Dokumenten des gleichen Autors oder nach ähnlichen Projekten gesucht werden. Die Schwierigkeit, die sich ergibt, ist die Definition der zu erfassenden Metadaten. Drei technische Ansätze sind besonders erfolgsversprechend.
 
-Das **Ressource Description Framework RDF** ist ein vom W3C empfohlener Standard, um oben genannte Elemente zu beschreiben. Es **basiert auf** dem Standard **XML** und stellt eine Metasprache dar, mit der Ressourcen beschrieben werden können. Weitere Informationen gibt es bei der Standardisierungsinstanz W3.org (http://www.w3.org/RDF/).
+Das **Ressource Description Framework RDF** ist ein vom W3C empfohlener Standard, um oben genannte Elemente zu beschreiben. Es **basiert auf** dem Standard **XML** und stellt eine Metasprache dar, mit der Ressourcen beschrieben werden können. Weitere Informationen gibt es [bei der Standardisierungsinstanz W3.org](https://www.w3.org/RDF).
 
 **Topic Maps** stellt einen Standard zum Definieren von Wissenslandkarten dar, der mittlerweile ISO-genormt ([iso13250]) ist. Er bietet die Möglichkeit, alle genannten Elemente zueinander in Beziehung zu stellen und damit navigierbar zu machen. Wie auch RDF **basiert** Topic Maps auf **XML**.
 
@@ -506,7 +487,7 @@ Das Fehlen einer solchen Struktur führt im IIS beispielsweise dazu, dass vielen
 
 Die Frage nach einem geeigneten Weg, jedes einzelne Wissenselement in einen Gesamtkontext einzubetten, wird im Rahmen dieser Diplomarbeit nicht geklärt. Eine solche Vorgehensweise muss für das gesamte IIS festgelegt werden.
 
-Auf der einen Seite kann die Vergabe von **Kategorien** und **Schlagwörtern** vorgeschrieben werden. Dies bedingt ein **hierarchisches Glossar**, das jedes beliebige Thema erfassen kann. Ein solches Glossar stellt beispielsweise die **Dezimalklassifikation** Dewey (http://www.oclc.org/oclc/fp/) dar. Gerade bei fachspezifischen Themen geht allerdings auch diese Klassifikation nicht ausreichend in die Tiefe.
+Auf der einen Seite kann die Vergabe von **Kategorien** und **Schlagwörtern** vorgeschrieben werden. Dies bedingt ein **hierarchisches Glossar**, das jedes beliebige Thema erfassen kann. Ein solches Glossar stellt beispielsweise die **Dezimalklassifikation** [Dewey]](https://www.oclc.org/en/dewey.html) dar. Gerade bei fachspezifischen Themen geht allerdings auch diese Klassifikation nicht ausreichend in die Tiefe.
 
 Die zweite Möglichkeit besteht darin, die **Verschlagwortung dem Nutzer** zu **überlassen**, was zur Folge haben kann, dass einzelne Dokumente nicht an allen Stellen auftauchen, an denen sie relevant sind.
 
@@ -630,8 +611,8 @@ Um das Outlook/Exchange System zu erweitern sind **weniger Programmierkenntnisse
 **Fazit:** Die Kombination aus Outlook und Exchange ist sehr gut geeignet, um den Kommunikationsteil eines Wissensmanagementsystems am IIS zu realisieren. Die intuitive Benutzung, die Verfügbarkeit auf Windows und Mac und die gute Integration des Microsoft Office machen es der Notes Lösung überlegen. Zu beachten ist aber auch der psychologische Aspekt. Lotus Notes ist bereits gekauft worden und wird an einigen Stellen auch verwendet. Eine mögliche Umstellung auf Outlook/Exchange wird deswegen sicherlich Reibungspunkte mit sich bringen. Die Entscheidung muss auf alle Fälle basierend auf fundierten Erkenntnissen getroffen werden.
 
 ### Open Source/Freie Systeme
-#### TWIG (http://twig.screwdriver.net) - The Web Integration Gateway
-Die beste Umschreibung für die Funktionen von Twig ist Mini-Groupware. Die Funktionen von Twig sind hauptsächlich im Kommunikationsbereich angesiedelt. Mit den im Folgenden beschriebenen Funktionen eignet es sich eher als **kleines Internetportal** als für ein Wissensmanagementsystem.
+#### TWIG - The Web Integration Gateway
+Die beste Umschreibung für die Funktionen von [Twig](https://web.archive.org/web/20020802144703/http://twig.screwdriver.net/about.php3) ist Mini-Groupware. Die Funktionen von Twig sind hauptsächlich im Kommunikationsbereich angesiedelt. Mit den im Folgenden beschriebenen Funktionen eignet es sich eher als **kleines Internetportal** als für ein Wissensmanagementsystem.
 
 - Email (über IMAP)
 - Kontakte (in Form eines Adressbuchs)
@@ -642,20 +623,20 @@ Die beste Umschreibung für die Funktionen von Twig ist Mini-Groupware. Die Funk
 
 Als Wissensmanagementplattform für das IIS eignet sich TWIG nicht, da es über seine Funktionen hinaus nur **schwer erweiterbar** ist. Es fehlen beispielsweise wichtige Funktionen wie die Datenbankunterstützung. Da Twig komplett **in PHP3 geschrieben** ist, könnten diese Funktionen nachgerüstet werden, was allerdings sehr arbeitsintensiv ist.
 
-#### ZOPE (http://www.zope.org) - Z Object Publishing Environment
-ZOPE eignet sich mit seinem offenen, **objektorientierten Ansatz** und seiner **einfachen Bedienbarkeit** hervorragend als Plattform für das IIS. Die Eigenschaften dieses **Application Server** sollen im Folgenden näher beleuchtet werden.
+#### ZOPE - Z Object Publishing Environment
+[ZOPE](https://www.zope.dev) eignet sich mit seinem offenen, **objektorientierten Ansatz** und seiner **einfachen Bedienbarkeit** hervorragend als Plattform für das IIS. Die Eigenschaften dieses **Application Server** sollen im Folgenden näher beleuchtet werden.
 
 Ein auf ZOPE basierendes System ist **vollständig webbasiert**. Das bedeutet, dass sowohl der Benutzer, der Administrator, als auch der Entwickler mit einem normalen Webbrowser auskommen. Die Installation von speziellen Clients ist (im Gegensatz zu Lotus Notes) nicht nötig und erspart viel Zeit.
 
 Das System ZOPE kann sehr komfortabel durch sogenannte **Produkte** über den Standardumfang hinaus erweitert werden. Im Standardumfang sind oft benötigte Elemente wie Folder, Dateien, DTML-Methoden, Bilder und Indizierfunktionen enthalten.
 
-Es gibt Produkte, mit denen man **Verbindungen zu Datenbanken** herstellen, **Umfragen** erstellen und **lokale Filesysteme einbinden** kann. Zum Zeitpunkt dieser Arbeit waren bei ZOPE (http://www.zope.org/download) **über 110** verschiedene **Produkte verfügbar**.
+Es gibt Produkte, mit denen man **Verbindungen zu Datenbanken** herstellen, **Umfragen** erstellen und **lokale Filesysteme einbinden** kann. Zum Zeitpunkt dieser Arbeit waren bei ZOPE **über 110** verschiedene **Produkte verfügbar**.
 
 ZOPE unterstützt alle im Konzept geforderten Standards und darüber hinaus noch einige mehr (**HTML 4, CSS, HTTP 1.1, FastCGI, FTP, WebDAV, DOM, XML, XML-RPC, SQL, RSS, LDAP**). Besonders durch die Verwendung der Standards HTTP/WebDAV ist eine Integration in die Microsoft Office Produktpalette sehr einfach möglich.
 
 In ZOPE können logische Funktionen durch das, von XML abgeleitete, Derivat **DTML** (Document Type Markup Language) realisiert werden. Bevor ZOPE eine Seite an einen Client überträgt, prüft es diese auf vorhandene DTML-Tags, wertet diese aus und sendet das Ergebnis an den Client. Diese Vorgehensweise ist ähnlich wie bei PHP.
 
-In DTML existieren Befehle für die meisten benötigten Funktionen. Dazu gehören unter anderem Datenbankabfragen, der Versand von Emails und die Deklaration von Variablen. Obwohl das System ZOPE in Python (http://www.python.org) programmiert ist, wird der normale Entwickler im Normalfall nicht mit dieser Programmiersprache konfrontiert und kann seine Applikation vollständig in DTML implementieren.
+In DTML existieren Befehle für die meisten benötigten Funktionen. Dazu gehören unter anderem Datenbankabfragen, der Versand von Emails und die Deklaration von Variablen. Obwohl das System ZOPE in [Python](https://www.python.org/) programmiert ist, wird der normale Entwickler im Normalfall nicht mit dieser Programmiersprache konfrontiert und kann seine Applikation vollständig in DTML implementieren.
 
 Mit **XML Document** steht ein Produkt zur Verfügung, mit dem XML-Inhalte in das System integriert werden können. XML Document repräsentiert ein Dokument in der standardisierten **DOM API**. Über diese API können Elemente des Dokuments abgefragt, eingefügt oder verändert werden. Produkte, die ein XML Dokument in eine darstellbare Form (zum Beispiel HTML) umwandeln, stehen ebenfalls bereit.
 
@@ -683,8 +664,8 @@ Besitzt eine Person auf einer Ebene Managerrecht, so kann diese Person die Benut
 
 Diese Funktion bietet sich an, wenn Personen, wie zum Beispiel Studienarbeiter, in der globalen Nutzerverwaltung noch nicht enthalten sind, aber dennoch Zugang zu einem Bereich des Systems bekommen sollen.
 
-#### Jetspeed (http://java.apache.org/jetspeed)
-Das Projekt Jetspeed beschreibt sich selbst als Enterprise Information Portal und Webbased Groupware. Die Projektwebseite lässt darauf schließen, dass es sich um einen sehr vielversprechenden Ansatz handelt. Leider wurde eine sinnvoll nutzbare Version erst am 21.03.2000 veröffentlicht, was eine Verifizierung leider nicht mehr möglich gemacht hat.
+#### Jetspeed
+Das Projekt [Jetspeed](https://portals.apache.org/jetspeed-2) beschreibt sich selbst als Enterprise Information Portal und Webbased Groupware. Die Projektwebseite lässt darauf schließen, dass es sich um einen sehr vielversprechenden Ansatz handelt. Leider wurde eine sinnvoll nutzbare Version erst am 21.03.2000 veröffentlicht, was eine Verifizierung leider nicht mehr möglich gemacht hat.
 
 Interessant an Jetspeed ist, dass es sich um ein Projekt der sehr engagierten Apache Group, die auch den Webserver Apache entwickelt, handelt. Da auch Projekte wie JServ (Java Servlet Engine für Apache) oder Cocoon von dieser Gruppe durchgeführt werden, kann mit sehr großen Synergieeffekten in den Bereichen Java und XML gerechnet werde. Die einzelnen Projekte der Apache Group sind so ausgerichtet, dass die einzelnen Komponenten projektübergreifend eingesetzt werden können. Jetspeed unterstützt nach Aussage der Entwickler bereits viele Standards und Funktionen:
 
@@ -694,25 +675,25 @@ Interessant an Jetspeed ist, dass es sich um ein Projekt der sehr engagierten Ap
 - XML/XSL Inhalt durch Integration von Cocoon
 - XML basierte Konfiguration
 - Plattformunabhängig (einzige Bedingung JDK 1.1 und Servlet 2.0)
-- Synchronisation mit Avantgo (http://www.avantgo.com)
+- Synchronisation mit Avantgo
 
-#### Midgard (http://www.midgard-project.org)
-Von der Beschreibung her ist Midgard ähnlich einzustufen wie ZOPE. Im Gegensatz zu ZOPE ist Midgard allerdings ein **abgeschlossenes System**. Die Unterstützung für weitere externe Pakete fehlt. Außerdem ist die Unterstützung von Datenbanken sehr eingeschränkt, da **nur MySQL unterstützt** wird und auch die **Anbindung an LDAP** zum Autentifizieren **nicht möglich** ist.
+#### Midgard
+Von der Beschreibung her ist [Midgard](http://midgard-project.org) ähnlich einzustufen wie ZOPE. Im Gegensatz zu ZOPE ist Midgard allerdings ein **abgeschlossenes System**. Die Unterstützung für weitere externe Pakete fehlt. Außerdem ist die Unterstützung von Datenbanken sehr eingeschränkt, da **nur MySQL unterstützt** wird und auch die **Anbindung an LDAP** zum Autentifizieren **nicht möglich** ist.
 
 Vom Funktionsumfang ist Midgard, trotz seines Untertitels Application Server Suite, eher in die Kategorie **Publishing-System** einzuordnen. Als Wissensmanagementsystem am IIS kommt Midgard aus den genannten Gründen nicht in Frage.
 
-#### Enhydra (http://www.enhydra.org)
-Enhydra ist ein **Application Server** mit **Java und XML** Unterstützung. Weil die Unterstützung von Enterprise Java Beans und CORBA angestrebt ist, kann sich Enhydra zu einer sehr attraktiven Lösung entwickeln.
+#### Enhydra
+[Enhydra](https://web.archive.org/web/20050501054249/http://www.enhydra.org) ist ein **Application Server** mit **Java und XML** Unterstützung. Weil die Unterstützung von Enterprise Java Beans und CORBA angestrebt ist, kann sich Enhydra zu einer sehr attraktiven Lösung entwickeln.
 
 Als Wissensmanagementsystem kommt Enhydra für das IIS nicht in Frage, da es keine Möglichkeit bietet, vorgefertigte Elemente, wie Diskussionsforen, etc. in das System einzubinden und miteinander zu verknüpfen.
 
-#### OpenCMS (http://www.opencms.com)
-OpenCMS ist wie der Name schon andeutet ein **Content Management System**. Als solches ist es nicht auf Interaktion ausgelegt und deswegen nicht als Wissensmanagementsystem geeignet. In der Sektion "geplante Projekte"befinden sich aber dennoch einige interessante Dinge, wie beispielsweise die Unterstützung von **WML**, **LDAP** und einer **Volltextsuchmaschine**.
+#### OpenCMS
+[OpenCMS](http://www.opencms.org) ist wie der Name schon andeutet ein **Content Management System**. Als solches ist es nicht auf Interaktion ausgelegt und deswegen nicht als Wissensmanagementsystem geeignet. In der Sektion "geplante Projekte"befinden sich aber dennoch einige interessante Dinge, wie beispielsweise die Unterstützung von **WML**, **LDAP** und einer **Volltextsuchmaschine**.
 
 OpenCMS kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.
 
-#### Intalio (http://www.exoffice.com/intalio.xml)
-Trotz Ankündigung für März 2000 war Intalio am 10.04.2000 noch nicht verfügbar. Bei Intalio handelt es sich um einen Applicationserver, der einen sehr **offenen Ansatz** verfolgt.
+#### Intalio
+Trotz Ankündigung für März 2000 war [Intalio](https://web.archive.org/web/20000301151011/http://www.exoffice.com/intalio.xml) am 10.04.2000 noch nicht verfügbar. Bei Intalio handelt es sich um einen Applicationserver, der einen sehr **offenen Ansatz** verfolgt.
 
 - XML
 - CORBA, DCOM
@@ -726,8 +707,8 @@ Die beschriebene Funktionalität ist sehr umfassend. Deswegen sollte die Plattfo
 
 Intalio kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.
 
-#### Locomotive (http://www.locomotive.org)
-Bei Locomotive handelt es sich um einen **Application Server**, der von GNU Entwicklern ins Leben gerufen wurde. Wie auch schon bei Midgard zuvor ist Locomotive nicht darauf ausgelegt, durch externe Module ergänzt zu werden, was bedeutet, dass alle Module selbst programmiert werden müssen.
+#### Locomotive
+Bei Locomotive (locomotive.org, URL funktioniert nicht mehr) handelt es sich um einen **Application Server**, der von GNU Entwicklern ins Leben gerufen wurde. Wie auch schon bei Midgard zuvor ist Locomotive nicht darauf ausgelegt, durch externe Module ergänzt zu werden, was bedeutet, dass alle Module selbst programmiert werden müssen.
 
 Locomotive kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.
 
@@ -851,7 +832,7 @@ Als Diskussionsforum kommt das Produkt **Phorum** (http://www.phorum.org) zum Ei
 Alle **Diskussionsbeiträge** werden in einer **SQL-Datenbank** abgelegt(MySQL oder PostgreSQL). Es besteht die Möglichkeit, sich von Antworten auf eingestellte Beiträge per Mail informieren zu lassen.
 
 #### Newssektion
-(*) Die Newssektion wurde im systemX I nicht realisiert. Es war geplant, das Produkt **PHP3 News Skript** (http://mana.landofhaze.com/downloads/news/) einzusetzen, das auf PHP3 basiert und alle Beiträge in einer MySQL-Datenbank ablegt.
+(*) Die Newssektion wurde im systemX I nicht realisiert. Es war geplant, das Produkt [PHP3 News Skript](https://web.archive.org/web/20000918032114/http://mana.landofhaze.com/downloads/news/) einzusetzen, das auf PHP3 basiert und alle Beiträge in einer MySQL-Datenbank ablegt.
 
 #### Privater Bereich
 (*) Der private Bereich unterscheidet sich vom öffentlichen nur dadurch, dass der Besitzer als Administrator fungiert und somit über die Rechtevergabe entscheiden kann.
@@ -880,9 +861,9 @@ Die Erfassung der Metadaten erfolgt teilweise automatisch und teilweise manuell.
 
 Die Art des Elements kann dadurch bestimmt werden, dass dem Autor verschiedene Vorlagen, zum Beispiel für Berichte, URLs etc., angeboten werden. Weitere Daten, wie beispielsweise Schlagworte, müssen vom Autor gewählt werden.
 
-Die Abfragemöglichkeit der Metadaten wird durch eine **Suchmaschine für externe Daten** ergänzt. Für das System wurde das Produkt **Udmsearch** (http://mysearch.udm.net) ausgewählt. Zur Auswahl stand außerdem das Produkt Harvest der University of Colorado. Im Vergleich ist Udmsearch komfortabler zu bedienen und bietet die Möglichkeit, seine **Daten in** einer **SQL-Datenbank** und nicht in proprietärem Format zu speichern. Udmsearch besteht aus drei Teilen:
+Die Abfragemöglichkeit der Metadaten wird durch eine **Suchmaschine für externe Daten** ergänzt. Für das System wurde das Produkt [Udmsearch](https://web.archive.org/web/20000105124849/http://mysearch.udm.net) ausgewählt. Zur Auswahl stand außerdem das Produkt Harvest der University of Colorado. Im Vergleich ist Udmsearch komfortabler zu bedienen und bietet die Möglichkeit, seine **Daten in** einer **SQL-Datenbank** und nicht in proprietärem Format zu speichern. Udmsearch besteht aus drei Teilen:
 
-Der **Gatherer** (Sammler) **fragt Daten** über das HTTP-, FTP- oder NNTP- Protokoll von anderen Rechnern **ab**. Mit einem Gatherer kann theoretisch das gesamte Internet indiziert und ein Suchdienst, ähnlich wie Google (http://www.google.com), aufgebaut werden.
+Der **Gatherer** (Sammler) **fragt Daten** über das HTTP-, FTP- oder NNTP- Protokoll von anderen Rechnern **ab**. Mit einem Gatherer kann theoretisch das gesamte Internet indiziert und ein Suchdienst, ähnlich wie [Google](https://google.com), aufgebaut werden.
 
 Für die Ergänzung des Metadatenbestands ist es sinnvoll, den Gatherer nur auf bestimmte Bereiche anzusetzen. In dieser Arbeit wurde beispielsweise das IIS-Intranet untersucht, wobei der Gatherer auf ca 16.000 Dokumente gestossen ist, davon cirka 3000 HTML-Dokumente.
 
@@ -895,15 +876,15 @@ Der dritte Bestandteil von Udmsearch ist die **Schnittstelle zum Benutzer**. Da 
 ### Verwendete Softwarepakete
 Dieser Abschnitt soll einen zusammenfassenden Überblick über alle verwendete Softwarepakete und deren Bezugsquellen bieten. Alle hier aufgeführten Pakete sind Open Source oder in der Binärversion frei verfügbar.
 
-1. Apache (http://www.apache.org) dient als HTTP-Server
-2. JServ (http://java.apache.org) ermöglicht den Einsatz von Java Servlets unter Apache
-3. Cocoon (http://java.apache.org) ein Java Servlet, das die Verwendung von XML, XSL, SQL, JDBC und LDAP mit dem Apacheserver ermöglicht
-4. MySQL (http://www.mysql.com) ein Datenbankserver, der sehr große Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren (zum Beispiel ODBC-Treiber (http://www.mysql.com/download_myodbc.html), Webinterface)
-5. phpMyAdmin Weboberfläche für den Datenbankserver MySQL
-6. UDMsearch (http://mysearch.udm.net) ein Indizierer für Webseiten, der seine Metadaten in einer Datenbank ablegt
-7. OpenLDAP (http://www.openldap.org) ein frei verfügbarer LDAP Directory Server
-8. PHP3 (www.php3.net) Sprache zum Erstellen von interaktiven Webseiten. PHP wird als Modul des Apache Webserver eingesetzt und bietet Unterstützung für viele gängige Protokolle (zum Beispiel SQL für alle gängigen Datenbanken, NNTP, POP, IMAP, LDAP, etc.)
-9. Phorum (http://www.phorum.org) Diskussionsforum auf PHP-Basis, das alle Beiträge in einer MySQL Datenbank ablegt
+1. [Apache](https://apache.org/) dient als HTTP-Server
+2. [JServ](https://de.wikipedia.org/wiki/Apache_JServ_Protocol) ermöglicht den Einsatz von Java Servlets unter Apache
+3. [Cocoon](https://cocoon.apache.org) ein Java Servlet, das die Verwendung von XML, XSL, SQL, JDBC und LDAP mit dem Apacheserver ermöglicht
+4. [MySQL](https://www.mysql.com/m) ein Datenbankserver, der sehr große Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren (zum Beispiel [ODBC-Treiber](https://dev.mysql.com/downloads/connector/odbc/), Webinterface)
+5. [phpMyAdmin](https://www.phpmyadmin.net/) als Weboberfläche für den Datenbankserver MySQL
+6. [UDMsearch](https://web.archive.org/web/20000105124849/http://mysearch.udm.net) ein Indizierer für Webseiten, der seine Metadaten in einer Datenbank ablegt
+7. [OpenLDAP](https://www.openldap.org/) ein frei verfügbarer LDAP Directory Server
+8. [PHP3](https://de.wikipedia.org/wiki/PHP#PHP_3) Sprache zum Erstellen von interaktiven Webseiten. PHP wird als Modul des Apache Webserver eingesetzt und bietet Unterstützung für viele gängige Protokolle (zum Beispiel SQL für alle gängigen Datenbanken, NNTP, POP, IMAP, LDAP, etc.)
+9. [Phorum](https://www.phorum.org) Diskussionsforum auf PHP-Basis, das alle Beiträge in einer MySQL Datenbank ablegt
 
 ## systemX II
 ### Überblick
@@ -922,7 +903,7 @@ Die konzipierten Methoden des systemX II unterscheiden sich von denen des system
 Das Diskussionsforum kann in ZOPE mit zwei unterschiedlichen Produkten, **Confera** und **ZDiscussions** realisiert werden. Beide bieten die Möglichkeit von threadbasierten Diskussionen und den Versand von Emails. Im System werden beide Produkte vorhanden sein. **Empfohlen wird ZDiscussions**, da es eine Weiterentwicklung von Confera darstellt und für die in ZOPE integrierte Suchmaschine ZCatalog besseren Zugriff bietet.
 
 #### Newssektion
-Der Bereich für News wird mit dem Produkt **Squishdot** (http://www.squishdot.org) realisiert. Squishdot bietet ähnliche Funktionen wie Slashdot (http://www.slashdot.org) und ist dieser Webseite nachgebildet.
+Der Bereich für News wird mit dem Produkt [Squishdot](https://web.archive.org/web/20000815054006/http://www.squishdot.org/) realisiert. Squishdot bietet ähnliche Funktionen wie [Slashdot](https://slashdot.org/) und ist dieser Webseite nachgebildet.
 
 Für den Einsatz am IIS sind an Squishdot einige Anpassungen vorgenommen worden. So gibt es bestimmte **Kategorien**, die alle durch ein **charakteristisches Symbol** gekennzeichnet sind (zum Beispiel Leitungskreis, Personalentwicklung, etc.). Die Verantwortlichen der entsprechenden Bereiche können in die Newssektion direkt Beiträge einstellen. So ist es dem Sekretariat des Institutsleiters beispielsweise möglich, alle Protokolle der Leitungssitzungen schnell und effizient zu verbreiten.
 
@@ -936,7 +917,7 @@ Standardmäßig ist der private Bereich für alle geöffnet und kann dadurch mit
 #### Zugang über Standardsoftware
 Genau wie im Konzept von systemX I kann das systemX II vollständig mit Webbrowser und **Standardsoftware** bedient werden. Zusätzlich zu der Möglichkeit, Inhalte über HTTP und FTP einzustellen, kann bei ZOPE das **WebDAV**-Protokoll verwendet werden.
 
-WebDAV (http://www.webdav.org) ist eine Erweiterung des Standards HTTP 1.1 und ergänzt diesen um Funktionen für die verteilte Bearbeitung von Dokumenten. Da es sich um einen sehr neuen Standard handelt, gibt es bisher wenig Werkzeuge, die WebDAV bereits unterstützen. Bisher sind das **MS Office 2000**, der **Internet Explorer 5.0/WebFolders** und mehrere kleine Werkzeuge verfügbar.
+[WebDAV](http://www.webdav.org) ist eine Erweiterung des Standards HTTP 1.1 und ergänzt diesen um Funktionen für die verteilte Bearbeitung von Dokumenten. Da es sich um einen sehr neuen Standard handelt, gibt es bisher wenig Werkzeuge, die WebDAV bereits unterstützen. Bisher sind das **MS Office 2000**, der **Internet Explorer 5.0/WebFolders** und mehrere kleine Werkzeuge verfügbar.
 
 Notwendig für die Nutzung der Webfolders ist der Internet Explorer in der Version 5.x. Die Option Webfolders ist in der Standardinstallation nicht enthalten und muss im sogennanten **custom install** ausgewählt werden. Mit WebFolders ist es möglich, den Inhalt des Webservers wie ein normales Dateisystem zu behandeln. So arbeitet der Mitarbeiter mit seinen gewohnten Hilfsmitteln und ist ohne weitere Kenntnisse in der Lage, Inhalte auf dem Server zu administrieren.
 
@@ -957,7 +938,7 @@ Für externe Bereiche, wie zum Beispiel das IIS Intranet, wird wie in systemX I 
 In jeder Ansicht im System befindet sich die Möglichkeit eine Suche zu starten.
 
 ### Verwendete Produkte
-Unter einem **Produkt** ist bei ZOPE zusätzliche Software zu verstehen, die das Gesamtsystem um bestimmte Funktionlität erweitert. Produkte können entweder von der **ZOPE Homepage** (http://www.zope.org/Products) bezogen , oder selber programmiert werden. Die folgende Auflistung gibt eine Übersicht über die in systemX II eingesetzten Produkte (in alphabetischer Reihenfolge).
+Unter einem **Produkt** ist bei ZOPE zusätzliche Software zu verstehen, die das Gesamtsystem um bestimmte Funktionlität erweitert. Produkte können entweder von der **ZOPE Homepage** bezogen , oder selber programmiert werden. Die folgende Auflistung gibt eine Übersicht über die in systemX II eingesetzten Produkte (in alphabetischer Reihenfolge).
 
 - Knowledge Kit
 - LocalFS
@@ -1006,7 +987,7 @@ Sowohl die **Verwaltung** von ausgegebenen Studien- und Diplomarbeitsthemen, als
 
 Anfragen für **Praktika** werden in einer **Access-Datenbank** in der Personalentwicklung erfasst und in Papierform an die Abteilungen verschickt. Eine aktuelle Liste ist im Intranet nicht verfügbar.
 
-Außerdem werden **internationale Anfragen** nach Stellen aller Art **in** der **Seneca-Datenbank** erfasst. Diese Datenbank wird vom Fraunhofer Koordinierungsbüro für Ausbildungspartnerschaften (http://www.iis.fhg.de/kfa/seneca/index.html) betrieben und basiert auf dem DBMS Oracle. Studenten können die Datenbank nutzen, um sich für Praktika zu bewerben.
+Außerdem werden **internationale Anfragen** nach Stellen aller Art **in** der [Seneca-Datenbank](https://web.archive.org/web/20000301004622/http://www.iis.fhg.de/kfa/seneca/index.html) erfasst. Diese Datenbank wird vom Fraunhofer Koordinierungsbüro für Ausbildungspartnerschaften betrieben und basiert auf dem DBMS Oracle. Studenten können die Datenbank nutzen, um sich für Praktika zu bewerben.
 
 Um die zur Verfügung stehenden Daten in einer einheitlichen Form präsentierbar zu machen, wurde in Zusammenarbeit mit den einzelnen Stellen ein Konzept entwickelt, das die Veröffentlichung der Daten ermöglicht (siehe Abbildung 4-1). Mit der Umsetzung dieses Konzepts wird die Möglichkeit geschaffen, die bestehenden Daten in eine **zentrale Datenbank** zu übertragen und dort für das systemX II verfügbar zu machen.
 
@@ -1015,7 +996,7 @@ Ein Mitarbeiter, der eine Studienarbeit vergeben möchte, kann sich so zum Beisp
 ![Konzept der Studien-/Diplomarbeits-/Praktikums-/Hiwibörse](./img/konzept-abschlussarbeiten-boerse.png)
 
 # Ausblick
-Im Rahmen dieser Diplomarbeit wurde das Thema Wissensmanagement am Fraunhofer-Institut für Integrierte Schaltungen (http://www.iis.fhg.de) behandelt. Die Arbeit hatte das Ziel, ein Konzept für ein entsprechendes System zu erstellen und dieses in Form eines Prototypen zu realisieren.
+Im Rahmen dieser Diplomarbeit wurde das Thema Wissensmanagement am Fraunhofer-Institut für Integrierte Schaltungen behandelt. Die Arbeit hatte das Ziel, ein Konzept für ein entsprechendes System zu erstellen und dieses in Form eines Prototypen zu realisieren.
 
 Nach Durchführung einer Bestandsaufnahme wurde festgestellt, dass weder das bestehende Intranet noch die bis dahin kaum verbreitete Software Lotus Notes als Basis für ein Wissensmanagementsystem am IIS in Frage kamen. Gegen das Intranet sprach hauptsächlich der wenig interaktive Charakter und die stark veralteten und unübersichtlichen Inhalte.
 
@@ -1046,34 +1027,34 @@ Augrund der Aktualität des Themas sind viele Quellen nur im Internet verfügbar
 - [dav98] Wenn Ihr Unternehmen wüsste, was es weiss...: Das Praxisbuch zum Wissensmanagement, Thomas H. Davenport und Laurence Prusak, 1998.
 - [ver99] Idealvorstellungen: Architektur für das Firmenwissen, Gerhard Versteegen, ix 3/1999, 113-119.
 - [pro99] Wissen Managen: Wie Unternehmen ihre wertvollste Ressource optimal nutzen, Gilbert Probst, Steffen Raub, und Kai Romhardt, 3. Auflage, Betriebswirtschaftlicher Verlag Dr. Th. Gabler GmbH, Wiesbaden, 1999.
-- [rom] Interventionen in die organisatorische Wissensbasis zwischen Theorie und Praxis: Welchen Beitrag kann die Systemtheorie leisten?, Kai Romhardt, Universite de Geneve (http://www.cck.uni-kl.de/wmk/papers/public/Wissensidentifikation/).
+- [rom] Interventionen in die organisatorische Wissensbasis zwischen Theorie und Praxis: Welchen Beitrag kann die Systemtheorie leisten?, Kai Romhardt, Universite de Geneve (https://web.archive.org/web/20010628044614/http://www.cck.uni-kl.de/wmk/papers/public/Wissensidentifikation/).
 - [wil99] Knowledge Management and IT: How are they related?, Larry Todd Wilson und Charles A. Snyder, IT Pro, April 1999, 73-77.
-- [mor98] Knowledge Management Architecture, Daryl Morey, CRC Press LLC (http://www.brint.com (bei Brint)).
-- [kpmg98] Knowledge Management: Research Report 1998, KPMG (http://www.kpmg.com).
+- [mor98] Knowledge Management Architecture, Daryl Morey, CRC Press LLC (https://www.brint.com/members/online/120205/kmarch/kmarch.html).
+- [kpmg98] Knowledge Management: Research Report 1998, KPMG.
 - [dat] Knowledge Management: Linking People To Knowledge For Bottom Line Results, Dataware Technologies.
 - [sch98] Die semantische Ebene von Daten beim Knowledge Warehouse, Manfred Schumacher, ntz, 8/1998, 18-20.
 
 ## Standards {-}
 - [rfc2218] rfc2218 - A common schema for the Internet White Pages Service, (http://www.faqs.org/rfcs/rfc2218.html).
-- [iso13250] Topic Navigation Maps, ISO/IEC (http://www.ornl.gov/sgml/sc34/document/8/draft27.htm).
-- [xml] XML, W3C (http://www.w3.org/XML/).
+- [iso13250] Topic Navigation Maps, ISO/IEC (https://web.archive.org/web/20000823044924/http://www.ornl.gov/sgml/sc34/document/8/draft27.htm).
+- [xml] XML, W3C (https://www.w3.org/XML/).
 - [see99] XML - Das Einsteigerseminar, Michael Seeboerger-Weichselbaum, bhv Verlag, Kaarst, ISBN 3-8287-1018-2.
 - [rfc2518] HTTP Extensions for Distributed Authoring - WEBDAV, IETF (www.ietf.org).
 
 ## Technik {-}
 - Harvest: Effective Use Of Internet Information, Darren R. Hardy, University of Colorado at Boulder.
-- Lighting up LDAP: A Programmer’s Guide To Directory Development Part 1,2,3, Cameron Laird und Kathryn Soraiz, Linuxworld (http://www.linuxworld.com).
+- Lighting up LDAP: A Programmer’s Guide To Directory Development Part 1,2,3, Cameron Laird und Kathryn Soraiz, Linuxworld (https://www.computerworld.com/article/1420082/lighting-up-ldap-a-programmer-s-guide-to-directory-development-part-1.html).
 - [lea99] The Directory Enabled Enterprise, Anne C. Lear, IT pro, August 1999, 14-17.
-- XPath: XML Path Language, Norman Walsh, Arbortext (http://www.arbortext.com).
-- Introduction to XML, Jay Greenspan, Webmonkey (http://www.hotwired.com/webmonkey).
-- Understanding XSL, Jay Greenspan, Webmonkey (http://www.hotwired.com/webmonkey).
-- Practical XML with Linux, Uche Ogbuji, Linuxworld (http://www.linuxworld.com).
-- Linux, Java and XML, Eoin Lane, Linux Gazette (http://www.linuxgazette.com).
+- XPath: XML Path Language, Norman Walsh, Arbortext (https://www.ptc.com/en/products/arbortext).
+- Introduction to XML, Jay Greenspan, Webmonkey (https://tecfa.unige.ch/guides/te/files/xml-intro-edit.pdf).
+- Understanding XSLT, Jay Greenspan, Webmonkey (https://web.archive.org/web/20000510150547/https://hotwired.lycos.com/webmonkey/98/43/index2a.html?tw=authoring).
+- Practical XML with Linux, Uche Ogbuji, Linuxworld (https://www.computerworld.com/article/1444845/practical-xml-with-linux-part-3-xml-database-tools-for-linux.html).
+- Linux, Java and XML, Eoin Lane, Linux Gazette (https://linuxgazette.net/issue48/lane.html).
 
 # Glossar {-}
 
 - ASCII (American Standard Code for Information Interchange): ASCII beschreibt die Darstellung von Zeichen innerhalb eines Betriebssystems.
-- DSSSL (Document Style Semantics and Specification Language): Sprache um XML für Druck- oder Onlineversionen zu rendern. Standardisiert in ISO/IEC 10179:1996. Mehr Informationen unter http://www.jclark.com/dsssl.
+- DSSSL (Document Style Semantics and Specification Language): Sprache um XML für Druck- oder Onlineversionen zu rendern. Standardisiert in ISO/IEC 10179:1996.
 - DTD (Document Type Definition): Definition der Tags und Attribute für eine XML Datei.
 - HTML (Hypertext Markup Language): Hypertextformat zum Austausch von Dokumenten über das World Wide Web. Wird vom W3C standardisiert.
 - JDBC (Java Database Connectivity): Eine plattformunabhängige Schnittstelle (API) für den Zugriff von Java-Programmen auf eine Datenbank.
