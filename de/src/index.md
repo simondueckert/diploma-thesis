@@ -25,6 +25,7 @@ Das Ziel war, eine Plattform zu entwickeln, die im Fraunhofer Institut für Inte
 Zunächst wurde die Eigenentwicklung fokussiert. Basierend auf dem Webserver Apache, der Skriptsprache PHP3, der Servletengine Jserv, der XML-Render-Engine Cocoon und der relationalen Datenbank mySQL wurde ein Prototyp erstellt. Es wurde erkannt, dass zu viel Zeit in die Entwicklung der Plattform investiert werden musste, die dann bei der Konzeption der Wissensmanagement-Methoden fehlte.
 
 Aus diesem Grund wurde die Eigenentwicklung eingestellt und der Open-Source Application Server ZOPE als Plattform herangezogen. Dieser eignet sich insbesondere durch seine offene Architektur, seine einfache Erweiterbarkeit und die umfassende Unterstützung von Standards (SQL, LDAP, FTP, HTTP, WebDAV, SOAP, XML, XML-RPC, RSS).
+
 Am Ende der Arbeit lag ein voll funktionsfähiger Prototyp vor, der zur Einführung von Wissensmanagement verwendet werden kann. Wichtig ist festzuhalten, dass diese Arbeit nicht als abgeschlossen gelten kann. Vielmehr müssen die Ansätze und Methoden in einem kontinuierlichen Verbesserungsprozess den Bedürfnissen angepasst werden.
 
 Nachdem alle benutzten Applikationen entweder Open-Source oder frei verfügbar sind, eignet sich dieses Konzept auch für kleiner Firmen oder Lehreinrichtungen.
@@ -73,7 +74,7 @@ Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebi
 
 **TIPP:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial how to set up a free SGML editing and publishing system for Windows NT (http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
 
-BILD
+![Dokumentationssystem - Überblick](./img/dokumentationssystem-ueberblick.png)
 
 ## Konventionen {-}
 Diese Sektion gibt einen Überblick über die in diesem Dokument verwendeten Konventionen.
@@ -136,7 +137,7 @@ Im Folgenden ist unter dem Begriff Wissensmanagementsystem ein Verbund von Werkz
 
 Wissensmanagement kann nur zu einem Teil durch die Einrichtung eines IT Systems etabliert werden ([dav98]spricht von einem Drittel), die restlichen Bestandteile sind Unternehmenskultur, Anreizsystem, Inhalt, Mitarbeitermotivation und weitere Faktoren (siehe Abbildung 1-1).
 
-BILD
+![Komponenten des Wissensmanagement](./img/komponenten-des-wissensmanagements.png)
 
 ## Einordnung dieser Diplomarbeit in einen Gesamtzusammenhang
 Um den Beitrag dieser Diplomarbeit zum Thema Wissensmanagement am Fraunhofer-Institut für Integrierte Schaltungen (IIS) richtig einschätzen zu können, ist es wichtig, den Gesamtzusammenhang, in dem sie steht, zu kennen.
@@ -248,9 +249,9 @@ Den Mitarbeitern wird für das Erstellen Ihrer Dokumente kein Softwarepaket nahe
 
 Die Dokumentenablage ist nicht genormt oder vorgeschrieben. Das führt dazu, dass jeder Mitarbeiter seine Dokumente nach eigenen Schema benennen und ablegen kann. Zusatzinformationen (Metadaten) zu den Dokumenten (Autor, Datum, Version, Abstract) werden nicht erfasst.
 
-BILD
+![Dokumentenverwaltung Ist-Struktur am IIS](./img/dokumentenverwaltung-ist-struktur.png)
 
-BILD
+![Mögliche Dokumentenverwaltung Soll-Struktur am IIS](./img/dokumentenverwaltung-soll-struktur.png)
 
 **Fazit:** Ein Dokumentenmanagementsystem kann die Grenzen von Plattformen durchbrechen und den Dokumentenbestand transparent und nutzbar machen. Parallel zu einem solchen System müssen Regeln eingeführt werden, wie Dokumente einzustellen und welche Metainformationen (zum Beispiel Abstract) anzugeben sind.
 
@@ -285,7 +286,7 @@ Ein Archiv der Liste ist nicht verfügbar (siehe Abbildung 2-3). Jedes Listenmit
 
 Die Weiterverwendung der Inhalte (zum Beispiel um eine FAQ zu erstellen) ist nur bedingt möglich.
 
-BILD
+![Vergleich von Maillisten und Diskussionsforen](./img/vergleich-maillisten-diskussionsforen.png)
 
 ##### Diskussionsforen
 Ein Diskussionsforum bietet die Möglichkeit, Diskussionen zu bestimmten Themen online zu führen. Es ist möglich, die Diskussionsinhalte per Email zu verschicken.
@@ -310,7 +311,7 @@ Viele Informationen liegen mittlerweile multimedial auf CDROM vor. Eine gute Mö
 
 Am IIS sind einige CD Server im Einsatz. Es besteht allerdings bisher keine Möglichkeit strukturiert auf den Inhalt der Server zuzugreifen. Der Inhalt der Server ist nicht dokumentiert.
 
-BILD
+![Einsatz von CD-Servern](./img/einsatz-von-cd-servern.png)
 
 **Fazit:** CD-Server sind gut geeignet, um Software oder Archiv-CDs aufzunehmen. Der Inhalt dieser Server sollte transparenter gemacht werden.
 
@@ -344,7 +345,7 @@ Der einfachste Weg, Erfahrungen und Negativwissen nutzbar zu machen, ist, die Er
 
 Wenn am Ende eines jeden Projektes eine Projektnachbereitung eingeführt wird, können in dem darin enthaltenen Projektabschlussbericht Sektionen wie Was wir besonders gut gemacht haben, aber auch Welche Ansätze haben wir verworfen etabliert werden. Die Erfassung von Fehlern wird standardisiert und verliert an Brisanz.
 
-BILD
+![Projektstart und Projektende aus Wissensmanagementsicht](./img/projektstart-und-ende-aus-wm-sicht.png)
 
 **Fazit:** Negativwissen ist ein sehr wichtiger Bestandteil des Wissensmanagements. Die Probleme, die sich mit der Erfassung ergeben, können durch eine Integration der Erfassung in den Arbeitsablauf überwunden werden.
 
@@ -543,7 +544,7 @@ Neben der zentralen Benutzerverwaltung muss es möglich sein, in einzelnen Berei
 
 Der Bereich Personalentwicklung wird am IIS von einer Person betreut, die im Folgenden Person X genannt wird. Es wird also einen Bereich Personalentwicklung in dem System geben, dessen Administrator Person X ist (siehe Abbildung 3-1). Im restlichen System ist Person X ganz normaler Mitarbeiter und mit keinen Zusatzrechten ausgestattet. Person X kann ihrerseits die Verwaltung bestimmter Unterbereiche an andere Personen übertragen.
 
-BILD
+![Dezentrale Verwaltung von Teilbereichen](./img/dezentrale-verwaltung-von-teilbereichen.png)
 
 ### Newssektion
 Eine Newssektion soll die Möglichkeit bieten, zu bestimmten Themen Neuigkeiten zu veröffentlichen. Es muss die Möglichkeit bestehen, dass bestimmte Mitarbeiter ihre Mitteilungen direkt veröffentlichen können (zum Beispiel Leitungskreisprotokolle), während andere Beiträge zuerst geprüft werden müssen, um Missbrauch zu vermeiden. Alle Mitteilungen sollen in einem übersichtlichen Format auf der Einstiegsseite präsentiert werden.
@@ -573,9 +574,8 @@ Daten, die lokal in Datenbanken gespeichert werden (MS Access, Oracle, Filemaker
 Ein Beispiel hierfür ist eine Microsoft Access Datenbank, in der Daten von Personen geführt werden, die sich für ein Praktikum am IIS interessieren. Der Verwalter dieser Liste soll in der Lage sein, nur informelle Daten zu veröffentlichen (zum Beispiel Studiengang, Vorkenntnisse,...), und persönliche Daten wie Adresse, Telefonnummer, etc. nur in seiner lokalen Datenbank zu führen.
 
 DasSzenariozentraleDatenbankzieltaufAnwendungenab,beidenenman aus einem zentralen Datenbestand eine Auswahl selektieren möchte. Der Vorteil dieser Methode besteht darin, dass viele Einzelapplikationen auf einen zentralen Datenbestand zurückgreifen könne und die Notwendigkeit für mehrfache (=redundante) Datenhaltung entfällt.
-Visitenkarte und Arbeitsbereich
 
-BILD
+![Applikationsübergreifende Datenbank](./img/applikationsuebergreifende-datenbank.png)
 
 Beispiel hierfür ist eine Datenbank, die Fachartikel oder Datenblätter verwaltet. Während die aufzunehmenden Daten immer gleich sind (Titel, Autor, Zusammenfassung,...), hat jeder Anwender sehr spezielle Anforderungen an seine Sicht auf die Daten. So könnte ein Mitarbeiter an allen Artikeln interessiert sein, die sich mit dem Thema UMTS befassen, während ein anderer nach Artikeln von bestimmten Autoren sucht und diese in ein Worddokument einbinden möchte.
 
@@ -765,7 +765,7 @@ Da, wie angesprochen, die Idee, das gesamte System selbst zu programmieren, verw
 
 Die wichtigsten Elemente des Konzepts sind der frei verfügbare Webserver Apache und dessen Erweiterungen (siehe Abbildung 3-3). Die Aufgabe eines Webservers ist es, Dokumente (normalerweise im HTML Format), die auf dem Server in einem bestimmten Verzeichnis liegen, über das sogenannte HTTP-Protokoll an einen Client (normalerweise ein HTML Browser) zu übertragen.
 
-BILD
+![systemX I - Überblick](./img/systemx-i-ueberblick.png)
 
 Die Möglichkeiten, die mit der HTML Sprache zur Verfügung stehen, sind eingeschränkt. HTML ist darauf ausgelegt, statischen Inhalt bereitzustellen, womit Inhalt aus Datenbanken nicht verfügbar gemacht werden kann.
 
@@ -781,7 +781,7 @@ Das CGI stellt eine definierte Schnittstelle zwischen dem HTTP-Server und Anwend
 
 Die Kommunikation zwischen HTTP Server und CGI Applikation ist einfach. Der HTTP-Server wird so konfiguriert, dass er bei der Anforderung nach bestimmten Dateitypen (zum Beispiel mit der Endung .cgi), diese nicht direkt an den Client weitergibt, sondern sie erst durch eine Applikation bearbeiten lässt (siehe Abbildung 3-4). Die CGI Applikation arbeitet die Anweisungen ab und erzeugt gültiges HTML, das dann über den Server an den Client zur Darstellung weitergereicht wird.
 
-BILD
+![CGI Funktionsweise](./img/cgi-funktionsweise.png)
 
 CGI Applikationen stellen ein mächtiges Werkzeug dar, um interaktive Webapplikationen erstellen zu können. Bei Einsatz von Perl als Interpreter besteht die Möglichkeit, Protokolle, wie XML, SQL, LDAP, IMAP, etc. einzubinden. CGIs wurden für dieses Konzept nicht ausgewählt, da es trotz der Vielzahl der verfügbaren CGI-Applikationen keine Möglichkeit gibt, einzelne Funktionen, wie Diskussionsforen oder Datenbanken, einfach zu integrieren.
 
@@ -825,7 +825,7 @@ Der Formatter sorgt am Ende der Kette für die eigentliche Formatierung des Inha
 #### Whitepage Dienst
 Der Whitepage Dienst soll nicht ausschließlich als Whitepage Dienst, sondern darüber hinaus auch in weiteren Anwendungen verwendbar sein. Hiermit kann das Problem der redundanten Datenhaltung gelöst werden. Jeder Bereich, der personenbasierte Daten verwaltet, greift im IIS auf eigene Datenbestände zurück, die nicht synchronisiert werden. Dies trifft sowohl auf Verwaltungsstellen, wie die Personalstelle, als auch auf Systemadministratoren, Abteilungssekretariate, etc. zu (siehe Abbildung 3-5).
 
-BILD
+![Vermeidung redundanter Datenhaltung](./img/vermeidung-reduntanter-datenhaltung.png)
 
 Der hier konzipierte Whitepage Dienst stellt eine Datenbasis zur Verfügung, die die Möglichkeit bietet, personenbezogene Daten aufzunehmen. Die hier definierten Attribute können bei Bedarf beliebig erweitert werden. Der Dienst beruht auf dem Standard LDAP und macht ihn deshalb zu einem plattform- und anwendungsübergreifenden Werkzeug.
 
@@ -914,7 +914,7 @@ Außerdem hat sich das Open-Source-Projekt ZOPE in der Zwischenzeit zu einem Sys
 
 Die konzipierten Methoden des systemX II unterscheiden sich von denen des systemX I nicht maßgeblich, obwohl der technische Ansatz ein ganz anderer ist. Der Hauptunterschied ist, dass die Arbeitsplattform aus Apache Webserver, JServ, Cocoon und der MySQL Datenbank durch ZOPE ersetzt wurde (siehe Abbildung 3-6).
 
-BILD
+![systemX II - Überblick](./img/systemx-ii-ueberblick.png)
 
 ### Implementierung der definierten Methoden
 #### Diskussionsforum
@@ -1011,7 +1011,7 @@ Um die zur Verfügung stehenden Daten in einer einheitlichen Form präsentierbar
 
 Ein Mitarbeiter, der eine Studienarbeit vergeben möchte, kann sich so zum Beispiel nach einem geeigneten Kandidaten erkundigen. Es wurde aus Datenschutzgründen die Übereinkunft getroffen, keine persönlichen Daten, wie Telefonnummer oder Adresse, bereitzustellen. Bei Interesse können diese Informationen bei der entsprechenden Stelle erfragt werden.
 
-BILD
+![Konzept der Studien-/Diplomarbeits-/Praktikums-/Hiwibörse](./img/konzept-abschlussarbeiten-boerse.png)
 
 # Ausblick
 Im Rahmen dieser Diplomarbeit wurde das Thema Wissensmanagement am Fraunhofer-Institut für Integrierte Schaltungen (http://www.iis.fhg.de) behandelt. Die Arbeit hatte das Ziel, ein Konzept für ein entsprechendes System zu erstellen und dieses in Form eines Prototypen zu realisieren.

@@ -6,6 +6,9 @@ edit_uri: ''
 
 nav:
     - Willkommen: index.md
+    - Download:
+      - PDF-Version: https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.pdf
+      - E-Book (epub): https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.epub
     - Links:
       - Webseite Simon: https://blog.dueckert.eu
 
