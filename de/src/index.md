@@ -827,7 +827,7 @@ Bereits mit diesem Prototypen ist es möglich, ein **Adressbuch** für den Netsc
 Das Produkt **Enlist** bietet die Möglichkeit, den **LDAP-Server als ODBC Datenquelle** für anderen Applikationen, wie zum Beispiel das Microsoft Office, zur Verfügung zu stellen. Hiermit eröffnet sich für einzelne Bereiche die Möglichkeit, basierend auf SQL-Abfragen, personenbezogene Datenbestände lokal zu führen.
 
 #### Diskussionsforum
-Als Diskussionsforum kommt das Produkt **Phorum** (http://www.phorum.org) zum Einsatz. Es erlaubt die Verwaltung von mehreren Diskussionsforen durch unterschiedliche Administratoren. Außerdem besteht die Möglichkeit, Phorum über die Erweiterung **phorummail** an existierende Maillisten anzubinden.
+Als Diskussionsforum kommt das Produkt [Phorum](https://www.phorum.org/) zum Einsatz. Es erlaubt die Verwaltung von mehreren Diskussionsforen durch unterschiedliche Administratoren. Außerdem besteht die Möglichkeit, Phorum über die Erweiterung **phorummail** an existierende Maillisten anzubinden.
 
 Alle **Diskussionsbeiträge** werden in einer **SQL-Datenbank** abgelegt(MySQL oder PostgreSQL). Es besteht die Möglichkeit, sich von Antworten auf eingestellte Beiträge per Mail informieren zu lassen.
 
