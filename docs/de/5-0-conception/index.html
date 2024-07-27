@@ -1,0 +1,1622 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://simondueckert.github.io/diploma-thesis/de/5-0-conception/">
+      
+      
+        <link rel="prev" href="../4-0-considerations/">
+      
+      
+        <link rel="next" href="../6-0-verification/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+    
+    
+      
+        <title>Konzeption - Diplomarbeit von Simon Dückert</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="yellow" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#konzeption" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href=".." title="Diplomarbeit von Simon Dückert" class="md-header__button md-logo" aria-label="Diplomarbeit von Simon Dückert" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diplomarbeit von Simon Dückert
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Konzeption
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Teilen" aria-label="Teilen" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/simondueckert/diploma-thesis" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simondueckert/diploma-thesis
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diplomarbeit von Simon Dückert" class="md-nav__button md-logo" aria-label="Diplomarbeit von Simon Dückert" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5Z"/></svg>
+
+    </a>
+    Diplomarbeit von Simon Dückert
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/simondueckert/diploma-thesis" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    simondueckert/diploma-thesis
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kurzfassung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-0-preface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vorwort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-0-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Einführung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-0-considerations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vorüberlegungen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Konzeption
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Konzeption
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anforderungen-an-ein-wissensmanagementsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anforderungen an ein Wissensmanagementsystem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anforderungen an ein Wissensmanagementsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicherheit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plattformunabhangigkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plattformunabhängigkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plattformunabhangigkeit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plattformunabhängigkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#einfache-intuitive-bedienbarkeit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Einfache, intuitive Bedienbarkeit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erweiterbarkeit-flexibilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erweiterbarkeit, Flexibilität
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logisch-strukturiert" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logisch strukturiert
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verwendung-von-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verwendung von Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mit-standardsoftware-bedienbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mit Standardsoftware bedienbar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methoden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methoden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#white-page-dienst" class="md-nav__link">
+    <span class="md-ellipsis">
+      White Page Dienst
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diskussionsforum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diskussionsforum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verwaltung-von-teilbereichen-dezentralisierbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verwaltung von Teilbereichen dezentralisierbar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newssektion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newssektion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newssektion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newssektion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privater-bereich" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privater Bereich
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privater-bereich_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privater Bereich
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moglichkeit-datenbankgestutzter-anwendungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Möglichkeit datenbankgestützter Anwendungen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suchfunktionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suchfunktionen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemauswahl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systemauswahl
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systemauswahl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kommerzielle-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kommerzielle Systeme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kommerzielle Systeme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lotus-notesdomino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lotus Notes/Domino
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-outlookexchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsoft Outlook/Exchange
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-sourcefreie-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Source/Freie Systeme
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Source/Freie Systeme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twig-the-web-integration-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      TWIG - The Web Integration Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zope-z-object-publishing-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZOPE - Z Object Publishing Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jetspeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jetspeed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#midgard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Midgard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhydra" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhydra
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opencms" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenCMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intalio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intalio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locomotive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locomotive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#star-officestar-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Star Office/Star Portal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigene-programmierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigene Programmierung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entscheidung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entscheidung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemx-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemX I
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="systemX I">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uberblick" class="md-nav__link">
+    <span class="md-ellipsis">
+      Überblick
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementierung-der-definierten-methoden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementierung der definierten Methoden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementierung der definierten Methoden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whitepage-dienst" class="md-nav__link">
+    <span class="md-ellipsis">
+      Whitepage Dienst
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diskussionsforum_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diskussionsforum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newssektion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newssektion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privater-bereich_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privater Bereich
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zugang-uber-standardsoftware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zugang über Standardsoftware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moglichkeit-datenbankgestutzter-anwendungen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Möglichkeit datenbankgestützter Anwendungen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suchfunktionen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suchfunktionen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verwendete-softwarepakete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verwendete Softwarepakete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemx-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      systemX II
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="systemX II">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uberblick_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Überblick
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementierung-der-definierten-methoden_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementierung der definierten Methoden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementierung der definierten Methoden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diskussionsforum_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diskussionsforum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newssektion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newssektion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privater-bereich_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privater Bereich
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zugang-uber-standardsoftware_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zugang über Standardsoftware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moglichkeit-datenbankgestutzter-anwendungen_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Möglichkeit datenbankgestützter Anwendungen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suchfunktionen_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suchfunktionen
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verwendete-produkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verwendete Produkte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-0-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Verifikation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-0-outlook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ausblick
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-0-glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-0-bibliography/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Literaturverzeichnis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Download
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Download
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDF-Version
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.docx" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Word
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/simondueckert/diploma-thesis/blob/main/de/2000-Diplomarbeit-simondueckert-de.epub" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    E-Book (epub)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Links
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://blog.dueckert.eu" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webseite Simon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="konzeption">Konzeption</h1>
+<h2 id="anforderungen-an-ein-wissensmanagementsystem">Anforderungen an ein Wissensmanagementsystem</h2>
+<p>Die folgenden Kriterien wurden für das Konzept eines Wissensmanagementsystems für wichtig erachtet.</p>
+<h3 id="sicherheit">Sicherheit</h3>
+<p>Eine wichtige <strong>Voraussetzung</strong> für die Wissensweitergabe ist <strong>Vertrauen</strong>. Wissensaustausch ist eine Art Marktplatz, auf dem es (<strong>Wissens-</strong>)<strong>Verkäufer</strong>, (<strong>Wissens-</strong>)<strong>Käufer</strong> und (<strong>Wissens-</strong>)<strong>Vermittler</strong> gibt (siehe [dav98]). Die Währung auf diesem Marktplatz ist in den seltensten Fällen Geld. Vielmehr geht es um <strong>Annerkennung</strong>, <strong>Status</strong> oder die <strong>Hoffnung auf Gegenleistung</strong>. Damit einzelne Wissensgeber nicht durch Nutzer des Systems übervorteilt werden, müssen bestimmte Sicherheitsmaßnahmen getroffen werden.</p>
+<p>Um zu gewährleisten, dass das System nicht missbraucht werden kann, ist es erforderlich, dass sich die Nutzer gegenüber dem System autorisieren müssen (im Gegensatz zum bestehenden Intranet), um bestimmte Aktionen durchführen zu können (zum Beispiel das Einstellen von Dokumenten).</p>
+<p>Um redundante Datenhaltung zu vermeiden, ist es sinnvoll, an die bereits bestehende Nutzerverwaltung anzuknüpfen. Dafür muss sich das System an die Userverwaltung von NT (zum Beispiel über SMB), UNIX (zum Beispiel passwd, NIS), Lotus Notes oder neuere Standards (zum Beispiel LDAP) anbinden lassen.</p>
+<p>In dem System muss immer klar erkennbar sein, wer Urheber eines Elements ist und wer Zugriff auf einzelne Elemente hat. Während es in einem Wissensmanagementsystem die Regel sein sollte, dass die meisten Elemente frei zugänglich sind, gibt es Einzelfälle, in denen die Möglichkeit bestehen muss, einen bestimmten Bereich für einen autorisierten Personenkreis zugänglich zu machen.</p>
+<p><strong>Fazit:</strong> Vertrauen durch Sicherheit aufzubauen ist eine wichtige Aufgabe des Wissensmanagementsystems. Zugriffsrechte und Systemnutzer müssen zu jedem Zeitpunkt transparent sein.</p>
+<h3 id="plattformunabhangigkeit">Plattformunabhängigkeit</h3>
+<p>Plattformunabhängigkeit ist ein sehr wichtiger Aspekt für ein Wissensmanagementsystem am IIS. Wie bereits beschrieben, ist das Umfeld sowohl aus Software- als auch aus Hardwaresicht sehr heterogen, was die Beschränkung auf eine Plattform unmöglich macht.</p>
+<p>Die effizienteste Lösung ist in diesem Fall die Webtechnologie. <strong>Webbrowser</strong> sind <strong>auf jeder Plattform</strong> standardmäßig <strong>verfügbar</strong>. Zusammen mit Techniken wie Javascript und Cascading Stylesheets (CSS) bietet sich die Möglichkeit ein umfangreiches und zugleich mächtiges Werkzeug anbieten zu können.</p>
+<p><strong>Hinweis:</strong> Die Verwendung von Java in Form von Java-Applets wurde ausgeschlossen. Es entsteht bei der Übertragung des Javacodes vom Server an den Client eine lange Ladezeit. Außerdem sind die virtuellen Javamaschinen, die im Client verwendet werden, um den Code auszuführen, auf den einzelnen Plattformen nicht identisch implementiert, so dass die Anforderung der Plattformunabhängigikeit nur bedingt erfüllt ist.</p>
+<h3 id="plattformunabhangigkeit_1">Plattformunabhängigkeit</h3>
+<p>Plattformunabhängigkeit ist ein sehr wichtiger Aspekt für ein Wissensmanagementsystem am IIS. Wie bereits beschrieben, ist das Umfeld sowohl aus Software- als auch aus Hardwaresicht sehr heterogen, was die Beschränkung auf eine Plattform unmöglich macht.</p>
+<p>Die effizienteste Lösung ist in diesem Fall die Webtechnologie. Webbrowser sind auf jeder Plattform standardmäßig verfügbar. Zusammen mit Techniken wie Javascript und Cascading Stylesheets (CSS) bietet sich die Möglichkeit ein umfangreiches und zugleich mächtiges Werkzeug anbieten zu können.</p>
+<p><strong>Hinweis:</strong> Die Verwendung von Java in Form von Java-Applets wurde ausgeschlossen. Es entsteht bei der Übertragung des Javacodes vom Server an den Client eine lange Ladezeit. Außerdem sind die virtuellen Javamaschinen, die im Client verwendet werden, um den Code auszuführen, auf den einzelnen Plattformen nicht identisch implementiert, so dass die Anforderung der Plattformunabhängigikeit nur bedingt erfüllt ist.</p>
+<h3 id="einfache-intuitive-bedienbarkeit">Einfache, intuitive Bedienbarkeit</h3>
+<p>Bei vielen modernen Systemen fällt die Einarbeitung schwer, da sich der Nutzer an ein neues Interface, neue Funktionen, etc. gewöhnen muss. Lotus Notes am IIS ist dafür ein gutes Beispiel. Da es für das Institut keine angepasste Lösung gibt, steht ein neuer Nutzer einer Vielzahl von Funktionen in Form von Buttons, Menüs, etc. gegenüber, deren Nutzen für ihn nicht sofort erkennbar ist.</p>
+<p>Es fällt schwer, den persönlichen Nutzen durch das System abzuschätzen und die Gefahr, dass das <strong>Interesse nachlässt</strong>, ist groß.</p>
+<p>Das Benutzerinterface in diesem Konzept soll so gestaltet werden, dass sich jeder Nutzer schnell zurechtfindet und seinen Nutzen einschätzen kann. Diese Eigenschaft soll dadurch erreicht werden, dass der Nutzer in allen Bereichen des Systems eine ähnliche Umgebung vorfindet und verschiedene <strong>Elemente</strong>, wie zum Beispiel das kontextsensitive Menü, <strong>immer an der gleichen Stelle</strong> zu finden sind.</p>
+<p><strong>Sparsame Verwendung von Farbe</strong> und <strong>Zuordnung von Symbolen</strong> zu bestimmten Bereichen erhöht den Komfort beim Navigieren. Bestimmte Elemente, wie globales Menü und Suchfunktion, sind in jeder Ansicht vorhanden.</p>
+<h3 id="erweiterbarkeit-flexibilitat">Erweiterbarkeit, Flexibilität</h3>
+<p>Ebenso, wie sich das zu verwaltende Wissen verändert, muss auch das System in der Lage sein, sich anzupassen. Dies betrifft sowohl die verwalteten Inhalte als auch die Struktur und die Darstellung, in der diese präsentiert werden. Es muss die Möglichkeit bestehen, das System sehr einfach um benötigte Funktionen zu erweitern.</p>
+<p>Weiterhin muss sich das System durch den Anwender an dessen Bedürfnisse anpassen lassen. Diese Anforderung bedingt, dass eine Technik zum Einsatz kommt, die eine <strong>Trennung von Inhalt, Logik und Layout</strong> zulässt. Somit kann der Benutzer beispielsweise das Aussehen seines Bereichs völlig neu gestalten, wobei die Inhalte identisch bleiben.</p>
+<h3 id="logisch-strukturiert">Logisch strukturiert</h3>
+<p>Für die Navigation in den Wissenselementen ist eine unterliegende logische Struktur (Wissenslandkarten) unbedingt nötig. So lange nur geringe Datenmengen zu handhaben sind, erweist sich die Volltextsuche als ausreichend. Vergrößert sich aber der Datenbestand, so muss auch eine strukturierte Navigation oder eine Kombination aus beidem möglich sein.</p>
+<p>Das Fehlen einer solchen Struktur führt im IIS beispielsweise dazu, dass vielen Mitarbeitern die Onlinesammlung von Studien- und Diplomarbeiten nicht bekannt ist. Auch über ein Suchinterface sind diese Arbeiten nicht auffindbar.</p>
+<p>Die Frage nach einem geeigneten Weg, jedes einzelne Wissenselement in einen Gesamtkontext einzubetten, wird im Rahmen dieser Diplomarbeit nicht geklärt. Eine solche Vorgehensweise muss für das gesamte IIS festgelegt werden.</p>
+<p>Auf der einen Seite kann die Vergabe von <strong>Kategorien</strong> und <strong>Schlagwörtern</strong> vorgeschrieben werden. Dies bedingt ein <strong>hierarchisches Glossar</strong>, das jedes beliebige Thema erfassen kann. Ein solches Glossar stellt beispielsweise die <strong>Dezimalklassifikation</strong> [Dewey]](https://www.oclc.org/en/dewey.html) dar. Gerade bei fachspezifischen Themen geht allerdings auch diese Klassifikation nicht ausreichend in die Tiefe.</p>
+<p>Die zweite Möglichkeit besteht darin, die <strong>Verschlagwortung dem Nutzer</strong> zu <strong>überlassen</strong>, was zur Folge haben kann, dass einzelne Dokumente nicht an allen Stellen auftauchen, an denen sie relevant sind.</p>
+<p>Sinnvoller ist, die Kategorisierung bis zu einer gewissen Stufe vorzuschreiben und ab dieser Stufe freie Verschlagwortung ergänzend zuzulassen. Eine Möglichkeit für ein solches Vorgehen ist, die Verantwortlichen für die einzelnen <strong>Kernkompetenzen</strong> zu identifizieren (=Kernkompetenz als erste Hierarchiestufe) und diese zu beauftragen, eine <strong>zweite Schlagworthierarchie</strong> mit cirka 10-20 Kategorien zu definieren.</p>
+<p>Beide Schlagworthierarchien müssen in regelmäßigen Abständen überprüft und ergänzt werden.</p>
+<h3 id="verwendung-von-standards">Verwendung von Standards</h3>
+<p>Proprietäre Formate besitzen im Vergleich zu Standards den Nachteil, dass die Daten nur in der Applikation verwendet werden können, für die sie angelegt worden sind. Das zu konzipierende System soll konsequent auf bestehende Standards aufbauen, um diesen Nachteil zu umgehen.</p>
+<p>Austauschformate zwischen einzelnen Applikationen wie beispielsweise XML werden sich immer mehr durchsetzen. Die Integration der bisher bestehenden Insellösungen zu einem Gesamtsystem, das auf einen einheitlichen Datenbestand zurückgreift, wird eine der entscheidenden Herausforderungen sein.</p>
+<h3 id="mit-standardsoftware-bedienbar">Mit Standardsoftware bedienbar</h3>
+<p>Diese Anforderung ist eine Erweiterung der Forderungen nach Plattformunabhängigkeit und der Verwendung von Standards. Für die Bedienung des Systems müssen gängige, und damit auf jeder Plattform verfügbare, Werkzeuge ausreichend sein. Zu dem Oberbegriff <strong>Bedienung</strong> zählen die <strong>Administratio</strong>, das <strong>Abfragen von Inhalt</strong> als auch das <strong>Einstellen von neuen Inhalten</strong> (Publishing).</p>
+<p>Für die Bedienung des zu konzipierenden Systems sollen die Produkte Netscape Communicator, Internet Explorer/Frontpage Express und das Microsoft Office ausreichend sein. Die Browser müssen mindestens in der <strong>Version 4.x</strong> verwendet werden, um die Präsenz bestimmter Funktionen sicherzustellen.</p>
+<h2 id="methoden">Methoden</h2>
+<p>Die Methoden, die in der Konzeptionsphase in dem Wissensmanagementsystem implementiert werden, sind nur ein kleiner Teil der benötigten Methoden. Sie ermöglichen es, die Mächtigkeit des Systems zu demonstrieren, müssen aber noch um weitere ergänzt werden.</p>
+<h3 id="white-page-dienst">White Page Dienst</h3>
+<p>Was für öffentliche Telefonnetze das <strong>Telefonbuch</strong> oder die gelben Seiten darstellen, sind im <strong>Internet</strong> die White Page Dienste. Ein solcher Dienst zeichnet sich dadurch aus, dass Personen nach bestimmten Kriterien gesucht werden können. So ist es beispielsweise möglich, zu einer Emailadresse auch Telefonnummer oder Adresse zu recherchieren.</p>
+<p>In einem Wissensmanagementsystem ist es nützlich, die Informationen, die vom White Page Dienst geliefert werden, über die rein administrativen Angaben (Email, Telefon, Adresse, etc., siehe [rfc2218]) noch um wissensrelevante Informationen ,wie <strong>Fachgebiete eines Mitarbeiters</strong>, <strong>Teilnahme an Projekten</strong> oder <strong>Fortbildungen</strong>, zu erweitern.</p>
+<p>Der White Page Dienst kann außerdem dazu genutzt werden, alle neuen Mitarbeiter automatisch vorzustellen. Dieser Vorgang <strong>erleichtert</strong> dem neuen Mitarbeiter die <strong>Integration</strong> und macht gleichzeitig dessen <strong>Kenntnisse</strong> im Institut <strong>bekannt</strong>.</p>
+<p>Zu beachten ist bei einem solchen Dienst der Datenschutz. Alle Maßnahmen sind in jedem Fall mit dem Datenschutzbeauftragten abzuklären. Die beste Möglichkeit, Probleme zu umgehen, ist, dem Mitarbeiter die Entscheidung zu überlassen, ob seine Daten öffentlich verfügbar sind.</p>
+<h3 id="diskussionsforum">Diskussionsforum</h3>
+<p>Für jede Gruppierung im Institut soll es möglich sein, Diskussionsforen zu bestimmten Themen einzurichten. Diese Foren sollen an bestehende Maillisten angeknüpft werden können und müssen ihre Daten in einer Datenbank abspeichern, um Weiterverwendung zu ermöglichen.</p>
+<h3 id="verwaltung-von-teilbereichen-dezentralisierbar">Verwaltung von Teilbereichen dezentralisierbar</h3>
+<p>Neben der zentralen Benutzerverwaltung muss es möglich sein, in einzelnen Bereichen <strong>lokale Rechte</strong> zu vergeben. Der Nutzen einer solchen Möglichkeit soll an einem Beispiel verdeutlicht werden.</p>
+<p>Der Bereich Personalentwicklung wird am IIS von einer Person betreut, die im Folgenden Person X genannt wird. Es wird also einen Bereich Personalentwicklung in dem System geben, dessen Administrator Person X ist (siehe Abbildung 3-1). Im restlichen System ist Person X ganz normaler Mitarbeiter und mit keinen Zusatzrechten ausgestattet. Person X kann ihrerseits die Verwaltung bestimmter Unterbereiche an andere Personen übertragen.</p>
+<p><img alt="Dezentrale Verwaltung von Teilbereichen" src="../img/dezentrale-verwaltung-von-teilbereichen.png" /></p>
+<h3 id="newssektion">Newssektion</h3>
+<p>Eine Newssektion soll die Möglichkeit bieten, zu bestimmten Themen Neuigkeiten zu veröffentlichen. Es muss die Möglichkeit bestehen, dass bestimmte Mitarbeiter ihre Mitteilungen <strong>direkt veröffentlichen</strong> können (zum Beispiel Leitungskreisprotokolle), während andere Beiträge <strong>zuerst geprüft</strong> werden müssen, um Missbrauch zu vermeiden. Alle Mitteilungen sollen in einem übersichtlichen Format auf der Einstiegsseite präsentiert werden.</p>
+<p><strong>Pro Tag</strong> sollten maximal <strong>5-10 neue Beiträge</strong> erscheinen. Beiträge, die älter als ein zu definierender Zeitraum sind, werden aus der Newssektion gelöscht, stehen aber weiterhin über eine Suchmaske zur Verfügung.</p>
+<h3 id="newssektion_1">Newssektion</h3>
+<p>Eine Newssektion soll die Möglichkeit bieten, zu bestimmten Themen Neuigkeiten zu veröffentlichen. Es muss die Möglichkeit bestehen, dass bestimmte Mitarbeiter ihre Mitteilungen direkt veröffentlichen können (zum Beispiel Leitungskreisprotokolle), während andere Beiträge zuerst geprüft werden müssen, um Missbrauch zu vermeiden. Alle Mitteilungen sollen in einem übersichtlichen Format auf der Einstiegsseite präsentiert werden.</p>
+<p>Pro Tag sollten maximal 5-10 neue Beiträge erscheinen. Beiträge, die älter als ein zu definierender Zeitraum sind, werden aus der Newssektion gelöscht, stehen aber weiterhin über eine Suchmaske zur Verfügung.</p>
+<h3 id="privater-bereich">Privater Bereich</h3>
+<p>Jeder Mitarbeiter hat einen <strong>eigenen Bereich</strong>, in dem er eigene Inhalte ablegen und zusätzliche Einstellungen für sein Profil vornehmen kann.</p>
+<p>Dieser private Bereich dient zum Einen als <strong>Visitenkarte</strong> des Mitarbeiters im Institut, stellt auf der anderen Seite aber auch eine <strong>Arbeitsumgebung</strong> für den Mitarbeiter dar, die er sich nach seinen Wünschen einrichten kann.</p>
+<h3 id="privater-bereich_1">Privater Bereich</h3>
+<p>Jeder Mitarbeiter hat einen eigenen Bereich, in dem er eigene Inhalte ablegen und zusätzliche Einstellungen für sein Profil vornehmen kann.</p>
+<p>Dieser private Bereich dient zum Einen als Visitenkarte des Mitarbeiters im Institut, stellt auf der anderen Seite aber auch eine Arbeitsumgebung für den Mitarbeiter dar, die er sich nach seinen Wünschen einrichten kann.</p>
+<h3 id="moglichkeit-datenbankgestutzter-anwendungen">Möglichkeit datenbankgestützter Anwendungen</h3>
+<p>Die Erstellung neuer datenbankgestützter Applikationen und das Einrichten von Schnittstellen muss für den Endanwender so einfach wie möglich sein. Prinzipiell sollten zwei unterschiedliche Anwendungsfälle unterstützt werden.</p>
+<p><strong>Daten</strong>, die <strong>lokal in Datenbanken</strong> gespeichert werden (MS Access, Oracle, Filemaker, etc.), werden über einen <strong>Synchronisationsmechanismus</strong> in eine zentrale Datenbank übertragen. Dort stehen sie dann dem Wissensmanagementsystem zur Verfügung.</p>
+<p>Ein Beispiel hierfür ist eine Microsoft Access Datenbank, in der Daten von Personen geführt werden, die sich für ein Praktikum am IIS interessieren. Der Verwalter dieser Liste soll in der Lage sein, nur informelle Daten zu veröffentlichen (zum Beispiel Studiengang, Vorkenntnisse,...), und persönliche Daten wie Adresse, Telefonnummer, etc. nur in seiner lokalen Datenbank zu führen.</p>
+<p>Das Szenario <strong>zentrale Datenbank</strong> zielt auf Anwendungenab,bei denen man aus einem zentralen Datenbestand eine Auswahl selektieren möchte. Der Vorteil dieser Methode besteht darin, dass viele Einzelapplikationen auf einen zentralen Datenbestand zurückgreifen könne und die Notwendigkeit für mehrfache (=redundante) Datenhaltung entfällt.</p>
+<p><img alt="Applikationsübergreifende Datenbank" src="../img/applikationsuebergreifende-datenbank.png" /></p>
+<p>Beispiel hierfür ist eine Datenbank, die Fachartikel oder Datenblätter verwaltet. Während die aufzunehmenden Daten immer gleich sind (Titel, Autor, Zusammenfassung,...), hat jeder Anwender sehr spezielle Anforderungen an seine Sicht auf die Daten. So könnte ein Mitarbeiter an allen Artikeln interessiert sein, die sich mit dem Thema UMTS befassen, während ein anderer nach Artikeln von bestimmten Autoren sucht und diese in ein Worddokument einbinden möchte.</p>
+<p>Um derartige Anwendungen zu ermöglichen, muss für das gesamte Institut ein <strong>Datenbankserver</strong> eingerichtet werden, auf dem Personen oder Gruppierungen Bereiche anfordern können. Diese Datenbereiche müssen über die standardisierte <strong>Datenbankschnittstelle ODBC</strong> zugänglich sein (siehe Abbildung 3-2). Im Einzelfall bedeutet das, dass Daten von allen ODBC-fähigen Softwarepaketen (zum Beispiel Microsoft Word, Microsoft Excel, Microsoft Access,...) geschrieben und gelesen werden können, sofern die entsprechenden Berechtigungen vorhanden sind.</p>
+<p>Die Notwendigkeit, neue Datenbanktechniken erlernen zu müssen, entfällt. Der Endanwender kann weiterhin in der gewohnten Umgebung arbeiten. Die Problematiken <strong>Backup</strong> und <strong>Sicherheit</strong> müssen nur einmal für den zentralen Server gelöst werden. Bei den Nutzern der Datenbank fällt kein zusätzlicher, administrativer Aufwand an.</p>
+<p>Im System müssen <strong>komfortable Werkzeuge</strong> vorhanden sein, <strong>um Daten</strong> aus Datenbanken <strong>abzufragen un</strong> neue Daten <strong>einzugeben</strong>.</p>
+<h3 id="suchfunktionen">Suchfunktionen</h3>
+<p>Das System muss die Möglichkeit bieten, auf dem kompletten Inhalt (Dokumente, HowTos, Diskussionsgruppen, etc.) <strong>Volltextsuchen</strong> durchzuführen. Die Verantwortlichen für die einzelnen Inhalte sollen dafür keine zusätzlichen Anstrengungen unternehmen müssen. Die <strong>Volltextindizierung</strong> muss automatisch verlaufen.</p>
+<p>Die Bereiche, die indiziert werden, sollen zusätzlich durch <strong>externe Bereiche</strong>, wie zum Beispiel Webseiten, ergänzbar sein. Diese Eigenschaft ermöglicht es, wichtige Internetangebote in die Suche einzubeziehen.</p>
+<h2 id="systemauswahl">Systemauswahl</h2>
+<h3 id="kommerzielle-systeme">Kommerzielle Systeme</h3>
+<h4 id="lotus-notesdomino">Lotus Notes/Domino</h4>
+<p>Ein <strong>Lotus Notes System besteht aus</strong> einem oder mehreren <strong>Servern</strong> (Domino) und entsprechenden <strong>Clients</strong> (Notes), die auf den Server zugreifen. Die Zielsetzung dieses Systems ist die Bereitstellung einer Plattform, auf der bestimmte Dienste, unabhängig vom jeweiligen Betriebssystem der Clients, angeboten werden können.</p>
+<p><strong>Im Lieferumfang</strong> des Lotus Notes Paketes sind deswegen nur sehr <strong>wenig Funktionen enthalten</strong>. Zu nennen sind Mailclient, ein Kalender und Diskussionsforen. Das <strong>System muss</strong>, je nach Anforderungen, um die gewünschte Funktionalität <strong>erweitert werden</strong>.</p>
+<p>Diese Erweiterung kann prinzipiell auf zwei Wegen erfolgen: Entweder werden <strong>Anwendungen</strong> auf der Notes Plattform <strong>programmiert</strong>, wozu die Notes Entwicklungstechniken erlernt werden müssen, <strong>oder</strong> es werden <strong>Produkte</strong> von Firmen <strong>gekauft</strong>, die für die Notesplattform entwickeln. Diese Produkte gibt es mittlerweile für alle in einer Firma benötigten Funktionen, wie Dokumentenmanagement, Kontaktverfolgung, Customer Care, etc.</p>
+<p>Eigene Applikationen wurden am IIS bereits programmiert. Es entstand, in relativ langer Programmierzeit, eine <strong>Adressdatenbank</strong>, mit der <strong>Kundenkontakte</strong> verfolgt werden können. Diese Datenbank ist mittlerweile in vielen Abteilungen im Einsatz. Eine Erweiterung ist für den Endanwender kaum möglich, da hierzu Programmierkenntnisse und entsprechende Rechte notwendig sind.</p>
+<p>Eine weitere, bereits realisierte Applikation ist das <strong>Helpdesksystem</strong> der Systemadministratoren. Dieses bietet die Möglichkeit, Anfragen an die Administratoren durch ein Webinterface zu erstellen.</p>
+<p>Die Einführung und der Betrieb von Notes ist sehr <strong>supportaufwendig</strong>. Allein die Installation der Clients (Rollout) nimmt einige Monate in Anspruch. Die Installation der Clients ist allerdings nur ein kleiner Teil der Arbeit. Der größere Teil liegt darin, zu definieren, welche Applikationen auf der Notes-Plattform überhaupt implementiert werden sollen. Dazu muss eine ganz klare Notes-Strategie definiert sein, die mit Zielen, Ressourcen und Zeitplänen versehen ist.</p>
+<p>Fazit: Das System Lotus Notes/Domino ist prinzipiell gut für die Funktion eines Wissensmanagementsystems geeignet. Es gibt allerdings einige Nachteile, die gegen eine Verwendung am IIS sprechen.</p>
+<ul>
+<li>Mangelnde Verbreitung von Clients: Die Zahl der Clients ist sehr gering. Das bedeutet, dass mit einem Notes-System nur ein kleiner Teil der Mitarbeiter abgedeckt wird.</li>
+<li>Mangelnder Support: Support für die Plattform Notes ist kaum vorhanden. Zwar besteht die Möglichkeit, einen Client installiert zu bekommen, darüber hinaus gibt es aber keine Einführung o.ä. in die Nutzung/Weiterentwicklung von Notes.</li>
+<li>Aufwendige Einarbeitung für Endnutzer: Ein Mitarbeiter, der bestimmte Funktionalität in Notes implementieren möchte, hat eine relativ steile Lernkurve zu durchlaufen, da es sehr zeitaufwendig ist, sich in die Notes-Technik einzuarbeiten. Auch die tägliche Benutzung des Notesclients ist nicht intuitiv möglich.</li>
+<li>Fehlende Strategie für die Einführung: Da es für das Produkt keine klare Einführungsstrategie gibt, ist unsicher, ob Notes überhaupt irgendwann als Plattform für alle Mitarbeiter zur erfügung stehen wird. Die Einführung zieht sich mittlerweile über mehrere Jahre, weswegen viele Mitarbeiter verunsichert sind.</li>
+<li>Aspekt der Plattformunabhängigkeit geht verloren: Ein wichtiger Grund für die Entscheidung für den Kauf von Notes war die Tatsache, dass Notes Clients für die meisten am IIS vorhandenen Plattformen (Windows/Mac/UNIX) bereitstellt. Ab der Version 5 (die sich im IIS bereits im Teststadium befindet) wird kein Client mehr für UNIX Systeme angeboten, was den angesprochenen Vorteil neutralisiert.</li>
+</ul>
+<h4 id="microsoft-outlookexchange">Microsoft Outlook/Exchange</h4>
+<p>Die Kombination aus Outlook und Exchange ist prinzipiell als <strong>Microsoft Pendant zu Notes/Domino</strong> zu verstehen. Als Mitglied der Microsoft Office Produktpalette ist der Outlook Client am IIS bereits für jeden Mitarbeiter lizenziert.</p>
+<p>Der <strong>Exchange Server</strong> ist zwar im Microsoft Select Vertrag enthalten, aber <strong>für</strong> das <strong>IIS nicht lizenziert</strong>. Wie auch für den Betrieb eines Lotus Domino Servers ist für Exchange eine Lizenz erforderlich.</p>
+<p>Die Kombination aus Outlook und Exchange bietet einige <strong>Vorteile gegenüber der Notesplattform</strong>, die im Folgenden näher erläutert werden sollen.</p>
+<p>Durch die Zugehörigkeit zum Microsoft Office kann der <strong>Outlook Client</strong> wesentlich <strong>intuitiver bedient</strong> werden als der Notes Client. Oberflächen und Benutzerführung sind dem Office gegenüber ähnlich aufgebaut.</p>
+<p>Die Applikationen des <strong>MS Office</strong> sind in Outlook/Exchange <strong>gut integrierbar</strong>. So ist es beispielsweise möglich, das Erstellen von Dokumenten und deren Versand oder Ablage automatisch in einem Journal zu protokollieren. Dieses Journal dient dann als Kontakthistorie für einzelne Personen. Das Verteilen von Aufgaben per Mail ist ebenso möglich wie bei Notes. Allerdings können in Outlook diese Aufgaben beispielsweise in Microsoft Project integriert werden.</p>
+<p>Um das Outlook/Exchange System zu erweitern sind <strong>weniger Programmierkenntnisse erforderlich</strong> als bei Notes. So genannte Outlook Formulare können mit den Funktionen des Microsoft Office leicht erstellt und veröffentlicht werden. Das Erlernen neuer Programmiersprachen ist für einfache Erweiterungen nicht nötig.</p>
+<p><strong>Fazit:</strong> Die Kombination aus Outlook und Exchange ist sehr gut geeignet, um den Kommunikationsteil eines Wissensmanagementsystems am IIS zu realisieren. Die intuitive Benutzung, die Verfügbarkeit auf Windows und Mac und die gute Integration des Microsoft Office machen es der Notes Lösung überlegen. Zu beachten ist aber auch der psychologische Aspekt. Lotus Notes ist bereits gekauft worden und wird an einigen Stellen auch verwendet. Eine mögliche Umstellung auf Outlook/Exchange wird deswegen sicherlich Reibungspunkte mit sich bringen. Die Entscheidung muss auf alle Fälle basierend auf fundierten Erkenntnissen getroffen werden.</p>
+<h3 id="open-sourcefreie-systeme">Open Source/Freie Systeme</h3>
+<h4 id="twig-the-web-integration-gateway">TWIG - The Web Integration Gateway</h4>
+<p>Die beste Umschreibung für die Funktionen von <a href="https://web.archive.org/web/20020802144703/http://twig.screwdriver.net/about.php3">Twig</a> ist Mini-Groupware. Die Funktionen von Twig sind hauptsächlich im Kommunikationsbereich angesiedelt. Mit den im Folgenden beschriebenen Funktionen eignet es sich eher als <strong>kleines Internetportal</strong> als für ein Wissensmanagementsystem.</p>
+<ul>
+<li>Email (über IMAP)</li>
+<li>Kontakte (in Form eines Adressbuchs)</li>
+<li>Termine</li>
+<li>Usenet Newsgruppen (NNTP)</li>
+<li>ToDo Listen</li>
+<li>Bookmarks</li>
+</ul>
+<p>Als Wissensmanagementplattform für das IIS eignet sich TWIG nicht, da es über seine Funktionen hinaus nur <strong>schwer erweiterbar</strong> ist. Es fehlen beispielsweise wichtige Funktionen wie die Datenbankunterstützung. Da Twig komplett <strong>in PHP3 geschrieben</strong> ist, könnten diese Funktionen nachgerüstet werden, was allerdings sehr arbeitsintensiv ist.</p>
+<h4 id="zope-z-object-publishing-environment">ZOPE - Z Object Publishing Environment</h4>
+<p><a href="https://www.zope.dev">ZOPE</a> eignet sich mit seinem offenen, <strong>objektorientierten Ansatz</strong> und seiner <strong>einfachen Bedienbarkeit</strong> hervorragend als Plattform für das IIS. Die Eigenschaften dieses <strong>Application Server</strong> sollen im Folgenden näher beleuchtet werden.</p>
+<p>Ein auf ZOPE basierendes System ist <strong>vollständig webbasiert</strong>. Das bedeutet, dass sowohl der Benutzer, der Administrator, als auch der Entwickler mit einem normalen Webbrowser auskommen. Die Installation von speziellen Clients ist (im Gegensatz zu Lotus Notes) nicht nötig und erspart viel Zeit.</p>
+<p>Das System ZOPE kann sehr komfortabel durch sogenannte <strong>Produkte</strong> über den Standardumfang hinaus erweitert werden. Im Standardumfang sind oft benötigte Elemente wie Folder, Dateien, DTML-Methoden, Bilder und Indizierfunktionen enthalten.</p>
+<p>Es gibt Produkte, mit denen man <strong>Verbindungen zu Datenbanken</strong> herstellen, <strong>Umfragen</strong> erstellen und <strong>lokale Filesysteme einbinden</strong> kann. Zum Zeitpunkt dieser Arbeit waren bei ZOPE <strong>über 110</strong> verschiedene <strong>Produkte verfügbar</strong>.</p>
+<p>ZOPE unterstützt alle im Konzept geforderten Standards und darüber hinaus noch einige mehr (<strong>HTML 4, CSS, HTTP 1.1, FastCGI, FTP, WebDAV, DOM, XML, XML-RPC, SQL, RSS, LDAP</strong>). Besonders durch die Verwendung der Standards HTTP/WebDAV ist eine Integration in die Microsoft Office Produktpalette sehr einfach möglich.</p>
+<p>In ZOPE können logische Funktionen durch das, von XML abgeleitete, Derivat <strong>DTML</strong> (Document Type Markup Language) realisiert werden. Bevor ZOPE eine Seite an einen Client überträgt, prüft es diese auf vorhandene DTML-Tags, wertet diese aus und sendet das Ergebnis an den Client. Diese Vorgehensweise ist ähnlich wie bei PHP.</p>
+<p>In DTML existieren Befehle für die meisten benötigten Funktionen. Dazu gehören unter anderem Datenbankabfragen, der Versand von Emails und die Deklaration von Variablen. Obwohl das System ZOPE in <a href="https://www.python.org/">Python</a> programmiert ist, wird der normale Entwickler im Normalfall nicht mit dieser Programmiersprache konfrontiert und kann seine Applikation vollständig in DTML implementieren.</p>
+<p>Mit <strong>XML Document</strong> steht ein Produkt zur Verfügung, mit dem XML-Inhalte in das System integriert werden können. XML Document repräsentiert ein Dokument in der standardisierten <strong>DOM API</strong>. Über diese API können Elemente des Dokuments abgefragt, eingefügt oder verändert werden. Produkte, die ein XML Dokument in eine darstellbare Form (zum Beispiel HTML) umwandeln, stehen ebenfalls bereit.</p>
+<p>Um beispielsweise in Lotus Notes eine Applikation zu entwickeln, muss man die Notes-eigene Programmiersprache erlernen, was mit einer steilen Lernkurve verbunden ist. Bei ZOPE ist der <strong>Einstieg</strong> viel einfacher möglich. Falls kein fertiges Produkt existiert, können kleine Applikationen bereits mit einfachen HTML/CGI Kenntnissen erstellt werden. Einfache Funktionen können somit maßgeschneidert durch Mitarbeiter selbst erstellt werden. Spezielle Lizenzen, wie die Notes-Entwicklerlizenz, sind nicht nötig.</p>
+<p>Obwohl ZOPE mit einer Datenbank zusammen ausgeliefert wird, kann man prinzipiell jede <strong>SQL Datenbank</strong> (zum Beispiel Oracle, MySQL, Microsoft SQL) als <strong>Datenspeicher</strong> verwenden. Die integrierte <strong>ZODB</strong> (ZOPE Objectoriented Database) <strong>bietet</strong> allerdings einige sehr <strong>komfortable Funktionen</strong>, die bei Verwendung einer relationalen Datenbank fehlen.</p>
+<p>Durch die Objektorientierung kann jeder Vorgang, wie zum Beispiel das Löschen eines Elements, rückgängig gemacht werden (<strong>UNDO Funktion</strong>).</p>
+<p>Bei der Verwendung der ZODB besteht weiterhin die Möglichkeit der <strong>Versionsverwaltung</strong>. Hierbei kann der Entwickler eine neue Version eines Bereiches erstellen, ohne dass diese von den Nutzern des Systems abgefragt werden können. Die Nutzer sehen noch die alte Version. Erst wenn der Entwickler die neue Version freigibt, können andere darauf zugreifen.</p>
+<p>Die Objekte in der Datenbank (ZODB) werden über ein sogenanntes <strong>URL-Objekt-Mapping</strong> adressiert. Dadurch kann jedes Objekt durch eine URL eindeutig angesprochen werden. Auf die Objekte können dann verschiedene Methoden angewendet werden.</p>
+<p>Die <strong>Vererbung</strong> ist ein sehr mächtiges Hilfsmittel in ZOPE und ist sehr vielseitig einsetzbar. Jedes Unterverzeichnis erbt Rechte und Eigenschaften des übergeordneten Verzeichnisses. Das bedeutet, dass beispielsweise eine Person, die in oberster Ebene eine bestimmte Rolle zugewiesen bekommen hat, diese Rolle durch Vererbung auch in allen Unterverzeichnissen besitzt.</p>
+<p>Eine weitere Anwendungsmöglichkeit der Vererbung ist, auf Toplevel allgemeingültige Objekte (zum Beispiel das Institutslogo) abzulegen. Dieses steht dann jedem Benutzer in den unteren Leveln zur Verfügung.</p>
+<p>Prinzipiell kann die Benutzerverwaltung von ZOPE auf unterschiedlichen Wegen realisiert werden. Am einfachsten ist die in ZOPE integrierte Benutzerverwaltung, der sogenannte <strong>UserFolder</strong>. Dieser hat allerdings den <strong>Nachteil</strong>, dass jeder <strong>Nutzer manuell eingetragen</strong> werden muss und diese Daten außerhalb von ZOPE nicht zur Verfügung stehen.</p>
+<p>Eine weitere Möglichkeit besteht darin, ZOPE über <strong>bestehende Benutzerverwaltungen</strong> wie zum Beispiel die von Microsoft Windows NT autentifizieren zu lassen. Hierzu wird ein bestimmtes Produkt (zum Beispiel NTUserFolder) benötigt. Der große Vorteil dieser Lösung besteht darin, dass mit NT bereits eine gepflegte Benutzerverwaltung am IIS vorliegt und diese unmodifiziert verwendet werden kann.</p>
+<p>Langfristig ist allerdings empfehlenswert, alle Dienste, die Autentifizierung benötigen, aus einer <strong>gemeinsamen Quelle</strong> zu speisen. An dieser Stelle bietet sich <strong>LDAP</strong> als Standard an. Über LDAP kann nicht nur ZOPE, sondern auch Windows NT, UNIX, Dokumentenmanagementsysteme u.v.m. autentifizieren.</p>
+<p>Besitzt eine Person auf einer Ebene Managerrecht, so kann diese Person die Benutzerverwaltung in ihrem Bereich selbst übernehmen. Ein Abteilungsleiter (als Manager seines Abteilungsbereichs) kann beispielsweise den Gruppen einen Unterbereich einrichten und festlegen, wer in seinem Bereich lesen, schreiben, bearbeiten, etc. kann.</p>
+<p>Diese Funktion bietet sich an, wenn Personen, wie zum Beispiel Studienarbeiter, in der globalen Nutzerverwaltung noch nicht enthalten sind, aber dennoch Zugang zu einem Bereich des Systems bekommen sollen.</p>
+<h4 id="jetspeed">Jetspeed</h4>
+<p>Das Projekt <a href="https://portals.apache.org/jetspeed-2">Jetspeed</a> beschreibt sich selbst als Enterprise Information Portal und Webbased Groupware. Die Projektwebseite lässt darauf schließen, dass es sich um einen sehr vielversprechenden Ansatz handelt. Leider wurde eine sinnvoll nutzbare Version erst am 21.03.2000 veröffentlicht, was eine Verifizierung leider nicht mehr möglich gemacht hat.</p>
+<p>Interessant an Jetspeed ist, dass es sich um ein Projekt der sehr engagierten Apache Group, die auch den Webserver Apache entwickelt, handelt. Da auch Projekte wie JServ (Java Servlet Engine für Apache) oder Cocoon von dieser Gruppe durchgeführt werden, kann mit sehr großen Synergieeffekten in den Bereichen Java und XML gerechnet werde. Die einzelnen Projekte der Apache Group sind so ausgerichtet, dass die einzelnen Komponenten projektübergreifend eingesetzt werden können. Jetspeed unterstützt nach Aussage der Entwickler bereits viele Standards und Funktionen:</p>
+<ul>
+<li>XML</li>
+<li>Datenbank Benutzerautentifizierung (leider nicht über LDAP oder NT Domäne)</li>
+<li>Rich Site Summary (RSS)</li>
+<li>XML/XSL Inhalt durch Integration von Cocoon</li>
+<li>XML basierte Konfiguration</li>
+<li>Plattformunabhängig (einzige Bedingung JDK 1.1 und Servlet 2.0)</li>
+<li>Synchronisation mit Avantgo</li>
+</ul>
+<h4 id="midgard">Midgard</h4>
+<p>Von der Beschreibung her ist <a href="http://midgard-project.org">Midgard</a> ähnlich einzustufen wie ZOPE. Im Gegensatz zu ZOPE ist Midgard allerdings ein <strong>abgeschlossenes System</strong>. Die Unterstützung für weitere externe Pakete fehlt. Außerdem ist die Unterstützung von Datenbanken sehr eingeschränkt, da <strong>nur MySQL unterstützt</strong> wird und auch die <strong>Anbindung an LDAP</strong> zum Autentifizieren <strong>nicht möglich</strong> ist.</p>
+<p>Vom Funktionsumfang ist Midgard, trotz seines Untertitels Application Server Suite, eher in die Kategorie <strong>Publishing-System</strong> einzuordnen. Als Wissensmanagementsystem am IIS kommt Midgard aus den genannten Gründen nicht in Frage.</p>
+<h4 id="enhydra">Enhydra</h4>
+<p><a href="https://web.archive.org/web/20050501054249/http://www.enhydra.org">Enhydra</a> ist ein <strong>Application Server</strong> mit <strong>Java und XML</strong> Unterstützung. Weil die Unterstützung von Enterprise Java Beans und CORBA angestrebt ist, kann sich Enhydra zu einer sehr attraktiven Lösung entwickeln.</p>
+<p>Als Wissensmanagementsystem kommt Enhydra für das IIS nicht in Frage, da es keine Möglichkeit bietet, vorgefertigte Elemente, wie Diskussionsforen, etc. in das System einzubinden und miteinander zu verknüpfen.</p>
+<h4 id="opencms">OpenCMS</h4>
+<p><a href="http://www.opencms.org">OpenCMS</a> ist wie der Name schon andeutet ein <strong>Content Management System</strong>. Als solches ist es nicht auf Interaktion ausgelegt und deswegen nicht als Wissensmanagementsystem geeignet. In der Sektion "geplante Projekte"befinden sich aber dennoch einige interessante Dinge, wie beispielsweise die Unterstützung von <strong>WML</strong>, <strong>LDAP</strong> und einer <strong>Volltextsuchmaschine</strong>.</p>
+<p>OpenCMS kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.</p>
+<h4 id="intalio">Intalio</h4>
+<p>Trotz Ankündigung für März 2000 war <a href="https://web.archive.org/web/20000301151011/http://www.exoffice.com/intalio.xml">Intalio</a> am 10.04.2000 noch nicht verfügbar. Bei Intalio handelt es sich um einen Applicationserver, der einen sehr <strong>offenen Ansatz</strong> verfolgt.</p>
+<ul>
+<li>XML</li>
+<li>CORBA, DCOM</li>
+<li>Enterprise Java Beans</li>
+<li>Datenbank Backends (RDBMS, OODBMS, Directory Server)</li>
+<li>Sicherheit (OpenSSL, OpenCA, S/WAN)</li>
+<li>Standard APIs (JDBC, ODMG, JNDI)</li>
+<li>LDAP</li>
+</ul>
+<p>Die beschriebene Funktionalität ist sehr umfassend. Deswegen sollte die Plattform Intalio nach der Freigabe einer Evaluation unterzogen werden.</p>
+<p>Intalio kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.</p>
+<h4 id="locomotive">Locomotive</h4>
+<p>Bei Locomotive (locomotive.org, URL funktioniert nicht mehr) handelt es sich um einen <strong>Application Server</strong>, der von GNU Entwicklern ins Leben gerufen wurde. Wie auch schon bei Midgard zuvor ist Locomotive nicht darauf ausgelegt, durch externe Module ergänzt zu werden, was bedeutet, dass alle Module selbst programmiert werden müssen.</p>
+<p>Locomotive kommt als Plattform für das IIS-Wissensmanagementsystem nicht in Frage.</p>
+<h4 id="star-officestar-portal">Star Office/Star Portal</h4>
+<p>Der Funktionsumfang des <strong>Star Portal</strong> konnte erst bei der CeBIT 2000 in Hannover abgeschätzt werden. Es handelt sich bei Star Office um ein vollwertiges Officepaket, das zusammen mit Star Portal alle wichtigen Funktionen eines <strong>Groupwaresystems</strong> abdeckt.</p>
+<p>Bis zum Abschluss dieser Diplomarbeit lag von der Firma Star Division leider nur das sogenannte <strong>Early-Access-Program</strong> vor, das nur ausgewählten Firmen die Nutzung des Portals ermöglicht. Der Funktionsumfang dieses Produkts konnte aus diesem Grund nicht evaluiert werden.</p>
+<h3 id="eigene-programmierung">Eigene Programmierung</h3>
+<p>Neben bereits bestehenden Lösungen, kommerziell oder frei verfügbar, existiert die Möglichkeit, ein <strong>System</strong> von Grund auf <strong>aus Einzelkomponenten</strong> zu konzipieren. Bei dieser Vorgehensweise kann die Funktionsweise des Systems <strong>optimal</strong> an die Bedürfnisse der Firma <strong>angepasst</strong> werden.</p>
+<h2 id="entscheidung">Entscheidung</h2>
+<p>Weil es am IIS zu Beginn dieser Arbeit keine Plattform gab, auf der man ein Wissensmanagementsystem hätte implementieren können, musste die Einführung eines neuen Systems in Betracht gezogen werden.</p>
+<p>Da mit dem damaligen Kenntnisstand keines der verfügbaren Produkte die definierten Anforderungen erfüllte, wurde die Entscheidung getroffen, ein System zu konzipieren und von Grund auf zu programmieren. Nur für Komponenten wie beispielsweise das Diskussionsforum wurden fertige Produkte gewählt werden.</p>
+<p>Da für das Wissensmanagementsystem noch kein Namen gewählt wurde, wird dieser erste Ansatz im Folgenden <strong>systemX I</strong> genannt. Bis zur Einführung sollte die Entscheidung für einen Namen getroffen werden, um das System auch im sprachlichen Gebrauch zu etablieren.</p>
+<p>Mit dem Fortschritt der Arbeit haben sich drei entscheidende Erkenntnisse ergeben.</p>
+<ol>
+<li>Die Bewertung der bestehenden Systeme wurde in sinnvollem Umfang durch das eigene Design erst möglich. Viele Vorteile des Systems ZOPE haben sich durch die Konzeption eines neuen Systems erst als solche herausgestellt.</li>
+<li>Einige der in Erwägung gezogenen Produkte haben sich erst im Verlauf der Arbeit in eine Richtung entwickelt, die ihren Einsatz rechtfertigen.</li>
+<li>Mit der eigenen Entwicklung der Plattform werden zu viele Ressourcen gebunden. Dies hat zur Folge, dass man sich den Inhalten und Methoden nicht mehr in aussreichendem Maße widmen kann.</li>
+</ol>
+<p>Aufgrund dieser Entwicklung wurde die Entscheidung getroffen, sich von der Eigenentwicklung abzuwenden und die gewünschten Inhalte und Methoden auf einer bestehenden Plattform-Lösung (ZOPE) zu implementieren. Die bis dahin unternommenen Anstrengungen sind aber keineswegs nutzlos gewesen, da sie eine sinnvolle Beurteilung der bestehenden Lösungen überhaupt erst ermöglicht haben.</p>
+<p>Dieser auf ZOPE basierende Ansatz soll im Folgenden <strong>systemX II</strong> genannt werden.</p>
+<p>Viele der im ersten Ansatz definierten Methoden, wie der White Page Dienst oder die externen Suchfunktionen, konnten ohne Mehraufwand in systemX II integriert werden.</p>
+<h2 id="systemx-i">systemX I</h2>
+<h3 id="uberblick">Überblick</h3>
+<p>Da, wie angesprochen, die Idee, das gesamte System selbst zu programmieren, verworfen wurde, sind einige der im Konzept erwähnten Funktionen nicht realisiert worden. Diese sind mit einem Stern (*) gekennzeichnet.</p>
+<p>Die wichtigsten Elemente des Konzepts sind der frei verfügbare <strong>Webserver Apache</strong> und dessen Erweiterungen (siehe Abbildung 3-3). Die Aufgabe eines Webservers ist es, Dokumente (normalerweise im HTML Format), die auf dem Server in einem bestimmten Verzeichnis liegen, über das sogenannte <strong>HTTP-Protokoll</strong> an einen Client (normalerweise ein HTML Browser) zu übertragen.</p>
+<p><img alt="systemX I - Überblick" src="../img/systemx-i-ueberblick.png" /></p>
+<p>Die Möglichkeiten, die mit der <strong>HTML</strong> Sprache zur Verfügung stehen, sind <strong>eingeschränkt</strong>. HTML ist darauf ausgelegt, <strong>statischen Inhalt</strong> bereitzustellen, womit Inhalt aus Datenbanken nicht verfügbar gemacht werden kann.</p>
+<p>Außerdem liegt mit dem <strong>HTTP</strong>-Protokoll ein <strong>zustandsloses</strong> Protokoll vor, d.h. in dem Moment, in dem der Server dem Client eine Seite geliefert hat, ist die Verbindung beendet. Es besteht keine Möglichkeit, mehrere Seitenaufrufe, die von dem selben Browser durchgeführt werden, zueinander in Verbindung zu stellen (<strong>Session Management</strong>).</p>
+<p>Session Management ist wichtig, wenn beispielsweise das Verhalten der Benutzer beobachtet oder Variablen von einem Seitenaufruf zum nächsten gespeichert werden sollen.</p>
+<p>Ein weiterer Nachteil ist die Tatsache, dass in <strong>HTML</strong> Seiten <strong>keine logischen Funktionen</strong> eingebaut werden können. Es ist nicht möglich, bestimmte Elemente der Seite in Abhängigkeit von Parametern oder Variablen anzuzeigen oder Berechnungen mit diesen durchzuführen.</p>
+<p>Aufgrund dieser Nachteile existiert bei den meisten HTTP-Servern die Möglichkeit, die Funktionalität des Servers zu erweitern. An dieser Stelle sollen mit dem <strong>Common Gateway Interface</strong> (CGI), der Sprache <strong>PHP3</strong> und <strong>Java Servlets</strong> drei Möglichkeiten näher betrachtet werden.</p>
+<p>Das <strong>CGI</strong> stellt eine <strong>definierte Schnittstelle</strong> zwischen dem HTTP-Server und Anwendungen, die ein CGI-Interface besitzen, dar. Das bedeutet, dass Applikationen, die bestimmte Funktionen bereitstellen, in beliebigen Programmiersprachen verfasst sein können. Oft verwendet werden Perl, C und <strong>Shell-Skripte</strong>.</p>
+<p>Die Kommunikation zwischen HTTP Server und CGI Applikation ist einfach. Der HTTP-Server wird so konfiguriert, dass er bei der Anforderung nach bestimmten Dateitypen (zum Beispiel mit der Endung .cgi), diese nicht direkt an den Client weitergibt, sondern sie erst durch eine Applikation bearbeiten lässt (siehe Abbildung 3-4). Die CGI Applikation arbeitet die Anweisungen ab und erzeugt gültiges HTML, das dann über den Server an den Client zur Darstellung weitergereicht wird.</p>
+<p><img alt="CGI Funktionsweise" src="../img/cgi-funktionsweise.png" /></p>
+<p>CGI Applikationen stellen ein mächtiges Werkzeug dar, um interaktive Webapplikationen erstellen zu können. Bei Einsatz von Perl als Interpreter besteht die Möglichkeit, Protokolle, wie XML, SQL, LDAP, IMAP, etc. einzubinden. CGIs wurden für dieses Konzept nicht ausgewählt, da es trotz der Vielzahl der verfügbaren CGI-Applikationen keine Möglichkeit gibt, einzelne Funktionen, wie Diskussionsforen oder Datenbanken, einfach zu integrieren.</p>
+<p>Eine andere Erweiterungsmöglichkeit bietet die Sprache <strong>PHP3</strong>. Sie kann als <strong>Modul</strong> an den <strong>Apache</strong>-Server angebunden werden und stellt eine sehr große Auswahl an Funktionen bereit. Um einen Eindruck über den Umfang von PHP3 zu vermitteln, folgt eine Aufstellung der für dieses Konzept verwendeten Funktionen.</p>
+<ul>
+<li>Zugriff auf die meisten verfügbaren Datenbanken</li>
+<li>LDAP</li>
+<li>SMTP</li>
+<li>NNTP</li>
+<li>Session Management</li>
+<li>Zugriff auf Filesystem und lokale Applikationen</li>
+</ul>
+<p>Mit PHP3 stehen alle Funktionen, die für die Implementierung der Webplattform benötigt werden, zur Verfügung. Aus diesem Grund wurde die Entscheidung getroffen, <strong>PHP3</strong> als <strong>Basis für</strong> das <strong>systemX I</strong> zu wählen.</p>
+<p>Die <strong>objektorientierte Programmiersprache Java</strong> kann im System an unterschiedlichen Stellen zum Einsatz kommen. An dieser Stelle sollen die Möglichkeiten von <strong>Java Servlets</strong> im Gegensatz zu sogenannten <strong>Java Applets</strong> betrachtet werden.</p>
+<p>Bei Einsatz von Java Applets schickt der Server dem Client ein lauffähiges Javaprogramm. Auf dem Client muss eine sogenannte <strong>virtuelle Java Maschine</strong> vorhanden sein, die den Javacode ausführen kann. Dieses Vorgehen ist mit Nachteilen verknüpft.</p>
+<p>Der Javacode muss zu jedem Client geschickt werden, der eine bestimmte Seite anfordert, wodurch sich eine erhöhte Netzbelastung ergibt. Außerdem muss sichergestellt werden, dass jede mögliche virtuelle Maschine den Code in gleicher Weise interpretiert, was nicht selbstverständlich ist.</p>
+<p>In dem vorliegenden Fall wurden verschiedene Applets, die verwendet werden können, um Baumstrukturen darzustellen, mit verschiedenen Browsern und Plattformen getestet. <strong>Keines der Applets hat auf allen Plattformen funktioniert</strong>.</p>
+<p><strong>Java Servlets</strong> umgehen dieses Problem. Bei einem Servlet wird der Javacode schon <strong>auf dem Server</strong> ausgeführt und an den Client nur noch die HTML Ausgabe übertragen. Das <strong>verringert</strong> den <strong>Netzbandbreitenbedarf</strong> und <strong>reduziert Inkompatibilitätsprobleme</strong>. Allerdings wird auf dem Server <strong>mehr Rechenleistung</strong> benötigt, da dieser den Javacode interpretieren muss, was im vorliegenden Fall mit maximal 400 Nutzern unkritisch ist.</p>
+<p>Die Servlettechnologie wurde in das System integriert, um den Standard XML unterstützen zu können. Der folgende Abschnitt soll klären, warum dieser Anspruch in einem Wissensmanagement sinnvoll ist.</p>
+<p>Der größte Unterschied zwischen XML und HTML besteht darin, dass bei XML die verwendeten Tags definiert werden können, wohingegen bei <strong>HTML</strong> auf fest <strong>definierte Tags</strong> (H1, P, IMG, etc.) zurückgegriffen werden muss. Mit XML können den einzelnen Elementen in einem Dokument sinnvolle menschen- und maschinenlesbare Namen zugewiesen werden.</p>
+<p>Die <strong>Verarbeitung</strong> von <strong>XML</strong> ist aus diesem Grund auch etwas <strong>komplizierter</strong> als bei HTML, denn es besteht die Notwendigkeit, in einer sogenannten Document Type Definition (DTD) die möglichen Elemente, die in einem Dokument vorkommen dürfen, zu definieren.</p>
+<p>Außerdem sind zur <strong>Darstellung</strong> sogenannte <strong>Stylesheets</strong> zu erstellen, die ein XML Dokument in eine darstellbare Form umwandeln (zum Beispiel HTML, PDF, etc.). Eine gute Einführung in XML gibt [see99]</p>
+<p>Mit dem <strong>Servlet Cocoon</strong> steht ein Werkzeug zur Verfügung, mit dem man XML Dokumente auf Serverseite in andere Formate umwandeln kann. Neben der reinen Stylesheet Transformation bietet Cocoon auch die Möglichkeit Datenbanken oder LDAP Server abzufragen. Typisch für Cocoon ist der modulare Aufbau. Unterschieden werden <strong>Producer, Processor und Formatter</strong>.</p>
+<p>Der <strong>Producer</strong> hat die Aufgabe ein XML Document bereitzustellen. Im einfachsten Fall wird ein XML-Dokument aus dem Filesystem gelesen. Es ist auch möglich, Daten aus Datenbank- oder LDAP-Abfragen in XML darzustellen. Cocoon liegen in der Basisversion einige Producer bei, die erweitert oder durch neue ergänzt werden können.</p>
+<p>Über sogenannte <strong>Formatting Instructions</strong> (FI) wird Cocoon im Dokument mitgeteilt, welcher Processor verwendet werden soll. Ein Beispiel ist der XSLT Processor, der ein XML DOkument unter Verwendung eines XSL Stylesheets transformieren kann.</p>
+<p>Der <strong>Formatter</strong> sorgt am Ende der Kette für die eigentliche Formatierung des Inhalts. Mit unterschiedlichen Formattern können Formate wie HTML und PDF erzeugt werden.</p>
+<h3 id="implementierung-der-definierten-methoden">Implementierung der definierten Methoden</h3>
+<h4 id="whitepage-dienst">Whitepage Dienst</h4>
+<p>Der Whitepage Dienst soll nicht ausschließlich als Whitepage Dienst, sondern darüber hinaus auch in weiteren Anwendungen verwendbar sein. Hiermit kann das Problem der redundanten Datenhaltung gelöst werden. Jeder Bereich, der personenbasierte Daten verwaltet, greift im IIS auf eigene Datenbestände zurück, die nicht synchronisiert werden. Dies trifft sowohl auf Verwaltungsstellen, wie die Personalstelle, als auch auf Systemadministratoren, Abteilungssekretariate, etc. zu (siehe Abbildung 3-5).</p>
+<p><img alt="Vermeidung redundanter Datenhaltung" src="../img/vermeidung-reduntanter-datenhaltung.png" /></p>
+<p>Der hier konzipierte Whitepage Dienst stellt eine <strong>Datenbasis</strong> zur Verfügung, die die Möglichkeit bietet, <strong>personenbezogene Daten</strong> aufzunehmen. Die hier definierten Attribute können bei Bedarf beliebig erweitert werden. Der Dienst beruht auf dem Standard <strong>LDAP</strong> und macht ihn deshalb zu einem plattform- und anwendungsübergreifenden Werkzeug.</p>
+<p>LDAP wurde ursprünglich als Frontend zu den im Internet sehr verbreiteten X.500 Directory Servern konzipiert. Im Gegensatz zu diesen konnte LDAP über TCP/IP betrieben werden. Mittlerweile besteht bei den meisten LDAP-Servern auch die Möglichkeit, im sogenannten standalone-Mode, also ohne X.500-Backend, betrieben zu werden. Mit einem LDAP-Server sind verschiedene Anwendungen denkbar.</p>
+<ul>
+<li>Einheitliche und aktuelle Basis für viele der am IIS benötigten Erfassungen von <strong>personenbezogenen</strong> Daten. Dabei sind insbesondere datenschutztechnische Aspekte zu berücksichtigen.</li>
+<li>Bereitstellung eines <strong>institutsweiten Adressbuchs</strong>, das wesentlich aktueller als die im Moment verfügbaren ist, und auch Praktikanten, Studienarbeiter, etc. beinhaltet.</li>
+<li>Personen können nach <strong>Fähigkeitsprofilen</strong> gesucht werden. In das Profil können Ausbildung, durchgeführte Projekte, Fortbildungen und nichtfachliche Qualifikationen, wie zum Beispiel Sprachkenntnisse einfließen. Auch an dieser Stelle ist der Datenschutz zu beachten.</li>
+<li>Vorhalten der <strong>Kontakte von abgegangenen Mitarbeitern</strong> in einer <strong>Alumni-Sektion</strong>.</li>
+</ul>
+<p>Prototypisch ist der Whitepage Dienst auf dem LDAP-Server <strong>OpenLDAP</strong> realisiert worden. Aufgrund des Standards LDAP, und besonders des <strong>LDAP Interchange Format LDIF</strong>, können die Daten jederzeit in einen anderen Server transferiert werden.</p>
+<p>Jedem Mitarbeiter sind drei sogenannte <strong>Objektklassen</strong> zugeordnet. Eine Objektklasse ist eine Beschreibung der Parameter, die für eine Person möglich sind. Verwendet werden die standardisierten Objektklassen <strong>person</strong> (Stammdaten einer Person: Name, Vorname, etc.), <strong>organizationalPerson</strong> (Erweiterung von person um Daten, die in einer Organisation relevant sind: Raumnummer, Telefon, Email) und die selbstdefinierte Objektklasse <strong>iisPerson</strong>, die IIS spezifische Details festlegt.</p>
+<p>Bereits mit diesem Prototypen ist es möglich, ein <strong>Adressbuch</strong> für den Netscape Navigator, Outlook Express und andere LDAP fähige Clients (zum Beispiel Eudora, pine) zur Verfügung zu stellen. Mit dem bestehenden Server war es außerdem sehr leicht möglich, die sogenannten <strong>Netscape Roaming Profiles</strong> anzubieten, einen Dienst, bei dem Einstellungen, Adressbuch und Bookmarks des Netscape Navigators mit dem Server synchronisiert werden können. Damit könne Nutzer beispielsweise auf Desktop-PC und Notebook auf die gleichen Ressourcen zurückgreifen.</p>
+<p>Das Produkt <strong>Enlist</strong> bietet die Möglichkeit, den <strong>LDAP-Server als ODBC Datenquelle</strong> für anderen Applikationen, wie zum Beispiel das Microsoft Office, zur Verfügung zu stellen. Hiermit eröffnet sich für einzelne Bereiche die Möglichkeit, basierend auf SQL-Abfragen, personenbezogene Datenbestände lokal zu führen.</p>
+<h4 id="diskussionsforum_1">Diskussionsforum</h4>
+<p>Als Diskussionsforum kommt das Produkt <a href="https://www.phorum.org">Phorum</a> zum Einsatz. Es erlaubt die Verwaltung von mehreren Diskussionsforen durch unterschiedliche Administratoren. Außerdem besteht die Möglichkeit, Phorum über die Erweiterung <strong>phorummail</strong> an existierende Maillisten anzubinden.</p>
+<p>Alle <strong>Diskussionsbeiträge</strong> werden in einer <strong>SQL-Datenbank</strong> abgelegt(MySQL oder PostgreSQL). Es besteht die Möglichkeit, sich von Antworten auf eingestellte Beiträge per Mail informieren zu lassen.</p>
+<h4 id="newssektion_2">Newssektion</h4>
+<p>(*) Die Newssektion wurde im systemX I nicht realisiert. Es war geplant, das Produkt <a href="https://web.archive.org/web/20000918032114/http://mana.landofhaze.com/downloads/news/">PHP3 News Skript</a> einzusetzen, das auf PHP3 basiert und alle Beiträge in einer MySQL-Datenbank ablegt.</p>
+<h4 id="privater-bereich_2">Privater Bereich</h4>
+<p>(*) Der private Bereich unterscheidet sich vom öffentlichen nur dadurch, dass der Besitzer als Administrator fungiert und somit über die Rechtevergabe entscheiden kann.</p>
+<h4 id="zugang-uber-standardsoftware">Zugang über Standardsoftware</h4>
+<p>Der komplette Funktionsumfang kann wie gefordert über einen <strong>Standard-Webbrowser</strong> bedient werden. Die Funktionalität wurde mit den Browsern Netscape Navigator und Internet Explorer auf den verfügbaren Plattformen getestet.</p>
+<p>Auf alle datenbankgestützten Anwendungen kann über ODBC zugegriffen ODBC werden. Hierfür wird ein <strong>MySQL-ODBC-Treiber</strong> und eine ODBC fähige
+Datenbank (zum Beispiel Microsoft Access) notwendig.</p>
+<h4 id="moglichkeit-datenbankgestutzter-anwendungen_1">Möglichkeit datenbankgestützter Anwendungen</h4>
+<p>Um datenbankgestützte Anwendungen zu ermöglichen, benötigt man einen <strong>Datenbankserver</strong> (<strong>DBMS, Database Management System</strong>). Oftmals kommen <strong>relationale Datenbanken</strong> zum Einsatz, die sich durch die Verwendung der standardisierten Abfragesprache <strong>SQL</strong> auszeichnen. Diese ermöglicht Relationen zwischen den einzelnen Tabellen einer Datenbank. In diesem Konzept wird das DBMS MySQL verwendet, da es frei verfügbar und bereits in vielen Anwendungen im Einsatz und somit getestet ist.</p>
+<p>Um auf den Datenbestand eines DBMS zugreifen zu können, werden keine ODBC speziellen Clients benötigt. ODBC bietet die Möglichkeit, durch sogenannte ODBC-Treiber, auf DBMS zuzugreifen. ODBC wurde ursprünglich für die
+Plattform Windows konzipiert, steht mittlerweile aber auch auf anderen
+Betriebssystemen zur Verfügung (unixODBC, iODBC). Für MySQL existieren derartige ODBC-Treiber.</p>
+<p>Zur Konfiguration und Administration der MySQL-Datenbank ist kein dedizierter Client notwendig, da mit phpMyAdmin ein Webinterface zur Datenbank verfügbar ist.</p>
+<h4 id="suchfunktionen_1">Suchfunktionen</h4>
+<p>Die Suche auf den Datenbeständen des Systems wird durch Datenbankabfragen auf der Datenbank realisiert.</p>
+<p>Zu jedem Element werden <strong>Metadaten</strong> erfasst, die entsprechende Informationen über das Element liefern. Unter Metadaten versteht man Daten, die das zu erfassende Element beschreiben.</p>
+<p>Die Erfassung der Metadaten erfolgt teilweise automatisch und teilweise manuell. Die persönlichen Daten des Autors sind beispielsweise dadurch bekannt, dass dieser sich zuvor am System angemeldet hat.</p>
+<p>Die Art des Elements kann dadurch bestimmt werden, dass dem Autor verschiedene Vorlagen, zum Beispiel für Berichte, URLs etc., angeboten werden. Weitere Daten, wie beispielsweise Schlagworte, müssen vom Autor gewählt werden.</p>
+<p>Die Abfragemöglichkeit der Metadaten wird durch eine <strong>Suchmaschine für externe Daten</strong> ergänzt. Für das System wurde das Produkt <a href="https://web.archive.org/web/20000105124849/http://mysearch.udm.net">Udmsearch</a> ausgewählt. Zur Auswahl stand außerdem das Produkt Harvest der University of Colorado. Im Vergleich ist Udmsearch komfortabler zu bedienen und bietet die Möglichkeit, seine <strong>Daten in</strong> einer <strong>SQL-Datenbank</strong> und nicht in proprietärem Format zu speichern. Udmsearch besteht aus drei Teilen:</p>
+<p>Der <strong>Gatherer</strong> (Sammler) <strong>fragt Daten</strong> über das HTTP-, FTP- oder NNTP- Protokoll von anderen Rechnern <strong>ab</strong>. Mit einem Gatherer kann theoretisch das gesamte Internet indiziert und ein Suchdienst, ähnlich wie <a href="https://google.com">Google</a>, aufgebaut werden.</p>
+<p>Für die Ergänzung des Metadatenbestands ist es sinnvoll, den Gatherer nur auf bestimmte Bereiche anzusetzen. In dieser Arbeit wurde beispielsweise das IIS-Intranet untersucht, wobei der Gatherer auf ca 16.000 Dokumente gestossen ist, davon cirka 3000 HTML-Dokumente.</p>
+<p>Der zweite Bestandteil ist der <strong>Indexer</strong> (Indizierer), der Daten, die durch den Gatherer gesammelt wurden, indiziert. Der hier verwendete Index ist ein sogenannter <strong>Volltextindex</strong>, das bedeutet, der Indexer untersucht, wie oft bestimmte Wörter in dem zu indizierenden Dokument vorkommen. Dazu verwendet er eine <strong>Stoppwortliste</strong>, mit der Begriffe wie ich, du, ist, etc. aus dem Indiziervorgang ausgeschlossen werden. Die erzeugten Daten legt der Indexer in einer Datenbank ab. Von Udmsearch werden MySQL, Interbase, Oracle, PostgreSQL, miniSQL, Solid, Virtuosu und ODBC unterstützt.</p>
+<p>Der dritte Bestandteil von Udmsearch ist die <strong>Schnittstelle zum Benutzer</strong>. Da das Backend, das die Metadaten aufnimmt, aus einer Datenbank besteht, werden die Ergebnisse auf eine Suchabfrage aus Datenbankabfragen gewonnen. Die Daten aus der Datenbank stehen auch anderen Applikationen zur Verfügung. Als Schnittstellen werden <strong>PHP3, C und Perl</strong> Module mitgeliefert, wodurch Udmsearch auf beinahe jedem Webserver einsetzbar ist.</p>
+<p><strong>Hinweis:</strong> Von der Möglichkeit, mit Udmsearch auch Dokumente mit anderem Format als HTML zu indizieren wurde bisher noch kein Gebrauch gemacht. Es bietet sich aber beispielsweise an, die Sektion mit den Online- Studien- und Diplomarbeiten auch zu indizieren. Dafür stehen Module für die Formate PDF, Postscript und Doc (MS Word) zur Verfügung.</p>
+<h3 id="verwendete-softwarepakete">Verwendete Softwarepakete</h3>
+<p>Dieser Abschnitt soll einen zusammenfassenden Überblick über alle verwendete Softwarepakete und deren Bezugsquellen bieten. Alle hier aufgeführten Pakete sind Open Source oder in der Binärversion frei verfügbar.</p>
+<ol>
+<li><a href="https://apache.org/">Apache</a> dient als HTTP-Server</li>
+<li><a href="https://de.wikipedia.org/wiki/Apache_JServ_Protocol">JServ</a> ermöglicht den Einsatz von Java Servlets unter Apache</li>
+<li><a href="https://cocoon.apache.org">Cocoon</a> ein Java Servlet, das die Verwendung von XML, XSL, SQL, JDBC und LDAP mit dem Apacheserver ermöglicht</li>
+<li><a href="https://www.mysql.com">MySQL</a> ein Datenbankserver, der sehr große Datenmengen aufnehmen kann und für den wichtige Erweiterungen existieren (zum Beispiel <a href="https://dev.mysql.com/downloads/connector/odbc/">ODBC-Treiber</a>, Webinterface)</li>
+<li><a href="https://www.phpmyadmin.net/">phpMyAdmin</a> als Weboberfläche für den Datenbankserver MySQL</li>
+<li><a href="https://web.archive.org/web/20000105124849/http://mysearch.udm.net">UDMsearch</a> ein Indizierer für Webseiten, der seine Metadaten in einer Datenbank ablegt</li>
+<li><a href="https://www.openldap.org/">OpenLDAP</a> ein frei verfügbarer LDAP Directory Server</li>
+<li><a href="https://de.wikipedia.org/wiki/PHP#PHP_3">PHP3</a> Sprache zum Erstellen von interaktiven Webseiten. PHP wird als Modul des Apache Webserver eingesetzt und bietet Unterstützung für viele gängige Protokolle (zum Beispiel SQL für alle gängigen Datenbanken, NNTP, POP, IMAP, LDAP, etc.)</li>
+<li><a href="https://www.phorum.org">Phorum</a> Diskussionsforum auf PHP-Basis, das alle Beiträge in einer MySQL Datenbank ablegt</li>
+</ol>
+<h2 id="systemx-ii">systemX II</h2>
+<h3 id="uberblick_1">Überblick</h3>
+<p>Wie bereits erwähnt, wurde der Ansatz, die technische Plattform für das Wissensmanagementsystem selbst zu entwickeln, nach Evaluierung und prototypischer Realisierung aus zwei Gründen wieder verworfen:</p>
+<p>Es wurde erkannt, dass man mit den vorhandenen <strong>personellen Ressourcen</strong> zu viel Zeit in die Entwicklung und den Test der Plattform investieren muss und sich aus diesem Grund nicht in ausreichendem Maß um die Methoden des Wissensmanagements kümmern kann, die auf der Plattform realisiert werden sollen.</p>
+<p>Außerdem hat sich das Open-Source-Projekt <strong>ZOPE</strong> in der Zwischenzeit zu einem System entwickelt, das für die Anwendung als Wissensmanagementsystem im IIS sehr gut geeignet ist. Es erfüllt alle gestellten Anforderungen und bietet die Möglichkeit, die Entwicklung des Systems an die Open-Source-Entwickler zu übertragen. Durch die große Verbreitung des Systems und die offenliegenden Quellen können Fehler sehr viel schneller gefunden und beseitigt werden.</p>
+<p>Die konzipierten Methoden des systemX II unterscheiden sich von denen des systemX I nicht maßgeblich, obwohl der technische Ansatz ein ganz anderer ist. Der Hauptunterschied ist, dass die Arbeitsplattform aus Apache Webserver, JServ, Cocoon und der MySQL Datenbank durch ZOPE ersetzt wurde (siehe Abbildung 3-6).</p>
+<p><img alt="systemX II - Überblick" src="../img/systemx-ii-ueberblick.png" /></p>
+<h3 id="implementierung-der-definierten-methoden_1">Implementierung der definierten Methoden</h3>
+<h4 id="diskussionsforum_2">Diskussionsforum</h4>
+<p>Das Diskussionsforum kann in ZOPE mit zwei unterschiedlichen Produkten, <strong>Confera</strong> und <strong>ZDiscussions</strong> realisiert werden. Beide bieten die Möglichkeit von threadbasierten Diskussionen und den Versand von Emails. Im System werden beide Produkte vorhanden sein. <strong>Empfohlen wird ZDiscussions</strong>, da es eine Weiterentwicklung von Confera darstellt und für die in ZOPE integrierte Suchmaschine ZCatalog besseren Zugriff bietet.</p>
+<h4 id="newssektion_3">Newssektion</h4>
+<p>Der Bereich für News wird mit dem Produkt <a href="https://web.archive.org/web/20000815054006/http://www.squishdot.org/">Squishdot</a> realisiert. Squishdot bietet ähnliche Funktionen wie <a href="https://slashdot.org/">Slashdot</a> und ist dieser Webseite nachgebildet.</p>
+<p>Für den Einsatz am IIS sind an Squishdot einige Anpassungen vorgenommen worden. So gibt es bestimmte <strong>Kategorien</strong>, die alle durch ein <strong>charakteristisches Symbol</strong> gekennzeichnet sind (zum Beispiel Leitungskreis, Personalentwicklung, etc.). Die Verantwortlichen der entsprechenden Bereiche können in die Newssektion direkt Beiträge einstellen. So ist es dem Sekretariat des Institutsleiters beispielsweise möglich, alle Protokolle der Leitungssitzungen schnell und effizient zu verbreiten.</p>
+<p>Mitarbeiter, die für keinen Bereich verantwortlich sind, können zwar auch Beiträge einstellen, diese müssen aber vor der <strong>Veröffentlichung</strong> durch den Administrator des Newsbereichs <strong>bestätigt</strong> werden (Review). Auf diese Weise wird eine schnelle und effiziente Weitergabe von Informationen ermöglicht und gleichzeitig dem Missbrauch vorgebeugt.</p>
+<h4 id="privater-bereich_3">Privater Bereich</h4>
+<p>Wie auch schon im Konzept von systemX I unterscheidet sich der private Bereich eines Mitarbeiters von den anderen Bereichen nur dadurch, dass der <strong>Mitarbeiter</strong> dort <strong>Administrator</strong> ist. Der private Bereich ist so konzipiert, dass er eine Umgebung für die tägliche Arbeit der Mitarbeiter darstellt.</p>
+<p>Standardmäßig ist der private Bereich für alle geöffnet und kann dadurch mit der globalen Suchmaschine erfasst werden. Ein Mitarbeiter kann aber auch bestimmte Sektionen in seinem Bereich für die Außenwelt verschließen.</p>
+<h4 id="zugang-uber-standardsoftware_1">Zugang über Standardsoftware</h4>
+<p>Genau wie im Konzept von systemX I kann das systemX II vollständig mit Webbrowser und <strong>Standardsoftware</strong> bedient werden. Zusätzlich zu der Möglichkeit, Inhalte über HTTP und FTP einzustellen, kann bei ZOPE das <strong>WebDAV</strong>-Protokoll verwendet werden.</p>
+<p><a href="http://www.webdav.org">WebDAV</a> ist eine Erweiterung des Standards HTTP 1.1 und ergänzt diesen um Funktionen für die verteilte Bearbeitung von Dokumenten. Da es sich um einen sehr neuen Standard handelt, gibt es bisher wenig Werkzeuge, die WebDAV bereits unterstützen. Bisher sind das <strong>MS Office 2000</strong>, der <strong>Internet Explorer 5.0/WebFolders</strong> und mehrere kleine Werkzeuge verfügbar.</p>
+<p>Notwendig für die Nutzung der Webfolders ist der Internet Explorer in der Version 5.x. Die Option Webfolders ist in der Standardinstallation nicht enthalten und muss im sogennanten <strong>custom install</strong> ausgewählt werden. Mit WebFolders ist es möglich, den Inhalt des Webservers wie ein normales Dateisystem zu behandeln. So arbeitet der Mitarbeiter mit seinen gewohnten Hilfsmitteln und ist ohne weitere Kenntnisse in der Lage, Inhalte auf dem Server zu administrieren.</p>
+<h4 id="moglichkeit-datenbankgestutzter-anwendungen_2">Möglichkeit datenbankgestützter Anwendungen</h4>
+<p>Das Backend für die Datenbankverwaltung und die Anbindung der User über lokale Datenbanken sind aus dem Konzept von sytemX I entnommen. Da die Anforderungen genau die gleichen sind, waren keine Änderungen notwendig. Aus diesem Grund sollen im folgenden nur die Unterschiede in der Kommunikationsschicht zwischen ZOPE und dem DBMS behandelt werden.</p>
+<p>ZOPE verwendet sogenannte <strong>Database Adapter</strong> (DA) um auf Datenbanken zuzugreifen. Derartige Adapter existieren für viele DBMS, wie zum Beispiel Oracle, Microsoft Access, Sybase und DB2. Der DA stellt eine Datenbankverbindung zur Verfügung, auf die andere Applikationen zugreifen können.</p>
+<p>Um Datenbestände aus einer Datenbank abzufragen, können unter ZOPE vorhandene <strong>SQL-Methoden</strong> verwendet werden. Diese greifen auf einen DA zurück und führen SQL-Abfragen auf der Datenbank aus. Die Repräsentation der Daten kann durch den Anwender frei gewählt werden. Auf diese Weise lassen sich die Abfrageergebnisse in HTML-Tabellen, aber auch in XML oder anderen Formaten ausgeben.</p>
+<p>Mit dem <strong>SQL-Input-Wizard</strong> können Schnittstellen zu bestehenden Datenbanken einfach eingerichtet werden. Basierend auf einem DA fragt der Wizard die Felder der Tabellen ab und erzeugt eine Eingabemaske. Diese kann dann an die individuellen Wünsche, wie zum Beispiel das Layout, angepasst werden. Der Anwender muss sich nicht mehr um den technischen Teil der Datenerfassung kümmern.</p>
+<h4 id="suchfunktionen_2">Suchfunktionen</h4>
+<p>Das Problem der Indizierung kann mit ZOPE sehr geschickt gelöst werden, denn es existiert ein eigenes Produkt, der <strong>ZCatalog</strong>, der die Aufgabe hat, Bereiche in ZOPE suchbar zu machen. ZCatalog ist sehr detailliert konfigurierbar und wird in dem Konzept verwendet, um alle Elemente des Systems zu indizieren.</p>
+<p>Für externe Bereiche, wie zum Beispiel das IIS Intranet, wird wie in systemX I <strong>Udmsearch</strong> eingesetzt, um Inhalte zu indizieren. Die Inhalte werden von ZOPE über eine Datenbankverbindung zu einer MySQL Datenbank abgefragt.</p>
+<p>In jeder Ansicht im System befindet sich die Möglichkeit eine Suche zu starten.</p>
+<h3 id="verwendete-produkte">Verwendete Produkte</h3>
+<p>Unter einem <strong>Produkt</strong> ist bei ZOPE zusätzliche Software zu verstehen, die das Gesamtsystem um bestimmte Funktionlität erweitert. Produkte können entweder von der <strong>ZOPE Homepage</strong> bezogen , oder selber programmiert werden. Die folgende Auflistung gibt eine Übersicht über die in systemX II eingesetzten Produkte (in alphabetischer Reihenfolge).</p>
+<ul>
+<li>Knowledge Kit</li>
+<li>LocalFS</li>
+<li>PSQInput Wizard/ZMySQLDA</li>
+<li>SiteSummary</li>
+<li>Squishdot</li>
+<li>TinyTable</li>
+<li>ZDConfera</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://colearn.social/@simondueckert" target="_blank" rel="noopener me" title="colearn.social" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/simondueckert/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/simondueckert" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

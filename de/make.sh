@@ -3,7 +3,7 @@ echo Starting Document Generation ...
 
 # Variables
 filename="2000-Diplomarbeit-simondueckert-de"
-chapters="./src/index.md"
+chapters="./src/index.md ./src/2-0-preface.md ./src/3-0-introduction.md ./src/4-0-considerations.md ./src/5-0-conception.md ./src/6-0-verification.md ./src/7-0-outlook.md ./src/8-0-glossary.md ./src/9-0-bibliography.md"
 
 # Delete Old Versions
 #echo Deleting old versions ...
@@ -25,7 +25,7 @@ pandoc metadata.yaml -s --resource-path="./src" -N --toc -V lang=de-de -o $filen
 
 # Create PDF Version (pdf)
 echo Creating PDF version ...
-pandoc metadata.yaml -s --resource-path="./src" --template lernos -N --toc -V lang=de-de -o $filename.pdf $chapters
+pandoc metadata.yaml -s --resource-path="./src" --template lernos -N --toc -V lang=de-de --bibliography=DiplomarbeitSD.bib --csl=din-1505-2.csl --citeproc -o $filename.pdf $chapters
 
 # Create eBook Versions (epub, mobi)
 echo Creating eBook versions ...
