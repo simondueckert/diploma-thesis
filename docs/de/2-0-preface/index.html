@@ -699,23 +699,34 @@
 <p>Den Gedanken, Microsoft Word als Textprozessor zu verwenden habe ich relativ schnell wieder verworfen, da das Verwalten von großen Dokumenten schwierig ist und auch die Dateigröße stark in das Verhalten von Word einfließt (Dateien mit vielen Grafiken sind sehr schwer zu handhaben).</p>
 <p>Ein weiterer Punkt, der gegen die Verwendung von Microsoft Word sprach war das proprietäre Dateiformat, das für die Speicherung verwendet wird. Zugriff auf das Format mit anderen Werkzeugen (zum Beispiel durch das Versionskontrollsystem <a href="https://de.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a> ist somit nur bedingt möglich.</p>
 <p>Das frei verfügbare Produkt LaTeX kannte ich bereits aus meiner Studienarbeit. Obwohl die Einarbeitung etwas mühselig ist, da es sich hierbei nicht um einen WYSIWYG-Prozessor ("What You See Is What You Get") handelt, steht mit LaTeX ein sehr robustes und zuverlässiges Werkzeug zur Verfügung. Besonders komfortabel lassen sich mit LaTeX wissenschaftliche Dokumente verfassen, weil es hervorragende Formelfunktionen bietet.</p>
-<p>Da XML in meiner Diplomarbeit eine große Rolle spielen sollte, lag die Entscheidung nahe, auch ein XML-basiertes Dokumentationssystem zu verwenden, um damit erste Erfahrungen zu sammeln. Weil es sich bei XML (im Gegensatz zu LaTeX) um eine relativ neue Technologie handelt, ist die Einstiegsschwelle noch größer, da es auf dem Markt nur wenige, frei verfügbare Werkzeuge gibt.</p>
+<p>Da XML <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> in meiner Diplomarbeit eine große Rolle spielen sollte, lag die Entscheidung nahe, auch ein XML-basiertes Dokumentationssystem zu verwenden, um damit erste Erfahrungen zu sammeln. Weil es sich bei XML (im Gegensatz zu LaTeX) um eine relativ neue Technologie handelt, ist die Einstiegsschwelle noch größer, da es auf dem Markt nur wenige, frei verfügbare Werkzeuge gibt.</p>
 <p>Die Energie, die ich in die Konfiguration eines solchen Dokumentationssystems gesteckt habe (siehe Abbildung 1), möchte ich in einer kurzen Zusammenfassung bündeln.</p>
 <p>Um in XML Dokumente erstellen zu können, wird eine Vorlage benötigt, die festlegt, welche Elemente (Tags) in dem Dokument erlaubt sind. Eine solche DTD ist <a href="https://docbook.org/">Docbook</a>. Sie eignet sich sehr gut zum Verfassen von technischen Dokumentationen. Formeln werden bis jetzt nicht unterstützt, sind aber mit MathML in der Vorbereitung.</p>
 <p>In meiner Arbeit kam die Version 3.1 der Docbook DTD (in der SGML-Version) zum Einsatz. <a href="https://nwalsh.com/people/ndw/">Norman Walsh</a> hat aus der SGML-Version eine XML-Version abgeleitet.</p>
 <p>Um aus einem gültigen XML Dokument ein anderes Format zu erzeugen, werden sogenannte Stylesheets benötigt. Diese können XML beispielsweise in HTML, PDF, TeX, etc. umwandeln. Allerdings gibt es verschiedene Stylesheetformate, die sich in unterschiedlichen Standardisierungszuständen befinden.</p>
 <p>Bei diesem Dokument habe ich mich für DSSSL und gegen XSL Stylesheets entschieden, da diese in der Standardisierung fortgeschrittener waren. Für die Docbook DTD gibt es sowohl <a href="https://github.com/docbook/dsssl">DSSSL-Stylesheets</a> als auch <a href="https://nwalsh.com/docs/articles/dbdesign">XSL-Stylesheets</a>.</p>
 <p>Der Prozessor hat die Aufgabe, aus einem XML Dokument unter Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum BeispielHTML) zu erzeugen. Der zu verwendende Prozessor hängt von der Wahl des Stylesheets ab.</p>
-<p>Kommt DSSSL zum Einsatz, so kann <a href="http://www.jclark.com/jade/">Jade</a> von James Clark (mailto:jjc@jclark.com) als Prozessor verwendet werden, bei XSL stellt die Kombination aus <a href="http://www.jclark.com/xml">XT/XP</a> (ebenfalls von James Clark) eine Alternative dar.</p>
+<p>Kommt DSSSL zum Einsatz, so kann <a href="http://www.jclark.com/jade/">Jade</a> von James Clark als Prozessor verwendet werden, bei XSL stellt die Kombination aus <a href="http://www.jclark.com/xml">XT/XP</a> (ebenfalls von James Clark) eine Alternative dar.</p>
 <p>Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe ich mich für den Editor <a href="https://de.wikipedia.org/wiki/Emacs">Emacs</a> entschieden, den es auch in einer Version für Windows gibt.</p>
 <p><strong>TIPP:</strong> Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial <a href="https://web.archive.org/web/20040202052857/http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html">how to set up a free SGML editing and publishing system for Windows NT</a>.</p>
 <p><img alt="Dokumentationssystem - Überblick" src="../img/dokumentationssystem-ueberblick.png" /></p>
 <h2 id="konventionen">Konventionen</h2>
 <p>Diese Sektion gibt einen Überblick über die in diesem Dokument verwendeten Konventionen.</p>
 <p>Da es im Bereich der Internettechnologien sehr viele Abkürzungen gibt, ist es sehr unübersichtlich, jede Abkürzung direkt im Text zu erklären. Aus diesem Grund befinden sich die Erläuterungen im Glossar.</p>
-<p>Um die Übersichtlichkeit der Textpassagen zu steigern, wird die Technik des Information Mapping angewandt (siehe [hol00]). Zu jedem logisch zusammengehörigen Absatz wird ein treffendes Schlagwort an den Seitenrand gesetzt, das die Navigation und das Nachschlagen im Text erleichtert und zur Reflexion anregt.</p>
+<p>Um die Übersichtlichkeit der Textpassagen zu steigern, wird die Technik des Information Mapping <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> angewandt. Zu jedem logisch zusammengehörigen Absatz wird ein treffendes Schlagwort an den Seitenrand gesetzt, das die Navigation und das Nachschlagen im Text erleichtert und zur Reflexion anregt.</p>
 <p>In vielen Fällen ist die Angabe von Internetlinks (URLs) nötig. Da aus dem Quelldokument (XML) der Diplomarbeit sowohl die Druck- als auch die Onlineversion (HTML) erzeugt wird, musste eine Entscheidung für die Präsentationsform getroffen werden. In der Onlineversion erscheint ein Link in gewohnter Form als Teil eines Satzes, auf dem per Mausklick die entsprechende Webseite göffnet wird.</p>
 <p>In der Druckversion erscheint dieser Teil des Satzes als normaler Text, im Anschluss daran die URL in Klammern. Diese Konvention ermöglicht das Verwenden von Internetlinks in beiden Versionen.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Liam Quin. Extensible Markup Language (XML). URL: <a href="https://www.w3.org/XML">https://www.w3.org/XML</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Martin Holzmann. Information Mapping: Vorteile durch effizientes Strukturieren. <em>wissensmanagement. Das Magazin für Führungskräfte</em>, pages 20–23, 2000.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
