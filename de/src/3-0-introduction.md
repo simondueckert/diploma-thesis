@@ -16,13 +16,10 @@ Dieser Umstand ist Grund genug, den Begriff Wissensmanagement zumindest für den
 ### Wissen
 Die Begriffe Zeichen, Daten, Informationen und Wissen stehen miteinander in Verbindung [@probst_wissen_1999]. Zeichen aus einem **definierten Zeichenvorrat** werden zu Daten, wenn sie nach festgelegten **Syntaxregeln** kombiniert werden. Wenn diese Daten in einen **Kontext** gestellt werden, so wird aus den Daten **Information**. Durch die **Vernetzung** einzelner Informationen können diese nutzbar gemacht werden. Ein solches Informationsnetz kann als **Wissen** bezeichnet werden.
 
-Die Wissensbasis in einem Unternehmen besteht immer aus **individuellen und kollektiven Fähigkeiten** (siehe [@probst_wissen_1999]). Um Individuum und Kollektiv in effizienter Weise zusammenzuführen, bedarf es der beiden Faktoren **Kommunikation** und **Transparenz**.
+Die Wissensbasis in einem Unternehmen besteht immer aus **individuellen und kollektiven Fähigkeiten** (siehe [@probst_wissen_1999]). Um Individuum und Kollektiv in effizienter Weise zusammenzuführen, bedarf es der beiden Faktoren **Kommunikation** und **Transparenz**:
 
-Kommunikation lässt aus Individuen ein Kollektiv entstehen (nach [@romhardt_interventionen_1996], Kapitel 4). Die entstehende, vernetzte, kollektive Wissensbasis ist dabei größer als die Summe des Individualwissens.
-
-Mit Transparenz ist nicht die völlige Transparenz aller in einer Organisation vorhandenen Wissenselemente gemeint. Die **totale Transparenz** führt zu einer Informationsflut, die eher **verwirrt** als weiterhilft.
-
-Vielmehr geht es darum, Wissenselemente genau an die Stelle zu bringen, an denen sie benötigt werden. Die Wissensbasis muss also so transparent wie nötig und gleichzeitig so übersichtlich wie möglich sein.
+1. Kommunikation lässt aus Individuen ein Kollektiv entstehen (nach [@romhardt_interventionen_1996], Kapitel 4). Die entstehende, vernetzte, kollektive Wissensbasis ist dabei größer als die Summe des Individualwissens.
+1. Mit Transparenz ist nicht die völlige Transparenz aller in einer Organisation vorhandenen Wissenselemente gemeint. Die **totale Transparenz** führt zu einer Informationsflut, die eher **verwirrt** als weiterhilft. Vielmehr geht es darum, Wissenselemente genau an die Stelle zu bringen, an denen sie benötigt werden. Die Wissensbasis muss also so transparent wie nötig und gleichzeitig so übersichtlich wie möglich sein.
 
 Die Wissensdefinition, die im Rahmen dieser Arbeit gelten soll, ist ein Kompromiss aus verschiedenen Ansätzen (siehe [@probst_wissen_1999] und [@davenport_wenn_1999]):
 
@@ -35,7 +32,7 @@ Losgelöst von allen philosophischen Ansätzen zum Thema Wissensmanagement soll 
 
 > Wissensmanagement umfasst alle Anstrengungen, die unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu sein.
 
-Thematisiert wird sowohl die Frage nach der **technischen Plattform**, auf der dieser Informations-/Wissensaustausch stattfinden kann, als auch **Methoden** und Werkzeuge, **um den Austausch** selbst **zu erleichtern**.
+Thematisiert wird sowohl die Frage nach der **technischen Plattform**, auf der dieser Informations-/Wissensaustausch stattfinden kann, als auch **Methoden** und Werkzeuge**, um den Austausch selbst zu erleichtern.
 
 ### Wissensmanagementsystem
 Viele Anbieter vertreiben Produkte unter dem Schlagwort Wissensmanagement, die es auch schon vor der "Wissensmanagementwelle" gab. Dazu gehören insbesondere Dokumentenmanagementsysteme, Groupware/Kollaborationssysteme, Suchmaschinen, Workflow- und Intranetsysteme.
@@ -63,6 +60,6 @@ Eine wichtige Erkenntnis, die aus diesem Projekt gezogen werden konnte, ist, das
 
 Da die Einführung von Wissensmanagement immer auch mit einem Eingriff in die Unternehmenskultur verbunden ist, ist eine Unterstützung durch die Unternehmensleitung unbedingt notwendig.
 
-Im Rahmen dieser Diplomarbeit soll ein **Konzept** entwickelt werden, mit dem begonnen werden kann, Wissensmanagement am IIS zu implementieren. Dieses Konzept soll, im Gegensatz zum Ansatz des IAO, auf die speziellen Bedingungen am IIS eingehen. Des weiteren soll ein Prototyp entwickelt werden, der die Funktion eines Wissensmanagementsystems übernehmen kann und die Elemente des Konzepts in sich trägt.
+Im Rahmen dieser Diplomarbeit soll ein **Konzept** entwickelt werden, mit dem begonnen werden kann, Wissensmanagement am IIS zu implementieren. Dieses Konzept soll, im Gegensatz zum Ansatz des IAO, auf die speziellen Bedingungen am IIS eingehen. Des weiteren soll ein **Prototyp** entwickelt werden, der die Funktion eines Wissensmanagementsystems übernehmen kann und die Elemente des Konzepts in sich trägt.
 
-Nach Beendigung der Diplomarbeit kann durch die Institutsleitung die Entscheidung getroffen werden, ob dieser Prototyp am IIS eingesetzt werden soll.
+Nach Beendigung der Diplomarbeit kann durch die Institutsleitung die **Entscheidung** getroffen werden, ob dieser Prototyp am IIS eingesetzt werden soll.

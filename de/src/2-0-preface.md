@@ -11,7 +11,7 @@ Des weiteren gilt mein Dank **Christian Forster**, der mir in Sicherheits- und L
 ## Das Fraunhofer Institut für Integrierte Schaltungen
 Diese Arbeit wurde im Fraunhofer Institut für Integrierte Schaltungen (IIS) in Erlangen/Tennenlohe durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
 
-Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "http://www-local"beginnen.
+Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "*http://www-local*"beginnen.
 
 ## Über dieses Dokument
 Bei der Evaluierung verschiedener Softwareprodukte für die Erstellung dieses Dokuments zog ich drei verschiedene Lösungen in Betracht. Meine Entscheidung werde ich im Folgenden erläutern.
@@ -34,13 +34,13 @@ Um aus einem gültigen XML Dokument ein anderes Format zu erzeugen, werden sogen
 
 Bei diesem Dokument habe ich mich für DSSSL und gegen XSL Stylesheets entschieden, da diese in der Standardisierung fortgeschrittener waren. Für die Docbook DTD gibt es sowohl [DSSSL-Stylesheets](https://github.com/docbook/dsssl) als auch [XSL-Stylesheets](https://nwalsh.com/docs/articles/dbdesign).
 
-Der Prozessor hat die Aufgabe, aus einem XML Dokument unter Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum BeispielHTML) zu erzeugen. Der zu verwendende Prozessor hängt von der Wahl des Stylesheets ab.
+Der Prozessor hat die Aufgabe, aus einem XML Dokument unter Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum Beispiel HTML) zu erzeugen. Der zu verwendende Prozessor hängt von der Wahl des Stylesheets ab.
 
 Kommt DSSSL zum Einsatz, so kann [Jade](http://www.jclark.com/jade/) von James Clark als Prozessor verwendet werden, bei XSL stellt die Kombination aus [XT/XP](http://www.jclark.com/xml) (ebenfalls von James Clark) eine Alternative dar.
 
 Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe ich mich für den Editor [Emacs](https://de.wikipedia.org/wiki/Emacs) entschieden, den es auch in einer Version für Windows gibt.
 
-**TIPP:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial [how to set up a free SGML editing and publishing system for Windows NT](https://web.archive.org/web/20040202052857/http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
+**Tipp:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial [how to set up a free SGML editing and publishing system for Windows NT](https://web.archive.org/web/20040202052857/http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
 
 ![Dokumentationssystem - Überblick](./img/dokumentationssystem-ueberblick.png)
 

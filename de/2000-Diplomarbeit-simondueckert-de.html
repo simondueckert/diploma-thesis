@@ -4,8 +4,6 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Simon Dückert" />
-  <meta name="dcterms.date" content="2000-01-01" />
   <title>Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens.</title>
   <style>
     html {
@@ -175,9 +173,9 @@
 <h1 class="title">Entwurf und prototypische Realisierung eines mit der
 Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung
 informationstechnischen Wissens.</h1>
-<p class="subtitle">Diplomarbeit</p>
-<p class="author">Simon Dückert</p>
-<p class="date">2000</p>
+<p class="subtitle">Diplomarbeit im Fach Elektrotechnik</p>
+<p class="author">true</p>
+<p class="date">15.06.2000</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -236,10 +234,10 @@ class="toc-section-number">4.1.2</span> Vorhandene Plattformen</a></li>
 <li><a href="#wissensformen" id="toc-wissensformen"><span
 class="toc-section-number">4.2</span> Wissensformen</a>
 <ul>
-<li><a href="#explizit" id="toc-explizit"><span
-class="toc-section-number">4.2.1</span> Explizit</a></li>
-<li><a href="#implizit" id="toc-implizit"><span
-class="toc-section-number">4.2.2</span> Implizit</a></li>
+<li><a href="#explizites-wissen" id="toc-explizites-wissen"><span
+class="toc-section-number">4.2.1</span> Explizites Wissen</a></li>
+<li><a href="#implizites-wissen" id="toc-implizites-wissen"><span
+class="toc-section-number">4.2.2</span> Implizites Wissen</a></li>
 </ul></li>
 <li><a href="#wissenstransportkanäle"
 id="toc-wissenstransportkanäle"><span
@@ -397,6 +395,39 @@ class="toc-section-number">9.3</span> Technik</a></li>
 </ul></li>
 </ul>
 </nav>
+<blockquote>
+<p>Wenn du ein Schiff bauen willst, fang nicht an, Holz
+zusammenzutragen, Bretter zu schneiden und Arbeit zu verteilen, sondern
+wecke in den Männern (und Frauen) die Sehnsucht nach dem großen, weiten
+Meer.</p>
+<p><em>Antoine de Saint-Exupery</em></p>
+</blockquote>
+<p><strong>Titel:</strong> Entwurf und prototypische Realisierung eines
+mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung
+informationstechnischen Wissens</p>
+<p><strong>Bearbeiter:</strong></p>
+<ul>
+<li><a href="https://www.linkedin.com/in/simondueckert/">Simon
+Dückert</a></li>
+</ul>
+<p><strong>Betreuer:</strong></p>
+<ul>
+<li><a
+href="https://de.wikipedia.org/wiki/Heinz_Gerh%C3%A4user">Prof. Dr.-Ing.
+Heinz Gerhäuser</a></li>
+<li><a
+href="https://cris.fau.de/persons/100482810/publications">Dr.-Ing.
+Heinrich Dietsch</a></li>
+<li>Dr. Ing. Hartmut Hess</li>
+<li><a
+href="https://www.linkedin.com/in/wolfram-strau%C3%9F-12803914/">Dipl.-Ing.
+Wolfram Strauß</a></li>
+</ul>
+<p><strong>Hochschule:</strong> <a
+href="https://www.fau.de/">Friedrich-Alexander-Universität
+Erlangen-Nürnberg</a>, <a href="https://www.like.tf.fau.de/">Lehrstuhl
+für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik</a>
+(Stiftungslehrstuhl)</p>
 <h1 data-number="1" id="kurzfassung"><span
 class="header-section-number">1</span> Kurzfassung</h1>
 <p>Die vorliegende Arbeit beschäftigt sich mit dem Thema
@@ -461,7 +492,7 @@ mikroelektronischen Schaltungen und Systemen.</p>
 beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren
 verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS
 und sind für den externen Leser nicht erreichbar. Es sind dies alle
-Links, die mit “http://www-local”beginnen.</p>
+Links, die mit “<em>http://www-local</em>”beginnen.</p>
 <h2 data-number="2.3" id="über-dieses-dokument"><span
 class="header-section-number">2.3</span> Über dieses Dokument</h2>
 <p>Bei der Evaluierung verschiedener Softwareprodukte für die Erstellung
@@ -519,7 +550,7 @@ href="https://github.com/docbook/dsssl">DSSSL-Stylesheets</a> als auch
 href="https://nwalsh.com/docs/articles/dbdesign">XSL-Stylesheets</a>.</p>
 <p>Der Prozessor hat die Aufgabe, aus einem XML Dokument unter
 Zuhilfenahme eines Stylesheets ein bestimmtes Ausgangsformat (zum
-BeispielHTML) zu erzeugen. Der zu verwendende Prozessor hängt von der
+Beispiel HTML) zu erzeugen. Der zu verwendende Prozessor hängt von der
 Wahl des Stylesheets ab.</p>
 <p>Kommt DSSSL zum Einsatz, so kann <a
 href="http://www.jclark.com/jade/">Jade</a> von James Clark als
@@ -531,7 +562,7 @@ jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe
 ich mich für den Editor <a
 href="https://de.wikipedia.org/wiki/Emacs">Emacs</a> entschieden, den es
 auch in einer Version für Windows gibt.</p>
-<p><strong>TIPP:</strong> Eine sehr gute Beschreibung, wie unter Windows
+<p><strong>Tipp:</strong> Eine sehr gute Beschreibung, wie unter Windows
 NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier
 erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial
 <a
@@ -621,20 +652,21 @@ class="citation"
 data-cites="probst_wissen_1999">[@probst_wissen_1999]</span>). Um
 Individuum und Kollektiv in effizienter Weise zusammenzuführen, bedarf
 es der beiden Faktoren <strong>Kommunikation</strong> und
-<strong>Transparenz</strong>.</p>
-<p>Kommunikation lässt aus Individuen ein Kollektiv entstehen (nach
+<strong>Transparenz</strong>:</p>
+<ol type="1">
+<li>Kommunikation lässt aus Individuen ein Kollektiv entstehen (nach
 <span class="citation"
 data-cites="romhardt_interventionen_1996">[@romhardt_interventionen_1996]</span>,
 Kapitel 4). Die entstehende, vernetzte, kollektive Wissensbasis ist
-dabei größer als die Summe des Individualwissens.</p>
-<p>Mit Transparenz ist nicht die völlige Transparenz aller in einer
+dabei größer als die Summe des Individualwissens.</li>
+<li>Mit Transparenz ist nicht die völlige Transparenz aller in einer
 Organisation vorhandenen Wissenselemente gemeint. Die <strong>totale
 Transparenz</strong> führt zu einer Informationsflut, die eher
-<strong>verwirrt</strong> als weiterhilft.</p>
-<p>Vielmehr geht es darum, Wissenselemente genau an die Stelle zu
-bringen, an denen sie benötigt werden. Die Wissensbasis muss also so
-transparent wie nötig und gleichzeitig so übersichtlich wie möglich
-sein.</p>
+<strong>verwirrt</strong> als weiterhilft. Vielmehr geht es darum,
+Wissenselemente genau an die Stelle zu bringen, an denen sie benötigt
+werden. Die Wissensbasis muss also so transparent wie nötig und
+gleichzeitig so übersichtlich wie möglich sein.</li>
+</ol>
 <p>Die Wissensdefinition, die im Rahmen dieser Arbeit gelten soll, ist
 ein Kompromiss aus verschiedenen Ansätzen (siehe <span class="citation"
 data-cites="probst_wissen_1999">[@probst_wissen_1999]</span> und <span
@@ -659,9 +691,8 @@ das Unternehmen mit optimaler Effizienz tätig zu sein.</p>
 </blockquote>
 <p>Thematisiert wird sowohl die Frage nach der <strong>technischen
 Plattform</strong>, auf der dieser Informations-/Wissensaustausch
-stattfinden kann, als auch <strong>Methoden</strong> und Werkzeuge,
-<strong>um den Austausch</strong> selbst <strong>zu
-erleichtern</strong>.</p>
+stattfinden kann, als auch <strong>Methoden</strong> und Werkzeuge**, um
+den Austausch selbst zu erleichtern.</p>
 <h3 data-number="3.2.3" id="wissensmanagementsystem"><span
 class="header-section-number">3.2.3</span> Wissensmanagementsystem</h3>
 <p>Viele Anbieter vertreiben Produkte unter dem Schlagwort
@@ -743,12 +774,12 @@ die Unternehmensleitung unbedingt notwendig.</p>
 entwickelt werden, mit dem begonnen werden kann, Wissensmanagement am
 IIS zu implementieren. Dieses Konzept soll, im Gegensatz zum Ansatz des
 IAO, auf die speziellen Bedingungen am IIS eingehen. Des weiteren soll
-ein Prototyp entwickelt werden, der die Funktion eines
+ein <strong>Prototyp</strong> entwickelt werden, der die Funktion eines
 Wissensmanagementsystems übernehmen kann und die Elemente des Konzepts
 in sich trägt.</p>
 <p>Nach Beendigung der Diplomarbeit kann durch die Institutsleitung die
-Entscheidung getroffen werden, ob dieser Prototyp am IIS eingesetzt
-werden soll.</p>
+<strong>Entscheidung</strong> getroffen werden, ob dieser Prototyp am
+IIS eingesetzt werden soll.</p>
 <h1 data-number="4" id="vorüberlegungen"><span
 class="header-section-number">4</span> Vorüberlegungen</h1>
 <h2 data-number="4.1" id="rahmenbedingungen-am-iis"><span
@@ -799,7 +830,7 @@ vorhandene Heterogenität), <strong>einfache Bedienbarkeit</strong> und
 die <strong>Zugriffsmöglichkeit mit Standardsoftware</strong>.</p>
 <p>Am IIS existieren bereits zwei Ansätze, die für eine solche Plattform
 in Betracht gezogen werden können, <strong>Lotus Notes</strong> und das
-Intranet (https://www-local/private) des IIS.</p>
+Intranet (<em>https://www-local/private</em>) des IIS.</p>
 <h4 data-number="4.1.2.1" id="lotus-notes"><span
 class="header-section-number">4.1.2.1</span> Lotus Notes</h4>
 <p>Zum Zeitpunkt der Arbeit waren über die Basisfunktionalität des
@@ -855,14 +886,14 @@ außer persönlichen Emails und den Infotreffs, die in regelmäßigen
 Abständen statt finden.</p>
 <p>Die Möglichkeit für Mitarbeiter oder Gruppierungen, <strong>eigene
 Inhalte</strong> einzustellen, ist <strong>schwierig</strong>. Zwar gibt
-es einen Bereich (https://www-local/private/user), in dem jeder
+es einen Bereich (<em>http://www-local/private/user</em>), in dem jeder
 Mitarbeiter Webseiten ablegen kann, diese werden aber nicht auf die
 Intranetseiten verlinkt und sind somit nur schwer zu finden.</p>
 <p>Im bestehenden Intranet existierte bis zum Zeitpunkt dieser Arbeit
 <strong>keine</strong> Möglichkeit, auf den Inhalten eine
 <strong>Volltextsuche</strong> durchzuführen. Aus diesem Grund wurde
 eine Suchmaschine für das Intranet implementiert, die im oben genannten
-Bereich 17.000 Dokumente (davon über 3000 HTML Dokumente) festgestellt
+Bereich 17.000 Dokumente (davon über 3000 HTML-Dokumente) festgestellt
 hat.</p>
 <p>Große Teile der Informationen im Intranet sind veraltet. Im
 Softwarebereich sind beispielsweise Softwarepakete zu finden, für die
@@ -888,19 +919,21 @@ Intranets für ein Wissensmanagementsystem unbrauchbar.</p>
 class="header-section-number">4.2</span> Wissensformen</h2>
 <p>Bei Wissensformen kann man grundsätzlich zwischen explizitem und
 implizitem Wissen unterscheiden <span class="citation"
-data-cites="polanyi_tacit_1967">[@polanyi_tacit_1967]</span>.</p>
-<p>Explizites Wissen (explicit knowledge) kann in Sprache ausgedrückt
-und zwischen Individuen transferiert werden. Als Vereinfachung ist unter
-explizitem Wissen das Wissen zu verstehen, das in Form von Dokumenten,
-Anleitungen, etc. erfasst werden kann.</p>
-<p>Im Gegensatz dazu ist implizites Wissen (tacit knowledge) immer an
-Personen gebunden und ergibt sich aus deren persönlicher Erfahrung,
-Perspektive und Wertvorstellungen.</p>
-<p>Implizites Wissen ist immer an Menschen oder Gruppen von Menschen
-gebunden. Der Übergang von implizitem zu explizitem Wissen kann zum
-Beispiel durch Dokumentation vollzogen werden.</p>
-<h3 data-number="4.2.1" id="explizit"><span
-class="header-section-number">4.2.1</span> Explizit</h3>
+data-cites="polanyi_tacit_1967">[@polanyi_tacit_1967]</span>:</p>
+<ul>
+<li><strong>Explizites Wissen</strong> (explicit knowledge) kann in
+Sprache ausgedrückt und zwischen Individuen transferiert werden. Als
+Vereinfachung ist unter explizitem Wissen das Wissen zu verstehen, das
+in Form von Dokumenten, Anleitungen, etc. erfasst werden kann.</li>
+<li>Im Gegensatz dazu ist <strong>implizites Wissen</strong> (tacit
+knowledge) immer an Personen gebunden und ergibt sich aus deren
+persönlicher Erfahrung, Perspektive und Wertvorstellungen. Implizites
+Wissen ist immer an Menschen oder Gruppen von Menschen gebunden. Der
+Übergang von implizitem zu explizitem Wissen kann zum Beispiel durch
+Dokumentation vollzogen werden.</li>
+</ul>
+<h3 data-number="4.2.1" id="explizites-wissen"><span
+class="header-section-number">4.2.1</span> Explizites Wissen</h3>
 <h4 data-number="4.2.1.1" id="bücher"><span
 class="header-section-number">4.2.1.1</span> Bücher</h4>
 <p>Bücher sind nach wie vor eine der wichtigsten Quellen für Wissen. Zu
@@ -908,12 +941,13 @@ beinahe allen Themengebieten gibt es <strong>Standardwerke</strong>, die
 in dieser Ausführlichkeit und fachlichen Tiefe nicht im Internet zu
 finden sind.</p>
 <p>Am IIS gibt es eine hauseigene Bibliothek
-(https://www-local/private/iisinfo/bib), die sowohl einen
+(<em>http://www-local/private/iisinfo/bib</em>), die sowohl einen
 <strong>Präsenzbestand</strong> pflegt als auch für die
 <strong>Beschaffung</strong> von neuen Büchern verantwortlich ist. In
 den Intranetseiten der Bibliothek besteht die Möglichkeit, den Bestand
 abzufragen.</p>
-<p>Das Suchinterface (http://www-local/private/cgi-bin/buchneu.pl) lässt
+<p>Das Suchinterface
+(<em>http://www-local/private/cgi-bin/buchneu.pl</em>) lässt
 detaillierte Abfragen nicht zu und schließt Zeitschriften nicht mit ein.
 Sinnvoll wäre die Einbindung der Datenbank in ein globales
 Suchinterface, das gleichzeitig auch in Diskussionsgruppen, FAQs, etc.
@@ -924,11 +958,11 @@ Zeitschriften. So könnte jeder Mitarbeiter, der ein Buch benutzt,
 Beurteilungen, Hinweise auf Links, Artikel und weitere Bücher
 empfehlen.</p>
 <p>Des weiteren verfügt das Institut über einen CD-Server
-(http://cdserv03), auf dem die Jahrgangs-CDs einiger Zeitschriften
-verfügbar sind (zum Beispiel Microsoft Developper Network). Dieses
-Angebot sollte im Bereich der Fachliteratur und der Jahrgangs-CDs
-verschiedener Zeitschriften ausgebaut werden und um ein Suchinterface
-erweitert werden.</p>
+(<strong>http://cdserv03</strong>), auf dem die Jahrgangs-CDs einiger
+Zeitschriften verfügbar sind (zum Beispiel Microsoft Developper
+Network). Dieses Angebot sollte im Bereich der Fachliteratur und der
+Jahrgangs-CDs verschiedener Zeitschriften ausgebaut werden und um ein
+Suchinterface erweitert werden.</p>
 <p><strong>Fazit:</strong> Das existierende Angebot der IIS Bibliothek
 ist gut aber ausbaufähig. Insbesondere sollte die Verbesserung des
 Suchinterface und die Einbindung von Zeitschriften angedacht werden. Zu
@@ -993,15 +1027,8 @@ werden, das sich problemlos in andere Anwendungen integrieren lässt.
 Weitere Informationen zur Vorgehensweise finden sich <a
 href="https://web.archive.org/web/20001205030600/http://idm.internet.com/features/docmgmt9b-1.shtml">im
 Intranet Design Magazine</a>.</p>
-<h4 data-number="4.2.1.3"
-id="newsgruppen-maillisten-und-diskussionsforen"><span
-class="header-section-number">4.2.1.3</span> Newsgruppen, Maillisten und
-Diskussionsforen</h4>
-<p>Von diesen drei Werkzeugen sind am IIS hauptsächlich Maillisten im
-Einsatz. Da aber alle genannten Werkzeuge sehr mächtig sind, werden sie
-hier im Einzelnen betrachtet.</p>
-<h5 data-number="4.2.1.3.1" id="newsgruppen-usenet"><span
-class="header-section-number">4.2.1.3.1</span> Newsgruppen (Usenet)</h5>
+<h4 data-number="4.2.1.3" id="newsgruppen-usenet"><span
+class="header-section-number">4.2.1.3</span> Newsgruppen (Usenet)</h4>
 <p>Das Usenet ist relativ unbekannt, obwohl aus diesem großer Nutzen
 gezogen werden kann. Deswegen zunächst ein Überblick über die
 Eigenschaften des Usenet.</p>
@@ -1021,8 +1048,8 @@ href="https://de.wikipedia.org/wiki/Deja_News">Dejanews</a></li>
 <p>Die Hierarchie der Newsgruppen ist für den Einsteiger
 unübersichtlich, da es eine <strong>themenorientierte
 Hierarchie</strong> gibt (zum Beispiel comp.* für Computer-Themen), aber
-auch eine <strong>geographische</strong> (zum Beispiel “de.* für
-deutsche Newsgruppen).</p>
+auch eine <strong>geographische</strong> (zum Beispiel de.* für deutsche
+Newsgruppen).</p>
 <p><strong>Tipp:</strong> Nahezu jeder Mitarbeiter am IIS ist mit allem
 ausgestattet um das Usenet zu nutzen. Sowohl der Netscape Navigator als
 auch Outlook Express können mit Newsservern kommunizieren. Der
@@ -1032,12 +1059,12 @@ unübersichtlich findet, kann bei W3C (URL nicht mehr funktionsfähig)
 eine Übersicht finden.</p>
 <p><strong>Tipp:</strong> Zu den meisten Softwarepaketen gibt es eigene
 Newsgruppen, so auch für das CAD-Paket Cadence
-(news://comp.cad.cadence).</p>
-<h5 data-number="4.2.1.3.2" id="maillisten"><span
-class="header-section-number">4.2.1.3.2</span> Maillisten</h5>
+(<em>news://comp.cad.cadence</em>).</p>
+<h4 data-number="4.2.1.4" id="maillisten"><span
+class="header-section-number">4.2.1.4</span> Maillisten</h4>
 <p>Wie erwähnt, werden Maillisten am IIS seit einiger Zeit verwendet
 (Eine Übersicht der existierenden Gruppen findet sich im Intranet
-(http://www-local/private/sysadmin/mail/listen.html)). Als
+(<em>http://www-local/private/sysadmin/mail/listen.html</em>). Als
 <strong>Listserver</strong> ist das Paket <a
 href="https://de.wikipedia.org/wiki/Majordomo">Majordomo</a> im
 Einsatz.</p>
@@ -1063,8 +1090,8 @@ alt="Vergleich von Maillisten und Diskussionsforen" />
 <figcaption aria-hidden="true">Vergleich von Maillisten und
 Diskussionsforen</figcaption>
 </figure>
-<h5 data-number="4.2.1.3.3" id="diskussionsforen"><span
-class="header-section-number">4.2.1.3.3</span> Diskussionsforen</h5>
+<h4 data-number="4.2.1.5" id="diskussionsforen"><span
+class="header-section-number">4.2.1.5</span> Diskussionsforen</h4>
 <p>Ein Diskussionsforum bietet die Möglichkeit, Diskussionen zu
 bestimmten Themen online zu führen. Es ist möglich, die
 Diskussionsinhalte per Email zu verschicken.</p>
@@ -1074,8 +1101,8 @@ eine Weiterbearbeitung zur Verfügung.</p>
 Ressource betrachtet werden. Durch die Einrichtung von
 Onlinediskussionsforen können signifikante Verbesserungen im Bereich
 Kommunikation und Sicherung der Diskussionsinhalte erreicht werden.</p>
-<h4 data-number="4.2.1.4" id="zeitschriften-zeitungen"><span
-class="header-section-number">4.2.1.4</span> Zeitschriften,
+<h4 data-number="4.2.1.6" id="zeitschriften-zeitungen"><span
+class="header-section-number">4.2.1.6</span> Zeitschriften,
 Zeitungen</h4>
 <p>Einige Bemerkungen zu Zeitschriften wurden bereits im Abschnitt über
 Bücher gemacht. Weiterhin ist festzustellen, dass der sogenannte
@@ -1108,8 +1135,8 @@ einzelnen Artikeln abgegeben oder weiterführende Informationen erfasst
 werden. Nur wer wirklich an einem der Artikel interessiert ist, erhält
 die Zeitschrift. Der Umlauf wird von einer Bring- zu einer
 Holschuld.</p>
-<h4 data-number="4.2.1.5" id="cdrom"><span
-class="header-section-number">4.2.1.5</span> CDROM</h4>
+<h4 data-number="4.2.1.7" id="cdrom"><span
+class="header-section-number">4.2.1.7</span> CDROM</h4>
 <p>Viele Informationen liegen mittlerweile multimedial auf CDROM vor.
 Eine gute Möglichkeit, diese zu veröffentlichen, stellen sogenannte
 CD-Server dar (siehe Abbildung 2-4), welche unterschiedliche Mengen von
@@ -1126,8 +1153,8 @@ alt="Einsatz von CD-Servern" />
 <p><strong>Fazit:</strong> CD-Server sind gut geeignet, um Software oder
 Archiv-CDs aufzunehmen. Der Inhalt dieser Server sollte transparenter
 gemacht werden.</p>
-<h4 data-number="4.2.1.6" id="software-code"><span
-class="header-section-number">4.2.1.6</span> Software-Code</h4>
+<h4 data-number="4.2.1.8" id="software-code"><span
+class="header-section-number">4.2.1.8</span> Software-Code</h4>
 <p>Softwarecode enthält, wenn er richtig dokumentiert ist, sehr viel
 <strong>Wissen über Programmiertechniken und Problemlösungen</strong>
 und kann gegebenenfalls auch gut wiederverwendet werden.</p>
@@ -1152,8 +1179,8 @@ werden.</p>
 verwaltet werden, sondern alle Arten von Projekten, die mit
 ASCII-Dateien arbeiten. Diese in XML verfasste Diplomarbeit wurde mit
 CVS verwaltet.</p>
-<h4 data-number="4.2.1.7" id="briefe-email"><span
-class="header-section-number">4.2.1.7</span> Briefe, Email</h4>
+<h4 data-number="4.2.1.9" id="briefe-email"><span
+class="header-section-number">4.2.1.9</span> Briefe, Email</h4>
 <p>Briefe und Emails haben einen ganz beachtlichen Anteil am
 Kommunikationsaufkommen und sind damit wichtige Wissensträger.</p>
 <p>In diesem Zusammenhang ist es sehr wichtig, Briefe und Emails, die
@@ -1165,8 +1192,8 @@ kleinen Teil der Mitarbeiter zur Verfügung.</p>
 einfach möglich, den gesamten Mail und Briefverkehr automatisch mit zu
 protokollieren. Im Adressbuch besteht dann Zugriff auf die gesamte
 Kommunikation, die mit einer Person geführt wurde.</p>
-<h3 data-number="4.2.2" id="implizit"><span
-class="header-section-number">4.2.2</span> Implizit</h3>
+<h3 data-number="4.2.2" id="implizites-wissen"><span
+class="header-section-number">4.2.2</span> Implizites Wissen</h3>
 <h4 data-number="4.2.2.1" id="erfahrung-negativwissen"><span
 class="header-section-number">4.2.2.1</span> Erfahrung,
 Negativwissen</h4>
@@ -1267,13 +1294,15 @@ stellt eine Metasprache dar, mit der Ressourcen beschrieben werden
 können. Weitere Informationen gibt es <a
 href="https://www.w3.org/RDF">bei der Standardisierungsinstanz
 W3.org</a>.</p>
-<p><strong>Topic Maps</strong> stellt einen Standard zum Definieren von
-Wissenslandkarten dar, der mittlerweile ISO-genormt (<span
+<p><strong>Topic Maps</strong> <span class="citation"
+data-cites="noauthor_isoiec_2000">[@noauthor_isoiec_2000]</span> stellt
+einen Standard zum Definieren von Wissenslandkarten dar <span
 class="citation"
-data-cites="noauthor_isoiec_2000">[@noauthor_isoiec_2000]</span>) ist.
-Er bietet die Möglichkeit, alle genannten Elemente zueinander in
-Beziehung zu stellen und damit navigierbar zu machen. Wie auch RDF
-<strong>basiert</strong> Topic Maps auf <strong>XML</strong>.</p>
+data-cites="gerick_topic_2000">[@gerick_topic_2000]</span>, der
+mittlerweile ISO-genormt ist. Er bietet die Möglichkeit, alle genannten
+Elemente zueinander in Beziehung zu stellen und damit navigierbar zu
+machen. Wie auch RDF <strong>basiert</strong> Topic Maps auf
+<strong>XML</strong>.</p>
 <p><strong>Notiz:</strong> Leider bestand im Verlauf der Diplomarbeit
 aus zeitlichen Gründen keine Möglichkeit, sich mit dem Standard zu
 befassen. Es soll aber ausdrücklich darauf hingewiesen werden, dass es
@@ -1285,42 +1314,93 @@ beschreiben und deren Verknüpfung durch Topic Maps zu realisieren.</p>
 Elemente), die es ermöglichen, eine Ressource zu beschreiben. Mit dem DC
 ist sowohl die Erfassung von elektronischen als auch die von klassischen
 Dokumenten möglich.</p>
-<ul>
-<li>TITLE: Der vom Autor gewählte <strong>Titel</strong></li>
-<li>AUTHOR or CREATOR: <strong>Person</strong> oder
-<strong>Organisation</strong>, die für den intellektuellen Inhalt der
-Ressource verantwortlich ist.</li>
-<li>SUBJECT or KEYWORDS: <strong>Schlüsselwörter</strong> oder andere
-Arten der Klassifizierung. An dieser Stelle kann zum Beispiel die duale
-Dezimalklassifikation (DDC) zum Einsatz kommen.</li>
-<li>DESCRIPTION: Bei Textressourcen erscheint hier die
-<strong>Zusammenfassung</strong>, bei anderen (zum Beispiel Bildern)
-eine <strong>Beschreibung des Inhalts</strong>.</li>
-<li>PUBLISHER: <strong>Organisation</strong> oder
-<strong>Person</strong>, die die Ressource veröffentlicht hat.</li>
-<li>OTHER CONTRIBUTORS: Koautoren, etc.</li>
-<li>DATE: <strong>Erscheindatum</strong></li>
-<li>RESOURCE TYPE: Die <strong>Art der Ressource</strong>. An dieser
-Stelle stehen vordefinierte Ressourcen.</li>
-<li>FORMAT: Das <strong>Format der Ressource</strong>. Ein Standard, der
-mögliche Formate beschreibt heisst <strong>Mime Types</strong>. Diese
-sind im RFC2046 definiert.</li>
-<li>RESOURCE IDENTIFIER: <strong>String</strong> oder
-<strong>Nummer</strong>, die die Ressource eindeutig beschreibt. Im Fall
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>DC-Element</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TITLE</strong></td>
+<td>Der vom Autor gewählte Titel</td>
+</tr>
+<tr>
+<td><strong>AUTHOR</strong> oder <strong>CREATOR</strong></td>
+<td>Person oder Organisation, die für den intellektuellen Inhalt der
+Ressource verantwortlich ist.</td>
+</tr>
+<tr>
+<td><strong>SUBJECT</strong> oder <strong>KEYWORDS</strong></td>
+<td>Schlüsselwörter oder andere Arten der Klassifizierung. An dieser
+Stelle kann zum Beispiel die duale Dezimalklassifikation (DDC) zum
+Einsatz kommen</td>
+</tr>
+<tr>
+<td><strong>DESCRIPTION</strong></td>
+<td>Bei Textressourcen erscheint hier die Zusammenfassung, bei anderen
+(zum Beispiel Bildern) eine Beschreibung des Inhalts.</td>
+</tr>
+<tr>
+<td><strong>PUBLISHER</strong></td>
+<td>Organisation oder Person, die die Ressource veröffentlicht hat.</td>
+</tr>
+<tr>
+<td><strong>OTHER CONTRIBUTORS</strong></td>
+<td>Koautoren, etc.</td>
+</tr>
+<tr>
+<td><strong>DATE</strong></td>
+<td>Erscheindatum</td>
+</tr>
+<tr>
+<td><strong>RESOURCE TYPE</strong></td>
+<td>Die Art der Ressource. An dieser Stelle stehen vordefinierte
+Ressourcen.</td>
+</tr>
+<tr>
+<td><strong>FORMAT</strong></td>
+<td>Das Format der Ressource. Ein Standard, der mögliche Formate
+beschreibt heisst Mime Types. Diese sind im RFC2046 definiert.</td>
+</tr>
+<tr>
+<td><strong>RESOURCE IDENTIFIER</strong></td>
+<td>String oder Nummer, die die Ressource eindeutig beschreibt. Im Fall
 von Onlinedokumenten steht hier die URL, bei Büchern die
-ISBN-Nummer.</li>
-<li>SOURCE: <strong>Bezugsquelle</strong></li>
-<li>LANGUAGE: Verwendete <strong>Sprache</strong></li>
-<li>RELATION: Beziehungen zu anderen Elementen. Die Art der Beziehungen
-sind im DC Standard noch nicht definiert. In diesem Konzept ist
-vorgesehen, Topic Maps als Standard einzusetzen, um Beziehungen zu
-definieren.</li>
-<li>COVERAGE: Dieser Parameter befindet sich momentan noch in der
-Spezifikation. Er soll temporäre Zugehörigkeiten, wie beispielsweise zu
-Projekten, beschreiben.</li>
-<li>RIGHTS MANAGEMENT: Angedacht ist einen kurzen Text oder eine URL zu
-erfassen, die Auskunft über die Rechte an der Ressource gibt.</li>
-</ul>
+ISBN-Nummer.</td>
+</tr>
+<tr>
+<td><strong>SOURCE</strong></td>
+<td>Bezugsquelle</td>
+</tr>
+<tr>
+<td><strong>LANGUAGE</strong></td>
+<td>Verwendete Sprache</td>
+</tr>
+<tr>
+<td><strong>RELATION</strong></td>
+<td>Beziehungen zu anderen Elementen. Die Art der Beziehungen sind im DC
+Standard noch nicht definiert. In diesem Konzept ist vorgesehen, Topic
+Maps als Standard einzusetzen, um Beziehungen zu definieren.</td>
+</tr>
+<tr>
+<td><strong>COVERAGE</strong></td>
+<td>Dieser Parameter befindet sich momentan noch in der Spezifikation.
+Er soll temporäre Zugehörigkeiten, wie beispielsweise zu Projekten,
+beschreiben.</td>
+</tr>
+<tr>
+<td><strong>RIGHTS MANAGEMENT</strong></td>
+<td>Angedacht ist einen kurzen Text oder eine URL zu erfassen, die
+Auskunft über die Rechte an der Ressource gibt.</td>
+</tr>
+</tbody>
+</table>
 <h2 data-number="4.3" id="wissenstransportkanäle"><span
 class="header-section-number">4.3</span> Wissenstransportkanäle</h2>
 <p>Um den Wissensfluss in einer Firma durch ein elektronisches System
@@ -1634,7 +1714,8 @@ class="citation"
 data-cites="noauthor_rfc_1997">[@noauthor_rfc_1997]</span>) noch um
 wissensrelevante Informationen ,wie <strong>Fachgebiete eines
 Mitarbeiters</strong>, <strong>Teilnahme an Projekten</strong> oder
-<strong>Fortbildungen</strong>, zu erweitern.</p>
+<strong>Fortbildungen</strong>, zu erweitern <span class="citation"
+data-cites="offsey_knowledge_1997">[@offsey_knowledge_1997]</span>.</p>
 <p>Der White Page Dienst kann außerdem dazu genutzt werden, alle neuen
 Mitarbeiter automatisch vorzustellen. Dieser Vorgang
 <strong>erleichtert</strong> dem neuen Mitarbeiter die
@@ -2318,8 +2399,10 @@ einige Producer bei, die erweitert oder durch neue ergänzt werden
 können.</p>
 <p>Über sogenannte <strong>Formatting Instructions</strong> (FI) wird
 Cocoon im Dokument mitgeteilt, welcher Processor verwendet werden soll.
-Ein Beispiel ist der XSLT Processor, der ein XML Dokument unter
-Verwendung eines XSL Stylesheets transformieren kann.</p>
+Ein Beispiel ist der XSLT Processor <span class="citation"
+data-cites="greenspan_understanding_2000">[@greenspan_understanding_2000]</span>,
+der ein XML Dokument unter Verwendung eines XSL Stylesheets
+transformieren kann.</p>
 <p>Der <strong>Formatter</strong> sorgt am Ende der Kette für die
 eigentliche Formatierung des Inhalts. Mit unterschiedlichen Formattern
 können Formate wie HTML und PDF erzeugt werden.</p>
@@ -2350,11 +2433,12 @@ definierten Attribute können bei Bedarf beliebig erweitert werden. Der
 Dienst beruht auf dem Standard <strong>LDAP</strong> und macht ihn
 deshalb zu einem plattform- und anwendungsübergreifenden Werkzeug.</p>
 <p>LDAP wurde ursprünglich als Frontend zu den im Internet sehr
-verbreiteten X.500 Directory Servern konzipiert. Im Gegensatz zu diesen
-konnte LDAP über TCP/IP betrieben werden. Mittlerweile besteht bei den
-meisten LDAP-Servern auch die Möglichkeit, im sogenannten
-standalone-Mode, also ohne X.500-Backend, betrieben zu werden. Mit einem
-LDAP-Server sind verschiedene Anwendungen denkbar.</p>
+verbreiteten X.500 Directory Servern konzipiert <span class="citation"
+data-cites="laird_lighting_2001">[@laird_lighting_2001]</span>. Im
+Gegensatz zu diesen konnte LDAP über TCP/IP betrieben werden.
+Mittlerweile besteht bei den meisten LDAP-Servern auch die Möglichkeit,
+im sogenannten standalone-Mode, also ohne X.500-Backend, betrieben zu
+werden. Mit einem LDAP-Server sind verschiedene Anwendungen denkbar.</p>
 <ul>
 <li>Einheitliche und aktuelle Basis für viele der am IIS benötigten
 Erfassungen von <strong>personenbezogenen</strong> Daten. Dabei sind
@@ -2900,7 +2984,9 @@ Dokumenten über das World Wide Web. Wird vom W3C standardisiert.</li>
 Schnittstelle (API) für den Zugriff von Java-Programmen auf eine
 Datenbank.</li>
 <li>LDAP (Leightweight Directory Access Protocoll): Protokoll, mit dem
-über TCP/IP auf Directory Server zugegriffen werden kann.</li>
+über TCP/IP auf Directory Server <span class="citation"
+data-cites="lear_directory-enabled_1999">[@lear_directory-enabled_1999]</span>
+zugegriffen werden kann.</li>
 <li>ODBC (Open Database Connectivity): Eine von der Firma Microsoft
 geschaffene, plattformabhängige Schnittstelle (API) für den Zugriff auf
 Datenbanken.</li>
@@ -2923,7 +3009,11 @@ vergleichbar mit HTTP, aber binär.</li>
 Erstellen von Inhalt für mobile Endgeräte ermöglicht.</li>
 <li>XML (Extensible Markup Language): Meta-Beschreibungssprache, über
 die eigene Tags definiert werden können. XML wurde 1998 durch das W3C
-standardisiert.</li>
+standardisiert <span class="citation"
+data-cites="greenspan_introduction_1998">[@greenspan_introduction_1998]</span>.</li>
+<li>XPath: Eine vom W3C entwickelte Pfadbeschreibungssprache für XML
+<span class="citation"
+data-cites="walsh_xpath_1999">[@walsh_xpath_1999]</span>.</li>
 <li>XSL (Extensible Stylesheet Language): Hierüber werden XML Dokumente
 ausgegeben und angezeigt.</li>
 </ul>

@@ -1,8 +1,9 @@
 ---
 title: "Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens."
-subtitle: "Diplomarbeit"
-author: [Simon Dückert]
-date: "2000"
+subtitle: "Diplomarbeit im Fach Elektrotechnik"
+author:
+- name: "Simon Dückert"
+date: "15.06.2000"
 titlepage: true
 titlepage-color: "ffff00"
 titlepage-text-color: "000000"

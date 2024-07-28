@@ -67,7 +67,7 @@ Die Methoden, die in der Konzeptionsphase in dem Wissensmanagementsystem impleme
 ### White Page Dienst
 Was für öffentliche Telefonnetze das **Telefonbuch** oder die gelben Seiten darstellen, sind im **Internet** die White Page Dienste. Ein solcher Dienst zeichnet sich dadurch aus, dass Personen nach bestimmten Kriterien gesucht werden können. So ist es beispielsweise möglich, zu einer Emailadresse auch Telefonnummer oder Adresse zu recherchieren.
 
-In einem Wissensmanagementsystem ist es nützlich, die Informationen, die vom White Page Dienst geliefert werden, über die rein administrativen Angaben (Email, Telefon, Adresse, etc., siehe [@noauthor_rfc_1997]) noch um wissensrelevante Informationen ,wie **Fachgebiete eines Mitarbeiters**, **Teilnahme an Projekten** oder **Fortbildungen**, zu erweitern.
+In einem Wissensmanagementsystem ist es nützlich, die Informationen, die vom White Page Dienst geliefert werden, über die rein administrativen Angaben (Email, Telefon, Adresse, etc., siehe [@noauthor_rfc_1997]) noch um wissensrelevante Informationen ,wie **Fachgebiete eines Mitarbeiters**, **Teilnahme an Projekten** oder **Fortbildungen**, zu erweitern [@offsey_knowledge_1997].
 
 Der White Page Dienst kann außerdem dazu genutzt werden, alle neuen Mitarbeiter automatisch vorzustellen. Dieser Vorgang **erleichtert** dem neuen Mitarbeiter die **Integration** und macht gleichzeitig dessen **Kenntnisse** im Institut **bekannt**.
 
@@ -345,7 +345,7 @@ Mit dem **Servlet Cocoon** steht ein Werkzeug zur Verfügung, mit dem man XML Do
 
 Der **Producer** hat die Aufgabe ein XML Document bereitzustellen. Im einfachsten Fall wird ein XML-Dokument aus dem Filesystem gelesen. Es ist auch möglich, Daten aus Datenbank- oder LDAP-Abfragen in XML darzustellen. Cocoon liegen in der Basisversion einige Producer bei, die erweitert oder durch neue ergänzt werden können.
 
-Über sogenannte **Formatting Instructions** (FI) wird Cocoon im Dokument mitgeteilt, welcher Processor verwendet werden soll. Ein Beispiel ist der XSLT Processor, der ein XML Dokument unter Verwendung eines XSL Stylesheets transformieren kann.
+Über sogenannte **Formatting Instructions** (FI) wird Cocoon im Dokument mitgeteilt, welcher Processor verwendet werden soll. Ein Beispiel ist der XSLT Processor [@greenspan_understanding_2000], der ein XML Dokument unter Verwendung eines XSL Stylesheets transformieren kann.
 
 Der **Formatter** sorgt am Ende der Kette für die eigentliche Formatierung des Inhalts. Mit unterschiedlichen Formattern können Formate wie HTML und PDF erzeugt werden.
 
@@ -357,7 +357,7 @@ Der Whitepage Dienst soll nicht ausschließlich als Whitepage Dienst, sondern da
 
 Der hier konzipierte Whitepage Dienst stellt eine **Datenbasis** zur Verfügung, die die Möglichkeit bietet, **personenbezogene Daten** aufzunehmen. Die hier definierten Attribute können bei Bedarf beliebig erweitert werden. Der Dienst beruht auf dem Standard **LDAP** und macht ihn deshalb zu einem plattform- und anwendungsübergreifenden Werkzeug.
 
-LDAP wurde ursprünglich als Frontend zu den im Internet sehr verbreiteten X.500 Directory Servern konzipiert. Im Gegensatz zu diesen konnte LDAP über TCP/IP betrieben werden. Mittlerweile besteht bei den meisten LDAP-Servern auch die Möglichkeit, im sogenannten standalone-Mode, also ohne X.500-Backend, betrieben zu werden. Mit einem LDAP-Server sind verschiedene Anwendungen denkbar.
+LDAP wurde ursprünglich als Frontend zu den im Internet sehr verbreiteten X.500 Directory Servern konzipiert [@laird_lighting_2001]. Im Gegensatz zu diesen konnte LDAP über TCP/IP betrieben werden. Mittlerweile besteht bei den meisten LDAP-Servern auch die Möglichkeit, im sogenannten standalone-Mode, also ohne X.500-Backend, betrieben zu werden. Mit einem LDAP-Server sind verschiedene Anwendungen denkbar.
 
 - Einheitliche und aktuelle Basis für viele der am IIS benötigten Erfassungen von **personenbezogenen** Daten. Dabei sind insbesondere datenschutztechnische Aspekte zu berücksichtigen.
 - Bereitstellung eines **institutsweiten Adressbuchs**, das wesentlich aktueller als die im Moment verfügbaren ist, und auch Praktikanten, Studienarbeiter, etc. beinhaltet.

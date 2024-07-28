@@ -1,3 +1,22 @@
+> Wenn du ein Schiff bauen willst, fang nicht an, Holz zusammenzutragen, Bretter zu schneiden und Arbeit zu verteilen, sondern wecke in den Männern (und Frauen) die Sehnsucht nach dem großen, weiten Meer.
+>
+> *Antoine de Saint-Exupery*
+
+**Titel:** Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens
+
+**Bearbeiter:**
+
+- [Simon Dückert](https://www.linkedin.com/in/simondueckert/)
+
+**Betreuer:**
+
+- [Prof. Dr.-Ing. Heinz Gerhäuser](https://de.wikipedia.org/wiki/Heinz_Gerh%C3%A4user)
+- [Dr.-Ing. Heinrich Dietsch](https://cris.fau.de/persons/100482810/publications)
+- Dr. Ing. Hartmut Hess
+- [Dipl.-Ing. Wolfram Strauß](https://www.linkedin.com/in/wolfram-strau%C3%9F-12803914/)
+
+**Hochschule:** [Friedrich-Alexander-Universität Erlangen-Nürnberg](https://www.fau.de/), [Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik](https://www.like.tf.fau.de/) (Stiftungslehrstuhl)
+
 # Kurzfassung
 
 Die vorliegende Arbeit beschäftigt sich mit dem Thema Wissensmanagement aus technischer und sehr pragmatischer Sicht. Im Rahmen dieser Arbeit umfasst Wissensmanagement alle Anstrengungen, die unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu sein.
