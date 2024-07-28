@@ -4,7 +4,7 @@ Die folgenden Kriterien wurden für das Konzept eines Wissensmanagementsystems f
 
 ### Sicherheit
 
-Eine wichtige **Voraussetzung** für die Wissensweitergabe ist **Vertrauen**. Wissensaustausch ist eine Art Marktplatz, auf dem es (**Wissens-**)**Verkäufer**, (**Wissens-**)**Käufer** und (**Wissens-**)**Vermittler** gibt (siehe [dav98]). Die Währung auf diesem Marktplatz ist in den seltensten Fällen Geld. Vielmehr geht es um **Annerkennung**, **Status** oder die **Hoffnung auf Gegenleistung**. Damit einzelne Wissensgeber nicht durch Nutzer des Systems übervorteilt werden, müssen bestimmte Sicherheitsmaßnahmen getroffen werden.
+Eine wichtige **Voraussetzung** für die Wissensweitergabe ist **Vertrauen**. Wissensaustausch ist eine Art Marktplatz, auf dem es (**Wissens-**)**Verkäufer**, (**Wissens-**)**Käufer** und (**Wissens-**)**Vermittler** gibt (siehe [@davenport_wenn_1999]). Die Währung auf diesem Marktplatz ist in den seltensten Fällen Geld. Vielmehr geht es um **Annerkennung**, **Status** oder die **Hoffnung auf Gegenleistung**. Damit einzelne Wissensgeber nicht durch Nutzer des Systems übervorteilt werden, müssen bestimmte Sicherheitsmaßnahmen getroffen werden.
 
 Um zu gewährleisten, dass das System nicht missbraucht werden kann, ist es erforderlich, dass sich die Nutzer gegenüber dem System autorisieren müssen (im Gegensatz zum bestehenden Intranet), um bestimmte Aktionen durchführen zu können (zum Beispiel das Einstellen von Dokumenten).
 
@@ -50,7 +50,7 @@ Das Fehlen einer solchen Struktur führt im IIS beispielsweise dazu, dass vielen
 
 Die Frage nach einem geeigneten Weg, jedes einzelne Wissenselement in einen Gesamtkontext einzubetten, wird im Rahmen dieser Diplomarbeit nicht geklärt. Eine solche Vorgehensweise muss für das gesamte IIS festgelegt werden.
 
-Auf der einen Seite kann die Vergabe von **Kategorien** und **Schlagwörtern** vorgeschrieben werden. Dies bedingt ein **hierarchisches Glossar**, das jedes beliebige Thema erfassen kann. Ein solches Glossar stellt beispielsweise die **Dezimalklassifikation** [Dewey]](https://www.oclc.org/en/dewey.html) dar. Gerade bei fachspezifischen Themen geht allerdings auch diese Klassifikation nicht ausreichend in die Tiefe.
+Auf der einen Seite kann die Vergabe von **Kategorien** und **Schlagwörtern** vorgeschrieben werden. Dies bedingt ein **hierarchisches Glossar**, das jedes beliebige Thema erfassen kann. Ein solches Glossar stellt beispielsweise die **Dezimalklassifikation** [Dewey](https://www.oclc.org/en/dewey.html) dar. Gerade bei fachspezifischen Themen geht allerdings auch diese Klassifikation nicht ausreichend in die Tiefe.
 
 Die zweite Möglichkeit besteht darin, die **Verschlagwortung dem Nutzer** zu **überlassen**, was zur Folge haben kann, dass einzelne Dokumente nicht an allen Stellen auftauchen, an denen sie relevant sind.
 
@@ -74,7 +74,7 @@ Die Methoden, die in der Konzeptionsphase in dem Wissensmanagementsystem impleme
 ### White Page Dienst
 Was für öffentliche Telefonnetze das **Telefonbuch** oder die gelben Seiten darstellen, sind im **Internet** die White Page Dienste. Ein solcher Dienst zeichnet sich dadurch aus, dass Personen nach bestimmten Kriterien gesucht werden können. So ist es beispielsweise möglich, zu einer Emailadresse auch Telefonnummer oder Adresse zu recherchieren.
 
-In einem Wissensmanagementsystem ist es nützlich, die Informationen, die vom White Page Dienst geliefert werden, über die rein administrativen Angaben (Email, Telefon, Adresse, etc., siehe [rfc2218]) noch um wissensrelevante Informationen ,wie **Fachgebiete eines Mitarbeiters**, **Teilnahme an Projekten** oder **Fortbildungen**, zu erweitern.
+In einem Wissensmanagementsystem ist es nützlich, die Informationen, die vom White Page Dienst geliefert werden, über die rein administrativen Angaben (Email, Telefon, Adresse, etc., siehe [@noauthor_rfc_1997]) noch um wissensrelevante Informationen ,wie **Fachgebiete eines Mitarbeiters**, **Teilnahme an Projekten** oder **Fortbildungen**, zu erweitern.
 
 Der White Page Dienst kann außerdem dazu genutzt werden, alle neuen Mitarbeiter automatisch vorzustellen. Dieser Vorgang **erleichtert** dem neuen Mitarbeiter die **Integration** und macht gleichzeitig dessen **Kenntnisse** im Institut **bekannt**.
 
@@ -356,7 +356,7 @@ Der größte Unterschied zwischen XML und HTML besteht darin, dass bei XML die v
 
 Die **Verarbeitung** von **XML** ist aus diesem Grund auch etwas **komplizierter** als bei HTML, denn es besteht die Notwendigkeit, in einer sogenannten Document Type Definition (DTD) die möglichen Elemente, die in einem Dokument vorkommen dürfen, zu definieren.
 
-Außerdem sind zur **Darstellung** sogenannte **Stylesheets** zu erstellen, die ein XML Dokument in eine darstellbare Form umwandeln (zum Beispiel HTML, PDF, etc.). Eine gute Einführung in XML gibt [see99]
+Außerdem sind zur **Darstellung** sogenannte **Stylesheets** zu erstellen, die ein XML Dokument in eine darstellbare Form umwandeln (zum Beispiel HTML, PDF, etc.). Eine gute Einführung in XML gibt [@seeboerger-weichselbaum_einsteigerseminar_2000].
 
 Mit dem **Servlet Cocoon** steht ein Werkzeug zur Verfügung, mit dem man XML Dokumente auf Serverseite in andere Formate umwandeln kann. Neben der reinen Stylesheet Transformation bietet Cocoon auch die Möglichkeit Datenbanken oder LDAP Server abzufragen. Typisch für Cocoon ist der modulare Aufbau. Unterschieden werden **Producer, Processor und Formatter**.
 
