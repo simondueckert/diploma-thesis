@@ -3,7 +3,7 @@ echo Starting Document Generation ...
 
 # Variables
 filename="2000-Diplomarbeit-simondueckert-de"
-chapters="./src/index.md ./src/2-0-preface.md ./src/3-0-introduction.md ./src/4-0-considerations.md ./src/5-0-conception.md ./src/6-0-verification.md ./src/7-0-outlook.md ./src/8-0-glossary.md ./src/9-0-bibliography.md"
+chapters="./src/index.md ./src/2-0-preface.md ./src/3-0-introduction.md ./src/4-0-considerations.md ./src/4-1-frameset-iis.md ./src/4-2-forms-of-knowledge.md ./src/4-3-knowledge-transfer.md ./src/5-0-conception.md ./src/5-1-requirements.md ./src/5-2-methods.md ./src/5-3-system-selection.md ./src/5-4-decision.md ./src/5-5-system-x-1.md ./src/5-6-system-x-2.md ./src/6-0-verification.md ./src/7-0-outlook.md ./src/8-0-glossary.md ./src/9-0-bibliography.md"
 
 # Delete Old Versions
 #echo Deleting old versions ...

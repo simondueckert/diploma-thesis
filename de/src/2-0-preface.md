@@ -1,15 +1,15 @@
 # Vorwort
 ## Danksagungen
-Neben meinen Betreuern, **Prof. Dr. Heinz Gerhäuser**, **Dr. Hartmut Hess**, **Dr. Heinrich Dietsch** und **Dipl. Ing. Wolfram Straus**, gehört mein Dank der gesamten **Open-Source-Gemeinde**, die mich in Newsgroups, Mailinglisten und Mailkontakten tatkräftig unterstützt hat. Drei Personen möchte ich gesondert erwähnen.
+Neben meinen Betreuern, **[Prof. Dr.-Ing. Heinz Gerhäuser](https://de.wikipedia.org/wiki/Heinz_Gerh%C3%A4user)**, **Dr. Hartmut Hess**, **[Dr.-Ing. Heinrich Dietsch](https://cris.fau.de/persons/100482810/publications)** und **[Dipl.-Ing. Wolfram Strauß](https://www.linkedin.com/in/wolfram-strau%C3%9F-12803914/)**, gehört mein Dank der gesamten **Open-Source-Gemeinde**, die mich in Newsgroups, Mailinglisten und Mailkontakten tatkräftig unterstützt hat. Drei Personen möchte ich gesondert erwähnen.
 
-**Norman Walsh** hat mir die Einarbeitung in das Thema XML/XSL durch das Beantworten meiner Fragen sehr einfach gemacht.
+**[Norman Walsh](https://nwalsh.com/people/ndw/)** hat mir die Einarbeitung in das Thema XML/XSL durch das Beantworten meiner Fragen sehr einfach gemacht.
 
-**James Clark** hat mich auf der XML-Werkzeugseite beraten und mir einen Überblick über die verfügbaren Software-Pakete ermöglicht.
+**[James Clark](https://en.wikipedia.org/wiki/James_Clark_(programmer))** hat mich auf der XML-Werkzeugseite beraten und mir einen Überblick über die verfügbaren Software-Pakete ermöglicht.
 
-Des weiteren gilt mein Dank **Christian Forster**, der mir in Sicherheits- und LDAP-Fragen immer hilfreich zur Seite stand.
+Des weiteren gilt mein Dank **[Christian Forster](https://www.linkedin.com/in/chforster/)**, der mir in Sicherheits- und LDAP-Fragen immer hilfreich zur Seite stand.
 
 ## Das Fraunhofer Institut für Integrierte Schaltungen
-Diese Arbeit wurde im Fraunhofer Institut für Integrierte Schaltungen (IIS) in Erlangen/Tennenlohe durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
+Diese Arbeit wurde im [Fraunhofer Institut für Integrierte Schaltungen](https://www.iis.fraunhofer.de/) (IIS) [in Erlangen/Tennenlohe](https://www.openstreetmap.de/karte/?zoom=18&lat=49.54678&lon=11.01913&layers=B00TT) durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
 
 Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "*http://www-local*"beginnen.
 
@@ -24,7 +24,9 @@ Das frei verfügbare Produkt LaTeX kannte ich bereits aus meiner Studienarbeit. 
 
 Da XML [@quin_extensible_nodate] in meiner Diplomarbeit eine große Rolle spielen sollte, lag die Entscheidung nahe, auch ein XML-basiertes Dokumentationssystem zu verwenden, um damit erste Erfahrungen zu sammeln. Weil es sich bei XML (im Gegensatz zu LaTeX) um eine relativ neue Technologie handelt, ist die Einstiegsschwelle noch größer, da es auf dem Markt nur wenige, frei verfügbare Werkzeuge gibt.
 
-Die Energie, die ich in die Konfiguration eines solchen Dokumentationssystems gesteckt habe (siehe Abbildung 1), möchte ich in einer kurzen Zusammenfassung bündeln.
+Die Energie, die ich in die Konfiguration eines solchen Dokumentationssystems gesteckt habe, möchte ich in einer kurzen Zusammenfassung bündeln.
+
+![Dokumentationssystem - Überblick](./img/dokumentationssystem-ueberblick.png)
 
 Um in XML Dokumente erstellen zu können, wird eine Vorlage benötigt, die festlegt, welche Elemente (Tags) in dem Dokument erlaubt sind. Eine solche DTD ist [Docbook](https://docbook.org/). Sie eignet sich sehr gut zum Verfassen von technischen Dokumentationen. Formeln werden bis jetzt nicht unterstützt, sind aber mit MathML in der Vorbereitung.
 
@@ -41,8 +43,6 @@ Kommt DSSSL zum Einsatz, so kann [Jade](http://www.jclark.com/jade/) von James C
 Da es sich bei XML um reines ASCII Format handelt, kann als Editor jeder beliebige Texteditor zum Einsatz kommen. Aus Komfortgründen habe ich mich für den Editor [Emacs](https://de.wikipedia.org/wiki/Emacs) entschieden, den es auch in einer Version für Windows gibt.
 
 **Tipp:** Eine sehr gute Beschreibung, wie unter Windows NT eine freie SGML/XML Umgebung installiert werden kann (mit allen hier erwähnten Komponenten) bietet das Tutorial SGML for NT: A brief tutorial [how to set up a free SGML editing and publishing system for Windows NT](https://web.archive.org/web/20040202052857/http://ourworld.compuserve.com/homepages/hoenicka_markus/ntsgml.html).
-
-![Dokumentationssystem - Überblick](./img/dokumentationssystem-ueberblick.png)
 
 ## Konventionen
 Diese Sektion gibt einen Überblick über die in diesem Dokument verwendeten Konventionen.

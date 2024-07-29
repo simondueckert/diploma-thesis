@@ -5,11 +5,20 @@ site_dir: ../docs/de
 edit_uri: ''
 
 nav:
-    - Kurzfassung: index.md
+    - Startseite: index.md
     - Vorwort: 2-0-preface.md
-    - Einführung: 3-0-introduction.md
-    - Vorüberlegungen: 4-0-considerations.md
-    - Konzeption: 5-0-conception.md
+    - Einleitung: 3-0-introduction.md
+    - Vorüberlegungen:
+      - Rahmenbedingungen am IIS: 4-1-frameset-iis.md
+      - Wissensformen: 4-2-forms-of-knowledge.md
+      - Wissenstransportkanäle: 4-3-knowledge-transfer.md
+    - Konzeption:
+      - Anforderungen an ein Wissensmanagementsystem: 5-1-requirements.md
+      - Methoden: 5-2-methods.md
+      - Systemauswahl: 5-3-system-selection.md
+      - Entscheidung: 5-4-decision.md
+      - systemX I: 5-5-system-x-1.md
+      - systemX II: 5-6-system-x-2.md
     - Verifikation: 6-0-verification.md
     - Ausblick: 7-0-outlook.md
     - Glossar: 8-0-glossary.md

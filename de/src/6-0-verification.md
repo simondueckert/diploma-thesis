@@ -39,7 +39,7 @@ Anfragen für **Praktika** werden in einer **Access-Datenbank** in der Personale
 
 Außerdem werden **internationale Anfragen** nach Stellen aller Art **in** der [Seneca-Datenbank](https://web.archive.org/web/20000301004622/http://www.iis.fhg.de/kfa/seneca/index.html) erfasst. Diese Datenbank wird vom Fraunhofer Koordinierungsbüro für Ausbildungspartnerschaften betrieben und basiert auf dem DBMS Oracle. Studenten können die Datenbank nutzen, um sich für Praktika zu bewerben.
 
-Um die zur Verfügung stehenden Daten in einer einheitlichen Form präsentierbar zu machen, wurde in Zusammenarbeit mit den einzelnen Stellen ein Konzept entwickelt, das die Veröffentlichung der Daten ermöglicht (siehe Abbildung 4-1). Mit der Umsetzung dieses Konzepts wird die Möglichkeit geschaffen, die bestehenden Daten in eine **zentrale Datenbank** zu übertragen und dort für das systemX II verfügbar zu machen.
+Um die zur Verfügung stehenden Daten in einer einheitlichen Form präsentierbar zu machen, wurde in Zusammenarbeit mit den einzelnen Stellen ein Konzept entwickelt, das die Veröffentlichung der Daten ermöglicht. Mit der Umsetzung dieses Konzepts wird die Möglichkeit geschaffen, die bestehenden Daten in eine **zentrale Datenbank** zu übertragen und dort für das systemX II verfügbar zu machen.
 
 Ein Mitarbeiter, der eine Studienarbeit vergeben möchte, kann sich so zum Beispiel nach einem geeigneten Kandidaten erkundigen. Es wurde aus Datenschutzgründen die Übereinkunft getroffen, keine persönlichen Daten, wie Telefonnummer oder Adresse, bereitzustellen. Bei Interesse können diese Informationen bei der entsprechenden Stelle erfragt werden.
 
