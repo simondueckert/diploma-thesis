@@ -11,7 +11,7 @@ Des weiteren gilt mein Dank **[Christian Forster](https://www.linkedin.com/in/ch
 ## Das Fraunhofer Institut für Integrierte Schaltungen
 Diese Arbeit wurde im [Fraunhofer Institut für Integrierte Schaltungen](https://www.iis.fraunhofer.de/) (IIS) [in Erlangen/Tennenlohe](https://www.openstreetmap.de/karte/?zoom=18&lat=49.54678&lon=11.01913&layers=B00TT) durchgeführt. Das IIS ist eines von knapp 50 Fraunhofer Instituten in Deutschland und befasst sich mit mikroelektronischen Schaltungen und Systemen.
 
-Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "*http://www-local*"beginnen.
+Viele der hier angesprochenen Details (z.B. Netzwerktopologie) beziehen sich auf das IIS und sind nicht allgemeingültig. Des weiteren verweisen einige Hyperlinks in diesem Dokument auf das Intranet des IIS und sind für den externen Leser nicht erreichbar. Es sind dies alle Links, die mit "*http://www-local*" beginnen.
 
 ## Über dieses Dokument
 Bei der Evaluierung verschiedener Softwareprodukte für die Erstellung dieses Dokuments zog ich drei verschiedene Lösungen in Betracht. Meine Entscheidung werde ich im Folgenden erläutern.
