@@ -4,9 +4,13 @@
 
 **Hochschule:** [Friedrich-Alexander-Universität Erlangen-Nürnberg](https://www.fau.de/), [Lehrstuhl für Informationstechnik mit dem Schwerpunkt Kommunikationselektronik](https://www.like.tf.fau.de/) (Stiftungslehrstuhl)
 
+---
+
 > Wenn du ein Schiff bauen willst, fang nicht an, Holz zusammenzutragen, Bretter zu schneiden und Arbeit zu verteilen, sondern wecke in den Männern (und Frauen) die Sehnsucht nach dem großen, weiten Meer.
 >
 > *[Antoine de Saint-Exupery](https://de.wikipedia.org/wiki/Antoine_de_Saint-Exup%C3%A9ry)*
+
+---
 
 # Kurzfassung
 Die vorliegende Arbeit beschäftigt sich mit dem Thema Wissensmanagement aus technischer und sehr pragmatischer Sicht. Im Rahmen dieser Arbeit umfasst Wissensmanagement alle Anstrengungen, die unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu sein.
