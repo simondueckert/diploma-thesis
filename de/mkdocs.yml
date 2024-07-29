@@ -33,6 +33,7 @@ nav:
 
 theme:
     name: 'material'
+    custom_dir: src/overrides
     language: de
     palette:
       primary: yellow
@@ -54,6 +55,7 @@ extra:
           link: 'https://www.linkedin.com/in/simondueckert/'
         - icon: fontawesome/brands/github
           link: 'https://github.com/simondueckert'
+    giscus: true
     generator: false
 
 plugins:
