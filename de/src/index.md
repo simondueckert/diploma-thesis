@@ -12,7 +12,13 @@
 
 ---
 
+![Lizenz Creative Commons Namensnennung 4.0 (CC BY)](./img/CC-BY.png)
+
+Dies Diplomarbeit steht unter der Lizenz CC BY 4.0. Unter der Adresse [creativecommons.org/licenses/by/4.0/deed.de](https://creativecommons.org/licenses/by/4.0/deed.de) findest Du damit verbundenen Erlaubnisse und Bedingungen. Als Namensnennung ist „Dückert, S.: Entwurf und prototypische Realisierung eines mit der Beschreibungssprache XML erstellten Werkzeugs für die Verwaltung informationstechnischen Wissens. Diplomarbeit. 2000.“ mit einem Link auf [https://simondueckert.github.io/diploma-thesis/de/](https://simondueckert.github.io/diploma-thesis/de/) vorgesehen.
+
+
 # Kurzfassung
+
 Die vorliegende Arbeit beschäftigt sich mit dem Thema Wissensmanagement aus technischer und sehr pragmatischer Sicht. Im Rahmen dieser Arbeit umfasst Wissensmanagement alle Anstrengungen, die unternommen werden, um Mitarbeiter mit dem Wissen zu versorgen, das sie benötigen, um für das Unternehmen mit optimaler Effizienz tätig zu sein.
 
 Das Ziel war, eine Plattform zu entwickeln, die im [Fraunhofer Institut für Integrierte Schaltungen](https://www.iis.fraunhofer.de), im Folgenden IIS genannt, die Funktion eines Wissensmanagementsystems übernehmen kann. Nach Analyse der Ausgangssituation und der vorhandenen Wissensquellen musste zwischen der Implementierung auf einem kommerziellen System, auf einem Open-Source-System oder der Entwicklung einer neuen Plattform entschieden werden.
