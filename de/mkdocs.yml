@@ -56,6 +56,8 @@ extra:
         - icon: fontawesome/brands/github
           link: 'https://github.com/simondueckert'
     giscus: true
+    analytics:
+        provider: custom
     generator: false
 
 plugins:
